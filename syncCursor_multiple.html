@@ -1,0 +1,515 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Leaflet Sync Demo - with three maps listening</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet-src.js" crossorigin=""></script>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+  <link href="css/light-bootstrap-dashboard.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+  <script src="leaflet/leaflet.js" charset="utf-8"></script>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.4/themes/ui-lightness/jquery-ui.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
+  <script src="data/Parks_Outside.geojson" charset="utf-8"></script>
+  <script src="data/waterbodies.geojson" charset="utf-8"></script>
+  <script src="data/poverty.geojson" charset="utf-8"></script>
+  <script src="data/Conflict.geojson" charset="utf-8"></script>
+  <script src="data/hippos.js" charset="utf-8"></script>
+  <script src="data/elephants.js" charset="utf-8"></script>
+
+
+  <style type="text/css">
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow-y: hidden;
+    }
+
+    #map,
+    #container {
+      width: 49.5%;
+      height: 100%;
+    }
+
+    #map {
+      float: left;
+      z-index: 1;
+    }
+
+    #container {
+      float: right;
+    }
+
+    #container .map {
+      width: 100%;
+      height: 50%;
+    }
+
+    #legend {
+      padding-top: 25%;
+      height: 200px;
+      z-index: 100;
+    }
+
+    #nav {}
+  </style>
+</head>
+
+<body><!-- Navbar -->
+<nav class="navbar navbar-expand-lg " color-on-scroll="500">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse justify-content-end" id="navigation" style="position: static;">
+      <div class="" style="width: 100%;">
+        <p style="margin: auto; padding-top: 20px; padding-bottom: 50px; font-size: 30px; text-align: center;">
+          GREATER VIRUNGA LANDSCAPE
+        </p>
+      </div>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a id="log" href="landpage.html"><img class="logout" src="images/home.png" /></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="wrapper">
+    <div class="sidebar" style="position: absolute; float: left; height: 100%; width: 300px; border:1px solid black;">
+      <div class="sidebar-wrapper">
+        <div class="nav-link" style="padding-left: 20px; background-color: #1F532C;">
+          <p style="font-size: 25px; color: #000;">Deforestation</p>
+        </div>
+        <div class="nav-link">
+          <label style="color: #000000; padding-left: 10px; font-size: 20px;" for="from">Start Year:</label>
+          <input type="text" id="from" name="from" style="background-color: gray;">
+          <label style="color: #000000; padding-left: 10px; font-size: 20px;" for="from">End Year:</label>
+          <input type="text" id="from" name="from" style="background-color: gray;">
+        </div>
+        <div id=containers>
+          <div id=container2 style="position: relative;">
+          </div>
+        </div>
+      </div>
+      <br />
+
+      <div id="legend" style="position: relative;"><img style="" class="" src="images/legend.PNG"></div>
+    </div>
+    <div class="main-panel">
+
+
+      <!-- End Navbar -->
+      <div class="content" style="position: absolute; left: 50px; padding-top: 0px;">
+        <div class="container-fluid">
+          <div>
+            <div class="card" style="padding-top: 0px; position: relative; width: 1500px; height: 850px;">
+              <div class="card-body" style="padding-top: 0px; position: relative; width: 1500px; height: 850px;">
+                <div id="nav"></div>
+                <div id="map">
+                </div>
+                <div id="container">
+                  <div id="mapA" class="map"></div>
+                  <div id="mapB" class="map"></div>
+                </div>
+              </div>
+             <a style="position: relative;" href="https://www.geogecko.com/" target="_blank"><img class="gecko" style="width: 200px;" src="images/Geogecko.png"></a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+
+  <script src="js/L.Map.Sync.js"></script>
+
+  <script type="text/javascript">
+    function setParent(el, newParent) {
+      newParent.appendChild(el);
+    }
+
+    var center = [-0.002060, 29.392247];
+
+    var stamenOptions = {
+      attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
+        '<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; ' +
+        'Map data OpenStreetmap',
+      subdomains: 'abcd',
+      minZoom: 8,
+      maxZoom: 20
+    };
+
+    var toner = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      minZoom: 8,
+      maxZoom: 20
+      // minZoom: 20
+    });
+    var tonerLite = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      minZoom: 8,
+      maxZoom: 20
+      // minZoom: 20
+    });
+    var watercolor = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      minZoom: 8,
+      maxZoom: 20
+      // minZoom: 20
+    });
+
+
+    var map = L.map('map', {
+      layers: [toner],
+      center: center,
+      zoom: 1
+    });
+
+    var mapA = L.map('mapA', {
+      layers: [watercolor],
+      center: center,
+      zoom: 1,
+      zoomControl: false
+    });
+    var mapB = L.map('mapB', {
+      layers: [tonerLite],
+      center: center,
+      zoom: 1,
+      zoomControl: false
+    });
+
+    map.sync(mapA, {
+      syncCursor: true
+    });
+    map.sync(mapB, {
+      syncCursor: true
+    });
+
+    // If you want interaction with mapA|B to be synchronized on map,
+    // add other links as well.
+    mapA.sync(map, {
+      syncCursor: true
+    });
+    mapA.sync(mapB, {
+      syncCursor: true
+    });
+
+    mapB.sync(map, {
+      syncCursor: true
+    });
+    mapB.sync(mapA, {
+      syncCursor: true
+    });
+  </script>
+
+
+  <script>
+    L.geoJson(GVTC_parks).addTo(map);
+
+    var myStyle = {
+      weight: 2,
+      opacity: 1,
+      color: '#72AC54',
+      fillOpacity: 2.5,
+      fillColor: '#72AC54'
+    };
+
+    L.geoJSON(GVTC_parks, {
+      style: myStyle
+    }).addTo(map);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    L.geoJson(Parks_Outside, {
+      style: {
+        weight: 2,
+        opacity: 1,
+        color: '#808080',
+        fillOpacity: 0,
+        fillColor: '#808080'
+      }
+    }).addTo(map);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    L.geoJson(waterbodies).addTo(map);
+
+    var myStyle = {
+      weight: 2,
+      opacity: 1,
+      color: '#CAEBFC',
+      fillOpacity: 2.5,
+      fillColor: '#CAEBFC'
+    };
+
+    L.geoJSON(waterbodies, {
+      style: myStyle
+    }).addTo(map);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    L.geoJson(GVTC_parks).addTo(mapA);
+
+    var myStyle = {
+      weight: 2,
+      opacity: 1,
+      color: '#72AC54',
+      fillOpacity: 2.5,
+      fillColor: '#72AC54'
+    };
+
+    L.geoJSON(GVTC_parks, {
+      style: myStyle
+    }).addTo(mapA);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    L.geoJson(Parks_Outside, {
+      style: {
+        weight: 2,
+        opacity: 1,
+        color: '#808080',
+        fillOpacity: 0,
+        fillColor: '#808080'
+      }
+    }).addTo(mapA);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    L.geoJson(waterbodies).addTo(mapA);
+
+    var myStyle = {
+      weight: 2,
+      opacity: 1,
+      color: '#CAEBFC',
+      fillOpacity: 2.5,
+      fillColor: '#CAEBFC'
+    };
+
+    L.geoJSON(waterbodies, {
+      style: myStyle
+    }).addTo(mapA);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    mapA.createPane('deforestation');
+    mapA.getPane('deforestation').style.ZIndex = 650;
+    var def = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
+      layers: 'olamMosaics:gvtc_data',
+      styles: 'forestLoss',
+      dim_location: 'forestloss 2015 buffered.tif',
+      transparent: true,
+      format: 'image/png',
+      pane: 'deforestation'
+    }).addTo(mapA);
+  </script>
+
+  <script>
+    L.geoJson(GVTC_parks).addTo(mapB);
+
+    var myStyle = {
+      weight: 2,
+      opacity: 1,
+      color: '#72AC54',
+      fillOpacity: 2.5,
+      fillColor: '#72AC54'
+    };
+
+    L.geoJSON(GVTC_parks, {
+      style: myStyle
+    }).addTo(mapB);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    L.geoJson(Parks_Outside, {
+      style: {
+        weight: 2,
+        opacity: 1,
+        color: '#808080',
+        fillOpacity: 0,
+        fillColor: '#808080'
+      }
+    }).addTo(mapB);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    L.geoJson(waterbodies).addTo(mapB);
+
+    var myStyle = {
+      weight: 2,
+      opacity: 1,
+      color: '#CAEBFC',
+      fillOpacity: 2.5,
+      fillColor: '#CAEBFC'
+    };
+
+    L.geoJSON(waterbodies, {
+      style: myStyle
+    }).addTo(mapB);
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    mapB.createPane('deforestation');
+    mapB.getPane('deforestation').style.ZIndex = 650;
+    var def = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
+      layers: 'olamMosaics:gvtc_data',
+      styles: 'forestLoss',
+      dim_location: 'forestloss 2016 buffered.tif',
+      transparent: true,
+      format: 'image/png',
+      pane: 'deforestation'
+    }).addTo(mapB);
+  </script>
+
+  <script>
+    var pov = L.geoJson(poverty, {
+      style: style
+    });
+
+    function getColor(d) {
+      console.log(d)
+      return d > 0.22 ? '#00441b' :
+        d > 0.18 ? '#1d8641' :
+        d > 0.15 ? '#54b567' :
+        d > 0.11 ? '#9ed898' :
+        d > 0.8 ? '#caefc0' :
+        '#fcfce0';
+
+    }
+
+    function style(feature) {
+      // console.log(feature.properties.Poverty_5)
+      return {
+        fillColor: getColor(feature.properties.Poverty_5),
+        weight: 1,
+        opacity: 1,
+        color: 'black',
+        dashArray: '1',
+        fillOpacity: 1
+      };
+    }
+
+
+    function highlightFeature(e) {
+      var layer = e.target;
+
+      if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+      }
+    }
+
+    function resetHighlight(e) {
+      geojson.resetStyle(e.target);
+    }
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+  <script>
+    var Conflict = L.geoJson(Conflict, {
+      style: {
+        weight: 2,
+        opacity: 1,
+        color: '#808080',
+        fillOpacity: 2.5,
+        fillColor: '#808080'
+      }
+    });
+
+    function zoomToFeature(e) {
+      map.fitBounds(e.target.getBounds());
+    }
+  </script>
+
+
+  <script>
+    var overlayMaps = {
+      "Household Poverty Rates": pov,
+      "Boundary Conflicts": Conflict
+      // "Population Density": pov,
+      // "LandCover Classification": parks
+    };
+    L.control.layers("", overlayMaps, {
+      collapsed: false
+    }).addTo(map);
+    var legendFrom = $('.leaflet-control-layers');
+    var legendTo = $('#container2');
+    setParent(legendFrom[0], legendTo[0]);
+  </script>
+
+  <script>
+    function layer() {
+      var layer = this;
+      console.log(layer)
+      var name = layer.getGeoJSON().name;
+      var item = filters.appendChild(document.createElement('div'));
+      var checkbox = item.appendChild(document.createElement('input'));
+      var label = item.appendChild(document.createElement('label'));
+      checkbox.type = 'checkbox';
+      checkbox.id = name;
+      label.innerHTML = name;
+      label.setAttribute('for', name);
+      checkbox.addEventListener('change', update);
+
+      function update() {
+        (checkbox.checked) ? layer.addTo(map): map.removeLayer(layer);
+      }
+    }
+  </script>
+
+</body>
+
+</html>
