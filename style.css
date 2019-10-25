@@ -1,3 +1,31 @@
+/* sidebar */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+.sidebar {
+  top: 100px;
+  position: fixed;
+  width: 20%;
+  height: 100vh;
+  background: #ffffff;
+  font-size: 0.65em;
+}
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  #nav{
+    background-position: center;
+    background-size: cover;
+    background-image: url("images/gvtc_nav.jpg");
+    width: 100vw;
+    height: 10vh;
+  }
+
 /* nav-bar */
 .logout {
   width: 50px;
@@ -120,12 +148,6 @@ p {
   padding-right: 5px;
 }
 
-.gecko{
-  width: 50px;
-}
-
 .footer{
   padding-bottom: 175px;
 }
-
-/* sidebar */

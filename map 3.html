@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>GVTC Webmap 3</title>
+  <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css"><!-- debug css version-->
+  <link rel="stylesheet" href="lib/ol3.8.2/ol.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <link rel="stylesheet" href="leaflet/leaflet.css" type="text/css" />
+  <script src="leaflet/leaflet.js" charset="utf-8"></script>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> -->
+  <!-- data files -->
+  <script src="data/QENP_finances.js"></script>
+  <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
+  <script src="data/Parks_Outside.geojson" charset="utf-8"></script>
+  <script src="data/poverty.geojson" charset="utf-8"></script>
+  <script src="data/Conflict.geojson" charset="utf-8"></script>
+  <script src="data/hippos.js" charset="utf-8"></script>
+  <script src="data/Gorilla_habitat.geojson" charset="utf-8"></script>
+  <script src="data/Elephant_habitat.geojson" charset="utf-8"></script>
+  <script src="data/density.geojson" charset="utf-8"></script>
+  <!-- date filter -->
+  <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+  <!-- slider -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
+
+
+</head>
+
+<body>
+  <style media="screen">
+    a.button1 {
+      display: inline-block;
+      padding: 0.35em 1.2em;
+      border: 0.1em solid #1F532C;
+      margin: 0 0.3em 0.3em 0;
+      border-radius: 0.12em;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      color: #000000;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    a.button1:hover {
+      color: #000000;
+      background-color: #FFFFFF;
+    }
+
+    @media all and (max-width:30em) {
+      a.button1 {
+        display: block;
+        margin: 0.4em auto;
+      }
+    }
+  </style>
+
+  <!-- navigation bar -->
+  <nav class="navbar navbar-fixed-top header" role="navigation">
+    <div class="navbar-header">
+      <div class="" style="padding-left: 1em;">
+        <a href="http://www.greatervirunga.org" target="_blank"><img src="images/gvtc.png" alt="LOGO" height="60" width="80"></a>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar" style="display: inline-block;">
+      <div class="" style="float: left;">
+        <p style="padding-left: 100px; font-size: 1.5vw;"><strong>GREATER VIRUNGA LANDSCAPE</strong></p>
+      </div>
+      <div class="" style="position: absolute;right: 0;top: 0; padding-right: 1em;">
+        <a href="landpage.html" class="button1">Back</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container bodyContainer">
+    <div class="row mapContainer">
+
+      <!-- panel -->
+      <div id="collapseBtnXs" class="visible-xs">
+        <button type="button" class="btn" onclick="collapsePanelXs();">+</button>
+      </div>
+
+      <div id="panel">
+        <div id="collapseBtn">
+          <button type="button" class="btn btn-sm hidden-xs" onclick="collapsePanel();"></button>
+        </div>
+        <div id="panelContent" class="container-fluid" style="z-index: 1;">
+          <div class="nav-link" style="background-color: #1F532C;">
+            <p style="color: #fff; font-size: 1.5vw;">Revenue Sharing</p>
+          </div>
+          <div id='selector_menu'>
+            <select id='selector'>
+              <option size="16" value='Reset'>---Select year---</option>
+              <option value='2016'>2016</option>
+              <option value='2017'>2017</option>
+            </select>
+          </div>
+          <br>
+          <div id=containers style='display: ;'>
+            <div id=container2 style="">
+            </div>
+          </div>
+          <br>
+          <br>
+          <div id=container3 style="padding-top: 100px;"> <br>
+            <h5><strong>Revenue Sharing</strong></h5>
+            <h6 style="padding-left: 10px"><strong>Amounts(UGX)</strong></h6>
+            <div id="slider" style="top:0px; right: 1px; margin: 10px 25px;"></div>
+            <div style="margin-right: auto; margin-left:auto; width: 90%; margin-bottom: 10px; text-align: center;">
+              <input type="number" min="1000000" max="36999999" id="input-number-min">
+              <input type="number" min="1000001" max="37000000" id="input-number-max">
+            </div>
+            <h6 style="padding-left: 10px"><strong>Male Beneficiaries</strong></h6>
+            <div id="slider2" style="top:0px; right: 1px; margin: 10px 25px;"></div>
+            <div style="margin-right: auto; margin-left:auto; width: 90%; margin-bottom: 10px; text-align: center;">
+              <input type="number" min="1000000" max="36999999" id="input-number-min2">
+              <input type="number" min="1000001" max="37000000" id="input-number-max2">
+            </div>
+            <h6 style="padding-left: 10px"><strong>Female Beneficiaries</strong></h6>
+            <div id="slider3" style="top:0px; right: 1px; margin: 10px 25px;"></div>
+            <div style="margin-right: auto; margin-left:auto; width: 90%; margin-bottom: 10px; text-align: center;">
+              <input type="number" min="1000000" max="36999999" id="input-number-min3">
+              <input type="number" min="1000001" max="37000000" id="input-number-max3">
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- map -->
+      <div class="col-xs-12" id="map">
+        <div>
+          <img class="gecko" style="position: absolute; z-index: 100000; bottom: 0;width: 250px; right: 0;" src="images/legend_map1.PNG">
+        </div>
+        <div>
+          <a style="margin-left: 0px; position: absolute; bottom: 0; z-index: 100000; left: 0; " href="https://www.geogecko.com/" target="_blank"><img class="gecko" style="width: 100px;" src="images/Geogecko.png"></a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+  <script type="text/javascript" src="lib/ol3.8.2/ol-debug.js"></script>
+  <script type="text/javascript" src="js/map3.js"></script>
+  <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+  <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <script>
+    map.createPane('financespane');
+    map.getPane('financespane').style.zIndex = 650;
+    var finances = L.geoJson(QENP_finances, {
+      pane: 'financespane',
+      style: {
+        fillColor: '#1F532C',
+        weight: 1,
+        color: '#808080'
+      }
+
+    }) //.addTo(newMap);
+
+    var group = L.featureGroup([finances]).addTo(map);
+
+    //Creating a slider
+    var slidervar = document.getElementById('slider')
+    noUiSlider.create(slider, {
+      start: [1000000, 37000000],
+      connect: true,
+      range: {
+        'min': 1000000,
+        'max': 37000000
+      }
+    });
+
+    var slidervar2 = document.getElementById('slider2')
+    noUiSlider.create(slider2, {
+      start: [100, 10000],
+      connect: true,
+      range: {
+        'min': 100,
+        'max': 10000
+      }
+    });
+
+    var slidervar3 = document.getElementById('slider3')
+    noUiSlider.create(slider3, {
+      start: [100, 500000],
+      connect: true,
+      range: {
+        'min': 100,
+        'max': 10000
+      }
+    });
+
+    document.getElementById('input-number-min').setAttribute("value", "1000000")
+    document.getElementById('input-number-max').setAttribute("value", "35676000")
+    document.getElementById('input-number-min2').setAttribute("value", "100")
+    document.getElementById('input-number-max2').setAttribute("value", "1000")
+    document.getElementById('input-number-min3').setAttribute("value", "100")
+    document.getElementById('input-number-max3').setAttribute("value", "50000")
+
+    var inputNumberMin = document.getElementById("input-number-min");
+    var inputNumberMax = document.getElementById("input-number-max");
+    inputNumberMin.addEventListener("change", function() {
+      slidervar.noUiSlider.set([this.value, null]);
+    });
+    inputNumberMax.addEventListener("change", function() {
+      slidervar.noUiSlider.set(null, this.value);
+    });
+
+    var sliderData = [
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ]
+
+    //Connecting the slider to the data
+    slidervar.noUiSlider.on('update', function(values, handle) {
+      if (handle == 0) {
+        document.getElementById('input-number-min').value = values[0];
+      } else {
+        document.getElementById('input-number-max').value = values[1];
+      }
+
+      sliderData[0] = values;
+
+      updateFeatures(sliderData);
+    })
+    //Connecting the slider to the data
+    slidervar2.noUiSlider.on('update', function(values, handle) {
+      if (handle == 0) {
+        document.getElementById('input-number-min2').value = values[0];
+      } else {
+        document.getElementById('input-number-max2').value = values[1];
+      }
+
+      sliderData[1] = values;
+
+      updateFeatures(sliderData);
+      0
+    })
+    //Connecting the slider to the data
+    slidervar3.noUiSlider.on('update', function(values, handle) {
+      if (handle == 0) {
+        document.getElementById('input-number-min3').value = values[0];
+      } else {
+        document.getElementById('input-number-max3').value = values[1];
+      }
+
+      sliderData[2] = values;
+
+      updateFeatures(sliderData);
+    })
+
+    function updateFeatures(sliderData) {
+
+      for (key in finances['_layers']) {
+        var l = finances['_layers'][key];
+        if (l.feature.properties.AMOUNT > parseInt(sliderData[0][0]) && l.feature.properties.AMOUNT < parseInt(sliderData[0][1]) && l.feature.properties.fpopn > parseInt(sliderData[2][0]) && l.feature.properties.fpopn < parseInt(sliderData[2][1]) &&
+          l.feature.properties.mpopn > parseInt(sliderData[1][0]) && l.feature.properties.mpopn < parseInt(sliderData[1][1]))
+          l.setStyle({
+            opacity: 1,
+            fillOpacity: 1
+          })
+        else {
+          l.setStyle({
+            opacity: 0,
+            fillOpacity: 0
+          })
+        }
+      }
+
+    }
+
+    $('.leaflet-top.leaflet-right').removeClass('leaflet-top').removeClass('leaflet-right');
+    $('.leaflet-bottom.leaflet-left').removeClass('leaflet-bottom').removeClass('leaflet-left');
+  </script>
+
+</body>
+
+</html>

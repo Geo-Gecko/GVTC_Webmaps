@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>GVTC webmap 2</title>
+  <link rel="stylesheet" href="leaflet/leaflet.css" type="text/css" />
+  <script src="leaflet/leaflet.js" charset="utf-8"></script>
+  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet-src.js" crossorigin=""></script> -->
+  <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css"><!-- debug css version-->
+  <link rel="stylesheet" href="lib/ol3.8.2/ol.css" type="text/css" />
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <!-- data files -->
+  <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
+  <script src="data/Parks_Outside.geojson" charset="utf-8"></script>
+  <script src="data/poverty.geojson" charset="utf-8"></script>
+  <script src="data/Conflict.geojson" charset="utf-8"></script>
+  <script src="data/density.geojson" charset="utf-8"></script>
+
+
+  <style type="text/css">
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    #map,
+    #container {
+      width: 49.5%;
+      height: 100%;
+    }
+
+    #map {
+      float: left;
+    }
+
+    #container {
+      float: right;
+    }
+
+    #container .map {
+      width: 100%;
+      height: 50%;
+    }
+
+    a.button1 {
+      display: inline-block;
+      padding: 0.35em 1.2em;
+      border: 0.1em solid #1F532C;
+      margin: 0 0.3em 0.3em 0;
+      border-radius: 0.12em;
+      box-sizing: border-box;
+      text-decoration: none;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+      color: #000000;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    a.button1:hover {
+      color: #000000;
+      background-color: #FFFFFF;
+    }
+
+    @media all and (max-width:30em) {
+      a.button1 {
+        display: block;
+        margin: 0.4em auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- navigation bar -->
+  <nav class="navbar navbar-fixed-top header" role="navigation">
+    <div class="navbar-header">
+      <div class="" style="padding-left: 1em;">
+        <a href="http://www.greatervirunga.org" target="_blank"><img src="images/gvtc.png" alt="LOGO" height="60" width="80"></a>
+      </div>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar" style="display: inline-block;">
+      <div class="" style="float: left;">
+        <p style="padding-left: 100px; font-size: 1.5vw;"><strong>GREATER VIRUNGA LANDSCAPE</strong></p>
+      </div>
+      <div class="" style="position: absolute;right: 0;top: 0; padding-right: 1em;">
+        <a href="landpage.html" class="button1">Back</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container bodyContainer">
+    <div class="row mapContainer">
+
+      <!-- panel -->
+      <div id="collapseBtnXs" class="visible-xs">
+        <button type="button" class="btn" onclick="collapsePanelXs();">+</button>
+      </div>
+
+      <div id="panel">
+        <div id="collapseBtn">
+          <button type="button" class="btn btn-sm hidden-xs" onclick="collapsePanel();"></button>
+        </div>
+        <div id="panelContent" class="container-fluid" style="z-index: 1;">
+          <div class="nav-link" style="background-color: #1F532C;">
+            <p style="color: #fff; font-size: 1.5vw;">Deforestation</p>
+          </div>
+          <div id='selector_menu'>
+            <p><strong>T1</strong></p>
+            <select id='selector'>
+              <option size="16" value='Reset'>---Select year---</option>
+              <option value='2016'>2016</option>
+              <option value='2017'>2017</option>
+            </select>
+          </div>
+          <br>
+          <div id='selector_menu'>
+            <p><strong>T2</strong></p>
+            <select id='selector'>
+              <option size="16" value='Reset'>---Select year---</option>
+              <option value='2016'>2016</option>
+              <option value='2017'>2017</option>
+            </select>
+          </div>
+          <br>
+          <div id=containers style='display: ;'>
+            <div id=container2 style="">
+            </div>
+          </div>
+          <div>
+            <a style="margin-left: 0px; position: absolute; bottom: 0; z-index: 100000; left: 0; " href="https://www.geogecko.com/" target="_blank"><img class="gecko" style="width: 100px;" src="images/Geogecko.png"></a>
+          </div>
+        </div>
+      </div>
+      <div id="map">
+        <div>
+          <img class="gecko" style="position: absolute; z-index: 100000; bottom: 0;width: 250px; right: 0;" src="images/legend.PNG">
+        </div>
+      </div>
+      <div id="container">
+        <div id="mapA" class="map">
+          <div style="font-size: 30px; padding-top: 40px; left: 0; position: absolute; z-index: 1000;">
+            <strong>T1</strong>
+          </div>
+        </div>
+        <div id="mapB" class="map">
+          <div style="font-size: 30px; top: 0; left: 0; position: absolute; z-index: 1000;">
+            <strong>T2</strong>
+          </div>
+        </div>
+      </div>
+
+      <script src="js/L.Map.Sync.js"></script>
+      <script src="js/map2.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+      <script type="text/javascript" src="lib/ol3.8.2/ol-debug.js"></script>
+
+
+
+
+</body>
+
+</html>

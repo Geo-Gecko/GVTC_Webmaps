@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin - Tables</title>
+  <title>GVTC Dashboard</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -22,20 +22,55 @@
   <link href="css/style.css" rel="stylesheet">
 
 </head>
+<style media="screen">
+  a.button1 {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #1F532C;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  a.button1:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+  }
+
+  @media all and (max-width:30em) {
+    a.button1 {
+      display: block;
+      margin: 0.4em auto;
+    }
+  }
+</style>
 
 <body id="page-top">
 
   <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <img src="images/gvtc.png" alt="LOGO" height="60" width="60">
-      <a class="navbar-brand mr-1" href="tables.html"></a>
+    <img src="images/gvtc.png" alt="LOGO" height="60" width="60">
+    <a class="navbar-brand mr-1" href="tables.html"></a>
 
     <!-- <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button> -->
 
-    <a class="navbar-brand mr-1" href="index.html" style="align-content: center; font-size:30;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font size="6">GREATER VIRUNGA LANDSCAPE</font></a>
-<a style="position: relative; left: 700px;"id="log" href="../landpage.html"><img class="logout" src="images/home.svg" /></a>
+    <div class="collapse navbar-collapse" id="navbar" style="display: inline-block;">
+      <div class="" style="float: left;">
+        <p style="padding-left: 100px; font-size: 1.5vw;"><strong>GREATER VIRUNGA LANDSCAPE</strong></p>
+      </div>
+      <div class="" style="position: absolute;right: 0;top: 0;/* float: right; */">
+        <a href="landpage.html" class="button1">Back</a>
+      </div>
+    </div>
+
     <!-- Navbar Search -->
 
 
@@ -63,6 +98,9 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Arrests and Deforestation</span></a>
       </li>
+      <div>
+        <a style="position: fixed; margin-right: auto; bottom: 0; " href="https://www.geogecko.com/" target="_blank"><img style="width: 100px;" src="images/Geogecko.png"></a>
+      </div>
     </ul>
 
     <div id="content-wrapper">
@@ -87,7 +125,7 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr>
-                      <th></th>
+                    <th></th>
                     <th>142 <br>Arrested</th>
                     <th>37 <br>Prosecuted</th>
                     <th>37 <br> Sentenced</th>
@@ -117,16 +155,16 @@
                     <td>11</td>
                   </tr>
                   <tr>
-                      <td>Queen Elizabeth <br> National Park</td>
-                      <td>81</td>
-                      <td></td>
-                      <td></td>
+                    <td>Queen Elizabeth <br> National Park</td>
+                    <td>81</td>
+                    <td></td>
+                    <td></td>
                   </tr>
                   <tr>
-                      <td>Bwindi <br> National Park</td>
-                      <td>9</td>
-                      <td>7</td>
-                      <td>7</td>
+                    <td>Bwindi <br> National Park</td>
+                    <td>9</td>
+                    <td>7</td>
+                    <td>7</td>
                   </tr>
                 </tbody>
               </table>
@@ -136,40 +174,40 @@
         </div>
 
         <div class="row">
-            <div class="col">
-              <div class="card mb-3">
+          <div class="col">
+            <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-chart-bar"></i>
                 Deforestation: Forest loss in park</div>
               <div class="card-body">
-                  <canvas class="bar-chart1" width="100%" height="80"></canvas>
+                <canvas class="bar-chart1" width="100%" height="80"></canvas>
               </div>
               <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-              </div>
             </div>
-            <div class="col">
-                <div class="card mb-3">
-                <div class="card-header">
-                  <i class="fas fa-chart-bar"></i>
-                  Deforestation: Forest loss in 5km buffer</div>
-                <div class="card-body">
-                    <canvas class="bar-chart2" width="100%" height="80"></canvas>
-                </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                </div>
-              </div>
-            <div class="col">
-              <div class="card mb-3">
+          </div>
+          <div class="col">
+            <div class="card mb-3">
               <div class="card-header">
-                  <i class="fas fa-chart-bar"></i>
+                <i class="fas fa-chart-bar"></i>
+                Deforestation: Forest loss in 5km buffer</div>
+              <div class="card-body">
+                <canvas class="bar-chart2" width="100%" height="80"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-3">
+              <div class="card-header">
+                <i class="fas fa-chart-bar"></i>
                 Deforestation: Forest loss in Beni</div>
               <div class="card-body">
-                  <canvas class="bar-chart3" width="100%" height="80"></canvas>
+                <canvas class="bar-chart3" width="100%" height="80"></canvas>
               </div>
               <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-              </div>
             </div>
-            </div>
+          </div>
+        </div>
 
       </div>
       <!-- /.container-fluid -->
@@ -232,11 +270,11 @@
 
   <!-- scripts for adding the charts-->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
 
-<!-- adding js file-->
-<script src="js/arrests-deforestn.js"></script>
+  <!-- adding js file-->
+  <script src="js/arrests-deforestn.js"></script>
 
 </body>
 

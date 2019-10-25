@@ -23,19 +23,52 @@
 
 
 </head>
+<style media="screen">
+  a.button1 {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #1F532C;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+    transition: all 0.2s;
+  }
 
-<body id="page-top" >
+  a.button1:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+  }
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top" >
+  @media all and (max-width:30em) {
+    a.button1 {
+      display: block;
+      margin: 0.4em auto;
+    }
+  }
+</style>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
     <img src="images/gvtc.png" alt="LOGO" height="60" width="60">
-    <a class="navbar-brand mr-1" href="index.html"></a>
 
     <!-- <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
       <i class="fas fa-bars"></i>
     </button> -->
 
-    <a class="navbar-brand mr-1" href="index.html" style="align-content: center; font-size:30;">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font size="6">GREATER VIRUNGA LANDSCAPE</font></a>
-    <a style="position: relative; left: 700px;"id="log" href="../landpage.html"><img class="logout" src="images/home.svg" /></a>
+    <div style="display: inline-block;">
+      <div class="" style="float: left;">
+        <p style="padding-left: 100px; font-size: 1.5vw;"><strong>GREATER VIRUNGA LANDSCAPE</strong></p>
+      </div>
+      <div class="" style="position: absolute;right: 0;top: 0;/* float: right; */">
+        <a href="../landpage.html" class="button1">Back</a>
+      </div>
+    </div>
   </nav>
 
   <div id="wrapper">
@@ -60,7 +93,11 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Arrests and Deforestation</span></a>
       </li>
+      <div>
+        <a style="position: fixed; margin-right: auto; bottom: 0; " href="https://www.geogecko.com/" target="_blank"><img style="width: 100px;" src="images/Geogecko.png"></a>
+      </div>
     </ul>
+
 
     <div id="content-wrapper">
 
@@ -81,24 +118,24 @@
         <div class="row">
           <div class="col">
             <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-chart-bar"></i>
-              Virunga: Hippos </div>
+              <div class="card-header">
+                <i class="fas fa-chart-bar"></i>
+                Virunga: Hippos </div>
               <div class="card-body">
-              <canvas class="bar-chart1" width="100%" height="70"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                <canvas class="bar-chart1" width="100%" height="70"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
           </div>
           <div class="col">
             <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-chart-bar"></i>
-              Virunga: Gorillas</div>
-            <div class="card-body">
-              <canvas class="bar-chart2" width="100%" height="70"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              <div class="card-header">
+                <i class="fas fa-chart-bar"></i>
+                Virunga: Gorillas</div>
+              <div class="card-body">
+                <canvas class="bar-chart2" width="100%" height="70"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
           </div>
           <!-- <div class="col">
@@ -112,61 +149,61 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
           </div> -->
-          </div>
+        </div>
 
-          <!-- DataTables Example -->
+        <!-- DataTables Example -->
         <div class="row">
           <div class="col">
             <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-chart-bar"></i>
-              Bwindi: Hippos</div>
-            <div class="card-body">
-              <canvas class="bar-chart3" width="100%" height="80"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              <div class="card-header">
+                <i class="fas fa-chart-bar"></i>
+                Bwindi: Hippos</div>
+              <div class="card-body">
+                <canvas class="bar-chart3" width="100%" height="80"></canvas>
+              </div>
+              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
           </div>
           <div class="col">
-              <div class="card mb-3">
+            <div class="card mb-3">
               <div class="card-header">
                 <i class="fas fa-chart-bar"></i>
-                 Bwindi: Gorillas</div>
+                Bwindi: Gorillas</div>
               <div class="card-body">
                 <canvas class="bar-chart4" width="100%" height="80"></canvas>
               </div>
               <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-              </div>
             </div>
+          </div>
           <div class="col">
             <div class="card mb-3">
-            <div class="card-header">
+              <div class="card-header">
                 <i class="fas fa-chart-bar"></i>
-              Bwindi: Elephants</div>
-            <div class="card-body">
+                Bwindi: Elephants</div>
+              <div class="card-body">
                 <canvas class="bar-chart5" width="100%" height="80"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              </div>
+              <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
           </div>
-          </div>
-
         </div>
 
       </div>
-      <!-- /.container-fluid -->
-
-      <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-          </div>
-        </div>
-      </footer>
 
     </div>
-    <!-- /.content-wrapper -->
+    <!-- /.container-fluid -->
+
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+      <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+          <span>Copyright © Your Website 2019</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+  <!-- /.content-wrapper -->
 
   </div>
   <!-- /#wrapper -->
@@ -214,13 +251,13 @@
   <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
 
-<!-- scripts for adding the charts-->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
+  <!-- scripts for adding the charts-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
 
-<!-- adding js file-->
-<script src="js/animalpopn.js"></script>
+  <!-- adding js file-->
+  <script src="js/animalpopn.js"></script>
 
 
 </body>
