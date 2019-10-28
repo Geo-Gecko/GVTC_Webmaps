@@ -319,7 +319,7 @@ var baseMaps = {
   "LandCover Classification": landcover
 };
 var overlayMaps = {
-  "Boundary Conflicts": conflict
+  "Border Conflicts": conflict
 };
 
 L.control.layers( "", layMaps,{
