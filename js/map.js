@@ -223,7 +223,7 @@ var conflictlegend = L.control({position: 'bottomleft'});
 conflictlegend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [1, 2, 3],
+        grades = [1, 2, 3], 
         labels = [],
         from, to;
 
@@ -241,30 +241,30 @@ conflictlegend.onAdd = function (map) {
 };
 
 
- var povlegend = L.control({position: 'bottomleft'});
+ var povlegend = L.control({position: 'bottomright'});
  povlegend.onAdd = function (map) {
 
      var div = L.DomUtil.create('div', 'info legend'),
          grades = [0.22, 0.18, 0.15, 0.11, 0.8],
-         labels = [],
+         povLabels = [],
          from, to;
 
      for (var i = 0; i < grades.length; i++) {
          from = grades[i];
          to = grades[i + 1];
 
-         labels.push(
+         povLabels.push(
              '<i style="background:' + getColorpoverty(from + 1) + '"></i> ' +
              from + (to ? '&ndash;' + to : '+'));
+              
      }
 
-     div.innerHTML = labels.join('<br>');
+     div.innerHTML = povLabels.join('<br>');
      return div;
  };
 
  var denlegend = L.control({position: 'bottomright'});
  denlegend.onAdd = function (map) {
-
      var div = L.DomUtil.create('div', 'info legend'),
          grades = [100, 200, 400, 9700],
          labels = [],
@@ -277,23 +277,28 @@ conflictlegend.onAdd = function (map) {
          labels.push(
              '<i style="background:' + getColordensity(from + 1) + '"></i> ' +
              from + (to ? '&ndash;' + to : '+'));
+            ;
      }
-
+    
      div.innerHTML = labels.join('<br>');
      return div;
  };
 
  map.on('baselayerchange', function (eventLayer) {
  if (eventLayer.name === 'Boundary Conflicts') {
+   console.log(1)
   map.removeControl(povlegend || denlegend);
   conflictlegend.addTo(map);
+  
  }
  else if  (eventLayer.name === 'Household Poverty Rates') {
-  map.removeControl(conflictlegend || denlegend);
+   console.log(2)
+  map.removeControl( denlegend);
   povlegend.addTo(map);
  }
  else if  (eventLayer.name === 'Population Density') {
-  map.removeControl(conflictlegend || povlegend);
+   console.log(3)
+  map.removeControl( povlegend);
   denlegend.addTo(map);
  }
  // else if  (eventLayer.name === 'Water') {
@@ -301,6 +306,7 @@ conflictlegend.onAdd = function (map) {
  //  VODlegend.addTo(map);
  // }
  })
+
 
 
 
