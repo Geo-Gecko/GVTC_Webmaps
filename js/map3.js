@@ -161,11 +161,11 @@ function zoomToFeature(e) {
 
 var baseMaps = {
   "Household Poverty Rates": pov,
-  "Population Density": den
+  "Population Density": den,
+  "LandCover Classification": landcover
 };
 var layMaps = {
-  "Boundary Conflicts": Conflict,
-  "LandCover Classification": landcover
+  "Border Conflicts": Conflict
 };
 
 L.control.layers( baseMaps, layMaps,{

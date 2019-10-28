@@ -51,6 +51,28 @@ var mapB = L.map('mapB', {
   zoomControl: false
 });
 
+map.sync(mapA, {
+  syncCursor: true
+});
+map.sync(mapB, {
+  syncCursor: true
+});
+
+// If you want interaction with mapA|B to be synchronized on map,
+// add other links as well.
+mapA.sync(map, {
+  syncCursor: true
+});
+mapA.sync(mapB, {
+  syncCursor: true
+});
+
+mapB.sync(map, {
+  syncCursor: true
+});
+mapB.sync(mapA, {
+  syncCursor: true
+});
 // map
 map.createPane('conflictpane');
 map.getPane('conflictpane').style.zIndex = 650;
@@ -123,49 +145,6 @@ function styledensity(feature) {
   };
 }
 
-
-// map.createPane('conflictpane');
-// map.getPane('conflictpane').style.zIndex = 650;
-// var Conflict = L.geoJson(Conflict, {
-//   pane:'conflictpane'
-// });
-//
-// function getColor2(d) {
-//   return d > 1 ? '#b30000' :
-//     d > 2 ? '#e34a33' :
-//     d > 3 ? '#fc8d59' :
-//     '#fef0d9';
-//
-// }
-//
-// function style2(feature) {
-//   return {
-//     fillColor: getColor(feature.properties.conflict),
-//     weight: 1,
-//     opacity: 1,
-//     color: 'black',
-//     dashArray: '0',
-//     fillOpacity: 1
-//   };
-// }
-//
-//
-// function highlightFeature(e) {
-//   var layer = e.target;
-//
-//   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-//     layer.bringToFront();
-//   }
-// }
-//
-// function resetHighlight(e) {
-//   geojson.resetStyle(e.target);
-// }
-//
-// function zoomToFeature(e) {
-//   map.fitBounds(e.target.getBounds());
-// }
-
 L.geoJson(Parks_Outside, {
   style: {
     weight: 2,
@@ -179,89 +158,6 @@ L.geoJson(Parks_Outside, {
 function zoomToFeature(e) {
   map.fitBounds(e.target.getBounds());
 }
-
-// var pov = L.geoJson(poverty, {
-//   style: style3
-// });
-//
-// function getColor3(d) {
-//   return d > 0.22 ? '#b30000' :
-//     d > 0.18 ? '#e34a33' :
-//     d > 0.15 ? '#fc8d59' :
-//     d > 0.11 ? '#fdbb84' :
-//     d > 0.8 ? '#fdd49e' :
-//     '#fef0d9';
-//
-// }
-//
-// function style3(feature) {
-//   return {
-//     fillColor: getColor(feature.properties.Poverty_5),
-//     weight: 1,
-//     opacity: 1,
-//     color: 'black',
-//     dashArray: '0',
-//     fillOpacity: 1
-//   };
-// }
-//
-//
-// function highlightFeature(e) {
-//   var layer = e.target;
-//
-//   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-//     layer.bringToFront();
-//   }
-// }
-//
-// function resetHighlight(e) {
-//   geojson.resetStyle(e.target);
-// }
-//
-// function zoomToFeature(e) {
-//   map.fitBounds(e.target.getBounds());
-// }
-//
-// var den = L.geoJson(density, {
-//   style: style
-// });
-//
-// function getColor(d) {
-//   return d > 9700 ? '#e31a1c' :
-//     d > 400 ? '#fd8d3c' :
-//     d > 200 ? '#fecc5c' :
-//     d > 100 ? '#ffffb2' :
-//     '#fef0d9';
-//
-// }
-//
-// function style(feature) {
-//   return {
-//     fillColor: getColor(feature.properties.pop_density),
-//     weight: 1,
-//     opacity: 1,
-//     color: 'black',
-//     dashArray: '0',
-//     fillOpacity: 1
-//   };
-// }
-//
-//
-// function highlightFeature(e) {
-//   var layer = e.target;
-//
-//   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-//     layer.bringToFront();
-//   }
-// }
-//
-// function resetHighlight(e) {
-//   geojson.resetStyle(e.target);
-// }
-//
-// function zoomToFeature(e) {
-//   map.fitBounds(e.target.getBounds());
-// }
 
 map.createPane('landcover');
 map.getPane('landcover').style.zIndex = 850;
@@ -378,11 +274,11 @@ var def = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
 
 var baseMaps = {
   "Household Poverty Rates": pov,
-  "Population Density": den
+  "Population Density": den,
+  "LandCover Classification": landcover
 };
 var layMaps = {
-  "Boundary Conflicts": Conflict,
-  "LandCover Classification": landcover
+  "Border Conflicts": Conflict
 };
 
 L.control.layers( baseMaps, layMaps,{
@@ -409,25 +305,4 @@ function layer() {
   }
 }
 
-map.sync(mapA, {
-  syncCursor: true
-});
-map.sync(mapB, {
-  syncCursor: true
-});
 
-// If you want interaction with mapA|B to be synchronized on map,
-// add other links as well.
-mapA.sync(map, {
-  syncCursor: true
-});
-mapA.sync(mapB, {
-  syncCursor: true
-});
-
-mapB.sync(map, {
-  syncCursor: true
-});
-mapB.sync(mapA, {
-  syncCursor: true
-});

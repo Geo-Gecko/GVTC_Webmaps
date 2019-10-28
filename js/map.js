@@ -321,11 +321,11 @@ var layMaps = {
 };
 var baseMaps = {
   "Household Poverty Rates": pov,
-  "Population Density": den
+  "Population Density": den,
+  "LandCover Classification": landcover
 };
 var overlayMaps = {
-  "Boundary Conflicts": conflict,
-  "LandCover Classification": landcover
+  "Border Conflicts": conflict
 };
 
 L.control.layers( "", layMaps,{
