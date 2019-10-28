@@ -274,11 +274,11 @@ var def = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
 
 var baseMaps = {
   "Household Poverty Rates": pov,
-  "Population Density": den
+  "Population Density": den,
+  "LandCover Classification": landcover
 };
 var layMaps = {
-  "Boundary Conflicts": Conflict,
-  "LandCover Classification": landcover
+  "Boundary Conflicts": Conflict
 };
 
 L.control.layers( baseMaps, layMaps,{
