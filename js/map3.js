@@ -165,7 +165,7 @@ var baseMaps = {
   "LandCover Classification": landcover
 };
 var layMaps = {
-  "Boundary Conflicts": Conflict
+  "Border Conflicts": Conflict
 };
 
 L.control.layers( baseMaps, layMaps,{
