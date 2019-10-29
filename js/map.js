@@ -117,6 +117,20 @@ function styledensity(feature) {
   };
 }
 
+// waterbodies
+map.createPane('waterPane');
+map.getPane('waterPane').style.zIndex = 600;
+L.geoJson(waterbodies1,{
+  pane: 'waterPane',
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
+  }
+}).addTo(map);
+
 // parks
 map.createPane('parksPane');
 map.getPane('parksPane').style.zIndex = 600;
