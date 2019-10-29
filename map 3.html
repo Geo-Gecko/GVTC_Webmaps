@@ -24,6 +24,7 @@
   <script src="data/Gorilla_habitat.geojson" charset="utf-8"></script>
   <script src="data/Elephant_habitat.geojson" charset="utf-8"></script>
   <script src="data/density.geojson" charset="utf-8"></script>
+  <script src="data/waterbodies1.geojson" charset="utf-8"></script>
   <!-- date filter -->
   <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
   <!-- slider -->
@@ -158,10 +159,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
   <script>
-    map.createPane('financespane');
-    map.getPane('financespane').style.zIndex = 650;
     var finances = L.geoJson(QENP_finances, {
-      pane: 'financespane',
       style: {
         fillColor: '#1F532C',
         weight: 1,

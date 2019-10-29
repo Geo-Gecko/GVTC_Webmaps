@@ -127,9 +127,23 @@ L.geoJson(GVTC_parks,{
   style: {
     weight: 2,
     opacity: 1,
-    color: '#72AC54',
+    color: '#a2d687',
     fillOpacity: 2.5,
-    fillColor: '#72AC54'
+    fillColor: '#a2d687'
+  }
+}).addTo(map);
+
+// waterbodies
+map.createPane('waterPane');
+map.getPane('waterPane').style.zIndex = 600;
+L.geoJson(waterbodies1,{
+  pane: 'waterPane',
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
   }
 }).addTo(map);
 

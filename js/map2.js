@@ -1,3 +1,6 @@
+function setParent(el, newParent) {
+  newParent.appendChild(el);
+}
 var center = [-0.002060, 29.392247];
 
 var stamenOptions = {
@@ -31,7 +34,6 @@ var watercolor = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x
   // minZoom: 20
 });
 
-
 var map = L.map('map', {
   layers: [toner],
   center: center,
@@ -51,13 +53,6 @@ var mapB = L.map('mapB', {
   zoomControl: false
 });
 
-map.sync(mapA, {
-  syncCursor: true
-});
-map.sync(mapB, {
-  syncCursor: true
-});
-
 // If you want interaction with mapA|B to be synchronized on map,
 // add other links as well.
 mapA.sync(map, {
@@ -73,7 +68,16 @@ mapB.sync(map, {
 mapB.sync(mapA, {
   syncCursor: true
 });
+
+map.sync(mapA, {
+  syncCursor: true
+});
+map.sync(mapB, {
+  syncCursor: true
+});
+
 // map
+
 map.createPane('conflictpane');
 map.getPane('conflictpane').style.zIndex = 650;
 var Conflict = L.geoJson(Conflict, {
@@ -169,8 +173,6 @@ var landcover = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
   pane: 'landcover'
 });
 
-console.log(landcover)
-
 map.createPane('parksPane');
 map.getPane('parksPane').style.zIndex = 600;
 L.geoJson(GVTC_parks,{
@@ -178,21 +180,35 @@ L.geoJson(GVTC_parks,{
   style: {
     weight: 2,
     opacity: 1,
-    color: '#72AC54',
+    color: '#a2d687',
     fillOpacity: 2.5,
-    fillColor: '#72AC54'
+    fillColor: '#a2d687'
+  }
+}).addTo(map);
+
+map.createPane('waterPane');
+map.getPane('waterPane').style.zIndex = 600;
+L.geoJson(waterbodies1,{
+  pane: 'waterPane',
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
   }
 }).addTo(map);
 
 // map A
+
 L.geoJson(GVTC_parks).addTo(mapA);
 
 var myStyle = {
   weight: 2,
   opacity: 1,
-  color: '#72AC54',
+  color: '#a2d687',
   fillOpacity: 2.5,
-  fillColor: '#72AC54'
+  fillColor: '#a2d687'
 };
 
 L.geoJSON(GVTC_parks, {
@@ -202,6 +218,16 @@ L.geoJSON(GVTC_parks, {
 function zoomToFeature(e) {
   map.fitBounds(e.target.getBounds());
 }
+
+L.geoJson(waterbodies1,{
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
+  }
+}).addTo(mapA);
 
 L.geoJson(Parks_Outside, {
   style: {
@@ -229,14 +255,15 @@ var def = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
 }).addTo(mapA);
 
 // map B
+
 L.geoJson(GVTC_parks).addTo(mapB);
 
 var myStyle = {
   weight: 2,
   opacity: 1,
-  color: '#72AC54',
+  color: '#a2d687',
   fillOpacity: 2.5,
-  fillColor: '#72AC54'
+  fillColor: '#a2d687'
 };
 
 L.geoJSON(GVTC_parks, {
@@ -246,6 +273,16 @@ L.geoJSON(GVTC_parks, {
 function zoomToFeature(e) {
   map.fitBounds(e.target.getBounds());
 }
+
+L.geoJson(waterbodies1,{
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
+  }
+}).addTo(mapB);
 
 L.geoJson(Parks_Outside, {
   style: {
@@ -304,5 +341,3 @@ function layer() {
     (checkbox.checked) ? layer.addTo(map): map.removeLayer(layer);
   }
 }
-
-
