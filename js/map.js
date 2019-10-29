@@ -125,9 +125,9 @@ L.geoJson(GVTC_parks,{
   style: {
     weight: 2,
     opacity: 1,
-    color: '#72AC54',
+    color: '#a2d687',
     fillOpacity: 2.5,
-    fillColor: '#72AC54'
+    fillColor: '#a2d687'
   }
 }).addTo(map);
 
