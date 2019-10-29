@@ -9,17 +9,17 @@ var chartGraph = new Chart (ctx, {
         datasets: [{
             borderWidth: 2,
             borderColor: 'rgba(146, 242, 42, 0.85)',
-            fill: true,
+            fill: false,
             backgroundColor: 'rgba(26, 255, 102, 0.4)'
         }, {
             borderWidth: 2,
             borderColor: 'rgba(207, 0, 15, 0.85)',
-            fill: true,
+            fill: false,
             backgroundColor: 'rgba(255, 51, 51, 0.4)'
         },{
             borderWidth: 2,
             borderColor: 'rgba(255, 102, 0, 1)',
-            fill: true,
+            fill: false,
             backgroundColor: 'rgba(255, 163, 102, 0.9)'
         }
     ]},
@@ -52,9 +52,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(255, 165, 0, 1)',
-            fill: false,
-            backgroundColor: 'rgba(255, 165, 0, 0.6)',
+            borderColor: 'rgba(34,139,34, 1)',
+            fill: true,
+            backgroundColor: 'rgba(154,205,50, 0.9)',
             opacity: 0.2
         }
     ]},
@@ -87,9 +87,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(255, 165, 0, 1)',
+            borderColor: 'rgba(207, 0, 15, 0.85)',
             fill: false,
-            backgroundColor: 'rgba(255, 165, 0, 0.6)',
+            backgroundColor: 'rgba(255, 51, 51, 0.7)',
             opacity: 0.2
         }
     ]},
@@ -122,9 +122,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(255, 26, 26, 1)',
-            fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.5)',
+            borderColor: 'rgba(34,139,34, 1)',
+            fill: true,
+            backgroundColor: 'rgba(154,205,50, 0.9)',
             opacity: 0.2
         }
     ]},
@@ -157,9 +157,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(255, 26, 26, 1)',
+            borderColor: 'rgba(207, 0, 15, 0.85)',
             fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.5)',
+            backgroundColor: 'rgba(255, 51, 51, 0.7)',
             opacity: 0.2
         }
     ]},
@@ -191,9 +191,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(255, 26, 26, 1)',
+            borderColor: 'rgba(255, 102, 0, 1)',
             fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.5)',
+            backgroundColor: 'rgba(255, 163, 102, 0.9)',
             opacity: 0.2
         }
     ]},
