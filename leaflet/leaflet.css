@@ -152,6 +152,8 @@
 	}
 .leaflet-top .leaflet-control {
 	margin-top: 30px;
+  width: max-content;
+  left: 55px;
 	}
 .leaflet-bottom .leaflet-control {
 	margin-bottom: 10px;
@@ -346,6 +348,13 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	box-shadow: 0 1px 5px rgba(0,0,0,0.4);
 	background: #fff;
 	border-radius: 5px;
+	margin-top: 13px;
+    width: max-content;
+    /* left: 82px; */
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    line-height: 2.428571;
+    /* font-weight: lighter; */
 	}
 .leaflet-control-layers-toggle {
 	background-image: url(images/layers.png);
@@ -372,6 +381,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	padding: 6px 10px 6px 6px;
 	color: #333;
 	background: #fff;
+	font-weight: lighter !important;
+	width: 230px  !important;
 	}
 .leaflet-control-layers-scrollbar {
 	overflow-y: scroll;
