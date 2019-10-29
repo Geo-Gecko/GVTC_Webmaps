@@ -78,6 +78,20 @@ mapB.sync(mapA, {
   syncCursor: true
 });
 // map
+// waterbodies
+map.createPane('waterPane');
+map.getPane('waterPane').style.zIndex = 600;
+L.geoJson(waterbodies1,{
+  pane: 'waterPane',
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
+  }
+}).addTo(map);
+
 map.createPane('conflictpane');
 map.getPane('conflictpane').style.zIndex = 650;
 var Conflict = L.geoJson(Conflict, {
@@ -189,6 +203,20 @@ L.geoJson(GVTC_parks,{
 }).addTo(map);
 
 // map A
+// waterbodies
+map.createPane('waterPane');
+map.getPane('waterPane').style.zIndex = 600;
+L.geoJson(waterbodies1,{
+  pane: 'waterPane',
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
+  }
+}).addTo(map);
+
 L.geoJson(GVTC_parks).addTo(mapA);
 
 var myStyle = {
@@ -233,6 +261,20 @@ var def = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
 }).addTo(mapA);
 
 // map B
+// waterbodies
+map.createPane('waterPane');
+map.getPane('waterPane').style.zIndex = 600;
+L.geoJson(waterbodies1,{
+  pane: 'waterPane',
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
+  }
+}).addTo(map);
+
 L.geoJson(GVTC_parks).addTo(mapB);
 
 var myStyle = {
