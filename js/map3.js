@@ -48,20 +48,6 @@ var collapsePanelXs = function() {
 }
 
 // adding layers
-// waterbodies
-map.createPane('waterPane');
-map.getPane('waterPane').style.zIndex = 600;
-L.geoJson(waterbodies1,{
-  pane: 'waterPane',
-  style: {
-    weight: 1,
-    opacity: 1,
-    color: '#d4dadc',
-    fillOpacity: 1,
-    fillColor: '#d4dadc'
-  }
-}).addTo(map);
-
 map.createPane('conflictpane');
 map.getPane('conflictpane').style.zIndex = 650;
 var Conflict = L.geoJson(Conflict, {
@@ -144,6 +130,20 @@ L.geoJson(GVTC_parks,{
     color: '#a2d687',
     fillOpacity: 2.5,
     fillColor: '#a2d687'
+  }
+}).addTo(map);
+
+// waterbodies
+map.createPane('waterPane');
+map.getPane('waterPane').style.zIndex = 600;
+L.geoJson(waterbodies1,{
+  pane: 'waterPane',
+  style: {
+    weight: 1,
+    opacity: 1,
+    color: '#d4dadc',
+    fillOpacity: 1,
+    fillColor: '#d4dadc'
   }
 }).addTo(map);
 
