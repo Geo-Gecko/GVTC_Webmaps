@@ -1,3 +1,7 @@
+function setParent(el, newParent) {
+  newParent.appendChild(el);
+}
+
 var center = [-0.002060, 29.392247];
 
 var stamenOptions = {
