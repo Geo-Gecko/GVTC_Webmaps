@@ -182,9 +182,9 @@ L.geoJson(GVTC_parks,{
   style: {
     weight: 2,
     opacity: 1,
-    color: '#72AC54',
+    color: '#a2d687',
     fillOpacity: 2.5,
-    fillColor: '#72AC54'
+    fillColor: '#a2d687'
   }
 }).addTo(map);
 
@@ -194,9 +194,9 @@ L.geoJson(GVTC_parks).addTo(mapA);
 var myStyle = {
   weight: 2,
   opacity: 1,
-  color: '#72AC54',
+  color: '#a2d687',
   fillOpacity: 2.5,
-  fillColor: '#72AC54'
+  fillColor: '#a2d687'
 };
 
 L.geoJSON(GVTC_parks, {
@@ -238,9 +238,9 @@ L.geoJson(GVTC_parks).addTo(mapB);
 var myStyle = {
   weight: 2,
   opacity: 1,
-  color: '#72AC54',
+  color: '#a2d687',
   fillOpacity: 2.5,
-  fillColor: '#72AC54'
+  fillColor: '#a2d687'
 };
 
 L.geoJSON(GVTC_parks, {
