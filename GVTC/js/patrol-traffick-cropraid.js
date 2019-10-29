@@ -147,7 +147,7 @@ var chartGraph = new Chart (ctx, {
         },
         plugins: {
             datasource: {
-                url: 'cropraidsBwindi.xlsx'
+                url: 'cropraids.xlsx'
             }
         }
     }
