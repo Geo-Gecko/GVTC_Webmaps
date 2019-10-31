@@ -75,8 +75,6 @@ var chartGraph = new Chart (ctx, {
 
 
 
-
-
 // Virunga: Hippos graph
 var ctx = document.getElementsByClassName("bar-chart1");
 
@@ -87,9 +85,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(34,139,34, 1)',
-            fill: true,
-            backgroundColor: 'rgba(154,205,50, 0.9)',
+            borderColor: 'rgba(255, 165, 0, 1)',
+            fill: false,
+            backgroundColor: 'rgba(255, 165, 0, 0.6)',
             opacity: 0.2
         }
     ]},
@@ -122,9 +120,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(207, 0, 15, 0.85)',
+            borderColor: 'rgba(255, 165, 0, 1)',
             fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.7)',
+            backgroundColor: 'rgba(255, 165, 0, 0.6)',
             opacity: 0.2
         }
     ]},
@@ -157,9 +155,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(34,139,34, 1)',
-            fill: true,
-            backgroundColor: 'rgba(154,205,50, 0.9)',
+            borderColor: 'rgba(255, 26, 26, 1)',
+            fill: false,
+            backgroundColor: 'rgba(255, 51, 51, 0.5)',
             opacity: 0.2
         }
     ]},
@@ -192,9 +190,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(207, 0, 15, 0.85)',
+            borderColor: 'rgba(255, 26, 26, 1)',
             fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.7)',
+            backgroundColor: 'rgba(255, 51, 51, 0.5)',
             opacity: 0.2
         }
     ]},
@@ -226,9 +224,9 @@ var chartGraph = new Chart (ctx, {
     data: {
         datasets: [{
             borderWidth: 1,
-            borderColor: 'rgba(255, 102, 0, 1)',
+            borderColor: 'rgba(255, 26, 26, 1)',
             fill: false,
-            backgroundColor: 'rgba(255, 163, 102, 0.9)',
+            backgroundColor: 'rgba(255, 51, 51, 0.5)',
             opacity: 0.2
         }
     ]},
