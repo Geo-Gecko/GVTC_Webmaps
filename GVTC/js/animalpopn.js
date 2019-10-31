@@ -1,5 +1,47 @@
-// Trend graph
-var ctx = document.getElementsByClassName("line-chart");
+
+// Trend graph Elephants and hippos
+var ctx = document.getElementsByClassName("line-chart1");
+
+//Type, data, options
+
+var chartGraph = new Chart (ctx, {
+    type: 'line',
+    lineTension: 0,
+    data: {
+        datasets: [{
+                        borderWidth: 2,
+                        borderColor: 'rgba(146, 242, 42, 0.85)',
+                        fill: false,
+                        backgroundColor: 'rgba(26, 255, 102, 0.4)'
+                    }, {
+                        borderWidth: 2,
+                        borderColor: 'rgba(207, 0, 15, 0.85)',
+                        fill: false,
+                        backgroundColor: 'rgba(255, 51, 51, 0.4)'
+                    }
+    ]},
+    plugins: [ChartDataSource],
+    options: {
+        bezierCurve: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    max: 900,
+                    min: 0,
+                }
+            }]
+        },
+        plugins: {
+            datasource: {
+                url: 'keyspeciesElephantsandHippos.xlsx'
+            }
+        }
+    }
+});
+
+
+//Trend graph gorillas
+var ctx = document.getElementsByClassName("line-chart2");
 
 //Type, data, options
 
@@ -7,39 +49,32 @@ var chartGraph = new Chart (ctx, {
     type: 'line',
     data: {
         datasets: [{
-            borderWidth: 2,
-            borderColor: 'rgba(146, 242, 42, 0.85)',
-            fill: false,
-            backgroundColor: 'rgba(26, 255, 102, 0.4)'
-        }, {
-            borderWidth: 2,
-            borderColor: 'rgba(207, 0, 15, 0.85)',
-            fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.4)'
-        },{
-            borderWidth: 2,
-            borderColor: 'rgba(255, 102, 0, 1)',
-            fill: false,
-            backgroundColor: 'rgba(255, 163, 102, 0.9)'
-        }
+                        borderWidth: 2,
+                        borderColor: 'rgba(255, 102, 0, 1)',
+                        fill: false,
+                        backgroundColor: 'rgba(255, 163, 102, 0.9)'
+                    }
     ]},
     plugins: [ChartDataSource],
     options: {
         scales: {
             yAxes: [{
                 ticks: {
-                    max: 14000,
+                    max: 12000,
                     min: 0,
                 }
             }]
         },
         plugins: {
             datasource: {
-                url: 'keyspecies.xlsx'
+                url: 'keyspeciesGorillas.xlsx'
             }
         }
     }
 });
+
+
+
 
 
 // Virunga: Hippos graph
