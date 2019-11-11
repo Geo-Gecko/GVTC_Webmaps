@@ -132,10 +132,10 @@
 	pointer-events: none;
 	}
 .leaflet-top {
-	top: 0;
+	top: -18px;
 	}
 .leaflet-right {
-	right: 14px;
+	right: -17px;
 	}
 .leaflet-bottom {
 	bottom: 0;
@@ -350,7 +350,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     width: max-content;
     /* left: 82px; */
     font-family: "Raleway", sans-serif;
-    font-size: 16px;
+    font-size: 19px;
     line-height: 2.428571;
 	}
 .leaflet-control-layers-toggle {
@@ -394,7 +394,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .leaflet-control-layers-separator {
 	height: 0;
   border-top: 1px solid #333;
-  margin: 5px -72px 5px -15px;
+  margin: 16px -41px 5px -15px;
 	}
 
 /* Default icon URLs */

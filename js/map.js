@@ -77,6 +77,7 @@ function styleconflict(feature) {
     fillOpacity: 1
   };
 }
+console.log(conflict)
 
 function getColorpoverty(d) {
   return d > 0.22 ? '#b30000' :

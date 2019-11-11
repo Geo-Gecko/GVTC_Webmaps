@@ -12,8 +12,8 @@ var stamenOptions = {
   maxZoom: 20
 };
 
-var toner = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-  attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
+ var toner = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',  {
+  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
   subdomains: 'abcd',
   minZoom: 8,
   maxZoom: 20
@@ -55,6 +55,7 @@ var mapB = L.map('mapB', {
 
 // If you want interaction with mapA|B to be synchronized on map,
 // add other links as well.
+
 mapA.sync(map, {
   syncCursor: true
 });
@@ -173,31 +174,31 @@ var landcover = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
   pane: 'landcover'
 });
 
-map.createPane('parksPane');
-map.getPane('parksPane').style.zIndex = 600;
-L.geoJson(GVTC_parks,{
-  pane: 'parksPane',
-  style: {
-    weight: 2,
-    opacity: 1,
-    color: '#a2d687',
-    fillOpacity: 2.5,
-    fillColor: '#a2d687'
-  }
-}).addTo(map);
+// map.createPane('parksPane');
+// map.getPane('parksPane').style.zIndex = 600;
+// L.geoJson(GVTC_parks,{
+//   pane: 'parksPane',
+//   style: {
+//     weight: 2,
+//     opacity: 1,
+//     color: '#a2d687',
+//     fillOpacity: 2.5,
+//     fillColor: '#a2d687'
+//   }
+// }).addTo(map);
 
-map.createPane('waterPane');
-map.getPane('waterPane').style.zIndex = 600;
-L.geoJson(waterbodies1,{
-  pane: 'waterPane',
-  style: {
-    weight: 1,
-    opacity: 1,
-    color: '#d4dadc',
-    fillOpacity: 1,
-    fillColor: '#d4dadc'
-  }
-}).addTo(map);
+// map.createPane('waterPane');
+// map.getPane('waterPane').style.zIndex = 600;
+// L.geoJson(waterbodies1,{
+//   pane: 'waterPane',
+//   style: {
+//     weight: 1,
+//     opacity: 1,
+//     color: '#d4dadc',
+//     fillOpacity: 1,
+//     fillColor: '#d4dadc'
+//   }
+// }).addTo(map);
 
 // map A
 
