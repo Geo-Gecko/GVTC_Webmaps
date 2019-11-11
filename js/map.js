@@ -124,25 +124,11 @@ map.getPane('parksPane').style.zIndex = 600;
 L.geoJson(GVTC_parks,{
   pane: 'parksPane',
   style: {
-    weight: 1,
+    weight: 2,
     opacity: 1,
-    color: '#a2d687',
-    fillOpacity: 1,
-    fillColor: '#a2d687'
-  }
-}).addTo(map);
-
-// waterbodies
-map.createPane('waterPane');
-map.getPane('waterPane').style.zIndex = 600;
-L.geoJson(waterbodies1,{
-  pane: 'waterPane',
-  style: {
-    weight: 1,
-    opacity: 1,
-    color: '#d4dadc',
-    fillOpacity: 1,
-    fillColor: '#d4dadc'
+    color: '#72AC54',
+    fillOpacity: 2.5,
+    fillColor: '#72AC54'
   }
 }).addTo(map);
 
@@ -238,7 +224,7 @@ var conflictlegend = L.control({position: 'bottomleft'});
 conflictlegend.onAdd = function (map) {
 
     var div = L.DomUtil.create('div', 'info legend'),
-        grades = [1, 2, 3],
+        grades = [1, 2, 3], 
         labels = [],
         from, to;
 
@@ -256,30 +242,30 @@ conflictlegend.onAdd = function (map) {
 };
 
 
- var povlegend = L.control({position: 'bottomleft'});
+ var povlegend = L.control({position: 'bottomright'});
  povlegend.onAdd = function (map) {
 
      var div = L.DomUtil.create('div', 'info legend'),
          grades = [0.22, 0.18, 0.15, 0.11, 0.8],
-         labels = [],
+         povLabels = [],
          from, to;
 
      for (var i = 0; i < grades.length; i++) {
          from = grades[i];
          to = grades[i + 1];
 
-         labels.push(
+         povLabels.push(
              '<i style="background:' + getColorpoverty(from + 1) + '"></i> ' +
              from + (to ? '&ndash;' + to : '+'));
+              
      }
 
-     div.innerHTML = labels.join('<br>');
+     div.innerHTML = povLabels.join('<br>');
      return div;
  };
 
  var denlegend = L.control({position: 'bottomright'});
  denlegend.onAdd = function (map) {
-
      var div = L.DomUtil.create('div', 'info legend'),
          grades = [100, 200, 400, 9700],
          labels = [],
@@ -292,23 +278,28 @@ conflictlegend.onAdd = function (map) {
          labels.push(
              '<i style="background:' + getColordensity(from + 1) + '"></i> ' +
              from + (to ? '&ndash;' + to : '+'));
+            ;
      }
-
+    
      div.innerHTML = labels.join('<br>');
      return div;
  };
 
  map.on('baselayerchange', function (eventLayer) {
  if (eventLayer.name === 'Boundary Conflicts') {
+   console.log(1)
   map.removeControl(povlegend || denlegend);
   conflictlegend.addTo(map);
+  
  }
  else if  (eventLayer.name === 'Household Poverty Rates') {
-  map.removeControl(conflictlegend || denlegend);
+   console.log(2)
+  map.removeControl( denlegend);
   povlegend.addTo(map);
  }
  else if  (eventLayer.name === 'Population Density') {
-  map.removeControl(conflictlegend || povlegend);
+   console.log(3)
+  map.removeControl( povlegend);
   denlegend.addTo(map);
  }
  // else if  (eventLayer.name === 'Water') {
@@ -317,6 +308,7 @@ conflictlegend.onAdd = function (map) {
  // }
  })
 
+
 var layMaps = {
   "Gorilla Habitat": Gorilla,
   "Hippos": Hip,
@@ -324,11 +316,11 @@ var layMaps = {
 };
 var baseMaps = {
   "Household Poverty Rates": pov,
-  "Population Density": den,
-  "LandCover Classification": landcover
+  "Population Density": den
 };
 var overlayMaps = {
-  "Border Conflicts": conflict,
+  "Boundary Conflicts": conflict,
+  "LandCover Classification": landcover
 };
 
 L.control.layers( "", layMaps,{
@@ -364,3 +356,22 @@ function layer() {
     (checkbox.checked) ? layer.addTo(map): map.removeLayer(layer);
   }
 }
+//the dropdown function for the year picker 
+let picker = document.getElementById("picker1");
+ 
+// Defining custom functions
+function sayHello() {
+   console.log('say Hello to 2016');
+}
+
+picker.addEventListener("click", sayHello);
+  
+let pickerTwo = document.getElementById("picker2");
+
+ //defining the function for 2017 
+
+function setHoverColor() {
+   console.log('set the Hello to 2017');
+}
+ 
+pickerTwo.addEventListener("click", setHoverColor);
