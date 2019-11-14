@@ -1,0 +1,1 @@
+let googleDocURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQQiZPnI7DoC14xbRnCWJ7y-tEL25PIMNlxWA4rdu8UX8fottSTFSDG5_YJUzLLaYdaf4fM3arRzw1m/pubhtml';
