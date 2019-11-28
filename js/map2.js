@@ -12,8 +12,8 @@ var stamenOptions = {
   maxZoom: 20
 };
 
- var toner = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',  {
-  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+var toner= L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
   subdomains: 'abcd',
   minZoom: 8,
   maxZoom: 20
@@ -174,31 +174,18 @@ var landcover = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
   pane: 'landcover'
 });
 
-// map.createPane('parksPane');
-// map.getPane('parksPane').style.zIndex = 600;
-// L.geoJson(GVTC_parks,{
-//   pane: 'parksPane',
-//   style: {
-//     weight: 2,
-//     opacity: 1,
-//     color: '#a2d687',
-//     fillOpacity: 2.5,
-//     fillColor: '#a2d687'
-//   }
-// }).addTo(map);
-
-// map.createPane('waterPane');
-// map.getPane('waterPane').style.zIndex = 600;
-// L.geoJson(waterbodies1,{
-//   pane: 'waterPane',
-//   style: {
-//     weight: 1,
-//     opacity: 1,
-//     color: '#d4dadc',
-//     fillOpacity: 1,
-//     fillColor: '#d4dadc'
-//   }
-// }).addTo(map);
+map.createPane('parksPane');
+map.getPane('parksPane').style.zIndex = 600;
+L.geoJson(GVTC_parks,{
+  pane: 'parksPane',
+  style: {
+    weight: 2,
+    opacity: 1,
+    color: '#a2d687',
+    fillOpacity: 0,
+    fillColor: '#a2d687'
+  }
+}).addTo(map);
 
 // map A
 
@@ -315,11 +302,11 @@ var baseMaps = {
   "Population Density": den,
   "LandCover Classification": landcover
 };
-var layMaps = {
-  "Border Conflicts": Conflict
-};
+// var layMaps = {
+//   "Border Conflicts": Conflict
+// };
 
-L.control.layers( baseMaps, layMaps,{
+L.control.layers( baseMaps, "",{
   collapsed: false
 }).addTo(map);
 var legendFrom = $('.leaflet-control-layers');

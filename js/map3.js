@@ -22,12 +22,12 @@ var collapsePanel = function() {
   if (showPanel === true) {
     $('div#panel').css('width', '35px');
     $('div#panelContent').css('opacity', '0');
-    $('div#collapseBtn button').text('>');
+    $('div#collapseBtn button').text('>>');
     showPanel = !showPanel;
   } else {
     $('div#panel').css('width', '300px');
     $('div#panelContent').css('opacity', '1');
-    $('div#collapseBtn button').text('<');
+    $('div#collapseBtn button').text('<<');
     showPanel = !showPanel;
   }
 }
@@ -177,12 +177,9 @@ var baseMaps = {
   "Household Poverty Rates": pov,
   "Population Density": den,
   "LandCover Classification": landcover
-};
-var layMaps = {
-  "Border Conflicts": Conflict
-};
+}
 
-L.control.layers( baseMaps, layMaps,{
+L.control.layers("",baseMaps,{
   collapsed: false
 }).addTo(map);
 var legendFrom = $('.leaflet-control-layers');

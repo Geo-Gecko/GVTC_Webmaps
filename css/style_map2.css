@@ -1,8 +1,41 @@
 /*Global*/
-html, body {
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* html, body {
   padding: 0;
   margin: 0;
   height: 100%;
+} */
+#map,
+#containerr {
+  width: 49.5%;
+  height: 100%;
+}
+
+#map {
+  float: left;
+}
+
+#containerr {
+  float: right;
+}
+
+#containerr .map {
+  top: 10em;
+  width: 100%;
+  height: 41%;
+}
+
+@media all and (max-width:30em) {
+  a.button1 {
+    display: block;
+    margin: 0.4em auto;
+  }
 }
 
 .mid{
@@ -19,18 +52,17 @@ header {
   border-bottom: #dfe8e4 4px solid;
   position: absolute;
   z-index: 500000;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   min-height: 15vh;
   width: 100%;
 }
 header.fixed_header{
 position: fixed;
-top: 0;
 }
 
 header .branding img{
-  width: 100px; 
-  height:100px; 
+  width: 100px;
+  height:100px;
   float: left;
 }
 
@@ -48,7 +80,7 @@ div.container{
 }
 
 div.section_container{
-  padding: 0px 20px 0px 70px; 
+  padding: 0px 20px 0px 70px;
   width: 40%;
   float: left;
 }
@@ -61,7 +93,6 @@ div.orientationpage_heading h3{
   font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #1B6B36;
   font-weight: bold;
-  padding-left: 70px;
   /*padding: 0px 250px 0px 220px;*/
 }
 aside.sidebar p{
@@ -98,12 +129,12 @@ nav li img.Dashboard{
 nav li img.Key_species{
   width: 30px;
   padding: 0px 0px 0px 0px;
-} 
+}
 
 nav li img.Deforestation{
   width: 30px;
   padding: 0px -25px 0px 0px;
-} 
+}
 
 nav li img.Revenue_sharing{
   width: 39px;
@@ -128,55 +159,42 @@ header nav{
 }
 
 /*Main containers*/
-
 div.col-xs-12{
-  width: 78%; 
-  padding: 0px; 
-  margin-left: 0px; 
+  position: fixed;
+  width: 100%;
+  padding: 0px;
+  margin-left: 0px;
   height: 100%;
-  z-index: 0; 
-  display: block;
-  float: right;
+  z-index: 0;
 }
 
-div#map {
+/* div#map {
   height: 100%;
   background-color: #b5d0d0;
   padding-right: 0px;
   padding-left: 0px;
+  position: fixed;
 
 }
 
 div.mapContainer {
   height: 100%;
+  margin-left:0px;
   z-index: -5;
-  width: 100%;
-}
-
-
-div #containerr {
-  float: right;
-}
-
-div #containerr .map {
-  top: 10em;
-  width: 100%;
-  height: 41%;
-}
+} */
 
 /*Side panel*/
 div#panel {
   position: absolute;
   top: 15vh;
   height: 85vh;
-  width: 22%;
+  width: 300px;
   background-color: #fafafa;
   opacity: 0.92;
   -webkit-transition: width 0.6s;
   transition: width 0.6s;
   z-index: 10000;
   border: 1px solid black;
-  /*overflow-y: scroll;*/
 }
 
 div#panelContent {
@@ -213,7 +231,7 @@ div .nav-link{
 
 div .nav-link p {
   color: #FFFFFF;
-  font-size:24px; 
+  font-size:24px;
   padding-left: 10px;
   width: 100%;
   margin-top: 8px;
@@ -242,14 +260,13 @@ div #containers{
 div #container1{
   top: 50px;
   position: relative;
-  left: 0px;
-  margin-left: 40px;
+  left: 18px;
 }
 
 div #container2{
-  top:13vh;
+  top:30vh;
   position:relative;
-   }
+}
 
 div #container3{
   position:relative;
@@ -257,7 +274,7 @@ div #container3{
   right:10px;
   width: 100%;
   padding-left: 20px;
- } 
+ }
 
 div #container3 h5{
   font-size: 20px;
@@ -272,37 +289,37 @@ div #container3 h6{
 
 div #slider{
   top:0px;
-  right: 1px; 
+  right: 1px;
   margin: 10px 25px;
   margin-right: auto;
-  margin-left:auto; 
-  width: 90%; 
+  margin-left:auto;
+  width: 90%;
   margin-bottom: 10px;
   left:3px;
 }
 div #slider2{
   top:0px;
-  right: 1px; 
+  right: 1px;
   margin: 10px 25px;
   margin-right: auto;
-  margin-left:auto; 
-  width: 90%; 
+  margin-left:auto;
+  width: 90%;
   margin-bottom: 10px;
   left:3px;
 }
 
 div #slider3{
   top:0px;
-  right: 1px; 
+  right: 1px;
   margin: 10px 25px;
   margin-right: auto;
-  margin-left:auto; 
-  width: 90%; 
+  margin-left:auto;
+  width: 90%;
   margin-bottom: 10px;
   left:3px;
 }
 .noUi-connect {
-    background: rgb(162, 214, 135);  
+    background: rgb(162, 214, 135);
 }
 
 .noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
@@ -322,9 +339,9 @@ div #input_values{
 
 div .logo a{
   margin-left: 0px;
-  position: absolute; 
-  bottom: 0; 
-  z-index: 100000; 
+  position: absolute;
+  bottom: 0;
+  z-index: 100000;
   left: 0;
 }
 
@@ -367,4 +384,3 @@ div#panelContent {
   right: 40px;
   left: auto;
 }
-

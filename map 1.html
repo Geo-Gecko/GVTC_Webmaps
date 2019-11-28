@@ -5,16 +5,17 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>GVTC Key Species Map</title>
-  <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css"><!-- debug css version-->
-  <link rel="stylesheet" href="lib/ol3.8.2/ol.css" type="text/css" />
+<!--   Style links-->  
   <link rel="stylesheet" href="css/style.css" type="text/css" />
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <link rel="stylesheet" href="leaflet/leaflet.css" type="text/css" />
+  <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css">
+  <link rel="stylesheet" href="lib/ol3.8.2/ol.css" type="text/css" />
+<!-- Javascript files-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="leaflet/leaflet.js" charset="utf-8"></script>
-  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" /> -->
-  <!-- <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script> -->
   <script type="text/javascript" src="js/jquery-1.8.3.min.js" charset="UTF-8"></script>
-  <!-- data files -->
+
+  <!-- Data files -->
   <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
   <script src="data/Parks_Outside.geojson" charset="utf-8"></script>
   <script src="data/poverty.geojson" charset="utf-8"></script>
@@ -24,90 +25,51 @@
   <script src="data/Elephant_habitat.geojson" charset="utf-8"></script>
   <script src="data/density.geojson" charset="utf-8"></script>
   <script src="data/waterbodies1.geojson" charset="utf-8"></script>
+
   <!-- date filter -->
   <link rel="stylesheet" href="css/yearpicker.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
-
-
 </head>
 
 <body>
-  <style media="screen">
-    a.button1 {
-      display: inline-block;
-      padding: 0.35em 1.2em;
-      border: 0.1em solid #1F532C;
-      margin: 0 0.3em 0.3em 0;
-      border-radius: 0.12em;
-      box-sizing: border-box;
-      text-decoration: none;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 300;
-      color: #000000;
-      text-align: center;
-      transition: all 0.2s;
-    }
-
-    a.button1:hover {
-      color: #000000;
-      background-color: #FFFFFF;
-    }
-
-    @media all and (max-width:30em) {
-      a.button1 {
-        display: block;
-        margin: 0.4em auto;
-      }
-    }
-
-    .legend {
-      line-height: 18px;
-      color: #555;
-    }
-
-    .legend i {
-      width: 18px;
-      height: 18px;
-      float: left;
-      margin-right: 8px;
-      opacity: 0.7;
-    }
-  </style>
+  <!-- navigation bar and main container -->
+  <!-- main container -->
+  <div class="mapContainer">
 
   <!-- navigation bar -->
-  <nav class="" role="navigation">
-    <div class="">
-      <div class="" style="padding-left: 1em;">
-        <a href="http://www.greatervirunga.org" target="_blank"><img src="images/gvtc.png" alt="LOGO" height="60" width="80"></a>
-      </div>
+  <header>
+    <div class="container">
+      <div class= "branding">
+        <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt=""></a>
+        </div>
+              <nav>
+                <ul>
+                  <li><span><img class = "Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="GVTC/index.html">DASHBOARD</a></li>
+
+                  <li><span><img class = "Key_species" src="images/animal.png"alt=""></span><a href="map 1.html"></i> KEY SPECIES</a></li>
+
+                  <li><span><img class = "Deforestation" src="images/defo.png"alt=""></span><a href="map 2.html"> DEFORESTATION</a></li>
+
+                  <li><span><img class = "Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map 3.html">REVENUE SHARING</a></li>
+
+                  <li><span><img class = "Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a>
+                </ul>
+            </nav>
     </div>
-    <div class="" id="navbar" style="display: inline-block;">
-      <div class="" style="float: left;">
-        <p style="padding-left: 100px; font-size: 1.5vw;"><strong>GREATER VIRUNGA LANDSCAPE</strong></p>
-      </div>
-      <div class="" style="position: absolute; right: 0; top: 0; padding-right: 1em;">
-        <a href="landpage.html" class="button1">Back</a>
-      </div>
-    </div>
-  </nav>
+  </header>
 
-  <div class="container bodyContainer">
-    <div class="row mapContainer">
+<!--   Main container and side panel-->  
+    
 
-      <!-- panel -->
-      <div id="collapseBtnXs" class="visible-xs">
-        <button type="button" class="btn" onclick="collapsePanelXs();">+</button>
-      </div>
-
+<!-- side panel -->
       <div id="panel">
         <div id="collapseBtn">
-          <button type="button" class="btn btn-sm hidden-xs" onclick="collapsePanel();"><img style="width: 47px;padding-right: 4px;top: -16px;left: -20px;position: relative;" src="images/button.png" alt=""></button>
+          <button type="button" class="panelclose_button"  onclick="collapsePanel();"> << </button>
         </div>
-        <div id="panelContent" class="container-fluid" style="z-index: 1;">
-          <div class="nav-link" style="margin-right: -29px;position: relative;padding-right: -21px;background-color: #1B6B36;left: -14px">
-            <p style="color: #fff; font-size: 1.5vw; padding-left: 20px;">Key Species</p>
-          </div>
+        <div id="panelContent" class="container-fluid">
+            <div class="nav-link">
+              <p>Key Species</p>
+            </div>
           <div id='selector_menu'>
             <select id='selector'>
               <option size="16" value='Reset'>---Select year---</option>
@@ -116,56 +78,24 @@
             </select>
           </div>
           <br>
-          <div id=containers style="position: absolute; left: 45px;">
-            <div id=container1 style="position: relative; left:0em; right: 50em;margin-right: 12em;padding-left: 10em ">
-            </div>
-            <hr style="height: 0;
-            border-top: 1px solid #333;
-            margin: 163px 54px 5px -45px;">
-            <div id=container2 style="position:relative; right: : 20em; margin-bottom: 0em;padding-left: 10em">
-            </div>
+          <div id= "containers" >
+            <div id="container1" ></div>
           </div>
         </div>
       </div>
 
-      <!-- map -->
-      <div class="col-xs-12" id="map">
-        <!-- <div>
-          <img class="gecko" style="position: absolute; z-index: 100000; bottom: 0;width: 250px; right: 0;" src="images/legend_map1.PNG">
-        </div> -->
-        <div>
-          <a style="margin-left: 0px; position: absolute; bottom: 0; z-index: 100000; left: 0; " href="https://www.geogecko.com/" target="_blank"><img class="gecko" style="width: 100px;" src="images/Geogecko.png"></a>
-        </div>
+      <div class= "logo">
+        <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
       </div>
+
+      <div class="col-xs-12" id="map" >
     </div>
-  </div>
 
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
   <script type="text/javascript" src="lib/ol3.8.2/ol-debug.js"></script>
   <script type="text/javascript" src="js/map.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-
-  <!-- <script>
-  $(function() {
-      $('#datepicker').datepicker({
-          changeYear: true,
-          showButtonPanel: true,
-          dateFormat: 'yy',
-          onClose: function(dateText, inst) {
-              var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-              $(this).datepicker('setDate', new Date(year, 1));
-          }
-      });
-
-     $("#datepicker").focus(function () {
-          $(".ui-datepicker-month").hide();
-          $(".ui-datepicker-calendar").hide();
-      });
-
-  });
-  </script> -->
 
 </body>
 
