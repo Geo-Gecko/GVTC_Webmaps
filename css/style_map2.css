@@ -6,11 +6,6 @@ body {
   margin: 0;
 }
 
-/* html, body {
-  padding: 0;
-  margin: 0;
-  height: 100%;
-} */
 #map,
 #containerr {
   width: 49.5%;
@@ -168,27 +163,26 @@ div.col-xs-12{
   z-index: 0;
 }
 
-/* div#map {
-  height: 100%;
-  background-color: #b5d0d0;
-  padding-right: 0px;
-  padding-left: 0px;
-  position: fixed;
-
-}
-
-div.mapContainer {
-  height: 100%;
-  margin-left:0px;
-  z-index: -5;
-} */
-
 /*Side panel*/
 div#panel {
   position: absolute;
   top: 15vh;
   height: 85vh;
   width: 300px;
+  background-color: #fafafa;
+  opacity: 0.92;
+  -webkit-transition: width 0.6s;
+  transition: width 0.6s;
+  z-index: 10000;
+  border: 1px solid black;
+  overflow-y: scroll;
+}
+
+div#panel_2 {
+  position: absolute;
+  top: 15vh;
+  height: 85vh;
+  width: 418px;
   background-color: #fafafa;
   opacity: 0.92;
   -webkit-transition: width 0.6s;
@@ -263,10 +257,15 @@ div #container1{
   left: 18px;
 }
 
-div #container2{
-  top:30vh;
+div #container22{
+  top:17vh;
   position:relative;
-}
+   }
+
+div #container2{
+  top:13vh;
+  position:relative;
+   }
 
 div #container3{
   position:relative;

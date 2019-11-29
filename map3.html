@@ -16,7 +16,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="leaflet/leaflet.js" charset="utf-8"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  
+
   <!-- Data files -->
   <script src="data/QENP_finances.js"></script>
   <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="css/yearpicker.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <!-- slider -->
-  
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
 </head>
 
@@ -48,21 +48,17 @@
         </div>
             <nav>
                 <ul>
+                  <li><span><img class = "Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map3.html">REVENUE SHARING</a></li>
+                  <li><span><img class = "Deforestation" src="images/defo.png"alt=""></span><a href="map2.html"> DEFORESTATION</a></li>
+                  <li><span><img class = "Key_species" src="images/animal.png"alt=""></span><a href="map1.html"></i> KEY SPECIES</a></li>
                   <li><span><img class = "Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="GVTC/index.html">DASHBOARD</a></li>
-
-                  <li><span><img class = "Key_species" src="images/animal.png"alt=""></span><a href="map 1.html"></i> KEY SPECIES</a></li>
-
-                  <li><span><img class = "Deforestation" src="images/defo.png"alt=""></span><a href="map 2.html"> DEFORESTATION</a></li>
-
-                  <li><span><img class = "Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map 3.html">REVENUE SHARING</a></li>
-
                   <li><span><img class = "Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a>
                 </ul>
             </nav>
-    </div>    
+    </div>
   </header>
- 
-    
+
+
 
 <!-- side panel -->
       <div id="panel">
@@ -81,6 +77,8 @@
             </select>
           </div>
           <br>
+          <div id=container2>
+          </div>
           <!-- <div id=containers> -->
             <div id=container3>
             <!-- <h5><strong>Revenue Sharing</strong></h5> -->
@@ -103,16 +101,14 @@
               <input type="number" min="1000001" max="37000000" id="input-number-max3">
             </div>
           </div>
-          <div id=container2>
-            </div>
           </div>
         </div>
-        
+
         <!-- map -->
         <div class="col-xs-12" id="map">
       </div>
-      
-      
+
+
       <div class= "logo">
           <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
       </div>
