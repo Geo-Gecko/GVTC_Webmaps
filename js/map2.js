@@ -1,7 +1,7 @@
 function setParent(el, newParent) {
   newParent.appendChild(el);
 }
-var center = [-0.002060, 29.392247];
+var center = [-0.002060, 29.122247];
 
 var stamenOptions = {
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +
@@ -310,7 +310,7 @@ L.control.layers( baseMaps, "",{
   collapsed: false
 }).addTo(map);
 var legendFrom = $('.leaflet-control-layers');
-var legendTo = $('#container2');
+var legendTo = $('#container22');
 setParent(legendFrom[0], legendTo[0]);
 
 function layer() {
