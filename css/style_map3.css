@@ -1,48 +1,8 @@
 /*Global*/
-html,
-body {
-  width: 100%;
-  height: 100%;
+html, body {
+  padding: 0;
   margin: 0;
-}
-
-#map {
-  float: left;
   height: 100%;
-  width: 30%;
-  left: 22%;
-}
-
-#containerr {
-  float: right;
-  width: 48%;
-  height: 100%;
-  padding-top: 7.5%;
-}
-
-#containerr .map {
-  width: 100%;
-  height: 50%;
-}
-
-#containerr #mapA{
-  border-bottom: black 1px solid;
-}
-
-div .time_heading{
-  font-size: 30px; 
-  padding-top: 40px; 
-  left: 0; 
-  position: absolute; 
-  z-index: 1000;
-}
-
-
-@media all and (max-width:30em) {
-  a.button1 {
-    display: block;
-    margin: 0.4em auto;
-  }
 }
 
 .mid{
@@ -59,17 +19,18 @@ header {
   border-bottom: #dfe8e4 4px solid;
   position: absolute;
   z-index: 500000;
-  background-color: #ffffff;
+  background-color: #ffffff; 
   min-height: 15vh;
   width: 100%;
 }
 header.fixed_header{
 position: fixed;
+top: 0;
 }
 
 header .branding img{
-  width: 100px;
-  height:100px;
+  width: 100px; 
+  height:100px; 
   float: left;
 }
 
@@ -87,41 +48,12 @@ div.container{
 }
 
 div.section_container{
-  padding: 0px 20px 0px 70px;
+  padding: 0px 20px 0px 70px; 
   width: 40%;
   float: left;
 }
 
-div.orientationpage_heading{
-   margin-top: 150px;
-}
 
-div.orientationpage_heading h3{
-  font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #1B6B36;
-  font-weight: bold;
-  /*padding: 0px 250px 0px 220px;*/
-}
-aside.sidebar p{
-  padding-top: 20px;
-  font:16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-aside.map_section{
-  float: right;
-  display: block;
-  text-align: center;
-  width: 60%;
-  padding: 80px 0px 0px 0px;
-}
-
-aside img.parks{
-  width:250px;
-  height:400px;
-  object-fit: cover;
-  transform: scale(1.3);
-  padding-top: :0px;
-}
 nav ul li{
   float: right;
   display: inline;
@@ -136,12 +68,12 @@ nav li img.Dashboard{
 nav li img.Key_species{
   width: 30px;
   padding: 0px 0px 0px 0px;
-}
+} 
 
 nav li img.Deforestation{
   width: 30px;
   padding: 0px -25px 0px 0px;
-}
+} 
 
 nav li img.Revenue_sharing{
   width: 39px;
@@ -166,18 +98,34 @@ header nav{
 }
 
 /*Main containers*/
+
 div.col-xs-12{
-  position: fixed;
-  width: 100%;
-  padding: 0px;
-  margin-left: 0px;
+  width: 78%; 
+  padding: 0px; 
+  margin-left: 0px; 
   height: 100%;
-  z-index: 0;
+  z-index: 0; 
+  display: block;
+  float: right;
 }
 
-/*Side panel*/
+div#map {
+  height: 100%;
+  background-color: #b5d0d0;
+  padding-right: 0px;
+  padding-left: 0px;
 
-div#panel_2 {
+}
+
+div.mapContainer {
+  height: 100%;
+  z-index: -5;
+  width: 100%;
+}
+
+
+/*Side panel*/
+div#panel {
   position: absolute;
   top: 15vh;
   height: 85vh;
@@ -188,14 +136,7 @@ div#panel_2 {
   transition: width 0.6s;
   z-index: 10000;
   border: 1px solid black;
-}
-
-div#panelContent {
-  opacity: 1;
-  height: inherit;
-  width: 100%;
-  -webkit-transition: opacity 0.6s;
-  transition: opacity 0.6s;
+  overflow-y: auto;
 }
 
 div#collapseBtn {
@@ -224,7 +165,7 @@ div .nav-link{
 
 div .nav-link p {
   color: #FFFFFF;
-  font-size:24px;
+  font-size:24px; 
   padding-left: 10px;
   width: 100%;
   margin-top: 8px;
@@ -250,23 +191,20 @@ div #containers{
   left: -7px;
 }
 
-div #container22{
-  top:27vh;
-  position:relative;
-   }
 
 div #container2{
-  top:13vh;
+  top:15vh;
   position:relative;
+  right:5px;
    }
 
 div #container3{
   position:relative;
-  top: 9vh;
+  top: 20vh;
   right:10px;
   width: 100%;
   padding-left: 20px;
- }
+ } 
 
 div #container3 h5{
   font-size: 20px;
@@ -281,37 +219,37 @@ div #container3 h6{
 
 div #slider{
   top:0px;
-  right: 1px;
+  right: 1px; 
   margin: 10px 25px;
   margin-right: auto;
-  margin-left:auto;
-  width: 90%;
+  margin-left:auto; 
+  width: 90%; 
   margin-bottom: 10px;
   left:3px;
 }
 div #slider2{
   top:0px;
-  right: 1px;
+  right: 1px; 
   margin: 10px 25px;
   margin-right: auto;
-  margin-left:auto;
-  width: 90%;
+  margin-left:auto; 
+  width: 90%; 
   margin-bottom: 10px;
   left:3px;
 }
 
 div #slider3{
   top:0px;
-  right: 1px;
+  right: 1px; 
   margin: 10px 25px;
   margin-right: auto;
-  margin-left:auto;
-  width: 90%;
+  margin-left:auto; 
+  width: 90%; 
   margin-bottom: 10px;
   left:3px;
 }
 .noUi-connect {
-    background: rgb(162, 214, 135);
+    background: rgb(162, 214, 135);  
 }
 
 .noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
@@ -325,15 +263,15 @@ div #slider3{
 }
 
 div #input_values{
-  padding-bottom: 12px;
+  padding: 12px;
   text-align: center;
 }
 
 div .logo a{
   margin-left: 0px;
-  position: absolute;
-  bottom: 0;
-  z-index: 100000;
+  position: absolute; 
+  bottom: 0; 
+  z-index: 100000; 
   left: 0;
 }
 
@@ -376,3 +314,4 @@ div#panelContent {
   right: 40px;
   left: auto;
 }
+
