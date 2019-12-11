@@ -11,11 +11,26 @@ nav .navigation_dashbord {
   width: 100%;
   margin-top: 0px;
   top: -15px;
-  
+
 }
 
 .header_dashboard{
   padding: 0px 20px 0px 5px;
+  position: fixed;
+  background-color: #ffffff;
+  height: 144px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  border-bottom: #dfe8e4 4px solid;
+}
+
+.navigation_dashboard a{
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
 }
 
 nav .branding img{
@@ -119,6 +134,33 @@ aside img.parks{
   padding-top: :0px;
 }
 
+/* anchors */
+li > a {
+	text-transform: capitalize;
+	color: #333;
+}
+
+li > a:hover{
+		background-color: #d4dadc;
+		color: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: inherit;
+    padding-right: inherit;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+li.active > a {
+	background-color: #a2d687;
+	color: #000000;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: inherit;
+  padding-right: inherit;
+  border-radius: 25px;
+}
+
 /*Main containers*/
 div.col-xs-12{
   position: fixed;
@@ -134,7 +176,7 @@ div#panel_d {
   position: fixed;
   top: 15vh;
   height: 85vh;
-  width: 300px;
+  width: 22%;
   background-color: #fafafa;
   opacity: 0.92;
   -webkit-transition: width 0.6s;
@@ -159,6 +201,7 @@ div .nav-link_d{
 }
 
 div .nav-link_d p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #FFFFFF;
   font-size:24px;
   padding-left: 10px;
@@ -167,10 +210,12 @@ div .nav-link_d p {
 }
 
 div #selector_menu{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
   top: 70px;
   right:5px;
   padding-left: 17px;
+  font-size: 14px;
 }
 
 select #selector{

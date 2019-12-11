@@ -18,253 +18,203 @@
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="css/style.css" rel="stylesheet">
   <link href="css/sb-admin.css" rel="stylesheet">
-
+  <link href="css/style.css" rel="stylesheet">
 
 </head>
-<!-- <body id="page-top"> -->
 
-<!-- navigation bar -->
-<header>
-  <div class="container">
-    <div class="branding">
-      <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt=""></a>
-    </div>
-    <nav>
+<body id="page-top">
+  <div class="header_dashboard">
+    <nav class="navigation_dashboard">
       <ul>
         <li><span><img class="Revenue_sharing" src="images/revenue.png" alt=""></span><a href="../map3.html">REVENUE SHARING</a></li>
         <li><span><img class="Deforestation" src="images/defo.png" alt=""></span><a href="../map2.html"> DEFORESTATION</a></li>
         <li><span><img class="Key_species" src="images/animal.png" alt=""></span><a href="../map1.html"></i> KEY SPECIES</a></li>
-        <li><span><img class="Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="../GVTC/index.html">DASHBOARD</a></li>
+        <li class="active"><span><img class="Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="../GVTC/index.html"><span class="sr-only">(current)</span>DASHBOARD</a></li>
         <li><span><img class="Orientation_page" src="images/home.png" alt=""></span><a href="../orientationpage.html">ORIENTATION PAGE</a>
       </ul>
+
+      <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt="LOGO" height="100px" width="100px">
+      </a>
+
     </nav>
   </div>
-</header>
 
-<!-- side panel -->
-<div id="panel_d">
-  <div id="panelContent" class="container-fluid_d">
-      <div class="nav-link_d">
-        <p>Dashboard</p>
+  <div id="wrapper">
+
+    <!-- side panel -->
+    <div id="panel_d">
+      <div id="panelContent" class="container-fluid_d">
+        <div class="nav-link_d">
+          <p>Dashboard</p>
+        </div>
+        <div id='selector_menu'>
+          <select id='selector'>
+            <option size="16" value='Reset'>---Select year---</option>
+            <option value='2016'>2016</option>
+            <option value='2017'>2017</option>
+          </select>
+        </div>
+        <br>
+        <ul class="sidebar navbar-nav side-nav fixed">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+              <i class="fas fa-fw fa-chart-area"></i>
+              <span>Animal Population</span>
+            </a>
+          </li>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="patrol-traffick-cropraid.html">
+              <i class="fas fa-fw fa-chart-pie"></i>
+              <span>Patrol, Trafficking and Crop Raids</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="arrests-deforestn.html">
+              <i class="fas fa-fw fa-table"></i>
+              <span>Arrests and Deforestation</span></a>
+          </li>
+          <div>
+            <a style="position: fixed; margin-left: 10px; bottom: 0; " href="https://www.geogecko.com/" target="_blank"><img style="width: 100px;" src="images/Geogecko.png"></a>
+          </div>
+        </ul>
       </div>
-    <div id='selector_menu'>
-      <select id='selector'>
-        <option size="16" value='Reset'>---Select year---</option>
-        <option value='2016'>2016</option>
-        <option value='2017'>2017</option>
-      </select>
     </div>
-    <br>
-    <ul class="sidebar navbar-nav side-nav fixed">
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Animal Population</span>
-        </a>
-      </li>
-
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="arrests-deforestn.html">
-          <i class="fas fa-fw fa-chart-pie"></i>
-          <span>Patrol, Trafficking and Crop Raids</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="patrol-traffick-cropraid.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Arrests and Deforestation</span></a>
-      </li>
-    </ul>
   </div>
-</div>
 
-<div class= "logo">
-  <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
-</div>
-</div>
+  <div class="container-fluid">
 
-
-<div class="container-fluid">
-
-  <!-- Area Chart Example-->
-  <!-- <div class="card mb-3">
+    <!-- DataTables Example -->
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
           <div class="card-header">
-            <i class="fas fa-chart-area"></i>
-            Trend of key species</div>
+            <i class="fas fa-chart-bar"></i>
+            Virunga: Hippos </div>
           <div class="card-body">
-            <canvas class="line-chart" width="100%" height="30"></canvas>
+            <canvas class="line-chart1" width="100%" height="70"></canvas>
           </div>
           <div class="card-footer small text-muted"></div>
-        </div> -->
-
-
-  <!-- DataTables Example -->
-  <div class="row">
-    <div class="col">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fas fa-chart-bar"></i>
-          Virunga: Hippos </div>
-        <div class="card-body">
-          <canvas class="line-chart1" width="100%" height="70"></canvas>
         </div>
-        <div class="card-footer small text-muted"></div>
+      </div>
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-bar"></i>
+            Virunga: Gorillas</div>
+          <div class="card-body">
+            <canvas class="line-chart2" width="100%" height="70"></canvas>
+          </div>
+          <div class="card-footer small text-muted"></div>
+        </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fas fa-chart-bar"></i>
-          Virunga: Gorillas</div>
-        <div class="card-body">
-          <canvas class="line-chart2" width="100%" height="70"></canvas>
+
+    <!-- DataTables Example -->
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-bar"></i>
+            Virunga: Hippos </div>
+          <div class="card-body">
+            <canvas class="bar-chart1" width="100%" height="70"></canvas>
+          </div>
+          <div class="card-footer small text-muted"></div>
         </div>
-        <div class="card-footer small text-muted"></div>
+      </div>
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-bar"></i>
+            Virunga: Gorillas</div>
+          <div class="card-body">
+            <canvas class="bar-chart2" width="100%" height="70"></canvas>
+          </div>
+          <div class="card-footer small text-muted"></div>
+        </div>
       </div>
     </div>
+
+    <!-- DataTables Example -->
+    <div class="row">
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-bar"></i>
+            Bwindi: Hippos</div>
+          <div class="card-body">
+            <canvas class="bar-chart3" width="100%" height="80"></canvas>
+          </div>
+          <div class="card-footer small text-muted"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-bar"></i>
+            Bwindi: Gorillas</div>
+          <div class="card-body">
+            <canvas class="bar-chart4" width="100%" height="80"></canvas>
+          </div>
+          <div class="card-footer small text-muted"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-chart-bar"></i>
+            Bwindi: Elephants</div>
+          <div class="card-body">
+            <canvas class="bar-chart5" width="100%" height="80"></canvas>
+          </div>
+          <div class="card-footer small text-muted"></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-
-
-  <!-- DataTables Example -->
-  <div class="row">
-    <div class="col">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fas fa-chart-bar"></i>
-          Virunga: Hippos </div>
-        <div class="card-body">
-          <canvas class="bar-chart1" width="100%" height="70"></canvas>
-        </div>
-        <div class="card-footer small text-muted"></div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fas fa-chart-bar"></i>
-          Virunga: Gorillas</div>
-        <div class="card-body">
-          <canvas class="bar-chart2" width="100%" height="70"></canvas>
-        </div>
-        <div class="card-footer small text-muted"></div>
-      </div>
-    </div>
-    <!-- <div class="col">
-            <div class="card mb-3">
-            <div class="card-header">
-              <i class="fas fa-chart-area"></i>
-              Area Chart Example</div>
-            <div class="card-body">
-              <canvas id="" width="100%" height="30"></canvas>
-            </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-            </div>
-          </div> -->
   </div>
-
-  <!-- DataTables Example -->
-  <div class="row">
-    <div class="col">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fas fa-chart-bar"></i>
-          Bwindi: Hippos</div>
-        <div class="card-body">
-          <canvas class="bar-chart3" width="100%" height="80"></canvas>
-        </div>
-        <div class="card-footer small text-muted"></div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fas fa-chart-bar"></i>
-          Bwindi: Gorillas</div>
-        <div class="card-body">
-          <canvas class="bar-chart4" width="100%" height="80"></canvas>
-        </div>
-        <div class="card-footer small text-muted"></div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card mb-3">
-        <div class="card-header">
-          <i class="fas fa-chart-bar"></i>
-          Bwindi: Elephants</div>
-        <div class="card-body">
-          <canvas class="bar-chart5" width="100%" height="80"></canvas>
-        </div>
-        <div class="card-footer small text-muted"></div>
-      </div>
-    </div>
   </div>
+  <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
 
-</div>
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
-</div>
-</div>
-<!-- /.container-fluid -->
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-</div>
-<!-- /.content-wrapper -->
+  <!-- Page level plugin JavaScript-->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
-</div>
-<!-- /#wrapper -->
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin.min.js"></script>
 
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-  <i class="fas fa-angle-up"></i>
-</a>
+  <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
+  <script src="js/demo/chart-area-demo.js"></script>
 
-<!-- Logout Modal-->
-<!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div> -->
+  <!-- scripts for adding the charts-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Page level plugin JavaScript-->
-<script src="vendor/chart.js/Chart.min.js"></script>
-<script src="vendor/datatables/jquery.dataTables.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin.min.js"></script>
-
-<!-- Demo scripts for this page-->
-<script src="js/demo/datatables-demo.js"></script>
-<script src="js/demo/chart-area-demo.js"></script>
-
-<!-- scripts for adding the charts-->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
-
-<!-- adding js file-->
-<script src="js/animalpopn.js"></script>
+  <!-- adding js file-->
+  <script src="js/animalpopn.js"></script>
 
 
 </body>

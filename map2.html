@@ -31,10 +31,10 @@
       <nav>
         <ul>
           <li><span><img class="Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map3.html">REVENUE SHARING</a></li>
-          <li><span><img class="Deforestation" src="images/defo.png" alt=""></span><a href="map2.html"> DEFORESTATION</a></li>
-          <li><span><img class="Key_species" src="images/animal.png" alt=""></span><a href="map1.html"></i> KEY SPECIES</a></li>
+          <li class="active"><span><img class="Deforestation" src="images/defo.png" alt=""></span><a href="map2.html"><span class="sr-only">(current)</span>DEFORESTATION</a></li>
+          <li><span><img class="Key_species" src="images/animal.png" alt=""></span><a href="map1.html">KEY SPECIES</a></li>
           <li><span><img class="Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="GVTC/index.html">DASHBOARD</a></li>
-          <li><span><img class="Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a>
+          <li><span><img class="Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a></li>
         </ul>
       </nav>
     </div>
@@ -48,13 +48,11 @@
     <div id="panel_2">
       <div id="collapseBtn">
         <button type="button" class="panelclose_button" onclick="collapsePanel();">
-          << </button> </div> 
-          <div id="panelContent" class="container-fluid">
+          << </button> </div> <div id="panelContent" class="container-fluid">
             <div class="nav-link">
               <p>Deforestation</p>
             </div>
             <div id='selector_menu'>
-              <p><strong>T1</strong></p>
               <select id='selector'>
                 <option size="16" value='Reset'>---Select year---</option>
                 <option value='2016'>2016</option>
@@ -63,7 +61,6 @@
             </div>
             <br>
             <div id='selector_menu'>
-              <p><strong>T2</strong></p>
               <select id='selector'>
                 <option size="16" value='Reset'>---Select year---</option>
                 <option value='2016'>2016</option>
@@ -83,8 +80,6 @@
   </div>
 
   <div id="map">
-    <div>
-    </div>
   </div>
   <div id="containerr">
     <div id="mapA" class="map">
@@ -92,6 +87,9 @@
     </div>
     <div id="mapB" class="map">
       <div class="time_heading"><strong>T2</strong></div>
+      <div class="legend_gvtc">
+        <img class="gvtc_legend" src="images/legend2.PNG" alt="">
+      </div>
     </div>
   </div>
 

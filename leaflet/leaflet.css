@@ -149,7 +149,7 @@
 	clear: both;
 	}
 .leaflet-right .leaflet-control {
-	 float: left; 
+	 float: left;
 	}
 .leaflet-top .leaflet-control {
 	margin-top: 30px;
@@ -157,7 +157,7 @@
     left: 0px;
 	}
 .leaflet-bottom .leaflet-control {
-	margin-bottom: 10px;
+	margin-bottom: 42px;
 	}
 .leaflet-left .leaflet-control {
 	margin-left: 5500%;
@@ -383,7 +383,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	padding: 6px 10px 6px -1px;
     color: #333;
     width: 100% !important;
-    
+
 	}
 .leaflet-control-layers-scrollbar {
 	overflow-y: scroll;

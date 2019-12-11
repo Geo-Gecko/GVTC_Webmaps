@@ -41,78 +41,78 @@
   <!-- navigation bar and main container -->
   <!-- main container -->
   <div class="mapContainer">
-  <header>
-    <div class="container">
-      <div class= "branding">
-        <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt=""></a>
+    <header>
+      <div class="container">
+        <div class="branding">
+          <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt=""></a>
         </div>
-            <nav>
-                <ul>
-                  <li><span><img class = "Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map3.html">REVENUE SHARING</a></li>
-                  <li><span><img class = "Deforestation" src="images/defo.png"alt=""></span><a href="map2.html"> DEFORESTATION</a></li>
-                  <li><span><img class = "Key_species" src="images/animal.png"alt=""></span><a href="map1.html"></i> KEY SPECIES</a></li>
-                  <li><span><img class = "Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="GVTC/index.html">DASHBOARD</a></li>
-                  <li><span><img class = "Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a>
-                </ul>
-            </nav>
-    </div>
-  </header>
+        <nav>
+          <ul>
+            <li class="active"><span><img class="Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map3.html"><span class="sr-only">(current)</span>REVENUE SHARING</a></li>
+            <li><span><img class="Deforestation" src="images/defo.png" alt=""></span><a href="map2.html"> DEFORESTATION</a></li>
+            <li><span><img class="Key_species" src="images/animal.png" alt=""></span><a href="map1.html"></i> KEY SPECIES</a></li>
+            <li><span><img class="Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="GVTC/index.html">DASHBOARD</a></li>
+            <li><span><img class="Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-
-
-<!-- side panel -->
-      <div id="panel">
-        <div id="collapseBtn">
-          <button type="button" class="panelclose_button" onclick="collapsePanel();"> << </button>
-        </div>
-        <div id="panelContent" class="container-fluid">
-          <div class="nav-link">
-            <p>Revenue Sharing</p>
-          </div>
-          <div id='selector_menu'>
-            <select id='selector'>
-              <option size="16" value='Reset'>---Select year---</option>
-              <option value='2016'>2016</option>
-              <option value='2017'>2017</option>
-            </select>
-          </div>
-          <br>
-          <div id=container2>
-          </div>
-          <!-- <div id=containers> -->
+    <!-- side panel -->
+    <div id="panel">
+      <div id="collapseBtn">
+        <button type="button" class="panelclose_button" onclick="collapsePanel();">
+          << </button> </div> <div id="panelContent" class="container-fluid">
+            <div class="nav-link">
+              <p>Revenue Sharing</p>
+            </div>
+            <div id='selector_menu'>
+              <select id='selector'>
+                <option size="16" value='Reset'>---Select year---</option>
+                <option value='2016'>2016</option>
+                <option value='2017'>2017</option>
+              </select>
+            </div>
+            <br>
+            <div id=container2>
+            </div>
+            <!-- <div id=containers> -->
             <div id=container3>
-            <!-- <h5><strong>Revenue Sharing</strong></h5> -->
-            <h6><strong>Amounts(UGX)</strong></h6>
-            <div id="slider"></div>
-            <div id="input_values">
-              <input type="number" min="1000000" max="36999999" id="input-number-min">
-              <input type="number" min="1000001" max="37000000" id="input-number-max">
+              <!-- <h5><strong>Revenue Sharing</strong></h5> -->
+              <h6><strong>Amounts(UGX)</strong></h6>
+              <div id="slider"></div>
+              <div id="input_values">
+                <input type="number" min="1000000" max="36999999" id="input-number-min">
+                <input type="number" min="1000001" max="37000000" id="input-number-max">
+              </div>
+              <h6><strong>Male Beneficiaries</strong></h6>
+              <div id="slider2"></div>
+              <div id="input_values">
+                <input type="number" min="1000000" max="36999999" id="input-number-min2">
+                <input type="number" min="1000001" max="37000000" id="input-number-max2">
+              </div>
+              <h6><strong>Female Beneficiaries</strong></h6>
+              <div id="slider3"></div>
+              <div id="input_values">
+                <input type="number" min="1000000" max="36999999" id="input-number-min3">
+                <input type="number" min="1000001" max="37000000" id="input-number-max3">
+              </div>
             </div>
-            <h6><strong>Male Beneficiaries</strong></h6>
-            <div id="slider2"></div>
-            <div id="input_values">
-              <input type="number" min="1000000" max="36999999" id="input-number-min2">
-              <input type="number" min="1000001" max="37000000" id="input-number-max2">
-            </div>
-            <h6><strong>Female Beneficiaries</strong></h6>
-            <div id="slider3"></div>
-            <div id="input_values">
-              <input type="number" min="1000000" max="36999999" id="input-number-min3">
-              <input type="number" min="1000001" max="37000000" id="input-number-max3">
-            </div>
-          </div>
-          </div>
-        </div>
-
-        <!-- map -->
-        <div class="col-xs-12" id="map">
-      </div>
-
-
-      <div class= "logo">
-          <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
       </div>
     </div>
+
+    <!-- map -->
+    <div class="col-xs-12" id="map">
+      <div class="legend_gvtc">
+        <img class="gvtc_legend" src="images/legend.PNG" alt="">
+      </div>
+    </div>
+
+
+    <div class="logo">
+      <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
+    </div>
+  </div>
 
   <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
   <script type="text/javascript" src="lib/ol3.8.2/ol-debug.js"></script>

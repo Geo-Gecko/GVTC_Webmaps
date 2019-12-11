@@ -1,48 +1,8 @@
 /*Global*/
-html,
-body {
-  width: 100%;
-  height: 100%;
+html, body {
+  padding: 0;
   margin: 0;
-}
-
-#map {
-  float: left;
   height: 100%;
-  width: 30%;
-  left: 22%;
-}
-
-#containerr {
-  float: right;
-  width: 48%;
-  height: 100%;
-  padding-top: 7.5%;
-}
-
-#containerr .map {
-  width: 100%;
-  height: 50%;
-}
-
-#containerr #mapA{
-  border-bottom: black 1px solid;
-}
-
-div .time_heading{
-  font-size: 30px;
-  padding-top: 40px;
-  left: 0;
-  position: absolute;
-  z-index: 1000;
-}
-
-
-@media all and (max-width:30em) {
-  a.button1 {
-    display: block;
-    margin: 0.4em auto;
-  }
 }
 
 .mid{
@@ -65,6 +25,7 @@ header {
 }
 header.fixed_header{
 position: fixed;
+top: 0;
 }
 
 header .branding img{
@@ -100,6 +61,7 @@ div.orientationpage_heading h3{
   font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #1B6B36;
   font-weight: bold;
+  padding-left: 70px;
   /*padding: 0px 250px 0px 220px;*/
 }
 aside.sidebar p{
@@ -171,7 +133,7 @@ li > a {
 	color: #333;
 }
 
-li > a:hover, a:focus {
+li > a:hover{
 		background-color: #d4dadc;
 		color: #fff;
     padding-top: 10px;
@@ -193,18 +155,44 @@ li.active > a {
 }
 
 /*Main containers*/
+
 div.col-xs-12{
-  position: fixed;
-  width: 100%;
+  width: 78%;
   padding: 0px;
   margin-left: 0px;
   height: 100%;
   z-index: 0;
+  display: block;
+  float: right;
+}
+
+div#map {
+  height: 100%;
+  background-color: #b5d0d0;
+  padding-right: 0px;
+  padding-left: 0px;
+
+}
+
+div.mapContainer {
+  height: 100%;
+  z-index: -5;
+  width: 100%;
+}
+
+
+div #containerr {
+  float: right;
+}
+
+div #containerr .map {
+  top: 10em;
+  width: 100%;
+  height: 41%;
 }
 
 /*Side panel*/
-
-div#panel_2 {
+div#panel {
   position: absolute;
   top: 15vh;
   height: 85vh;
@@ -215,6 +203,7 @@ div#panel_2 {
   transition: width 0.6s;
   z-index: 10000;
   border: 1px solid black;
+  /*overflow-y: scroll;*/
 }
 
 div#panelContent {
@@ -269,17 +258,6 @@ select #selector{
   font-size: 20px;
 }
 
-div #selector_menu2{
-  position: relative;
-  top: 70px;
-  right:5px;
-  padding-left: 17px;
-}
-
-select #selector2{
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-}
 
 div #containers{
   top: 60px;
@@ -288,10 +266,12 @@ div #containers{
   left: -7px;
 }
 
-div #container22{
-  top:166px;
-  position:relative;
-   }
+div #container1{
+  top: 50px;
+  position: relative;
+  left: 0px;
+  margin-left: 21px;
+}
 
 div #container2{
   top:13vh;
@@ -300,7 +280,7 @@ div #container2{
 
 div #container3{
   position:relative;
-  top: 9vh;
+  top: 16vh;
   right:10px;
   width: 100%;
   padding-left: 20px;
@@ -315,11 +295,6 @@ div #container3 h5{
 div #container3 h6{
   padding-left: 2px;
   padding-bottom: 5px;
-}
-
-div #input_values{
-  padding-bottom: 12px;
-  text-align: center;
 }
 
 div .logo a{
@@ -385,20 +360,17 @@ div#panelContent {
 }
 
 .landlegend{
-  height: 17em;
-  right: 5%;
-  bottom: 29em;
-  width: 91%;
+  width: 80%;
   position: relative;
 }
 
 .legend_gvtc{
 position: absolute;
-bottom: 24px;
+bottom: 53px;
 z-index: 1000;
 }
 
 .gvtc_legend{
   position: relative;
-  width: 54%;
+  width: 64%;
 }

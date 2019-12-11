@@ -2,7 +2,9 @@ function setParent(el, newParent) {
   newParent.appendChild(el);
 }
 
-var map = L.map('map').setView([-0.2, 29.24], 8);
+var map = L.map('map', {
+    minZoom: 8
+}).setView([-0.2, 29.24], 8);
 
 var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
@@ -81,11 +83,11 @@ function styleconflict(feature) {
 }
 
 function getColorpoverty(d) {
-  return d > 0.22 ? '#b30000' :
-    d > 0.18 ? '#e34a33' :
-    d > 0.15 ? '#fc8d59' :
-    d > 0.11 ? '#fdbb84' :
-    d > 0.8 ? '#fdd49e' :
+  return d > 0.8  ? '#b30000' :
+    d > 0.22  ? '#e34a33' :
+    d > 0.18  ? '#fc8d59' :
+    d > 0.15  ? '#fdbb84' :
+    d > 0.11  ? '#fdd49e' :
     '#fef0d9';
 }
 
@@ -122,7 +124,7 @@ function styledensity(feature) {
 // parks
 map.createPane('parksPane');
 map.getPane('parksPane').style.zIndex = 600;
-L.geoJson(GVTC_parks,{
+var parks = new L.GeoJSON(GVTC_parks, {
   pane: 'parksPane',
   style: {
     weight: 2,
@@ -130,8 +132,31 @@ L.geoJson(GVTC_parks,{
     color: '#a2d687',
     fillOpacity: 2.5,
     fillColor: '#a2d687'
+  },
+  onEachFeature: function(feature, layer) {
+    layer.on('mouseover', function() {
+      this.setStyle({
+        weight: 1,
+        opacity: 1,
+        color: '#a2d687',
+        fillOpacity: 0.0,
+        fillColor: '#a2d687'
+      });
+    });
+    layer.on('mouseout', function() {
+      this.setStyle({
+        weight: 1,
+        opacity: 1,
+        color: '#a2d687',
+        fillOpacity: 1,
+        fillColor: '#a2d687'
+      });
+    });
   }
 }).addTo(map);
+parks.eachLayer(function(layer) {
+  layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG +  '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
+});
 
 // waterbodies
 map.createPane('waterPane');
@@ -159,27 +184,122 @@ var landcover = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
 });
 
 // parks outside
-L.geoJson(Parks_Outside, {
+var parks_outside = new L.GeoJSON(Parks_Outside, {
   style: {
     weight: 2,
     opacity: 1,
     color: '#808080',
     fillOpacity: 0,
     fillColor: '#808080'
+  },
+  onEachFeature: function(feature, layer) {
+    layer.on('mouseover', function() {
+      this.setStyle({
+        weight: 2,
+        opacity: 1,
+        color: '#000000',
+        fillOpacity: 0.0,
+        fillColor: '#000000'
+      });
+    });
+    layer.on('mouseout', function() {
+      this.setStyle({
+        weight: 2,
+        opacity: 1,
+        color: '#808080',
+        fillOpacity: 0,
+        fillColor: '#808080'
+      });
+    });
   }
 }).addTo(map);
 
-function zoomToFeature(e) {
-  map.fitBounds(e.target.getBounds());
-}
+parks_outside.eachLayer(function(layer) {
+  layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG + '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
+});
+
+// layer control
+var povlegend = L.control({
+  position: 'bottomright'
+});
+povlegend.onAdd = function(map) {
+
+  var div = L.DomUtil.create('div', 'info legend'),
+    povGrades = [0.11, 0.15, 0.18, 0.22, 0.8],
+    povLabels = [],
+    from, to;
+
+  for (var i = 0; i < povGrades.length; i++) {
+    from = povGrades[i];
+    to = povGrades[i + 1];
+
+    povLabels.push(
+      '<i style="background:' + getColorpoverty(from) + '"></i> ' +
+      from + (to ? '&ndash;' + to : '+'));
+
+  }
+
+  div.innerHTML = povLabels.join('<br>');
+  return div;
+};
+
+var denlegend = L.control({
+  position: 'bottomright'
+});
+denlegend.onAdd = function(map) {
+  var div = L.DomUtil.create('div', 'info legend'),
+    grades = [100, 200, 400, 9700],
+    labels = [],
+    from, to;
+
+  for (var i = 0; i < grades.length; i++) {
+    from = grades[i];
+    to = grades[i + 1];
+
+    labels.push(
+      '<i style="background:' + getColordensity(from ) + '"></i> ' +
+      from + (to ? '&ndash;' + to : '+'));;
+  }
+
+  div.innerHTML = labels.join('<br>');
+  return div;
+};
+
+map.on('baselayerchange', function(eventLayer) {
+if (eventLayer.name === 'Household Poverty Rates') {
+    map.removeControl(denlegend);
+    povlegend.addTo(map);
+  }
+else if (eventLayer.name === 'Population Density') {
+    map.removeControl(povlegend);
+    denlegend.addTo(map);
+  }
+})
+
+//layer control 2
+var landLegend = L.control({position: 'bottomright'});
+landLegend.onAdd = function (map) {
+var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML +=
+    '<img class= "landlegend" src="images/geoserver-GetLegendGraphic.png" alt="legend">';
+return div;
+};
+
+map.on('baselayerchange', function(eventLayer) {
+ if (eventLayer.name === 'LandCover Classification') {
+    map.removeControl(denlegend||povlegend);
+    landLegend.addTo(map);
+  }
+})
+
 
 var baseMaps = {
   "Household Poverty Rates": pov,
   "Population Density": den,
   "LandCover Classification": landcover
-}
+};
 
-L.control.layers("",baseMaps,{
+L.control.layers(baseMaps, "",{
   collapsed: false
 }).addTo(map);
 var legendFrom = $('.leaflet-control-layers');
