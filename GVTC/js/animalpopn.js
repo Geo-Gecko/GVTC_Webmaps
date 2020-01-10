@@ -1,249 +1,298 @@
 
-// Trend graph Elephants and hippos
-var ctx = document.getElementsByClassName("line-chart1");
+//hippo data for bwindi
+let hip_sheet = "1116318864"
+let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
+let url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${hip_sheet}`
 
-//Type, data, options
+axios.get(url, {
+    mode: 'no-cors'
+  })
+  .then(r => {
+    hippos4 = $.csv.toObjects(r.data)
+    let x_values = []
+    let y_values = []
 
-var chartGraph = new Chart (ctx, {
-    type: 'line',
-    lineTension: 0,
-    data: {
-        datasets: [{
-                        borderWidth: 2,
-                        borderColor: 'rgba(146, 242, 42, 0.85)',
-                        fill: false,
-                        backgroundColor: 'rgba(26, 255, 102, 0.4)'
-                    }, {
-                        borderWidth: 2,
-                        borderColor: 'rgba(207, 0, 15, 0.85)',
-                        fill: false,
-                        backgroundColor: 'rgba(255, 51, 51, 0.4)'
-                    }
-    ]},
-    plugins: [ChartDataSource],
-    options: {
-        bezierCurve: false,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    max: 900,
-                    min: 0,
-                }
-            }]
-        },
-        plugins: {
-            datasource: {
-                url: 'keyspeciesElephantsandHippos.xlsx'
-            }
-        }
-    }
-});
+    hippos4.forEach(hippo => {
+      y_values.push(hippo["hippos"])
+      x_values.push(hippo["Year"])
 
+    })
 
-//Trend graph gorillas
-var ctx = document.getElementsByClassName("line-chart2");
-
-//Type, data, options
-
-var chartGraph = new Chart (ctx, {
-    type: 'line',
-    data: {
-        datasets: [{
-                        borderWidth: 2,
-                        borderColor: 'rgba(255, 102, 0, 1)',
-                        fill: false,
-                        backgroundColor: 'rgba(255, 163, 102, 0.9)'
-                    }
-    ]},
-    plugins: [ChartDataSource],
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    max: 12000,
-                    min: 0,
-                }
-            }]
-        },
-        plugins: {
-            datasource: {
-                url: 'keyspeciesGorillas.xlsx'
-            }
-        }
-    }
-});
+    plotOne(x_values, y_values);
+  })
+  .catch(e => console.log(e))
 
 
 
-// Virunga: Hippos graph
-var ctx = document.getElementsByClassName("bar-chart1");
-
-//Type, data, options
-
-var chartGraph = new Chart (ctx, {
+function plotOne(xValues, yValues) {
+  var ctxx = document.getElementsByClassName("bar-chart4");
+  myEnrolChart = new Chart(ctxx, {
     type: 'bar',
     data: {
-        datasets: [{
-            borderWidth: 1,
-            borderColor: 'rgba(255, 165, 0, 1)',
-            fill: false,
-            backgroundColor: 'rgba(255, 165, 0, 0.6)',
-            opacity: 0.2
+      labels: ["1960", "1982-1983", "1995-1996", "1999-2003", "2004-2006", "2007-2010", "2011-2014", "2015-2017"],
+      datasets: [
+
+        {
+          label: "Hippos",
+          backgroundColor: "pink",
+          borderColor: "red",
+          borderWidth: 1,
+          data: yValues
         }
-    ]},
-    plugins: [ChartDataSource],
+      ]
+    },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    max: 12000,
-                    min: 0,
-                }
-            }]
-        },
-        plugins: {
-            datasource: {
-                url: 'virungaHippos.xlsx'
-            }
-        }
+      responsive: true,
+      legend: {
+        position: "top"
+      },
+      title: {
+        display: true
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+
+            beginAtZero: true
+          }
+        }]
+      }
     }
-});
+  });
+}
+
+//gorilla data for bwindi
+let gorilla_sheet = "1422622650"
+url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${gorilla_sheet}`
+axios.get(url, {
+    mode: 'no-cors'
+  })
+  .then(r => {
+    gorillas = $.csv.toObjects(r.data)
+    let x_values = []
+    let y_values = []
+
+    gorillas.forEach(gorilla => {
+      y_values.push(gorilla["gorillas"])
+      x_values.push(gorilla["Year"])
+
+    })
+
+    plotTwo(x_values, y_values);
+  })
+  .catch(e => console.log(e))
 
 
-//virunga: gorillas graph
-var ctx = document.getElementsByClassName("bar-chart2");
-
-//Type, data, options
-
-var chartGraph = new Chart (ctx, {
+function plotTwo(xValues, yValues) {
+  var ctxx2 = document.getElementsByClassName("bar-chart5");
+  myEnrolChart = new Chart(ctxx2, {
     type: 'bar',
     data: {
-        datasets: [{
-            borderWidth: 1,
-            borderColor: 'rgba(255, 165, 0, 1)',
-            fill: false,
-            backgroundColor: 'rgba(255, 165, 0, 0.6)',
-            opacity: 0.2
+      labels: ["1960", "1982-1983", "1995-1996", "1999-2003", "2004-2006", "2007-2010", "2011-2014", "2015-2017"],
+      datasets: [
+
+        {
+          label: "Gorillas",
+          backgroundColor: "pink",
+          borderColor: "red",
+          borderWidth: 1,
+          data: yValues
         }
-    ]},
-    plugins: [ChartDataSource],
+      ]
+    },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    max: 12000,
-                    min: 0,
-                }
-            }]
-        },
-        plugins: {
-            datasource: {
-                url: 'virungaGorillas.xlsx'
-            }
-        }
+      responsive: true,
+      legend: {
+        position: "top"
+      },
+      title: {
+        display: true
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+
+            beginAtZero: true
+          }
+        }]
+      }
     }
-});
+  });
+}
+
+// elephant data for bwindi
+let elephant_sheet = "1933452056"
+url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${elephant_sheet}`
+axios.get(url, {
+    mode: 'no-cors'
+  })
+  .then(r => {
+    elephants = $.csv.toObjects(r.data)
+    let x_values = []
+    let y_values = []
+
+    elephants.forEach(elephant => {
+      y_values.push(elephant["elephants"])
+      x_values.push(elephant["Year"])
+
+    })
+
+    plotThree(x_values, y_values);
+  })
+  .catch(e => console.log(e))
 
 
-// Bwindi: Hippos graph
-var ctx = document.getElementsByClassName("bar-chart3");
-
-//Type, data, options
-
-var chartGraph = new Chart (ctx, {
+function plotThree(xValues, yValues) {
+  var ctxx3 = document.getElementsByClassName("bar-chart6");
+  myEnrolChart = new Chart(ctxx3, {
     type: 'bar',
     data: {
-        datasets: [{
-            borderWidth: 1,
-            borderColor: 'rgba(255, 26, 26, 1)',
-            fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.5)',
-            opacity: 0.2
+      labels: ["1960", "1982-1983", "1995-1996", "1999-2003", "2004-2006", "2007-2010", "2011-2014", "2015-2017"],
+      datasets: [
+
+        {
+          label: "Elephants",
+          backgroundColor: "pink",
+          borderColor: "red",
+          borderWidth: 1,
+          data: yValues
         }
-    ]},
-    plugins: [ChartDataSource],
+      ]
+    },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    max: 12000,
-                    min: 0,
-                }
-            }]
-        },
-        plugins: {
-            datasource: {
-                url: 'queenHippos.xlsx'
-            }
-        }
+      responsive: true,
+      legend: {
+        position: "top"
+      },
+      title: {
+        display: true
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+
+            beginAtZero: true
+          }
+        }]
+      }
     }
-});
+  });
+}
+
+// gorilla data for virunga
+let gorilla2_sheet = "858359305"
+url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${gorilla2_sheet}`
+axios.get(url, {
+    mode: 'no-cors'
+  })
+  .then(r => {
+    gorilla2 = $.csv.toObjects(r.data)
+    let x_values = []
+    let y_values = []
+
+    gorilla2.forEach(gorilla2 => {
+      y_values.push(gorilla2["gorillas"])
+      x_values.push(gorilla2["Year"])
+
+    })
+
+    plotFour(x_values, y_values);
+  })
+  .catch(e => console.log(e))
 
 
-// Bwindi: gorillas graph
-var ctx = document.getElementsByClassName("bar-chart4");
-
-//Type, data, options
-
-var chartGraph = new Chart (ctx, {
+function plotFour(xValues, yValues) {
+  var ctxx3 = document.getElementsByClassName("line-chart2");
+  myEnrolChart = new Chart(ctxx3, {
     type: 'bar',
     data: {
-        datasets: [{
-            borderWidth: 1,
-            borderColor: 'rgba(255, 26, 26, 1)',
-            fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.5)',
-            opacity: 0.2
+      labels: ["1960", "1982-1983", "1995-1996", "1999-2003", "2004-2006", "2007-2010", "2011-2014", "2015-2017"],
+      datasets: [
+
+        {
+          label: "Gorillas",
+          backgroundColor: 'rgba(255, 165, 0, 0.6)',
+          borderColor: 'rgba(255, 165, 0, 1)',
+          borderWidth: 1,
+          data: yValues
         }
-    ]},
-    plugins: [ChartDataSource],
+      ]
+    },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    max: 12000,
-                    min: 0,
-                }
-            }]
-        },
-        plugins: {
-            datasource: {
-                url: 'queenGorillas.xlsx'
-            }
-        }
+      responsive: true,
+      legend: {
+        position: "top"
+      },
+      title: {
+        display: true
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+
+            beginAtZero: true
+          }
+        }]
+      }
     }
-});
+  });
+}
 
-// Bwindi: Elephants graph
-var ctx = document.getElementsByClassName("bar-chart5");
+// hippos data for virunga
+let hippos2_sheet = "944111397"
+url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${hippos2_sheet}`
+axios.get(url, {
+    mode: 'no-cors'
+  })
+  .then(r => {
+    hippos2 = $.csv.toObjects(r.data)
+    let x_values = []
+    let y_values = []
 
-//Type, data, options
+    hippos2.forEach(hippos2 => {
+      y_values.push(hippos2["hippos"])
+      x_values.push(hippos2["Year"])
 
-var chartGraph = new Chart (ctx, {
+    })
+
+    plotFive(x_values, y_values);
+  })
+  .catch(e => console.log(e))
+
+
+function plotFive(xValues, yValues) {
+  var ctxx3 = document.getElementsByClassName("line-chart1");
+  myEnrolChart = new Chart(ctxx3, {
     type: 'bar',
     data: {
-        datasets: [{
-            borderWidth: 1,
-            borderColor: 'rgba(255, 26, 26, 1)',
-            fill: false,
-            backgroundColor: 'rgba(255, 51, 51, 0.5)',
-            opacity: 0.2
+      labels: ["1994", "2003", "2005", "2009", "2013", "2015", "2017"],
+      datasets: [
+
+        {
+          label: "Hippos",
+          backgroundColor: 'rgba(255, 165, 0, 0.6)',
+          borderColor: 'rgba(255, 165, 0, 1)',
+          borderWidth: 1,
+          data: yValues
         }
-    ]},
-    plugins: [ChartDataSource],
+      ]
+    },
     options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    max: 12000,
-                    min: 0,
-                }
-            }]
-        },
-        plugins: {
-            datasource: {
-                url: 'BwindiElephants.xlsx'
-            }
-        }
+      responsive: true,
+      legend: {
+        position: "top"
+      },
+      title: {
+        display: true
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+
+            beginAtZero: true
+          }
+        }]
+      }
     }
-});
+  });
+}

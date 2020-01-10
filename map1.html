@@ -14,6 +14,13 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="leaflet/leaflet.js" charset="utf-8"></script>
   <script type="text/javascript" src="js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.5/jquery.csv.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+  <script src="jquery.csv.js"></script>
 
   <!-- Data files -->
   <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
@@ -26,7 +33,6 @@
   <script src="data/density.geojson" charset="utf-8"></script>
   <script src="data/waterbodies1.geojson" charset="utf-8"></script>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -74,6 +80,7 @@
             <div id="containers">
               <div id="container1"></div>
             </div>
+            <button class="refresh" type="submit"  onClick="refreshPage()">Remove Layers</button>
 
       </div>
     </div>
@@ -92,7 +99,12 @@
     <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="lib/ol3.8.2/ol-debug.js"></script>
     <script type="text/javascript" src="js/map.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script>
+    function refreshPage(){
+        window.location.reload();
+    }
+    </script>
 
 </body>
 

@@ -1,18 +1,12 @@
-//uncheck radio buttons
+//adding the map
+var map = L.map('map', {
+  minZoom: 8
+}).setView([-0.2, 29.24], 8);
 
-
-$('#topheader .navbar-nav a').on('click', function() {
-  $('#topheader .navbar-nav').find('li.active').removeClass('active');
-  $(this).parent('li').addClass('active');
-});
 
 function setParent(el, newParent) {
   newParent.appendChild(el);
 }
-
-var map = L.map('map', {
-    minZoom: 8
-}).setView([-0.2, 29.24], 8);
 
 var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
@@ -30,12 +24,12 @@ var collapsePanel = function() {
   if (showPanel === true) {
     $('div#panel').css('width', '35px');
     $('div#panelContent').css('opacity', '0');
-    $('div#collapseBtn button').text('>>');
+    $('div#collapseBtn button').text('>');
     showPanel = !showPanel;
   } else {
     $('div#panel').css('width', '300px');
     $('div#panelContent').css('opacity', '1');
-    $('div#collapseBtn button').text('<<');
+    $('div#collapseBtn button').text('<');
     showPanel = !showPanel;
   }
 }
@@ -55,21 +49,128 @@ var collapsePanelXs = function() {
   }
 }
 
-// adding layers
-map.createPane('conflictpane');
-map.getPane('conflictpane').style.zIndex = 650;
-var conflict = L.geoJson(Conflict, {
-  pane: 'conflictpane'
-});
+//adding the geojsons
+var geoJson_;
+let popngeoJson_ = {};
+let povgeoJson = {};
+let congeoJson = {};
 
-var pov = L.geoJson(poverty, {
-  style: stylepoverty
-});
+//calling hippos from google sheets
+var baseMaps = {}
+var density;
+let hip_sheet = "1478917428"
+let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
+let url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${hip_sheet}`
+axios.get(url, {
+    mode: 'no-cors'
+  })
+  .then(r => {
+    hippos4 = $.csv.toObjects(r.data)
+    var jsonFeatures = [];
+    hippos4.forEach(hippo => {
+      var feature = {
+        type: 'Feature',
+        properties: hippo,
+        geometry: {
+          type: 'Point',
+          coordinates: [hippo['X Value'], hippo['Y Value']]
+        }
+      }
+      jsonFeatures.push(feature)
+    })
 
-var den = L.geoJson(density, {
-  style: styledensity
-});
+    geoJson_ = {
+      type: 'FeatureCollection',
+      name: 'hippos2',
+      features: jsonFeatures
+    };
+    ready(geoJson_)
+  })
+  .catch(e => console.log(e))
 
+//calling density data from google sheets
+let density_sheet = "251717838"
+url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${density_sheet}`
+axios.get(url, {
+    mode: 'no-cors'
+  })
+  .then(r => {
+    density_data = $.csv.toObjects(r.data),
+      density_data.forEach(point => {
+        popngeoJson_[point["NAME"]] = parseInt(point["pop_density"])
+      })
+
+//calling geosjon and style for density
+    var den = L.geoJson(density, {
+      style: styledensity
+    })
+
+//creating layer for density
+    baseMaps["Population Density"] = den
+    
+  })
+  .catch(e => console.log(e))
+
+//calling poverty data from google sheets
+let poverty_sheet = "2065427744"
+url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${poverty_sheet}`
+axios.get(url, {
+    mode: 'no-cors'
+  })
+  .then(r => {
+    poverty_data = $.csv.toObjects(r.data),
+      poverty_data.forEach(point => {
+        povgeoJson[point["SNAME2014"]] = parseFloat(point["Poverty_5"])
+      })
+
+      //calling geosjon and style for poverty
+      var pov = L.geoJson(poverty, {
+        style: stylepoverty
+      });
+
+      //creating layer for poverty, landcover and conflicts
+      baseMaps["Household Poverty Rates"] = pov
+      baseMaps["LandCover Classification"] = landcover
+
+      L.control.layers(baseMaps, "",  {
+        collapsed: false,
+      }).addTo(map);
+  })
+  .catch(e => console.log(e))
+
+  //calling conflict data from google sheets
+  let conflict_sheet = "990779069"
+  url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${conflict_sheet}`
+  axios.get(url, {
+      mode: 'no-cors'
+    })
+    .then(r => {
+      conflict_data = $.csv.toObjects(r.data),
+        conflict_data.forEach(point => {
+          congeoJson[point["Name"]] = parseFloat(point["conflict"])
+        })
+
+        //calling geosjon and style for conflict
+        map.createPane('conflictpane');
+        map.getPane('conflictpane').style.zIndex = 650;
+        var conflict = L.geoJson(Conflict, {
+          pane: 'conflictpane'
+        });
+
+        //creating layer for conflicts
+        var layMaps = {
+          "Boundary Conflicts": conflict
+        };
+
+              L.control.layers("", layMaps, {
+                collapsed: false,
+              }).addTo(map);
+
+
+    })
+    .catch(e => console.log(e))
+
+// styles for the geojosns
 function getColorconflict(d) {
   return d > 1 ? '#b30000' :
     d > 2 ? '#e34a33' :
@@ -77,36 +178,13 @@ function getColorconflict(d) {
     '#fef0d9';
 }
 
-function styleconflict(feature) {
-  return {
-    fillColor: getColorconflict(feature.properties.conflict),
-    weight: 1,
-    opacity: 1,
-    color: 'black',
-    dashArray: '0',
-    fillOpacity: 1
-  };
-}
-console.log(conflict)
-
 function getColorpoverty(d) {
-  return d > 0.8  ? '#b30000' :
-    d > 0.22  ? '#e34a33' :
-    d > 0.18  ? '#fc8d59' :
-    d > 0.15  ? '#fdbb84' :
-    d > 0.11  ? '#fdd49e' :
+  return d > 0.8 ? '#b30000' :
+    d > 0.22 ? '#e34a33' :
+    d > 0.18 ? '#fc8d59' :
+    d > 0.15 ? '#fdbb84' :
+    d > 0.11 ? '#fdd49e' :
     '#fef0d9';
-}
-
-function stylepoverty(feature) {
-  return {
-    fillColor: getColorpoverty(feature.properties.Poverty_5),
-    weight: 1,
-    opacity: 1,
-    color: 'black',
-    dashArray: '0',
-    fillOpacity: 1
-  };
 }
 
 function getColordensity(d) {
@@ -115,17 +193,6 @@ function getColordensity(d) {
     d > 200 ? '#fecc5c' :
     d > 100 ? '#ffffb2' :
     '#fef0d9';
-}
-
-function styledensity(feature) {
-  return {
-    fillColor: getColordensity(feature.properties.pop_density),
-    weight: 1,
-    opacity: 1,
-    color: 'black',
-    dashArray: '0',
-    fillOpacity: 1
-  };
 }
 
 // parks
@@ -143,7 +210,7 @@ var parks = new L.GeoJSON(GVTC_parks, {
   onEachFeature: function(feature, layer) {
     layer.on('mouseover', function() {
       this.setStyle({
-        weight: 1,
+        weight: 2,
         opacity: 1,
         color: '#a2d687',
         fillOpacity: 0.0,
@@ -162,7 +229,7 @@ var parks = new L.GeoJSON(GVTC_parks, {
   }
 }).addTo(map);
 parks.eachLayer(function(layer) {
-  layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG +  '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
+  layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG + '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
 });
 
 // waterbodies
@@ -225,65 +292,72 @@ parks_outside.eachLayer(function(layer) {
   layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG + '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
 });
 
-// animals
-map.createPane('elephantpane');
-map.getPane('elephantpane').style.zIndex = 650;
-var Elephant = L.geoJson(Elephant_habitat, {
-  pane: 'elephantpane',
-  style: {
-    weight: 2,
+//calling the styles that power the geojsons
+function styledensity(feature) {
+  return {
+    fillColor: getColordensity(popngeoJson_[feature.properties.NAME]),
+    weight: 1,
     opacity: 1,
-    color: '#006400',
-    fillOpacity: 0,
-    fillColor: '#006400'
-  }
-});
-
-function zoomToFeature(e) {
-  map.fitBounds(e.target.getBounds());
+    color: 'black',
+    dashArray: '0',
+    fillOpacity: 1
+  };
 }
 
-map.createPane('gorillapane');
-map.getPane('gorillapane').style.zIndex = 650;
-var Gorilla = L.geoJson(Gorilla_habitat, {
-  pane: 'gorillapane',
-  style: {
-    weight: 2,
+function stylepoverty(feature) {
+  return {
+    fillColor: getColorpoverty(povgeoJson[feature.properties.SNAME2014]),
+    weight: 1,
     opacity: 1,
-    color: '#FF0000',
-    fillOpacity: 0,
-    fillColor: '#FF0000'
-  }
-});
-
-function zoomToFeature(e) {
-  map.fitBounds(e.target.getBounds());
+    color: 'black',
+    dashArray: '0',
+    fillOpacity: 1
+  };
 }
 
-map.createPane('hippopane');
-map.getPane('hippopane').style.zIndex = 650;
-var geojsonMarkerOptions = {
-  pane: 'hippopane',
-  radius: 2,
-  fillColor: "#07528B",
-  color: "#000",
-  weight: 0.6,
-  opacity: 1,
-  fillOpacity: 1
-};
+function styleconflict(feature) {
+  return {
+    fillColor: getColorconflict(feature.properties.Name),
+    weight: 1,
+    opacity: 1,
+    color: 'black',
+    dashArray: '0',
+    fillOpacity: 1
+  };
+}
 
-var Hip = L.geoJson(hippos, {
-  pointToLayer: function(feature, latlng) {
-    return L.circleMarker(latlng, geojsonMarkerOptions);
-  },
-  onEachFeature: function(features, featureLayer) {
-    featureLayer.bindPopup(features.properties.Name);
-    featureLayer.on('click', function(e) {
-      map.setView(e.latlng, 8)
-    });
+function ready(geoJson_) {
+  map.createPane('hippopane');
+  map.getPane('hippopane').style.zIndex = 650;
+  var geojsonMarkerOptions = {
+    pane: 'hippopane',
+    radius: 2,
+    fillColor: "#07528B",
+    color: "#000",
+    weight: 0.6,
+    opacity: 1,
+    fillOpacity: 1
+  };
 
-  }
-});
+//adding the hippos layer
+  var Hip = L.geoJson(geoJson_, {
+    pointToLayer: function(feature, coordinates) {
+      return L.circleMarker(coordinates, geojsonMarkerOptions);
+    },
+
+  });
+
+  var overlayMaps = {
+    // "Gorilla Habitat": Gorilla,
+    "Hippos": Hip
+    // "Elephant Habitat": Elephant
+  };
+
+  L.control.layers("", overlayMaps, {
+    collapsed: false,
+  }).addTo(map);
+}
+
 
 // layer control
 var povlegend = L.control({
@@ -324,7 +398,7 @@ denlegend.onAdd = function(map) {
     to = grades[i + 1];
 
     labels.push(
-      '<i style="background:' + getColordensity(from ) + '"></i> ' +
+      '<i style="background:' + getColordensity(from) + '"></i> ' +
       from + (to ? '&ndash;' + to : '+'));;
   }
 
@@ -333,59 +407,37 @@ denlegend.onAdd = function(map) {
 };
 
 map.on('baselayerchange', function(eventLayer) {
-if (eventLayer.name === 'Household Poverty Rates') {
+  if (eventLayer.name === 'Household Poverty Rates') {
     map.removeControl(denlegend);
     povlegend.addTo(map);
-  }
-else if (eventLayer.name === 'Population Density') {
+  } else if (eventLayer.name === 'Population Density') {
     map.removeControl(povlegend);
     denlegend.addTo(map);
   }
 })
 
 //layer control 2
-var landLegend = L.control({position: 'bottomright'});
-landLegend.onAdd = function (map) {
-var div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML +=
+var landlegend = L.control({
+  position: 'bottomright'
+});
+landlegend.onAdd = function(map) {
+  var div = L.DomUtil.create('div', 'info legend');
+  div.innerHTML +=
     '<img class= "landlegend" src="images/geoserver-GetLegendGraphic.png" alt="legend">';
-return div;
+  return div;
 };
 
 map.on('baselayerchange', function(eventLayer) {
- if (eventLayer.name === 'LandCover Classification') {
-    map.removeControl(denlegend||povlegend);
-    landLegend.addTo(map);
+  if (eventLayer.name === 'LandCover Classification') {
+    map.removeControl(denlegend || povlegend);
+    landlegend.addTo(map);
   }
 })
 
-
-var layMaps = {
-  "Gorilla Habitat": Gorilla,
-  "Hippos": Hip,
-  "Elephant Habitat": Elephant
-};
-var baseMaps = {
-  "Household Poverty Rates": pov,
-  "Population Density": den,
-  "LandCover Classification": landcover
-
-};
-var overlayMaps = {
-  "Boundary Conflicts": conflict,
-};
-
-L.control.layers("", layMaps, {
-  collapsed: false,
-}).addTo(map);
-
+//leaflet legend containers
 var legendFrom = $('.leaflet-top.leaflet-right');
 var legendTo = $('#container1');
 setParent(legendFrom[0], legendTo[0]);
-
-L.control.layers(baseMaps, overlayMaps, {
-  collapsed: false,
-}).addTo(map);
 
 var legendFrom = $('.leaflet-bottom.leaflet-left');
 var legendTo = $('#container2');
@@ -393,7 +445,6 @@ setParent(legendFrom[0], legendTo[0]);
 
 function layer() {
   var layer = this;
-  console.log(layer)
   var name = layer.getGeoJSON().name;
   var item = filters.appendChild(document.createElement('div'));
   var checkbox = item.appendChild(document.createElement('input'));
@@ -408,23 +459,3 @@ function layer() {
     (checkbox.checked) ? layer.addTo(map): map.removeLayer(layer);
   }
 }
-
-//the dropdown function for the year picker
-let picker = document.getElementById("picker1");
-
-// Defining custom functions
-function sayHello() {
-  console.log('say Hello to 2016');
-}
-
-picker.addEventListener("click", sayHello);
-
-let pickerTwo = document.getElementById("picker2");
-
-//defining the function for 2017
-
-function setHoverColor() {
-  console.log('set the Hello to 2017');
-}
-
-pickerTwo.addEventListener("click", setHoverColor);

@@ -113,7 +113,7 @@ ul,
 dl {
   margin-top: 4em;
   margin-bottom: 10rem;
-  margin-left: -2em;
+  margin-left: -2.5em;
 
 }
 
@@ -217,6 +217,7 @@ svg {
 
 table {
   border-collapse: collapse;
+  border-color: #80808073;
 }
 
 caption {
@@ -229,6 +230,11 @@ caption {
 
 th {
   text-align: inherit;
+  width: 10em;
+}
+
+td{
+padding: 1%
 }
 
 label {
@@ -10326,3 +10332,17 @@ body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
 }
+
+.col-md-10{
+  width: 10%;
+}
+
+/* .container {
+  margin-top: 20px;
+}
+.page {
+  display: none;
+}
+.page-active {
+  display: block;
+} */

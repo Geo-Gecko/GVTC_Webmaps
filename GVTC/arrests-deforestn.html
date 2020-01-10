@@ -22,6 +22,10 @@
   <link href="css/style.css" rel="stylesheet">
   <link href="css/arrests-deforestn.css" rel="stylesheet">
 
+  <script type="text/javascript" src="../js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../jquery.csv.js"></script>
+
 </head>
 
 <body id="page-top">
@@ -47,13 +51,6 @@
       <div id="panelContent" class="container-fluid_d">
         <div class="nav-link_d">
           <p>Dashboard</p>
-        </div>
-        <div id='selector_menu'>
-          <select id='selector'>
-            <option size="16" value='Reset'>---Select year---</option>
-            <option value='2016'>2016</option>
-            <option value='2017'>2017</option>
-          </select>
         </div>
         <br>
         <ul class="sidebar navbar-nav">
@@ -90,357 +87,18 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            Arrests</div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th>
-                      <span>
-                        <div>
-                          <h4>142 <img src="images/handcuffs3.png" height="60" width="75" align="middle"> </h4>
-                        </div>
-                      </span>
-                      <br>
-                      <h5>Arrested</h5>
-                    </th>
-                    <th>
-                      <h4>37 <img src="images/prosecuted4.png" height="60" width="80" align="middle"> </h4>
-                      <br>
-                      <h5>Prosecuted</h5>
-                    </th>
-                    <th>
-                      <h4>37 <img src="images/sentenced.png" height="60" width="80" align="middle"> </h4>
-                      <br>
-                      <h5>Sentenced</h5>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td> <strong> Mgahinga</strong> </td>
-                    <td>
-                      <span>
-                        <p>35</p>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                      <span>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                    </td>
-                    <td>
-                      <span>
-                        <p>19</p>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <!-- <img src="images/person1.png" width="11px" height="30px"> -->
-                        </div>
-                      </span>
-                    </td>
-                    <td>
-                      <span>
-                        <p>19</p>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <!-- <img src="images/person1.png" width="11px" height="30px"> -->
-                        </div>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td> <strong> Volcanos</strong> </td>
-                    <td>
-                      <span>
-                        <p>15</p>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                    </td>
-                    <td>
-                      <span>
-                        <p>11</p>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                    </td>
-                    <td>
-                      <span>
-                        <p>11</p>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td> <strong> Queen Elizabeth</strong> </td>
-                    <td>
-                      <span>
-                        <p>81</p>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                      <span>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                      <span>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                      <span>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                      <span>
-                        <div>
-                          <img src="images/person1.png" width="11px" height="30px"> </div>
-                      </span>
-                    </td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td> <strong>Bwindi </strong> </td>
-                    <td>
-                      <span>
-                        <div>
-                          <p>9</p>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                    </td>
-                    <td>
-                      <span>
-                        <div>
-                          <p>7</p>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                    </td>
-                    <td>
-                      <span>
-                        <div>
-                          <p>7</p>
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                          <img src="images/person1.png" width="11px" height="30px">
-                        </div>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            Arrests
+          </div>
+          <div class="card-body" >
+              <div class="slider" id="tables_">
+              </div>
+              <div class="slider-nav">
+                <span class="arrow-prev">
+                  <i class="fa fa-chevron-left"></i></span>
+                <ul class="slider-dots"></ul>
+                <span class="arrow-next">
+                  <i class="fa fa-chevron-right"></i></span>
+              </div>
           </div>
           <div class="card-footer small text-muted"></div>
         </div>
@@ -500,6 +158,10 @@
   <!-- Page level plugin JavaScript-->
   <script src="vendor/datatables/jquery.dataTables.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+  <script type="text/javascript" src="../js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../jquery.csv.js"></script>
+
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>

@@ -14,8 +14,10 @@
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 
+
   <!-- Page level plugin CSS-->
   <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin.css" rel="stylesheet">
@@ -46,13 +48,6 @@
       <div id="panelContent" class="container-fluid_d">
         <div class="nav-link_d">
           <p>Dashboard</p>
-        </div>
-        <div id='selector_menu'>
-          <select id='selector'>
-            <option size="16" value='Reset'>---Select year---</option>
-            <option value='2016'>2016</option>
-            <option value='2017'>2017</option>
-          </select>
         </div>
         <br>
         <ul class="sidebar navbar-nav">
@@ -86,82 +81,21 @@
         <!-- Area Chart Example-->
         <div class="card mb-3">
           <div class="card-header">
-            <!-- <i class="fas fa-chart-area"></i> -->
             <i class="fas fa-chart-pie"></i>
             Patrol Coverage</div>
-          <div class="card-body">
-            <!-- <canvas id="myAreaChart" width="100%" height="30"></canvas> -->
-            <table style="width:100%">
-              <tr>
-                <th style="padding-left: 50px"></th>
-                <th>&emsp;&emsp;Virunga_mikeno</th>
-                <th>&emsp;&emsp;Mgahinga</th>
-                <th>&emsp;&emsp;&emsp;Bwindi</th>
-                <th>&emsp;&emsp;&emsp;&emsp;Volcanos</th>
-              </tr>
-              <tr>
-                <td><b> 2017 </b></td>
-                <td>
-                  <div class="container">
-                    <div class="box">
-                      <div class="chart" data-percent="94.18">94.18%</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="container">
-                    <div class="box">
-                      <div class="chart" data-percent="71.66">71.66%</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="container">
-                    <div class="box">
-                      <div class="chart" data-percent="95.69">95.69%</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="container">
-                    <div class="box">
-                      <div class="chart" data-percent="31.9">31.9%</div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td><b> 2016 </b></td>
-                <td>
-                  <div class="container">
-                    <div class="box">
-                      <div class="chart" data-percent="61.18">61.18%</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="container">
-                    <div class="box">
-                      <div class="chart" data-percent="66.10">66.10%</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="container">
-                    <div class="box">
-                      <div class="chart" data-percent="84.69">84.69%</div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div class="container">
-                    <div class="box">
-                      <div class="chart" data-percent="33.62">73%</div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </table>
+          <div class="card-body" style="display: flex; width: 31em;">
+            <div class="col-md-10"><strong>Virunga</strong>
+              <canvas class="Chart1"></canvas>
+            </div>
+            <div class="col-md-10"><strong>Mgahinga</strong>
+              <canvas class="Chart2"></canvas>
+            </div>
+            <div class="col-md-10"><strong>Bwindi</strong>
+              <canvas class="Chart3"></canvas>
+            </div>
+            <div class="col-md-10"><strong>Volcanoes</strong>
+              <canvas class="Chart4"></canvas>
+            </div>
           </div>
         </div>
 
@@ -224,11 +158,10 @@
     <i class="fas fa-angle-up"></i>
   </a>
 
-<!-- chart js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://jscharting.com/jsc15/jscharting.js"></script>
-
-
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -239,24 +172,25 @@
 
   <!-- Page level plugin JavaScript-->
   <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+  <script type="text/javascript" src="../js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="../jquery.csv.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin.min.js"></script>
 
   <!-- Demo scripts for this page-->
+  <script src="js/demo/datatables-demo.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-bar-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 
-  <!-- adding easy pie chart js -->
-
-  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-  <script src="vendor/easy-pie-chart/jquery.easypiechart.js"></script>
-
-  <!-- adding chart js -->
+  <!-- scripts for adding the charts-->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.14.3/dist/xlsx.full.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datasource@0.1.0"></script>
+
+  <!-- adding js file-->
   <script src="js/patrol-traffick-cropraid.js"></script>
 
 </body>
