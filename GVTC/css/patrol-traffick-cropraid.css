@@ -173,17 +173,34 @@ div.col-xs-12{
 }
 
 /*Side panel*/
+@media (max-width:1500px){
 div#panel_d {
   position: fixed;
   top: 15vh;
   height: 85vh;
-  width: 22%;
+  width: 17%;
   background-color: #fafafa;
   opacity: 0.92;
   -webkit-transition: width 0.6s;
   transition: width 0.6s;
   z-index: 10000;
   border: 1px solid black;
+}
+}
+
+@media (min-width:1500px){
+  div#panel_d {
+    position: fixed;
+    top: 15vh;
+    height: 85vh;
+    width: 22%;
+    background-color: #fafafa;
+    opacity: 0.92;
+    -webkit-transition: width 0.6s;
+    transition: width 0.6s;
+    z-index: 10000;
+    border: 1px solid black;
+  }
 }
 
 div#panelContent {

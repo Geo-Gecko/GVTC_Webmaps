@@ -237,7 +237,6 @@ $('.slider-dots li:first').addClass('active-dot');
     })
     .then(r => {
       let arrests = $.csv.toObjects(r.data)
-      console.log(arrests)
 
       let years_ = []
       let no_of_tables = Object.keys(arrests[0])

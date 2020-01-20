@@ -594,14 +594,28 @@ pre code {
   }
 }
 
-.container-fluid {
-  top: 30%;
-  left: 35%;
-  width: 92em;
-  height: 18em;
-  margin-top: -8.5em;
-  margin-left: -15em;
-  position: absolute;}
+@media (max-width:1500px){
+  .container-fluid {
+    top: 0%;
+    width: 76%;
+    height: 85vh;
+    margin-top: 8.5em;
+    margin-left: 20.5em;
+    position: absolute;
+  }
+   }
+
+   @media (min-width:1500px){
+     .container-fluid {
+       top: 2%;
+       left: 5%;
+       width: 77%;
+       height: 85vh;
+       margin-top: 8.5em;
+       margin-left: 20.5em;
+       position: absolute;
+     }
+      }
 
 .row {
   display: -webkit-box;

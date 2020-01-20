@@ -214,23 +214,6 @@ div#panelContent {
   transition: opacity 0.6s;
 }
 
-div#collapseBtn {
-  right: 0px;
-  margin-top: 7px;
-  font-weight: bold;
-  position: absolute;
-  z-index: 1000;
-}
-
-div#collapseBtn button {
-  background-color: #ffffff;
-  opacity: 0.5;
-  height: 30px;
-  width: 30px;
-  margin-top: 6px;
-  border: none;
-}
-
 div .nav-link {
   width: 100%;
   position: absolute;
@@ -374,18 +357,28 @@ div#panelContent {
   opacity: 0.7;
 }
 
+@media (max-width:1500px){
 .landlegend {
-  width: 80%;
+  width: 73%;
   position: relative;
+  left: 21%;
+}
+}
+
+@media (min-width:1500px){
+  .landlegend {
+    width: 80%;
+    position: relative;
+  }
 }
 
 .legend_gvtc {
   position: absolute;
-  bottom: 53px;
+  bottom: -4px;
   z-index: 1000;
 }
 
 .gvtc_legend {
   position: relative;
-  width: 64%;
+  width: 84%;
 }

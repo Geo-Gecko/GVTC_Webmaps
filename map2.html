@@ -4,13 +4,23 @@
 <head>
   <meta charset="utf-8">
   <title>GVTC Deforestation Map</title>
+
   <link rel="stylesheet" href="css/style_map2.css" type="text/css" />
   <link rel="stylesheet" href="leaflet/leaflet.css" type="text/css" />
-  <script src="leaflet/leaflet.js" charset="utf-8"></script>
-  <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" crossorigin="" />
-  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet-src.js" crossorigin=""></script> -->
   <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css"><!-- debug css version-->
   <link rel="stylesheet" href="lib/ol3.8.2/ol.css" type="text/css" />
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="leaflet/leaflet.js" charset="utf-8"></script>
+  <script type="text/javascript" src="js/jquery-1.9.1.min.js" charset="UTF-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.9.1/jquery.csv.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script src="jquery.csv.js"></script>
+
   <!-- data files -->
   <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
   <script src="data/Parks_Outside.geojson" charset="utf-8"></script>
@@ -47,8 +57,7 @@
     <!-- side panel -->
     <div id="panel_2">
       <div id="collapseBtn">
-        <button type="button" class="panelclose_button" onclick="collapsePanel();">
-          << </button> </div> <div id="panelContent" class="container-fluid">
+        </div> <div id="panelContent" class="container-fluid">
             <div class="nav-link">
               <p>Deforestation</p>
             </div>
@@ -95,11 +104,17 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="js/L.Map.Sync.js"></script>
   <script src="js/map2.js"></script>
   <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
   <script type="text/javascript" src="lib/ol3.8.2/ol-debug.js"></script>
+
+  <!-- <script>
+  function refreshPage(){
+      window.location.reload();
+  }
+  </script> -->
+
 
 </body>
 

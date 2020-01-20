@@ -160,7 +160,6 @@ div#panel {
   transition: width 0.6s;
   z-index: 10000;
   border: 1px solid black;
-  overflow-y: auto;
 }
 
 div#collapseBtn {
@@ -216,6 +215,7 @@ select #selector {
   border-width: 1px;
   border-style: solid;
   border-color: rgb(169, 169, 169);
+  top: 2em;
 }
 
 .refresh:hover {
@@ -372,18 +372,28 @@ div#panelContent {
   opacity: 0.7;
 }
 
+@media (max-width:1500px){
 .landlegend {
-  width: 80%;
+  width: 73%;
   position: relative;
+  left: 21%;
+}
+}
+
+@media (min-width:1500px){
+  .landlegend {
+    width: 80%;
+    position: relative;
+  }
 }
 
 .legend_gvtc {
   position: absolute;
-  bottom: 53px;
+  bottom: -4px;
   z-index: 1000;
 }
 
 .gvtc_legend {
   position: relative;
-  width: 64%;
+  width: 84%;
 }

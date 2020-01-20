@@ -300,6 +300,8 @@ div .logo a{
 
 img.gecko{
  width: 100px;
+ bottom: 0;
+ position: fixed;
 }
 
 div#panelContent {

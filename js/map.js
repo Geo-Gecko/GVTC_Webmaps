@@ -13,42 +13,6 @@ var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/
   subdomains: 'abcd',
 }).addTo(map);
 
-
-// Add specific classes to OpenLayers elements: hide these controls for mobile view using Bootstrap classes
-$('.ol-scale-line').addClass('hidden-xs')
-$('.ol-attribution').addClass('hidden-xs')
-
-// Hide/show panel function for desktop view. The panel is shown by default.
-var showPanel = true;
-var collapsePanel = function() {
-  if (showPanel === true) {
-    $('div#panel').css('width', '35px');
-    $('div#panelContent').css('opacity', '0');
-    $('div#collapseBtn button').text('>');
-    showPanel = !showPanel;
-  } else {
-    $('div#panel').css('width', '300px');
-    $('div#panelContent').css('opacity', '1');
-    $('div#collapseBtn button').text('<');
-    showPanel = !showPanel;
-  }
-}
-
-// Hide/show panel function for mobile view. The panel is not shown by default.
-var showPanelXs = false;
-var collapsePanelXs = function() {
-  if (showPanelXs === true) {
-    $('div#panel').css('width', '0px');
-    $('div#panelContent').css('opacity', '0');
-    showPanelXs = !showPanelXs;
-  } else {
-    $('div#panel').css('width', 'calc(100% - 45px)');
-    $('div#panelContent').css('opacity', '1');
-    $('div#navbar').removeClass('in')
-    showPanelXs = !showPanelXs;
-  }
-}
-
 //adding the geojsons
 var geoJson_;
 let popngeoJson_ = {};
@@ -107,7 +71,7 @@ axios.get(url, {
 
 //creating layer for density
     baseMaps["Population Density"] = den
-    
+
   })
   .catch(e => console.log(e))
 
@@ -147,7 +111,7 @@ axios.get(url, {
     .then(r => {
       conflict_data = $.csv.toObjects(r.data),
         conflict_data.forEach(point => {
-          congeoJson[point["Name"]] = parseFloat(point["conflict"])
+          congeoJson[point["Name"]] = parseFloat(point["conflict_"])
         })
 
         //calling geosjon and style for conflict
@@ -339,6 +303,41 @@ function ready(geoJson_) {
     fillOpacity: 1
   };
 
+//adding the animal habitats
+map.createPane('elephantpane');
+map.getPane('elephantpane').style.zIndex = 650;
+var Elephant = L.geoJson(Elephant_habitat, {
+  pane: 'elephantpane',
+  style: {
+    weight: 2,
+    opacity: 1,
+    color: '#006400',
+    fillOpacity: 0,
+    fillColor: '#006400'
+  }
+});
+
+function zoomToFeature(e) {
+  map.fitBounds(e.target.getBounds());
+}
+
+map.createPane('gorillapane');
+map.getPane('gorillapane').style.zIndex = 650;
+var Gorilla = L.geoJson(Gorilla_habitat, {
+  pane: 'gorillapane',
+  style: {
+    weight: 2,
+    opacity: 1,
+    color: '#FF0000',
+    fillOpacity: 0,
+    fillColor: '#FF0000'
+  }
+});
+
+function zoomToFeature(e) {
+  map.fitBounds(e.target.getBounds());
+}
+
 //adding the hippos layer
   var Hip = L.geoJson(geoJson_, {
     pointToLayer: function(feature, coordinates) {
@@ -348,9 +347,9 @@ function ready(geoJson_) {
   });
 
   var overlayMaps = {
-    // "Gorilla Habitat": Gorilla,
-    "Hippos": Hip
-    // "Elephant Habitat": Elephant
+    "Gorilla Habitat": Gorilla,
+    "Hippos": Hip,
+    "Elephant Habitat": Elephant
   };
 
   L.control.layers("", overlayMaps, {
