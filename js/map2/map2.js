@@ -82,11 +82,11 @@ map.sync(mapB, {
 let popngeoJson_ = {};
 let povgeoJson = {};
 
-
-["map2a", "styleMap2", "map2Panes", "mapA", "mapB", "mapLayerControl"].forEach(layer => {
+// add files from map2 folder to map2.html
+["map2a", "styleMap2", "map2Panes", "mapA", "mapB", "mapLayerControl"].forEach(folder => {
   let hmap = document.createElement("script");
   hmap.setAttribute("type", "text/javascript");
-  hmap.setAttribute("src", `js/map/${layer}.js`);
+  hmap.setAttribute("src", `js/map2/${folder}.js`);
   document.body.appendChild(hmap)
 })
 

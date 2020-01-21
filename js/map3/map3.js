@@ -1,34 +1,32 @@
-//adding the map
-var map = L.map('map', {
-  minZoom: 8
-}).setView([-0.2, 29.24], 8);
-
-
 function setParent(el, newParent) {
   newParent.appendChild(el);
 }
 
+var map = L.map('map', {
+    minZoom: 8
+}).setView([-0.2, 29.24], 8);
+
 var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
   subdomains: 'abcd',
+  //maxZoom: 8
+  // minZoom: 20
 }).addTo(map);
 
-//adding the geojsons
-var density;
-var baseMaps = {}
-var geoJson_;
-let popngeoJson_ = {};
-let povgeoJson = {};
-let congeoJson = {};
-let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw";
 
-// add files from map folder to map1.html
-["hippoMap", "povertyLandCMap", "mapPanes", "styleMap"].forEach(folder => {
+// Add specific classes to OpenLayers elements: hide these controls for mobile view using Bootstrap classes
+$('.ol-scale-line').addClass('hidden-xs')
+$('.ol-attribution').addClass('hidden-xs')
+
+
+// add files from map3 folder to map3.html
+["map3Style", "map3Layers"].forEach(folder => {
   let hmap = document.createElement("script");
   hmap.setAttribute("type", "text/javascript");
-  hmap.setAttribute("src", `js/map/${folder}.js`);
+  hmap.setAttribute("src", `js/map3/${folder}.js`);
   document.body.appendChild(hmap)
 })
+
 
 // layer control
 var povlegend = L.control({
@@ -69,7 +67,7 @@ denlegend.onAdd = function(map) {
     to = grades[i + 1];
 
     labels.push(
-      '<i style="background:' + getColordensity(from) + '"></i> ' +
+      '<i style="background:' + getColordensity(from ) + '"></i> ' +
       from + (to ? '&ndash;' + to : '+'));;
   }
 
@@ -78,39 +76,43 @@ denlegend.onAdd = function(map) {
 };
 
 map.on('baselayerchange', function(eventLayer) {
-  if (eventLayer.name === 'Household Poverty Rates') {
+if (eventLayer.name === 'Household Poverty Rates') {
     map.removeControl(denlegend);
     povlegend.addTo(map);
-  } else if (eventLayer.name === 'Population Density') {
+  }
+else if (eventLayer.name === 'Population Density') {
     map.removeControl(povlegend);
     denlegend.addTo(map);
   }
 })
 
 //layer control 2
-var landlegend = L.control({
-  position: 'bottomright'
-});
-landlegend.onAdd = function(map) {
-  var div = L.DomUtil.create('div', 'info legend');
-  div.innerHTML +=
+var landLegend = L.control({position: 'bottomright'});
+landLegend.onAdd = function (map) {
+var div = L.DomUtil.create('div', 'info legend');
+    div.innerHTML +=
     '<img class= "landlegend" src="images/geoserver-GetLegendGraphic.png" alt="legend">';
-  return div;
+return div;
 };
 
 map.on('baselayerchange', function(eventLayer) {
-  if (eventLayer.name === 'LandCover Classification') {
-    map.removeControl(denlegend || povlegend);
-    landlegend.addTo(map);
+ if (eventLayer.name === 'LandCover Classification') {
+    map.removeControl(denlegend||povlegend);
+    landLegend.addTo(map);
   }
 })
 
-//leaflet legend containers
-var legendFrom = $('.leaflet-top.leaflet-right');
-var legendTo = $('#container1');
-setParent(legendFrom[0], legendTo[0]);
 
-var legendFrom = $('.leaflet-bottom.leaflet-left');
+var baseMaps = {
+  "Household Poverty Rates": pov,
+  "Population Density": den,
+  "LandCover Classification": landcover
+};
+
+L.control.layers(baseMaps, "",{
+  collapsed: false
+}).addTo(map);
+var legendFrom = $('.leaflet-control-layers');
 var legendTo = $('#container2');
 setParent(legendFrom[0], legendTo[0]);
 
