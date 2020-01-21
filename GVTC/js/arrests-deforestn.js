@@ -47,8 +47,9 @@ function plotOne(xValues, yValues) {
       scales: {
         yAxes: [{
           ticks: {
-
-            beginAtZero: true
+            beginAtZero: true,
+            stepSize: 10,
+            min: 11620
           }
         }]
       }
@@ -104,8 +105,9 @@ function plotTwo(xValues, yValues) {
       scales: {
         yAxes: [{
           ticks: {
-
-            beginAtZero: true
+            beginAtZero: true,
+            stepSize: 50,
+            min: 7500
           }
         }]
       }
@@ -161,8 +163,9 @@ function plotThree(xValues, yValues) {
       scales: {
         yAxes: [{
           ticks: {
-
-            beginAtZero: true
+            beginAtZero: true,
+            stepSize: 0.2,
+            min: 48
           }
         }]
       }

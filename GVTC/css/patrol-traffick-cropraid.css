@@ -178,7 +178,7 @@ div#panel_d {
   position: fixed;
   top: 15vh;
   height: 85vh;
-  width: 17%;
+  width: 22%;
   background-color: #fafafa;
   opacity: 0.92;
   -webkit-transition: width 0.6s;
@@ -410,4 +410,18 @@ div#panelContent {
 
 .slider-dots li.active-dot {
   color: #363636;
+}
+
+@media (min-width:1500px){
+#pies{
+  display: flex;
+  width: 31em;
+}
+}
+
+@media (max-width:1500px){
+#pies{
+  display: flex;
+  width: 23em;
+}
 }

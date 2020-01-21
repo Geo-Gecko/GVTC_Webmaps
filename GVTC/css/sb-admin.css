@@ -10154,6 +10154,20 @@ body {
   color: #000000;
 }
 
+@media (max-width:1500px){
+  .sidebar .nav-item .nav-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    width: 314px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+  @media (min-width:1500px){
   .sidebar .nav-item .nav-link {
     display: block;
     width: 100%;
@@ -10164,6 +10178,8 @@ body {
     font-size: 16px;
     font-weight: bold;
   }
+}
+
   .sidebar .nav-item .nav-link span {
     font-size: 1rem;
     display: inline;

@@ -103,36 +103,36 @@ axios.get(url, {
   .catch(e => console.log(e))
 
   //calling conflict data from google sheets
-  let conflict_sheet = "990779069"
-  url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${conflict_sheet}`
-  axios.get(url, {
-      mode: 'no-cors'
-    })
-    .then(r => {
-      conflict_data = $.csv.toObjects(r.data),
-        conflict_data.forEach(point => {
-          congeoJson[point["Name"]] = parseFloat(point["conflict_"])
-        })
+  // let conflict_sheet = "990779069"
+  // url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${conflict_sheet}`
+  // axios.get(url, {
+  //     mode: 'no-cors'
+  //   })
+  //   .then(r => {
+  //     conflict_data = $.csv.toObjects(r.data),
+  //       conflict_data.forEach(point => {
+  //         congeoJson[point["Name"]] = parseFloat(point["conflict_"])
+  //       })
 
         //calling geosjon and style for conflict
-        map.createPane('conflictpane');
-        map.getPane('conflictpane').style.zIndex = 650;
-        var conflict = L.geoJson(Conflict, {
-          pane: 'conflictpane'
-        });
+        // map.createPane('conflictpane');
+        // map.getPane('conflictpane').style.zIndex = 650;
+        // var conflict = L.geoJson(Conflict, {
+        //   pane: 'conflictpane'
+        // });
 
         //creating layer for conflicts
-        var layMaps = {
-          "Boundary Conflicts": conflict
-        };
-
-              L.control.layers("", layMaps, {
-                collapsed: false,
-              }).addTo(map);
-
-
-    })
-    .catch(e => console.log(e))
+    //     var layMaps = {
+    //       "Boundary Conflicts": conflict
+    //     };
+    //
+    //           L.control.layers("", layMaps, {
+    //             collapsed: false,
+    //           }).addTo(map);
+    //
+    //
+    // })
+    // .catch(e => console.log(e))
 
 // styles for the geojosns
 function getColorconflict(d) {
