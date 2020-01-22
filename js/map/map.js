@@ -23,7 +23,7 @@ let congeoJson = {};
 let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw";
 
 // add files from map folder to map1.html
-["hippoMap", "povertyLandCMap", "mapPanes", "styleMap"].forEach(folder => {
+["povertyLandCMap", "mapPanes", "styleMap"].forEach(folder => {
   let hmap = document.createElement("script");
   hmap.setAttribute("type", "text/javascript");
   hmap.setAttribute("src", `js/map/${folder}.js`);

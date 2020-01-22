@@ -2,12 +2,21 @@
 
 //calling density data from google sheets
 let density_sheet = "251717838"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${density_sheet}`
-axios.get(url, {
-    mode: 'no-cors'
-})
-    .then(r => {
-        density_data = $.csv.toObjects(r.data),
+let url1 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${density_sheet}`
+
+//calling poverty data from google sheets
+let poverty_sheet = "2065427744"
+let url2 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${poverty_sheet}`
+
+//calling hippos from google sheets
+let hip_sheet = "1478917428"
+let url3 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${hip_sheet}`
+
+let axioses = [axios.get(url1, { mode: 'no-cors' }), axios.get(url2, { mode: 'no-cors' }), axios.get(url3, { mode: 'no-cors' })]
+
+axios.all(axioses)
+    .then(async responseArrs => {
+        density_data = $.csv.toObjects(responseArrs[0].data),
             density_data.forEach(point => {
                 popngeoJson_[point["NAME"]] = parseInt(point["pop_density"])
             })
@@ -16,21 +25,12 @@ axios.get(url, {
         var den = L.geoJson(density, {
             style: styledensity
         })
-
         //creating layer for density
         baseMaps["Population Density"] = den
 
-    })
-    .catch(e => console.log(e))
 
-//calling poverty data from google sheets
-let poverty_sheet = "2065427744"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${poverty_sheet}`
-axios.get(url, {
-    mode: 'no-cors'
-})
-    .then(r => {
-        poverty_data = $.csv.toObjects(r.data),
+        // second URL
+        poverty_data = $.csv.toObjects(responseArrs[1].data),
             poverty_data.forEach(point => {
                 povgeoJson[point["SNAME2014"]] = parseFloat(point["Poverty_5"])
             })
@@ -44,12 +44,101 @@ axios.get(url, {
         baseMaps["Household Poverty Rates"] = pov
         baseMaps["LandCover Classification"] = landcover
 
-        L.control.layers(baseMaps, "", {
+        await L.control.layers(baseMaps, "", {
             collapsed: false,
         }).addTo(map);
+
+        // third URL
+        hippos4 = $.csv.toObjects(responseArrs[2].data)
+        var jsonFeatures = [];
+        hippos4.forEach(hippo => {
+            var feature = {
+                type: 'Feature',
+                properties: hippo,
+                geometry: {
+                    type: 'Point',
+                    coordinates: [hippo['X Value'], hippo['Y Value']]
+                }
+            }
+            jsonFeatures.push(feature)
+        })
+
+        geoJson_ = {
+            type: 'FeatureCollection',
+            name: 'hippos2',
+            features: jsonFeatures
+        };
+        ready(geoJson_)
     })
     .catch(e => console.log(e))
 
+
+function ready(geoJson_) {
+    map.createPane('hippopane');
+    map.getPane('hippopane').style.zIndex = 650;
+    var geojsonMarkerOptions = {
+        pane: 'hippopane',
+        radius: 2,
+        fillColor: "#07528B",
+        color: "#000",
+        weight: 0.6,
+        opacity: 1,
+        fillOpacity: 1
+    };
+
+    //adding the animal habitats
+    map.createPane('elephantpane');
+    map.getPane('elephantpane').style.zIndex = 650;
+    var Elephant = L.geoJson(Elephant_habitat, {
+        pane: 'elephantpane',
+        style: {
+            weight: 2,
+            opacity: 1,
+            color: '#006400',
+            fillOpacity: 0,
+            fillColor: '#006400'
+        }
+    });
+
+    function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+    }
+
+    map.createPane('gorillapane');
+    map.getPane('gorillapane').style.zIndex = 650;
+    var Gorilla = L.geoJson(Gorilla_habitat, {
+        pane: 'gorillapane',
+        style: {
+            weight: 2,
+            opacity: 1,
+            color: '#FF0000',
+            fillOpacity: 0,
+            fillColor: '#FF0000'
+        }
+    });
+
+    function zoomToFeature(e) {
+        map.fitBounds(e.target.getBounds());
+    }
+
+    //adding the hippos layer
+    var Hip = L.geoJson(geoJson_, {
+        pointToLayer: function (feature, coordinates) {
+            return L.circleMarker(coordinates, geojsonMarkerOptions);
+        },
+
+    });
+
+    var overlayMaps = {
+        "Gorilla Habitat": Gorilla,
+        "Hippos": Hip,
+        "Elephant Habitat": Elephant
+    };
+
+    L.control.layers("", overlayMaps, {
+        collapsed: false,
+    }).addTo(map);
+}
 
   //calling conflict data from google sheets
   // let conflict_sheet = "990779069"
