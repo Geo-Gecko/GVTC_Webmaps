@@ -1,18 +1,4 @@
-window.onload = function(){
-    // your JS here
-    // this might have no functionality
-function setParent(el, newParent) {
-  newParent.appendChild(el);
-}
 
-}
-
-$(function() {
-    $( "#selector_menu" ).datepicker({
-        altField: "#alternate",
-        altFormat: "DD, d MM, yy"
-    });
-});
 
 var center = [-0.002060, 29.122247];
 
@@ -24,8 +10,8 @@ var stamenOptions = {
   minZoom: 8
 };
 
-var toner= L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
+var toner = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+  attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
   subdomains: 'abcd',
   minZoom: 8
 });
@@ -78,9 +64,6 @@ map.sync(mapB, {
 });
 
 // map
-//adding the geojsons
-let popngeoJson_ = {};
-let povgeoJson = {};
 
 // add files from map2 folder to map2.html
 ["map2a", "styleMap2", "map2Panes", "mapA", "mapB", "mapLayerControl"].forEach(folder => {
@@ -90,52 +73,43 @@ let povgeoJson = {};
   document.body.appendChild(hmap)
 })
 
-// var pov = L.geoJson(poverty, {
-//   style: stylepoverty
-// });
+// add file from map folder to map2.html
+let povertyLandCMap = document.createElement("script");
+povertyLandCMap.setAttribute("type", "text/javascript");
+povertyLandCMap.setAttribute("src", "js/map/povertyLandCMap.js");
+document.body.appendChild(povertyLandCMap)
 
-// var den = L.geoJson(density, {
-//   style: styledensity
-// });
 
+
+//leaflet legend containers
+var legendFrom = $('.leaflet-top.leaflet-right');
+var legendTo = $('#container22');
+legendTo[0].appendChild(legendFrom[0]);
 
 //cursor control
-cursor1 = L.circleMarker([0,0], {riseOnHover: true, radius:25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF'});
+cursor1 = L.circleMarker([0, 0], { riseOnHover: true, radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
 cursor1.addTo(map);
-cursor2 = L.circleMarker([0,0], {radius:25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF'});
+cursor2 = L.circleMarker([0, 0], { radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
 cursor2.addTo(mapA);
-cursor3 = L.circleMarker([0,0], {radius:25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF'});
+cursor3 = L.circleMarker([0, 0], { radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
 cursor3.addTo(mapB);
 
 map.on('mousemove', function (e) {
-   cursor1.setLatLng(e.latlng);
-   cursor2.setLatLng(e.latlng);
-   cursor3.setLatLng(e.latlng);
- });
+  cursor1.setLatLng(e.latlng);
+  cursor2.setLatLng(e.latlng);
+  cursor3.setLatLng(e.latlng);
+});
 mapA.on('mousemove', function (e) {
-   cursor1.setLatLng(e.latlng);
-   cursor2.setLatLng(e.latlng);
-   cursor3.setLatLng(e.latlng);
- });
+  cursor1.setLatLng(e.latlng);
+  cursor2.setLatLng(e.latlng);
+  cursor3.setLatLng(e.latlng);
+});
 mapB.on('mousemove', function (e) {
-    cursor1.setLatLng(e.latlng);
-    cursor2.setLatLng(e.latlng);
-    cursor3.setLatLng(e.latlng);
-  });
+  cursor1.setLatLng(e.latlng);
+  cursor2.setLatLng(e.latlng);
+  cursor3.setLatLng(e.latlng);
+});
 
-
-// var baseMaps = {
-//   "Household Poverty Rates": pov,
-//   // "Population Density": den,
-//   "LandCover Classification": landcover
-// };
-// // var layMaps = {
-// //   "Border Conflicts": Conflict
-// // };
-//
-// L.control.layers( baseMaps, "",{
-//   collapsed: false
-// }).addTo(map);
 
 function layer() {
   var layer = this;
@@ -150,6 +124,6 @@ function layer() {
   checkbox.addEventListener('change', update);
 
   function update() {
-    (checkbox.checked) ? layer.addTo(map): map.removeLayer(layer);
+    (checkbox.checked) ? layer.addTo(map) : map.removeLayer(layer);
   }
 }

@@ -1,5 +1,14 @@
 
 
+//adding the geojsons
+var density;
+var baseMaps = {}
+var geoJson_;
+let popngeoJson_ = {};
+let povgeoJson = {};
+let congeoJson = {};
+let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw";
+
 //calling density data from google sheets
 let density_sheet = "251717838"
 let url1 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${density_sheet}`
@@ -15,7 +24,7 @@ let url3 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&
 let axioses = [axios.get(url1, { mode: 'no-cors' }), axios.get(url2, { mode: 'no-cors' }), axios.get(url3, { mode: 'no-cors' })]
 
 axios.all(axioses)
-    .then(async responseArrs => {
+    .then(responseArrs => {
         density_data = $.csv.toObjects(responseArrs[0].data),
             density_data.forEach(point => {
                 popngeoJson_[point["NAME"]] = parseInt(point["pop_density"])
@@ -44,10 +53,6 @@ axios.all(axioses)
         baseMaps["Household Poverty Rates"] = pov
         baseMaps["LandCover Classification"] = landcover
 
-        await L.control.layers(baseMaps, "", {
-            collapsed: false,
-        }).addTo(map);
-
         // third URL
         hippos4 = $.csv.toObjects(responseArrs[2].data)
         var jsonFeatures = [];
@@ -69,6 +74,10 @@ axios.all(axioses)
             features: jsonFeatures
         };
         ready(geoJson_)
+        
+        L.control.layers(baseMaps, "", {
+            collapsed: false,
+        }).addTo(map);
     })
     .catch(e => console.log(e))
 
@@ -135,39 +144,13 @@ function ready(geoJson_) {
         "Elephant Habitat": Elephant
     };
 
-    L.control.layers("", overlayMaps, {
-        collapsed: false,
-    }).addTo(map);
+    let current_map = window.location.href
+    current_map = current_map.split("/")
+    current_map = current_map[current_map.length - 1]
+    if (current_map.split(".")[0] != "map2") {
+        L.control.layers("", overlayMaps, {
+            collapsed: false,
+        }).addTo(map);
+    }
+
 }
-
-  //calling conflict data from google sheets
-  // let conflict_sheet = "990779069"
-  // url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${conflict_sheet}`
-  // axios.get(url, {
-  //     mode: 'no-cors'
-  //   })
-  //   .then(r => {
-  //     conflict_data = $.csv.toObjects(r.data),
-  //       conflict_data.forEach(point => {
-  //         congeoJson[point["Name"]] = parseFloat(point["conflict_"])
-  //       })
-
-        //calling geosjon and style for conflict
-        // map.createPane('conflictpane');
-        // map.getPane('conflictpane').style.zIndex = 650;
-        // var conflict = L.geoJson(Conflict, {
-        //   pane: 'conflictpane'
-        // });
-
-        //creating layer for conflicts
-    //     var layMaps = {
-    //       "Boundary Conflicts": conflict
-    //     };
-    //
-    //           L.control.layers("", layMaps, {
-    //             collapsed: false,
-    //           }).addTo(map);
-    //
-    //
-    // })
-    // .catch(e => console.log(e))

@@ -13,14 +13,6 @@ var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/
   subdomains: 'abcd',
 }).addTo(map);
 
-//adding the geojsons
-var density;
-var baseMaps = {}
-var geoJson_;
-let popngeoJson_ = {};
-let povgeoJson = {};
-let congeoJson = {};
-let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw";
 
 // add files from map folder to map1.html
 ["povertyLandCMap", "mapPanes", "styleMap"].forEach(folder => {
