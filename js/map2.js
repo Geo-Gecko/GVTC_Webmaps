@@ -14,7 +14,7 @@ $(function() {
     });
 });
 
-var center = [-0.002060, 29.122247];
+var center = [-0.002060, 29.522247];
 
 var stamenOptions = {
   attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, ' +

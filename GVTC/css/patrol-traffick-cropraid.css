@@ -173,12 +173,12 @@ div.col-xs-12{
 }
 
 /*Side panel*/
-@media (max-width:1500px){
+@media (max-width:1200px){
 div#panel_d {
   position: fixed;
   top: 15vh;
   height: 85vh;
-  width: 22%;
+  width: 31%;
   background-color: #fafafa;
   opacity: 0.92;
   -webkit-transition: width 0.6s;
@@ -188,7 +188,7 @@ div#panel_d {
 }
 }
 
-@media (min-width:1500px){
+@media (min-width:1200px){
   div#panel_d {
     position: fixed;
     top: 15vh;
@@ -415,7 +415,9 @@ div#panelContent {
 @media (min-width:1500px){
 #pies{
   display: flex;
-  width: 31em;
+  width: 35em;
+  left: 15%;
+    position: inherit;
 }
 }
 
@@ -423,5 +425,7 @@ div#panelContent {
 #pies{
   display: flex;
   width: 23em;
+  left: -4%;
+    position: inherit;
 }
 }

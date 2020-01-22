@@ -173,6 +173,7 @@ div.col-xs-12{
 }
 
 /*Side panel*/
+@media (min-width:1200px){
 div#panel_d {
   position: fixed;
   top: 15vh;
@@ -184,6 +185,22 @@ div#panel_d {
   transition: width 0.6s;
   z-index: 10000;
   border: 1px solid black;
+}
+}
+
+@media (max-width:1200px){
+div#panel_d {
+  position: fixed;
+  top: 15vh;
+  height: 85vh;
+  width: 31%;
+  background-color: #fafafa;
+  opacity: 0.92;
+  -webkit-transition: width 0.6s;
+  transition: width 0.6s;
+  z-index: 10000;
+  border: 1px solid black;
+}
 }
 
 div#panelContent {
