@@ -54,13 +54,6 @@ L.geoJson(waterbodies1, {
 // landcover
 map.createPane('landcover');
 map.getPane('landcover').style.zIndex = 850;
-var landcover = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
-    layers: 'Olam_Vector:Landcover_2017',
-    styles: '',
-    transparent: true,
-    format: 'image/png',
-    pane: 'landcover'
-});
 
 // parks outside
 var parks_outside = new L.GeoJSON(Parks_Outside, {

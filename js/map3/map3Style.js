@@ -47,6 +47,27 @@ var den = L.geoJson(density, {
     style: styledensity
 });
 
+var landcover = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
+    layers: 'Olam_Vector:Landcover_2017',
+    styles: '',
+    transparent: true,
+    format: 'image/png',
+    pane: 'landcover'
+});
+
+var baseMaps = {
+    "Household Poverty Rates": pov,
+    "Population Density": den,
+    "LandCover Classification": landcover
+};
+
+L.control.layers(baseMaps, "", {
+    collapsed: false
+}).addTo(map);
+var legendFrom = $('.leaflet-control-layers');
+var legendTo = $('#container2');
+setParent(legendFrom[0], legendTo[0]);
+
 function getColorconflict(d) {
     return d > 1 ? '#b30000' :
         d > 2 ? '#e34a33' :
@@ -103,3 +124,4 @@ function styledensity(feature) {
         fillOpacity: 1
     };
 }
+
