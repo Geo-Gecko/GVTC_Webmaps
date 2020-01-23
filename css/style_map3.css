@@ -223,9 +223,10 @@ select #selector {
   font-size: 20px;
 }
 
+@media (min-width:1500px){
 .refresh {
   position: relative;
-  left: 60%;
+  left: 70%;
   margin-top: 1.3em;
   width: 9em;
   border-radius: 20px;
@@ -233,6 +234,21 @@ select #selector {
   border-style: solid;
   border-color: rgb(169, 169, 169);
   top: 2em;
+}
+}
+
+@media (max-width:1365px){
+.refresh {
+  position: relative;
+  left: 58%;
+  margin-top: 1.3em;
+  width: 9em;
+  border-radius: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(169, 169, 169);
+  top: 2em;
+}
 }
 
 .refresh:hover {
@@ -248,17 +264,29 @@ div #containers {
 }
 
 div #container2 {
-  top: 88px;
+  top: 63px;
   position: relative;
-  right: 5px;
+  right: 2px;
 }
 
+@media (max-width:1365px){
 div #container3 {
   position: relative;
-  top: 128px;
+  top: 79px;
+  right: 10px;
+  width: 100%;
+  padding-left: 12px;
+}
+}
+
+@media (min-width:1500px){
+div #container3 {
+  position: relative;
+  top: 112px;
   right: 10px;
   width: 100%;
   padding-left: 20px;
+}
 }
 
 div #container3 h5 {
@@ -433,4 +461,20 @@ div#panelContent {
     position: relative;
     width: 84%;
   }
+}
+
+@media (min-width:1500px){
+.leaflet-control-layers-expanded {
+	padding: 6px 10px 6px -1px;
+    color: #333;
+    width: 100% !important;
+	}
+}
+
+@media (max-width:1365px){
+  .leaflet-control-layers-expanded {
+  	padding: 6px 10px 6px -1px;
+      color: #333;
+      width: 100% !important;
+  	}
 }

@@ -3,6 +3,7 @@ var map = L.map('map', {
   minZoom: 8
 }).setView([-0.2, 29.24], 8);
 
+console.log(window.innerWidth, window.innerHeight)
 
 function setParent(el, newParent) {
   newParent.appendChild(el);

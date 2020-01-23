@@ -136,7 +136,7 @@
 	top: -18px;
 	}
 .leaflet-right {
-	right: -17px;
+	right: -37px;
 	}
 .leaflet-bottom {
 	bottom: 0;
@@ -379,12 +379,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .leaflet-control-layers-list {
 
 }
-.leaflet-control-layers-expanded {
+/* .leaflet-control-layers-expanded {
 	padding: 6px 10px 6px -1px;
     color: #333;
-    width: 100% !important;
+    width: 96% !important;
 
-	}
+	} */
 .leaflet-control-layers-scrollbar {
 	overflow-y: scroll;
 	overflow-x: hidden;

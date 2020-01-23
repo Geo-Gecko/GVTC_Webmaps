@@ -592,29 +592,6 @@ pre code {
   }
 }
 
-@media (max-width:1200px) {
-  .container-fluid {
-    top: -18%;
-    width: 67%;
-    height: 85vh;
-    margin-top: 8.5em;
-    margin-left: 20.5em;
-    position: relative;
-  }
-}
-
-@media (min-width:1200px) {
-  .container-fluid {
-    top: 2%;
-    left: 5%;
-    width: 77%;
-    height: 85vh;
-    margin-top: 8.5em;
-    margin-left: 20.5em;
-    position: absolute;
-  }
-}
-
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -10842,7 +10819,6 @@ body {
   overflow-x: hidden;
   width: 100%;
   padding-top: 10rem;
-  padding-bottom: 80px;
 }
 
 .scroll-to-top {
@@ -10932,7 +10908,7 @@ body {
     width: 100%;
     text-align: left;
     padding: 1rem;
-    width: 314px;
+    width: 297px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;

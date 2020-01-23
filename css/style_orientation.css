@@ -79,9 +79,8 @@ aside.map_section{
 
 @media (max-width:1500px){
 aside img.parks{
-  width: 369px;
-  height: 521px;
-  object-fit: cover;
+  width: 254px;
+ height: 362px;  
   transform: scale(1.3);
   padding-top: :0px;
 }
