@@ -15,7 +15,7 @@ var parks = new L.GeoJSON(GVTC_parks, {
     onEachFeature: function (feature, layer) {
         layer.on('mouseover', function () {
             this.setStyle({
-                weight: 1,
+                weight: 2,
                 opacity: 1,
                 color: '#a2d687',
                 fillOpacity: 0.0,
@@ -42,6 +42,19 @@ map.createPane('waterPane');
 map.getPane('waterPane').style.zIndex = 600;
 L.geoJson(waterbodies1, {
     pane: 'waterPane',
+    style: {
+        weight: 1,
+        opacity: 1,
+        color: '#d4dadc',
+        fillOpacity: 1,
+        fillColor: '#d4dadc'
+    }
+}).addTo(map);
+
+map.createPane('finpane');
+map.getPane('finpane').style.zIndex = 600;
+L.geoJson(QENP_finances, {
+    pane: 'finpane',
     style: {
         weight: 1,
         opacity: 1,

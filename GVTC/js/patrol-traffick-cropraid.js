@@ -265,7 +265,7 @@ function plotFive(xValues, yValues) {
     options: {
       responsive: true,
       legend: {
-        position: "top"
+        position: "right"
       },
       title: {
         display: true
@@ -312,7 +312,7 @@ function plotSix(xValues, yValues) {
     options: {
       responsive: true,
       legend: {
-        position: "top"
+        position: "right"
       },
       title: {
         display: true
@@ -359,7 +359,7 @@ function plotSeven(xValues, yValues) {
     options: {
       responsive: true,
       legend: {
-        position: "top"
+        position: "right"
       },
       title: {
         display: true
@@ -406,7 +406,7 @@ function plotEight(xValues, yValues) {
     options: {
       responsive: true,
       legend: {
-        position: "top"
+        position: "right"
       },
       title: {
         display: true

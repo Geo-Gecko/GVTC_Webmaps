@@ -79,8 +79,6 @@ povertyLandCMap.setAttribute("type", "text/javascript");
 povertyLandCMap.setAttribute("src", "js/map/povertyLandCMap.js");
 document.body.appendChild(povertyLandCMap)
 
-
-
 //leaflet legend containers
 var legendFrom = $('.leaflet-top.leaflet-right');
 var legendTo = $('#container22');
@@ -89,9 +87,13 @@ legendTo[0].appendChild(legendFrom[0]);
 //cursor control
 cursor1 = L.circleMarker([0, 0], { riseOnHover: true, radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
 cursor1.addTo(map);
-cursor2 = L.circleMarker([0, 0], { radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
+mapA.createPane("cursorpane1");
+mapA.getPane("cursorpane1").style.zIndex = 999;
+cursor2 = L.circleMarker([0, 0], { pane: "cursorpane1",radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
 cursor2.addTo(mapA);
-cursor3 = L.circleMarker([0, 0], { radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
+mapB.createPane("cursorpane2");
+mapB.getPane("cursorpane2").style.zIndex = 999;
+cursor3 = L.circleMarker([0, 0], { pane: "cursorpane2",radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
 cursor3.addTo(mapB);
 
 map.on('mousemove', function (e) {

@@ -1,5 +1,3 @@
-
-
 function getColorconflict(d) {
     return d > 1 ? '#b30000' :
         d > 2 ? '#e34a33' :

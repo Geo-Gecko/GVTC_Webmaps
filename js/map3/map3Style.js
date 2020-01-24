@@ -124,4 +124,3 @@ function styledensity(feature) {
         fillOpacity: 1
     };
 }
-
