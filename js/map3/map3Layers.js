@@ -51,22 +51,16 @@ L.geoJson(waterbodies1, {
     }
 }).addTo(map);
 
-map.createPane('finpane');
-map.getPane('finpane').style.zIndex = 600;
-L.geoJson(QENP_finances, {
-    pane: 'finpane',
-    style: {
-        weight: 1,
-        opacity: 1,
-        color: '#d4dadc',
-        fillOpacity: 1,
-        fillColor: '#d4dadc'
-    }
-}).addTo(map);
-
 // landcover
 map.createPane('landcover');
 map.getPane('landcover').style.zIndex = 850;
+var landcover = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
+    layers: 'Olam_Vector:Landcover_2017',
+    styles: '',
+    transparent: true,
+    format: 'image/png',
+    pane: 'landcover'
+});
 
 // parks outside
 var parks_outside = new L.GeoJSON(Parks_Outside, {

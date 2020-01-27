@@ -78,6 +78,7 @@ axios.all(axioses)
         L.control.layers(baseMaps, "", {
             collapsed: false,
         }).addTo(map);
+        console.log(baseMaps)
     })
     .catch(e => console.log(e))
 
@@ -147,7 +148,9 @@ function ready(geoJson_) {
     let current_map = window.location.href
     current_map = current_map.split("/")
     current_map = current_map[current_map.length - 1]
-    if (current_map.split(".")[0] != "map2" || current_map.split(".")[0] != "map3") {
+    current_map = current_map.split(".")[0]
+    console.log(current_map)
+    if (current_map != "map2" && current_map != "map3") {
         L.control.layers("", overlayMaps, {
             collapsed: false,
         }).addTo(map);

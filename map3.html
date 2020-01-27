@@ -27,13 +27,16 @@
   <script src="jquery.csv.js"></script>
 
   <!-- Data files -->
-  <script src="data/QENP_finances.geojson"></script>
   <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
   <script src="data/Parks_Outside.geojson" charset="utf-8"></script>
   <script src="data/poverty.geojson" charset="utf-8"></script>
   <script src="data/Conflict.geojson" charset="utf-8"></script>
   <script src="data/density.geojson" charset="utf-8"></script>
+  <script src="data/Finances.geojson" charset="utf-8"></script>
   <script src="data/waterbodies1.geojson" charset="utf-8"></script>
+  <script src="data/hippos.js" charset="utf-8"></script>
+  <script src="data/Gorilla_habitat.geojson" charset="utf-8"></script>
+  <script src="data/Elephant_habitat.geojson" charset="utf-8"></script>
 
   <!-- slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
@@ -89,26 +92,26 @@
               <h6><strong>Amounts(USD)</strong></h6>
               <div id="slider"></div>
               <div id="input_values">
-                <input type="number" min="0" max="103999" id="input-number-min">
-                <input type="number" min="0" max="104000" id="input-number-max">
+                <input type="number" min="0" max="103999" id="input-number-min" style="min-width: 91px !important;">
+                <input type="number" min="0" max="104000" id="input-number-max" style="min-width: 91px !important;">
               </div>
               <h6><strong>Amounts(Per Capita)</strong></h6>
               <div id="slider2"></div>
               <div id="input_values">
-                <input type="number" min="0" max="46" id="input-number-min2">
-                <input type="number" min="0" max="47" id="input-number-max2">
+                <input type="number" min="0" max="46" id="input-number-min2" style="min-width: 91px !important;">
+                <input type="number" min="0" max="47" id="input-number-max2" style="min-width: 91px !important;">
               </div>
               <h6><strong>Population</strong></h6>
               <div id="slider3"></div>
               <div id="input_values">
-                <input type="number" min="0" max="614999" id="input-number-min3">
-                <input type="number" min="0" max="615000" id="input-number-max3">
+                <input type="number" min="0" max="614999" id="input-number-min3" style="min-width: 91px !important;">
+                <input type="number" min="0" max="615000" id="input-number-max3" style="min-width: 91px !important;">
               </div>
               <h6><strong>Population Density</strong></h6>
               <div id="slider4"></div>
               <div id="input_values">
-                <input type="number" min="0" max="14999" id="input-number-min4">
-                <input type="number" min="0" max="15000" id="input-number-max4">
+                <input type="number" min="0" max="14999" id="input-number-min4" style="min-width: 91px !important;">
+                <input type="number" min="0" max="15000" id="input-number-max4" style="min-width: 91px !important;">
               </div>
             </div>
       </div>
@@ -135,174 +138,163 @@
   <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
 
   <script>
-    // var finances = L.geoJson(QENP_finances, {
-    //   style: {
-    //     fillColor: '#1F532C',
-    //     weight: 1,
-    //     color: '#808080'
-    //   }
-    //
-    // }) //.addTo(newMap);
+    // var finances_data=
+    // L.geoJson(Finances).addTo(map);
 
-    // var finances=
-    // L.geoJson(QENP_finances).addTo(map);
-    //
-    // var myStyle = {
-    //     weight: 2,
-    //     opacity: 1,
-    //     color: '#808080',
-    //     fillColor: '#1F532C'
-    // };
-    //
-    // L.geoJSON(QENP_finances, {
-    //     style: myStyle
-    // }).addTo(map);
-    //
-    // function zoomToFeature(e) {
-    //     map.fitBounds(e.target.getBounds());
-    // }
+    var myStyle = {
+              weight: 1,
+              opacity: 1,
+              color: '#808080',
+              fillOpacity: 1,
+              fillColor: '#1F532C'
+    };
 
-    // var group = L.featureGroup([finances]).addTo(map);
+  var finances_data=  L.geoJSON(Finances, {
+        style: myStyle
+    }).addTo(map);
 
-    //Creating a slider
-  //   var slidervar = document.getElementById('slider')
-  //   noUiSlider.create(slider, {
-  //     start: [0, 104000],
-  //     connect: true,
-  //     range: {
-  //       'min': 0,
-  //       'max': 104000
-  //     }
-  //   });
-  //
-  //   var slidervar2 = document.getElementById('slider2')
-  //   noUiSlider.create(slider2, {
-  //     start: [0, 47],
-  //     connect: true,
-  //     range: {
-  //       'min': 0,
-  //       'max': 47
-  //     }
-  //   });
-  //
-  //   var slidervar3 = document.getElementById('slider3')
-  //   noUiSlider.create(slider3, {
-  //     start: [0, 615000],
-  //     connect: true,
-  //     range: {
-  //       'min': 0,
-  //       'max': 615000
-  //     }
-  //   });
-  //
-  //   var slidervar4 = document.getElementById('slider4')
-  //   noUiSlider.create(slider4, {
-  //     start: [100, 15000],
-  //     connect: true,
-  //     range: {
-  //       'min': 100,
-  //       'max': 15000
-  //     }
-  //   });
-  //
-  //   document.getElementById('input-number-min').setAttribute("value", "0")
-  //   document.getElementById('input-number-max').setAttribute("value", "104000")
-  //   document.getElementById('input-number-min2').setAttribute("value", "0")
-  //   document.getElementById('input-number-max2').setAttribute("value", "47")
-  //   document.getElementById('input-number-min3').setAttribute("value", "0")
-  //   document.getElementById('input-number-max3').setAttribute("value", "615000")
-  //   document.getElementById('input-number-min4').setAttribute("value", "0")
-  //   document.getElementById('input-number-max4').setAttribute("value", "15000")
-  //
-  //   var inputNumberMin = document.getElementById("input-number-min");
-  //   var inputNumberMax = document.getElementById("input-number-max");
-  //   inputNumberMin.addEventListener("change", function() {
-  //     slidervar.noUiSlider.set([this.value, null]);
-  //   });
-  //   inputNumberMax.addEventListener("change", function() {
-  //     slidervar.noUiSlider.set(null, this.value);
-  //   });
-  //
-  //   var sliderData = [
-  //     [0, 0],
-  //     [0, 0],
-  //     [0, 0],
-  //     [0, 0]
-  //   ]
-  //
-  //   //Connecting the slider to the data
-  //   slidervar.noUiSlider.on('update', function(values, handle) {
-  //     if (handle == 0) {
-  //       document.getElementById('input-number-min').value = values[0];
-  //     } else {
-  //       document.getElementById('input-number-max').value = values[1];
-  //     }
-  //
-  //     sliderData[0] = values;
-  //
-  //     updateFeatures(sliderData);
-  //   })
-  //   //Connecting the slider to the data
-  //   slidervar2.noUiSlider.on('update', function(values, handle) {
-  //     if (handle == 0) {
-  //       document.getElementById('input-number-min2').value = values[0];
-  //     } else {
-  //       document.getElementById('input-number-max2').value = values[1];
-  //     }
-  //
-  //     sliderData[1] = values;
-  //
-  //     updateFeatures(sliderData);
-  //     0
-  //   })
-  //   //Connecting the slider to the data
-  //   slidervar3.noUiSlider.on('update', function(values, handle) {
-  //     if (handle == 0) {
-  //       document.getElementById('input-number-min3').value = values[0];
-  //     } else {
-  //       document.getElementById('input-number-max3').value = values[1];
-  //     }
-  //
-  //     sliderData[2] = values;
-  //
-  //     updateFeatures(sliderData);
-  //   })
-  //
-  //   slidervar4.noUiSlider.on('update', function(values, handle) {
-  //     if (handle == 0) {
-  //       document.getElementById('input-number-min4').value = values[0];
-  //     } else {
-  //       document.getElementById('input-number-max4').value = values[1];
-  //     }
-  //
-  //     sliderData[3] = values;
-  //
-  //     updateFeatures(sliderData);
-  //   })
-  //
-  //   function updateFeatures(sliderData) {
-  //
-  //     for (key in finances['_layers']) {
-  //       var l = finances['_layers'][key];
-  //       if (l.feature.properties.Amount > parseInt(sliderData[0][0]) && l.feature.properties.Amount < parseInt(sliderData[0][1]) && l.feature.properties.USD_capita > parseInt(sliderData[2][0]) && l.feature.properties.USD_capita < parseInt(sliderData[2][1]) &&
-  //         l.feature.properties.Population > parseInt(sliderData[1][0]) && l.feature.properties.Population < parseInt(sliderData[0][1]) && l.feature.properties.Pop_densit > parseInt(sliderData[3][0]) && l.feature.properties.Pop_densit < parseInt(sliderData[3][1]))
-  //         l.setStyle({
-  //           opacity: 1,
-  //           fillOpacity: 1
-  //         })
-  //       else {
-  //         l.setStyle({
-  //           opacity: 0,
-  //           fillOpacity: 0
-  //         })
-  //       }
-  //     }
-  //
-  //   }
-  //
-  //   $('.leaflet-top.leaflet-right').removeClass('leaflet-top').removeClass('leaflet-right');
-  //   $('.leaflet-bottom.leaflet-left').removeClass('leaflet-bottom').removeClass('leaflet-left');
-  // </script>
+    // var group = L.featureGroup([finances_data]).addTo(map);
+
+    // Creating a slider
+    var slidervar = document.getElementById('slider')
+    noUiSlider.create(slider, {
+      start: [0, 104000],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 104000
+      }
+    });
+
+    var slidervar2 = document.getElementById('slider2')
+    noUiSlider.create(slider2, {
+      start: [0, 47],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 47
+      }
+    });
+
+    var slidervar3 = document.getElementById('slider3')
+    noUiSlider.create(slider3, {
+      start: [0, 615000],
+      connect: true,
+      range: {
+        'min': 0,
+        'max': 615000
+      }
+    });
+
+    var slidervar4 = document.getElementById('slider4')
+    noUiSlider.create(slider4, {
+      start: [100, 15000],
+      connect: true,
+      range: {
+        'min': 100,
+        'max': 15000
+      }
+    });
+
+    document.getElementById('input-number-min').setAttribute("value", "0")
+    document.getElementById('input-number-max').setAttribute("value", "104000")
+    document.getElementById('input-number-min2').setAttribute("value", "0")
+    document.getElementById('input-number-max2').setAttribute("value", "47")
+    document.getElementById('input-number-min3').setAttribute("value", "0")
+    document.getElementById('input-number-max3').setAttribute("value", "615000")
+    document.getElementById('input-number-min4').setAttribute("value", "0")
+    document.getElementById('input-number-max4').setAttribute("value", "15000")
+
+    var inputNumberMin = document.getElementById("input-number-min");
+    var inputNumberMax = document.getElementById("input-number-max");
+    inputNumberMin.addEventListener("change", function() {
+      slidervar.noUiSlider.set([this.value, null]);
+    });
+    inputNumberMax.addEventListener("change", function() {
+      slidervar.noUiSlider.set(null, this.value);
+    });
+
+    var sliderData = [
+      [0, 0],
+      [0, 0],
+      [0, 0],
+      [0, 0]
+    ]
+
+    //Connecting the slider to the data
+    slidervar.noUiSlider.on('update', function(values, handle) {
+      if (handle == 0) {
+        document.getElementById('input-number-min').value = values[0];
+      } else {
+        document.getElementById('input-number-max').value = values[1];
+      }
+
+      sliderData[0] = values;
+
+      updateFeatures(sliderData);
+    })
+    //Connecting the slider to the data
+    slidervar2.noUiSlider.on('update', function(values, handle) {
+      if (handle == 0) {
+        document.getElementById('input-number-min2').value = values[0];
+      } else {
+        document.getElementById('input-number-max2').value = values[1];
+      }
+
+      sliderData[1] = values;
+
+      updateFeatures(sliderData);
+    })
+    //Connecting the slider to the data
+    slidervar3.noUiSlider.on('update', function(values, handle) {
+      if (handle == 0) {
+        document.getElementById('input-number-min3').value = values[0];
+      } else {
+        document.getElementById('input-number-max3').value = values[1];
+      }
+
+      sliderData[2] = values;
+
+      updateFeatures(sliderData);
+    })
+
+    slidervar4.noUiSlider.on('update', function(values, handle) {
+      if (handle == 0) {
+        document.getElementById('input-number-min4').value = values[0];
+      } else {
+        document.getElementById('input-number-max4').value = values[1];
+      }
+
+      sliderData[3] = values;
+
+      updateFeatures(sliderData);
+    })
+
+    function updateFeatures(sliderData) {
+
+      for (key in finances_data['_layers']) {
+        var l = finances_data['_layers'][key];
+        if (l.feature.properties.Amount >= parseInt(sliderData[0][0]) && l.feature.properties.Amount <= parseInt(sliderData[0][1]) && parseFloat(l.feature.properties.USD_capita) >= parseFloat(sliderData[1][0]) && parseFloat(l.feature.properties.USD_capita) <= parseFloat(sliderData[1][1]) &&
+          l.feature.properties.Population >= parseInt(sliderData[2][0]) && l.feature.properties.Population <= parseInt(sliderData[2][1]) && l.feature.properties.Pop_densit >= parseInt(sliderData[3][0]) && l.feature.properties.Pop_densit <= parseInt(sliderData[3][1]))
+{
+          l.setStyle({
+            opacity: 1,
+            fillOpacity: 1
+          }) }
+        else {
+          l.setStyle({
+            opacity: 0,
+            fillOpacity: 0
+          })
+        }
+      }
+
+    }
+
+    $('.leaflet-top.leaflet-right').removeClass('leaflet-top').removeClass('leaflet-right');
+    $('.leaflet-bottom.leaflet-left').removeClass('leaflet-bottom').removeClass('leaflet-left');
+   </script>
+
 
 </body>
 

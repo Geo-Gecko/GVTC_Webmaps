@@ -1,6 +1,3 @@
-function setParent(el, newParent) {
-  newParent.appendChild(el);
-}
 
 var map = L.map('map', {
   minZoom: 8
@@ -26,6 +23,17 @@ var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/
 // Add specific classes to OpenLayers elements: hide these controls for mobile view using Bootstrap classes
 $('.ol-scale-line').addClass('hidden-xs')
 $('.ol-attribution').addClass('hidden-xs')
+
+
+// add file from map folder to map2.html
+let povertyLandCMap = document.createElement("script");
+povertyLandCMap.setAttribute("type", "text/javascript");
+povertyLandCMap.setAttribute("src", "js/map/povertyLandCMap.js");
+document.body.appendChild(povertyLandCMap)
+//
+var legendFrom = $('.leaflet-top.leaflet-right');
+var legendTo = $('#container2');
+legendTo[0].appendChild(legendFrom[0]);
 
 // layer control
 var povlegend = L.control({
@@ -100,8 +108,6 @@ map.on('baselayerchange', function (eventLayer) {
     landLegend.addTo(map);
   }
 })
-
-
 
 function layer() {
   var layer = this;
