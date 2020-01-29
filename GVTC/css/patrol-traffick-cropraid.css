@@ -1,7 +1,7 @@
 
 /*Header*/
 
-nav .navigation_dashbord {
+nav .navigation_dashboard {
   color: black;
   border-bottom: black 4px solid;
   position: fixed;
@@ -344,7 +344,6 @@ div#panelContent {
   float: left;
   display: block;
   margin-bottom: 0px;
-  vertical-align: top;
   padding: 0 0px;
   background: red;
 }
@@ -358,8 +357,22 @@ div#panelContent {
 .slider {
   position: relative;
   width: 100%;
-  min-height: 588px;
+  min-height: 90px;
 }
+.Trafficking {
+  
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+  }
+
+  .Trafficking_2{
+    position: relative;
+    width: 100%;
+    min-height: 40px;
+
+  }
+
 
 .slide {
   display: none;
@@ -380,6 +393,7 @@ div#panelContent {
   position: relative;
   bottom: 0;
   width: 100%;
+ 
 }
 
 .arrow-prev,

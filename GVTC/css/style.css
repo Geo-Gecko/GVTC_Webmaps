@@ -344,7 +344,6 @@ div#panelContent {
   float: left;
   display: block;
   margin-bottom: 0px;
-  vertical-align: top;
   padding: 0 0px;
   background: red;
 }
@@ -381,8 +380,8 @@ div#panelContent {
   bottom: 0;
   width: 100%;
 }
-
 .arrow-prev,
+
 .arrow-next {
   margin: 0 10%;
   display: inline-block;
@@ -391,7 +390,9 @@ div#panelContent {
   font-size: 1.5rem;
 }
 
-.arrow-next {}
+/*.arrow-next {
+  
+}*/
 
 .slider-dots {
   list-style: none;
