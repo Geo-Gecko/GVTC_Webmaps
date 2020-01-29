@@ -31,7 +31,7 @@ povlegend.onAdd = function(map) {
 
   var div = L.DomUtil.create('div', 'info legend'),
     povGrades = [0.11, 0.15, 0.18, 0.22, 0.8],
-    povLabels = [],
+    povLabels = ['<strong>1 MIX / 0 MIN </strong>'],
     from, to;
 
   for (var i = 0; i < povGrades.length; i++) {
@@ -51,10 +51,17 @@ povlegend.onAdd = function(map) {
 var denlegend = L.control({
   position: 'bottomright'
 });
+
+//layer control 2
+var landlegend = L.control({
+  position: 'bottomright'
+});
+
+
 denlegend.onAdd = function(map) {
   var div = L.DomUtil.create('div', 'info legend'),
     grades = [100, 200, 400, 9700],
-    labels = [],
+    labels = ['<strong> PEOPLE/SQKM </strong>'],
     from, to;
 
   for (var i = 0; i < grades.length; i++) {
@@ -70,20 +77,6 @@ denlegend.onAdd = function(map) {
   return div;
 };
 
-map.on('baselayerchange', function(eventLayer) {
-  if (eventLayer.name === 'Household Poverty Rates') {
-    map.removeControl(denlegend);
-    povlegend.addTo(map);
-  } else if (eventLayer.name === 'Population Density') {
-    map.removeControl(povlegend);
-    denlegend.addTo(map);
-  }
-})
-
-//layer control 2
-var landlegend = L.control({
-  position: 'bottomright'
-});
 landlegend.onAdd = function(map) {
   var div = L.DomUtil.create('div', 'info legend');
   div.innerHTML +=
@@ -91,12 +84,38 @@ landlegend.onAdd = function(map) {
   return div;
 };
 
+//Removing legend from the layer and adding the right one after the click event      
+
 map.on('baselayerchange', function(eventLayer) {
-  if (eventLayer.name === 'LandCover Classification') {
-    map.removeControl(denlegend || povlegend);
+
+  function remover(legend) {
+    if(legend._map) {
+      map.removeControl(legend);
+    }
+  }
+
+  remover(povlegend);
+  remover(denlegend);
+  remover(landlegend);
+
+  if (eventLayer.name === 'Household Poverty Rates') {
+    povlegend.addTo(map);
+    
+  } else if (eventLayer.name === 'Population Density') {
+    denlegend.addTo(map);
+  }
+  else if (eventLayer.name === 'LandCover Classification') {
     landlegend.addTo(map);
   }
 })
+
+
+// map.on('baselayerchange', function(eventLayer) {
+//   if (eventLayer.name === 'LandCover Classification') {
+//     map.removeControl(denlegend || povlegend);
+//     landlegend.addTo(map);
+//   }
+// })
 
 //leaflet legend containers
 var legendFrom = $('.leaflet-top.leaflet-right');

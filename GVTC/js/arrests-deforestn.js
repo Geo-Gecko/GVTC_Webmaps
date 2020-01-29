@@ -174,7 +174,7 @@ function plotThree(xValues, yValues) {
 }
 
 //slider for tables
-$('.arrow-next').click(function() {
+$('').click(function() {
 var currentSlide = $('.active-slide'),
 nextSlide = currentSlide.next(),
 currentDot = $('.active-dot'),
@@ -229,7 +229,6 @@ $('.slider-dots').append('<li class="dot">&bull;</li>');
 $('.slider div:first').addClass('active-slide');
 $('.slider-dots li:first').addClass('active-dot');
 
-
   // calling data from the sheet
   let arrests_sheet_ = "1581973011"
   let long_id_ = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
@@ -240,7 +239,7 @@ $('.slider-dots li:first').addClass('active-dot');
     })
     .then(r => {
       let arrests = $.csv.toObjects(r.data)
-
+     /// console.log(arrests)
       let years_ = []
       let no_of_tables = Object.keys(arrests[0])
       let past_yr = parseInt(no_of_tables[1].split("(")[1].split(")")[0])
@@ -254,7 +253,9 @@ $('.slider-dots li:first').addClass('active-dot');
 
       years_.forEach((year) => {
         addTable(year);
+     
       })
+      
 
       // creating the table
       function addTable(year) {

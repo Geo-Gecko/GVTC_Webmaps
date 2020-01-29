@@ -1,5 +1,5 @@
 //trafficking data 2016
-let traffic_2016_raw_sheet = "234012165"
+let traffic_2016_raw_sheet = "1892401990"
 let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
 let url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${traffic_2016_raw_sheet}`
 
@@ -7,28 +7,82 @@ axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    traffic_2016_raw = $.csv.toObjects(r.data)
-    let x_values = []
-    let y_values = []
+   let traffic_raw = $.csv.toObjects(r.data)
+    // let x_values = []
+    // let y_values = []
 
-    traffic_2016_raw.forEach(traffic_2016_raw => {
-      y_values.push(traffic_2016_raw["Raw Ivory"])
-      x_values.push(traffic_2016_raw["Date"])
+
+    let years_ = []
+    let no_of_charts = Object.keys(traffic_raw[0])
+//   console.log("hjdbfaeabfa",no_of_charts)
+    let past_yr = parseInt(no_of_charts[1].split("(")[1].split(")")[0])
+    let recent_yr = parseInt(no_of_charts[Object.keys(traffic_raw[0]).length - 1].split("(")[1].split(")")[0])
+   
+
+    while (past_yr <= recent_yr) {
+      years_.push(past_yr)
+      past_yr += 1 
+    }
+
+    let slides2 = document.getElementById("charts_");
+    let grouped_data = {}
+    years_.forEach((year, i) => {
+      grouped_data[year] = []
+      traffic_raw.forEach(datapoint => {
+        grouped_data[year].push(datapoint[`Raw Ivory(${year})`])
+      })
+
+      addChart(year, i, grouped_data[year])
     })
+    //console.log("paul",grouped_data)
 
-    plotOne(x_values, y_values);
+
+    function addChart(year, i, y_values) {
+      let canvas_ = document.createElement("div")
+      canvas_.setAttribute("class", "slide")
+      if (i === 0) {
+        canvas_.setAttribute("class", "active-slide")
+      }
+      // let canvas_ = document.createElement("div")
+      // canvas_.setAttribute("class", "canva-responsive")
+      // canvas_.setAttribute("id", `myDynamicCanvas${year}`)
+      let canvas2 = document.createElement('CANVAS')
+      canvas2.setAttribute("class", `bar-chart${year}`)
+      // canvas2.setAttribute("id", "dataCanvas")
+      canvas2.setAttribute("width", "100%")
+      canvas2.setAttribute( "height", "75%")
+      canvas_.appendChild(canvas2)
+      slides2.appendChild(canvas_)
+
+      // var canvas = document.createElement('CANVAS');
+      // canvas.height = '100%';
+      // canvas.width = '100%';
+
+
+    // traffic_2016_raw.forEach(traffic_2016_raw => {
+    //   y_values.push(traffic_2016_raw["Raw Ivory"])
+    //   x_values.push(traffic_2016_raw["Date"])
+    // })
+
+      plotOne(year, y_values, `bar-chart${year}`);
+      
+
+
+    }
+
+    
   })
   .catch(e => console.log(e))
 
-function plotOne(xValues, yValues) {
-  var ctxx = document.getElementsByClassName("bar-chart1");
+function plotOne(year, yValues, chartId) {
+  var ctxx = document.getElementsByClassName(chartId);
   myEnrolChart = new Chart(ctxx, {
     type: 'bar',
     data: {
       labels: ["Jan-16", "Mar-16", "Apr-16", "May-16", "Jun-16", "Aug-16", "Sep-16", "Oct-16", "Nov-16", "Dec-16", "Dec-16", "undefined", "undefined"],
       datasets: [
         {
-          label: "Raw Ivory Trafficking 2016",
+          label: `Raw Ivory Trafficking ${year}`,
           backgroundColor: 'rgba(255, 239, 213, 1)',
           borderColor: 'rgba(255, 165, 0, 1.8)',
           borderWidth: 1,
@@ -56,8 +110,67 @@ function plotOne(xValues, yValues) {
   });
 }
 
+//slider for the Patrol Coverage
+$('.traffick').click(function() {
+  var currentSlide = $('.active-slide'),
+  nextSlide = currentSlide.next(),
+  currentDot = $('.active-dot'),
+  nextDot = currentDot.next();
+  console.log(currentSlide.next())
+  
+  if (nextSlide.length === 0) {
+  nextSlide = $('.slide').first();
+  nextDot = $('.dot').first();
+  }
+  
+  currentSlide.fadeOut(600).removeClass('active-slide');
+  nextSlide.fadeIn(600).addClass('active-dot');
+  
+  currentDot.removeClass('active-dot');
+  nextDot.addClass('active-dot');
+  });
+  
+  $('.traffick2').click(function() {
+  var currentSlide = $('.active-slide'),
+  prevSlide = currentSlide.prev(),
+  currentDot = $('.active-dot'),
+  prevDot = currentDot.prev();
+  console.log(currentSlide.prev())
+  
+
+  if (prevSlide.length === 0) {
+  prevSlide = $('.slide').last();
+  prevDot = $('.dot').last();
+  }
+  
+  currentSlide.fadeOut(600).removeClass('active-slide');
+  prevSlide.fadeIn(600).addClass('active-slide');
+  
+  currentDot.removeClass('active-dot');
+  prevDot.addClass('active-dot');
+  });
+
+  // this bit will resize the sliders height to make it responsive
+// $(window).on('load resize', function() {
+//   var x = $('.active-slide img').height() + "px";
+  
+//   $('.slider').css('min-height', x);
+//   $('p').text(x);
+//   });
+  
+  //this part will add a dot for each slider item, then assign a class name to the first child to get the active state
+  $('section').each(function() {
+  var a = $('.slide').length;
+  for (i = 0; i < a; i++) {
+  $('.slider-dots').append('<li class="dot">&bull;</li>');
+  }
+  });
+  
+  $('.slider div:first').addClass('active-slide');
+  $('.slider-dots li:first').addClass('active-dot');
+
 //trafficking data 2017
-let traffic_2016_worked_sheet = "234012165"
+let traffic_2016_worked_sheet = "1892401990"
 url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${traffic_2016_worked_sheet}`
 
 axios.get(url, {
@@ -65,8 +178,11 @@ axios.get(url, {
   })
   .then(r => {
     traffic_2016_worked = $.csv.toObjects(r.data)
+    //console.log(traffic_2016_worked)
+   
     let x_values = []
     let y_values = []
+    //let years_ = []
 
     traffic_2016_worked.forEach(traffic_2016_worked => {
       y_values.push(traffic_2016_worked["Worked Ivory"])
@@ -235,9 +351,55 @@ axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    patrols_v = $.csv.toObjects(r.data)
-    let x_values = []
-    let y_values = []
+  let patrols_v = $.csv.toObjects(r.data)
+  console.log(patrols_v)
+    // let x_values = []
+    // let y_values = []
+
+    let years_ = []
+    let no_of_patrols = Object.keys(patrols_v[1])
+    no_of_patrols = no_of_patrols.filter(patrol =>{ 
+      if (parseInt(patrol.split(" ")[0])) {
+        return true
+      } else {
+        return false;
+      }
+    })
+    console.log("gdgasgdga",no_of_patrols);
+
+    
+    let past_yr = parseInt(no_of_patrols[0])
+    let recent_yr = parseInt(no_of_patrols[no_of_patrols.length - 1])
+   
+
+    while (past_yr <= recent_yr) {
+      years_.push(past_yr)
+      past_yr += 1 
+    }
+    console.log("god is good with this data", no_of_patrols)
+
+    //let patrol_data ={}
+    let patrolled = []
+    let not_patrolled = []
+    patrols_v.forEach(row => {
+      //console.log(year)
+      years_[year] = []
+      patrols_v.forEach(pointDate => {
+        years_[year].push(pointDate[`${year})`])
+      })
+
+    //console.log("joy",virungaYears)
+    })
+    // let virungaPast_yr =  parseInt(no_of_patrols[1].split("(")[1].split(")")[0])
+    // let virungaRecent_yr = parseInt(no_of_patrols[Object.keys(patrols_v[0]).length - 1].split("(")[1].split(")")[0])
+    
+    // while (virungaPast_yr <= virungaRecent_yr) {
+    //   virungaYears.push(virungaPast_yr)
+    //   virungaPast_yr += 1
+    // }
+    //console.log("good data", virungaYears)
+     
+
 
     patrols_v.forEach(patrols_v => {
       y_values.push(patrols_v["2016 Percentage_Virunga"])
@@ -414,3 +576,6 @@ function plotEight(xValues, yValues) {
     }
   });
 }
+
+
+
