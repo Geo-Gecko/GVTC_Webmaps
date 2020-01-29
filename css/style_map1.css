@@ -66,6 +66,12 @@ div.orientationpage_heading h3 {
   /*padding: 0px 250px 0px 220px;*/
 }
 
+#selector {
+  border-radius: 20px;
+  border-width: 1px;
+  border-style: solid;
+}
+
 aside.sidebar p {
   padding-top: 20px;
   font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -192,34 +198,34 @@ div #containerr .map {
 }
 
 /*Side panel*/
-@media (min-width:1200px){
-div#panel {
-  position: absolute;
-  top: 15vh;
-  height: 85vh;
-  width: 22%;
-  background-color: #fafafa;
-  opacity: 0.92;
-  -webkit-transition: width 0.6s;
-  transition: width 0.6s;
-  z-index: 10000;
-  border: 1px solid black;
-}
+@media (min-width:1200px) {
+  div#panel {
+    position: absolute;
+    top: 15vh;
+    height: 85vh;
+    width: 22%;
+    background-color: #fafafa;
+    opacity: 0.92;
+    -webkit-transition: width 0.6s;
+    transition: width 0.6s;
+    z-index: 10000;
+    border: 1px solid black;
+  }
 }
 
-@media (max-width:1200px){
-div#panel {
-  position: absolute;
-  top: 15vh;
-  height: 85vh;
-  width: 31%;
-  background-color: #fafafa;
-  opacity: 0.92;
-  -webkit-transition: width 0.6s;
-  transition: width 0.6s;
-  z-index: 10000;
-  border: 1px solid black;
-}
+@media (max-width:1200px) {
+  div#panel {
+    position: absolute;
+    top: 15vh;
+    height: 85vh;
+    width: 31%;
+    background-color: #fafafa;
+    opacity: 0.92;
+    -webkit-transition: width 0.6s;
+    transition: width 0.6s;
+    z-index: 10000;
+    border: 1px solid black;
+  }
 }
 
 div#panelContent {
@@ -245,42 +251,30 @@ div .nav-link p {
   margin-top: 8px;
 }
 
-div #selector_menu {
-  position: relative;
-  top: 59px;
-  right: 5px;
-  padding-left: 17px;
+@media (max-width:1365px) {
+  .refresh {
+    position: relative;
+    left: 57%;
+    margin-top: 4.3em;
+    width: 9em;
+    border-radius: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(169, 169, 169);
+  }
 }
 
-select #selector {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-}
-
-@media (max-width:1365px){
-.refresh {
-  position: relative;
-  left: 57%;
-  margin-top: 1.3em;
-  width: 9em;
-  border-radius: 20px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(169, 169, 169);
-}
-}
-
-@media (min-width:1500px){
-.refresh {
-  position: relative;
-  left: 70%;
-  margin-top: 1.3em;
-  width: 9em;
-  border-radius: 20px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: rgb(169, 169, 169);
-}
+@media (min-width:1500px) {
+  .refresh {
+    position: relative;
+    left: 69.5%;
+    margin-top: 4.3em;
+    width: 9em;
+    border-radius: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(169, 169, 169);
+  }
 }
 
 .refresh:hover {
@@ -288,14 +282,13 @@ select #selector {
 }
 
 .leaflet-control-layers-expanded {
-	padding: 6px 10px 6px -1px;
-    color: #333;
-    width: 95% !important;
-
-	}
+  padding: 6px 10px 6px -1px;
+  color: #333;
+  width: 95% !important;
+}
 
 div #containers {
-  top: 60px;
+  top: 30px;
   position: absolute;
   right: 0px;
   left: -7px;
@@ -395,31 +388,31 @@ div#panelContent {
   opacity: 0.7;
 }
 
-@media (max-width:1365px){
-.landlegend {
-  width: 64%;
-  position: relative;
-  left: 29%;
-}
+@media (max-width:1365px) {
+  .landlegend {
+    width: 64%;
+    position: relative;
+    left: 29%;
+  }
 }
 
-@media (min-width:1500px){
+@media (min-width:1500px) {
   .landlegend {
     width: 80%;
     position: relative;
   }
 }
 
-@media (max-width:1365px){
-.legend_gvtc {
-  position: absolute;
-  bottom: -4px;
-  left: 12%;
-  z-index: 1000;
-}
+@media (max-width:1365px) {
+  .legend_gvtc {
+    position: absolute;
+    bottom: -4px;
+    left: 12%;
+    z-index: 1000;
+  }
 }
 
-@media (min-width:1500px){
+@media (min-width:1500px) {
   .legend_gvtc {
     position: absolute;
     bottom: -4px;
@@ -427,17 +420,139 @@ div#panelContent {
   }
 }
 
-@media (max-width:1365px){
-.gvtc_legend {
-  position: relative;
-  width: 72%;
-  left: -40%;
-}
+@media (max-width:1365px) {
+  .gvtc_legend {
+    position: relative;
+    width: 72%;
+    left: -40%;
+  }
 }
 
-@media (min-width:1500px){
+@media (min-width:1500px) {
   .gvtc_legend {
     position: relative;
     width: 84%;
   }
+}
+
+@media (min-width:1500px) {
+  #info {
+    width: 20px;
+    position: relative;
+    left: 13.5em;
+    top: 15.3em;
+  }
+}
+
+@media (max-width:1365px) {
+  #info {
+    width: 20px;
+    position: relative;
+    left: 162%;
+    top: 15.5em;
+  }
+}
+
+.tooltip_map {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted white;
+  z-index: 1000000;
+}
+
+@media (min-width:1500px) {
+  .tooltip_map .tooltiptext {
+    visibility: hidden;
+    width: 137px;
+    background-color: #2d7746;
+    color: #fff;
+    text-align: center;
+    border-radius: 11px;
+    padding: 9px 9px;
+    position: relative;
+    z-index: 1;
+    left: 14em;
+    top: 15.5em;
+  }
+}
+
+@media (max-width:1365px) {
+  .tooltip_map .tooltiptext {
+    visibility: hidden;
+    width: 137px;
+    background-color: #2d7746;
+    color: #fff;
+    text-align: center;
+    border-radius: 11px;
+    padding: 9px 9px;
+    position: relative;
+    z-index: 1;
+    left: 13em;
+    top: 15.5em;
+  }
+}
+
+.tooltip_map:hover .tooltiptext {
+  visibility: visible;
+}
+
+@media (min-width:1500px) {
+  #info2 {
+    width: 20px;
+    position: relative;
+    left: 9em;
+    top: 21.5em;
+  }
+}
+
+@media (max-width:1365px) {
+  #info2 {
+    width: 20px;
+    position: relative;
+    left: 102%;
+    top: 21.5em
+  }
+}
+
+.tooltip_map2 {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted white;
+  z-index: 1000000;
+}
+
+@media (min-width:1500px) {
+  .tooltip_map2 .tooltiptext2 {
+    visibility: hidden;
+    width: 137px;
+    background-color: #2d7746;
+    color: #fff;
+    text-align: center;
+    border-radius: 11px;
+    padding: 9px 9px;
+    position: relative;
+    z-index: 1;
+    left: 11em;
+    top: 21.5em
+  }
+}
+
+@media (max-width:1365px) {
+  .tooltip_map2 .tooltiptext2 {
+    visibility: hidden;
+    width: 137px;
+    background-color: #2d7746;
+    color: #fff;
+    text-align: center;
+    border-radius: 11px;
+    padding: 9px 9px;
+    position: relative;
+    z-index: 1;
+    left: 8em;
+    top: 21.5em
+  }
+}
+
+.tooltip_map2:hover .tooltiptext2 {
+  visibility: visible;
 }

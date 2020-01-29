@@ -13,17 +13,14 @@
   <link rel="stylesheet" href="lib/ol3.8.2/ol.css" type="text/css" />
 
   <!-- Javascript files-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="leaflet/leaflet.js" charset="utf-8"></script>
 
   <!-- date filter -->
   <link rel="stylesheet" href="css/yearpicker.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="jquery.csv.js"></script>
 
   <!-- Data files -->
@@ -65,69 +62,70 @@
 
     <!-- side panel -->
     <div id="panel">
-       <div id="panelContent" class="container-fluid">
-            <div class="nav-link">
-              <p>Revenue Sharing</p>
-            </div>
-            <div id='selector_menu'>
-              <select id='selector' style="position: relative; top: 1em;">
-                <option size="16" value='Reset'>---Select year---</option>
-                <option value='2016'>2016</option>
-                <option value='2017'>2017</option>
-              </select>
-            </div>
-            <button class="refresh" type="submit"  onClick="refreshPage()">Remove Layers</button>
+      <div id="panelContent" class="container-fluid">
+        <div class="nav-link">
+          <p>Revenue Sharing</p>
+        </div>
+        <button class="refresh" type="submit" onClick="refreshPage()">Remove Layers</button>
 
-            <script>
-              function refreshPage(){
-                  window.location.reload();
-              }
-              </script>
-            <br>
-            <div id=container2>
-            </div>
-            <!-- <div id=containers> -->
-            <div id=container3>
-              <!-- <h5><strong>Revenue Sharing</strong></h5> -->
-              <h6><strong>Amounts(USD)</strong></h6>
-              <div id="slider"></div>
-              <div id="input_values">
-                <input type="number" min="0" max="103999" id="input-number-min" style="min-width: 91px !important;">
-                <input type="number" min="0" max="104000" id="input-number-max" style="min-width: 91px !important;">
-              </div>
-              <h6><strong>Amounts(Per Capita)</strong></h6>
-              <div id="slider2"></div>
-              <div id="input_values">
-                <input type="number" min="0" max="46" id="input-number-min2" style="min-width: 91px !important;">
-                <input type="number" min="0" max="47" id="input-number-max2" style="min-width: 91px !important;">
-              </div>
-              <h6><strong>Population</strong></h6>
-              <div id="slider3"></div>
-              <div id="input_values">
-                <input type="number" min="0" max="614999" id="input-number-min3" style="min-width: 91px !important;">
-                <input type="number" min="0" max="615000" id="input-number-max3" style="min-width: 91px !important;">
-              </div>
-              <h6><strong>Population Density</strong></h6>
-              <div id="slider4"></div>
-              <div id="input_values">
-                <input type="number" min="0" max="14999" id="input-number-min4" style="min-width: 91px !important;">
-                <input type="number" min="0" max="15000" id="input-number-max4" style="min-width: 91px !important;">
-              </div>
-            </div>
+        <script>
+          function refreshPage() {
+            window.location.reload();
+          }
+        </script>
+        <br>
+        <div id=container2>
+        <div class="tooltip_map">
+          <img id="info" src="images/info.png">
+          <span class="tooltiptext">Tooltip text</span>
+        </div>
+        <div class="tooltip_map2">
+          <img id="info2" src="images/info.png">
+          <span class="tooltiptext2">Tooltip text</span>
+        </div>
+      </div>
+      <!-- <div id=containers> -->
+      <div id=container3>
+        <!-- <h5><strong>Revenue Sharing</strong></h5> -->
+        <h6><strong>Amounts (USD)</strong></h6>
+        <div id="slider"></div>
+        <div id="input_values">
+          <input class="input_number" type="number" min="0" max="103999" id="input-number-min"disabled>
+          <input class="input_number" type="number" min="0" max="104000" id="input-number-max" disabled>
+        </div>
+        <h6><strong>Amounts (Per Capita)</strong></h6>
+        <div id="slider2"></div>
+        <div id="input_values">
+          <input class="input_number" type="number" min="0" max="46" id="input-number-min2"disabled>
+          <input class="input_number" type="number" min="0" max="47" id="input-number-max2"disabled>
+        </div>
+        <h6><strong>Population</strong></h6>
+        <div id="slider3"></div>
+        <div id="input_values">
+          <input class="input_number" type="number" min="0" max="614999" id="input-number-min3"disabled>
+          <input class="input_number" type="number" min="0" max="615000" id="input-number-max3"disabled>
+        </div>
+        <h6><strong>Population Density</strong></h6>
+        <div id="slider4"></div>
+        <div id="input_values">
+          <input class="input_number" type="number" min="0" max="14999" id="input-number-min4"disabled>
+          <input class="input_number" type="number" min="0" max="15000" id="input-number-max4"disabled>
+        </div>
       </div>
     </div>
+  </div>
 
-    <!-- map -->
-    <div class="col-xs-12" id="map">
-      <div class="legend_gvtc">
-        <img class="gvtc_legend" src="images/legend.PNG" alt="">
-      </div>
+  <!-- map -->
+  <div class="col-xs-12" id="map">
+    <div class="legend_gvtc">
+      <img class="gvtc_legend" src="images/legend.PNG" alt="">
     </div>
+  </div>
 
 
-    <div class="logo">
-      <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
-    </div>
+  <div class="logo">
+    <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
+  </div>
   </div>
 
   <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
@@ -135,31 +133,35 @@
   <script type="text/javascript" src="js/map3/map3.js"></script>
   <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
   <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-  <!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> -->
 
   <script>
-    // var finances_data=
-    // L.geoJson(Finances).addTo(map);
-
     var myStyle = {
-              weight: 1,
-              opacity: 1,
-              color: '#808080',
-              fillOpacity: 1,
-              fillColor: '#1F532C'
+      weight: 1,
+      opacity: 1,
+      color: '#808080',
+      fillOpacity: 1,
+      fillColor: '#1F532C'
     };
 
-  var finances_data=  L.geoJSON(Finances, {
-        style: myStyle
+    var finances_data = L.geoJSON(Finances, {
+      style: myStyle
     }).addTo(map);
-
-    // var group = L.featureGroup([finances_data]).addTo(map);
+    finances_data.eachLayer(function(layer) {
+      layer.bindPopup('<strong>Parish</strong><br> ' + layer.feature.properties.pname);
+      layer.on('mouseover', function(e) {
+        this.openPopup();
+      });
+      layer.on('mouseout', function(e) {
+        this.closePopup();
+      });
+    });
 
     // Creating a slider
     var slidervar = document.getElementById('slider')
     noUiSlider.create(slider, {
       start: [0, 104000],
       connect: true,
+      step: 5,
       range: {
         'min': 0,
         'max': 104000
@@ -180,6 +182,7 @@
     noUiSlider.create(slider3, {
       start: [0, 615000],
       connect: true,
+      step: 5,
       range: {
         'min': 0,
         'max': 615000
@@ -188,12 +191,13 @@
 
     var slidervar4 = document.getElementById('slider4')
     noUiSlider.create(slider4, {
-      start: [100, 15000],
+      start: [0, 15000],
       connect: true,
+      step: 5,
       range: {
-        'min': 100,
+        'min': 0,
         'max': 15000
-      }
+      },
     });
 
     document.getElementById('input-number-min').setAttribute("value", "0")
@@ -274,14 +278,15 @@
 
       for (key in finances_data['_layers']) {
         var l = finances_data['_layers'][key];
-        if (l.feature.properties.Amount >= parseInt(sliderData[0][0]) && l.feature.properties.Amount <= parseInt(sliderData[0][1]) && parseFloat(l.feature.properties.USD_capita) >= parseFloat(sliderData[1][0]) && parseFloat(l.feature.properties.USD_capita) <= parseFloat(sliderData[1][1]) &&
-          l.feature.properties.Population >= parseInt(sliderData[2][0]) && l.feature.properties.Population <= parseInt(sliderData[2][1]) && l.feature.properties.Pop_densit >= parseInt(sliderData[3][0]) && l.feature.properties.Pop_densit <= parseInt(sliderData[3][1]))
-{
+        if (l.feature.properties.Amount >= parseInt(sliderData[0][0]) && l.feature.properties.Amount <= parseInt(sliderData[0][1]) && parseFloat(l.feature.properties.USD_capita) >= parseFloat(sliderData[1][0]) && parseFloat(l.feature.properties
+            .USD_capita) <= parseFloat(sliderData[1][1]) &&
+          l.feature.properties.Population >= parseInt(sliderData[2][0]) && l.feature.properties.Population <= parseInt(sliderData[2][1]) && l.feature.properties.Pop_densit >= parseInt(sliderData[3][0]) && l.feature.properties.Pop_densit <= parseInt(
+            sliderData[3][1])) {
           l.setStyle({
             opacity: 1,
             fillOpacity: 1
-          }) }
-        else {
+          })
+        } else {
           l.setStyle({
             opacity: 0,
             fillOpacity: 0
@@ -293,7 +298,7 @@
 
     $('.leaflet-top.leaflet-right').removeClass('leaflet-top').removeClass('leaflet-right');
     $('.leaflet-bottom.leaflet-left').removeClass('leaflet-bottom').removeClass('leaflet-left');
-   </script>
+  </script>
 
 
 </body>

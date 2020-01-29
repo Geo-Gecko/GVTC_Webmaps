@@ -16,10 +16,7 @@
   <script type="text/javascript" src="js/jquery-1.9.1.min.js" charset="UTF-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.9.1/jquery.csv.min.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script src="jquery.csv.js"></script>
 
   <!-- Data files -->
@@ -64,23 +61,23 @@
     <!-- side panel -->
     <div id="panel">
       <div id="collapseBtn">
-         </div>
-          <div id="panelContent" class="container-fluid">
-            <div class="nav-link">
-              <p>Key Species</p>
-            </div>
-            <div id='selector_menu'>
-              <select id='selector'>
-                <option size="16" value='Reset'>---Select year---</option>
-                <option value='2016'>2016</option>
-                <option value='2017'>2017</option>
-              </select>
-            </div>
-            <br>
-            <div id="containers">
-              <div id="container1"></div>
-            </div>
-            <button class="refresh" type="submit"  onClick="refreshPage()">Remove Layers</button>
+      </div>
+      <div id="panelContent" class="container-fluid">
+        <div class="nav-link">
+          <p>Key Species</p>
+        </div>
+        <div id="containers">
+          <div id="container1"></div>
+          <div class="tooltip_map">
+            <img id="info" src="images/info.png">
+            <span class="tooltiptext">Tooltip text</span>
+          </div>
+          <div class="tooltip_map2">
+            <img id="info2" src="images/info.png">
+            <span class="tooltiptext2">Tooltip text</span>
+          </div>
+        </div>
+        <button class="refresh" type="submit" onClick="refreshPage()">Remove Layers</button>
 
       </div>
     </div>
@@ -101,9 +98,9 @@
     <script type="text/javascript" src="js/map/map.js"></script>
 
     <script>
-    function refreshPage(){
+      function refreshPage() {
         window.location.reload();
-    }
+      }
     </script>
 
 </body>
