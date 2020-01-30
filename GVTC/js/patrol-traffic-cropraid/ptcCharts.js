@@ -28,7 +28,7 @@ function plotOne(year, yValues, chartId) {
             labels: ["Jan-16", "Mar-16", "Apr-16", "May-16", "Jun-16", "Aug-16", "Sep-16", "Oct-16", "Nov-16", "Dec-16", "Dec-16", "undefined", "undefined"],
             datasets: [
                 {
-                    label: "Raw Ivory Trafficking 2016",
+                    label: `Raw Ivory Trafficking ${year}`,
                     backgroundColor: 'rgba(255, 239, 213, 1)',
                     borderColor: 'rgba(255, 165, 0, 1.8)',
                     borderWidth: 1,
