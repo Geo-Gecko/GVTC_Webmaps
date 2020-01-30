@@ -8,13 +8,10 @@ axios.get(url, {
   })
   .then(r => {
    let traffic_raw = $.csv.toObjects(r.data)
-    // let x_values = []
-    // let y_values = []
 
 
     let years_ = []
     let no_of_charts = Object.keys(traffic_raw[0])
-//   console.log("hjdbfaeabfa",no_of_charts)
     let past_yr = parseInt(no_of_charts[1].split("(")[1].split(")")[0])
     let recent_yr = parseInt(no_of_charts[Object.keys(traffic_raw[0]).length - 1].split("(")[1].split(")")[0])
    
@@ -39,16 +36,14 @@ axios.get(url, {
 
     function addChart(year, i, y_values) {
       let canvas_ = document.createElement("div")
-      canvas_.setAttribute("class", "slide")
       if (i === 0) {
-        canvas_.setAttribute("class", "active-slide")
+        canvas_.setAttribute("class", "slide active-slide")
+      } else {
+        canvas_.setAttribute("class", "slide")
       }
-      // let canvas_ = document.createElement("div")
-      // canvas_.setAttribute("class", "canva-responsive")
-      // canvas_.setAttribute("id", `myDynamicCanvas${year}`)
+      canvas_.setAttribute("style", "position: relative;")
       let canvas2 = document.createElement('CANVAS')
       canvas2.setAttribute("class", `bar-chart${year}`)
-      // canvas2.setAttribute("id", "dataCanvas")
       canvas2.setAttribute("width", "100%")
       canvas2.setAttribute( "height", "75%")
       canvas_.appendChild(canvas2)
@@ -123,8 +118,8 @@ $('.traffick').click(function() {
   nextDot = $('.dot').first();
   }
   
-  currentSlide.fadeOut(600).removeClass('active-slide');
-  nextSlide.fadeIn(600).addClass('active-dot');
+  currentSlide.removeClass('active-slide');
+  nextSlide.addClass('active-slide');
   
   currentDot.removeClass('active-dot');
   nextDot.addClass('active-dot');
@@ -143,8 +138,8 @@ $('.traffick').click(function() {
   prevDot = $('.dot').last();
   }
   
-  currentSlide.fadeOut(600).removeClass('active-slide');
-  prevSlide.fadeIn(600).addClass('active-slide');
+  currentSlide.removeClass('active-slide');
+  prevSlide.addClass('active-slide');
   
   currentDot.removeClass('active-dot');
   prevDot.addClass('active-dot');
@@ -381,15 +376,15 @@ axios.get(url, {
     //let patrol_data ={}
     let patrolled = []
     let not_patrolled = []
-    patrols_v.forEach(row => {
-      //console.log(year)
-      years_[year] = []
-      patrols_v.forEach(pointDate => {
-        years_[year].push(pointDate[`${year})`])
-      })
+    // patrols_v.forEach(row => {
+    //   //console.log(year)
+    //   years_[year] = []
+    //   patrols_v.forEach(pointDate => {
+    //     years_[year].push(pointDate[`${year})`])
+    //   })
 
-    //console.log("joy",virungaYears)
-    })
+    // //console.log("joy",virungaYears)
+    // })
     // let virungaPast_yr =  parseInt(no_of_patrols[1].split("(")[1].split(")")[0])
     // let virungaRecent_yr = parseInt(no_of_patrols[Object.keys(patrols_v[0]).length - 1].split("(")[1].split(")")[0])
     
@@ -401,12 +396,12 @@ axios.get(url, {
      
 
 
-    patrols_v.forEach(patrols_v => {
-      y_values.push(patrols_v["2016 Percentage_Virunga"])
-      x_values.push(patrols_v["Patrols_Virunga"])
-    })
+    // patrols_v.forEach(patrols_v => {
+    //   y_values.push(patrols_v["2016 Percentage_Virunga"])
+    //   x_values.push(patrols_v["Patrols_Virunga"])
+    // })
 
-    plotFive(x_values, y_values);
+    // plotFive(x_values, y_values);
   })
   .catch(e => console.log(e))
 

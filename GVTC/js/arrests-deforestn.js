@@ -174,7 +174,7 @@ function plotThree(xValues, yValues) {
 }
 
 //slider for tables
-$('').click(function() {
+$('.arrow-next').click(function() {
 var currentSlide = $('.active-slide'),
 nextSlide = currentSlide.next(),
 currentDot = $('.active-dot'),
