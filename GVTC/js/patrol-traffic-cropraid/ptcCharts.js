@@ -1,7 +1,27 @@
 
 
-function plotOne(xValues, yValues) {
-    var ctxx = document.getElementsByClassName("bar-chart1");
+function addChart(year, i, y_values) {
+    let slides2 = document.getElementById("charts_");
+    let canvas_ = document.createElement("div")
+    if (i === 0) {
+        canvas_.setAttribute("class", "slide active-slide")
+    } else {
+        canvas_.setAttribute("class", "slide")
+    }
+    canvas_.setAttribute("style", "position: relative;")
+    let canvas2 = document.createElement('CANVAS')
+    canvas2.setAttribute("class", `bar-chart${year}`)
+    canvas2.setAttribute("width", "100%")
+    canvas2.setAttribute("height", "75%")
+    canvas_.appendChild(canvas2)
+    slides2.appendChild(canvas_)
+
+    plotOne(year, y_values, `bar-chart${year}`);
+
+}
+
+function plotOne(year, yValues, chartId) {
+    var ctxx = document.getElementsByClassName(chartId);
     myEnrolChart = new Chart(ctxx, {
         type: 'bar',
         data: {

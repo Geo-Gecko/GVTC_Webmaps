@@ -1,33 +1,57 @@
 //trafficking data 2016
-let traffic_2016_raw_sheet = "234012165"
+let traffic_2016_raw_sheet = "1892401990"
 let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
 let url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${traffic_2016_raw_sheet}`
 
 // add files from animalpopn folder to index.html
 let hmap = document.createElement("script");
 hmap.setAttribute("type", "text/javascript");
+hmap.setAttribute("src", `js/patrol-traffic-cropraid/ptcSliders.js`);
+document.body.appendChild(hmap)
+
+hmap = document.createElement("script");
+hmap.setAttribute("type", "text/javascript");
 hmap.setAttribute("src", `js/patrol-traffic-cropraid/ptcCharts.js`);
 document.body.appendChild(hmap)
+
 
 axios.get(url, {
   mode: 'no-cors'
 })
   .then(r => {
-    traffic_2016_raw = $.csv.toObjects(r.data)
-    let x_values = []
-    let y_values = []
+    let traffic_raw = $.csv.toObjects(r.data)
 
-    traffic_2016_raw.forEach(traffic_2016_raw => {
-      y_values.push(traffic_2016_raw["Raw Ivory"])
-      x_values.push(traffic_2016_raw["Date"])
+
+    let years_ = []
+    let no_of_charts = Object.keys(traffic_raw[0])
+    let past_yr = parseInt(no_of_charts[1].split("(")[1].split(")")[0])
+    let recent_yr = parseInt(no_of_charts[Object.keys(traffic_raw[0]).length - 1].split("(")[1].split(")")[0])
+
+
+    while (past_yr <= recent_yr) {
+      years_.push(past_yr)
+      past_yr += 1
+    }
+
+    let grouped_data = {}
+    years_.forEach((year, i) => {
+      grouped_data[year] = []
+      traffic_raw.forEach(datapoint => {
+        grouped_data[year].push(datapoint[`Raw Ivory(${year})`])
+      })
+
+      addChart(year, i, grouped_data[year])
     })
 
-    plotOne(x_values, y_values);
+
   })
   .catch(e => console.log(e))
 
+
+
 //trafficking data 2017
-let traffic_2016_worked_sheet = "234012165"
+
+let traffic_2016_worked_sheet = "1892401990"
 url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${traffic_2016_worked_sheet}`
 
 axios.get(url, {
@@ -46,6 +70,7 @@ axios.get(url, {
     plotTwo(x_values, y_values);
   })
   .catch(e => console.log(e))
+
 
 //crop raids mgahinga
 let raids_mgahinga_sheet = "1192678611"
