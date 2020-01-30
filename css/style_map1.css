@@ -1,81 +1,8 @@
 /*Global*/
-html,
-body {
-  width: 100%;
-  height: 100%;
+html, body {
+  padding: 0;
   margin: 0;
-}
-
-#selector {
-  border-radius: 20px;
-  border-width: 1px;
-  border-style: solid;
-}
-
-#selector2 {
-  border-radius: 20px;
-  border-width: 1px;
-  border-style: solid;
-}
-
-@media (min-width:1200px) {
-  #map {
-    float: left;
-    height: 100%;
-    width: 30%;
-    left: 22%;
-  }
-}
-
-@media (max-width:1200px) {
-  #map {
-    float: left;
-    height: 100%;
-    width: 35%;
-    left: 22%;
-  }
-}
-
-@media (min-width:1200px) {
-  #containerr {
-    float: right;
-    width: 48%;
-    height: 100%;
-    padding-top: 7.5%;
-  }
-}
-
-@media (max-width:1200px) {
-  #containerr {
-    float: right;
-    width: 43%;
-    height: 100%;
-    padding-top: 7.5%;
-  }
-}
-
-#containerr .map {
-  width: 100%;
-  height: 50%;
-}
-
-#containerr #mapA {
-  border-bottom: black 1px solid;
-}
-
-div .time_heading {
-  font-size: 30px;
-  padding-top: 40px;
-  left: 0;
-  position: absolute;
-  z-index: 1000;
-}
-
-@media all and (max-width:30em) {
-  a.button1 {
-    display: block;
-    margin: 0.4em auto;
-  }
+  height: 100%;
 }
 
 .mid {
@@ -99,6 +26,7 @@ header {
 
 header.fixed_header {
   position: fixed;
+  top: 0;
 }
 
 header .branding img {
@@ -134,7 +62,14 @@ div.orientationpage_heading h3 {
   font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #1B6B36;
   font-weight: bold;
+  padding-left: 70px;
   /*padding: 0px 250px 0px 220px;*/
+}
+
+#selector {
+  border-radius: 20px;
+  border-width: 1px;
+  border-style: solid;
 }
 
 aside.sidebar p {
@@ -207,7 +142,7 @@ li>a {
   color: #333;
 }
 
-li>a:hover, a:focus {
+li>a:hover {
   background-color: #d4dadc;
   color: #fff;
   padding-top: 10px;
@@ -230,17 +165,41 @@ li.active>a {
 
 /*Main containers*/
 div.col-xs-12 {
-  position: fixed;
-  width: 100%;
+  width: 78%;
   padding: 0px;
   margin-left: 0px;
   height: 100%;
   z-index: 0;
+  display: block;
+  float: right;
+}
+
+div#map {
+  height: 100%;
+  background-color: #b5d0d0;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+div.mapContainer {
+  height: 100%;
+  z-index: -5;
+  width: 100%;
+}
+
+div #containerr {
+  float: right;
+}
+
+div #containerr .map {
+  top: 10em;
+  width: 100%;
+  height: 41%;
 }
 
 /*Side panel*/
 @media (min-width:1200px) {
-  div#panel_2 {
+  div#panel {
     position: absolute;
     top: 15vh;
     height: 85vh;
@@ -255,7 +214,7 @@ div.col-xs-12 {
 }
 
 @media (max-width:1200px) {
-  div#panel_2 {
+  div#panel {
     position: absolute;
     top: 15vh;
     height: 85vh;
@@ -277,23 +236,6 @@ div#panelContent {
   transition: opacity 0.6s;
 }
 
-div#collapseBtn {
-  right: 0px;
-  margin-top: 7px;
-  font-weight: bold;
-  position: absolute;
-  z-index: 1000;
-}
-
-div#collapseBtn button {
-  background-color: #ffffff;
-  opacity: 0.5;
-  height: 30px;
-  width: 30px;
-  margin-top: 6px;
-  border: none;
-}
-
 div .nav-link {
   width: 100%;
   position: absolute;
@@ -309,33 +251,9 @@ div .nav-link p {
   margin-top: 8px;
 }
 
-div #selector_menu {
-  position: relative;
-  top: 59px;
-  right: 5px;
-  padding-left: 17px;
-}
-
-select #selector {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-}
-
-div #selector_menu2 {
-  position: relative;
-  top: 46px;
-  right: 5px;
-  padding-left: 17px;
-}
-
-select #selector2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-}
-
 @media (max-width:1365px) {
   .refresh {
-    position: absolute;
+    position: relative;
     left: 57%;
     margin-top: 4.3em;
     width: 9em;
@@ -348,8 +266,8 @@ select #selector2 {
 
 @media (min-width:1500px) {
   .refresh {
-    position: absolute;
-    left: 70%;
+    position: relative;
+    left: 69.5%;
     margin-top: 4.3em;
     width: 9em;
     border-radius: 20px;
@@ -363,8 +281,14 @@ select #selector2 {
   background-color: white;
 }
 
+.leaflet-control-layers-expanded {
+  padding: 6px 10px 6px -1px;
+  color: #333;
+  width: 95% !important;
+}
+
 div #containers {
-  top: 60px;
+  top: 30px;
   position: absolute;
   right: 0px;
   left: -7px;
@@ -373,39 +297,8 @@ div #containers {
 div #container1 {
   top: 50px;
   position: relative;
-  left: 0px;
+  left: -5px;
   margin-left: 21px;
-}
-
-@media (min-width:1500px) {
-  div #container22 {
-    top: 111px;
-    position: relative;
-  }
-}
-
-@media (max-width:1365px) {
-  div #container22 {
-    top: 111px;
-    position: relative;
-    left: 3%;
-  }
-}
-
-@media (max-width:1365px) {
-  .leaflet-control-layers-expanded {
-    padding: 6px 10px 6px -1px;
-    color: #333;
-    width: 91% !important;
-  }
-}
-
-@media (min-width:1500px) {
-  .leaflet-control-layers-expanded {
-    padding: 6px 10px 6px -1px;
-    color: #333;
-    width: 95% !important;
-  }
 }
 
 div #container2 {
@@ -415,7 +308,7 @@ div #container2 {
 
 div #container3 {
   position: relative;
-  top: 9vh;
+  top: 16vh;
   right: 10px;
   width: 100%;
   padding-left: 20px;
@@ -430,11 +323,6 @@ div #container3 h5 {
 div #container3 h6 {
   padding-left: 2px;
   padding-bottom: 5px;
-}
-
-div #input_values {
-  padding-bottom: 12px;
-  text-align: center;
 }
 
 div .logo a {
@@ -502,51 +390,48 @@ div#panelContent {
 
 @media (max-width:1365px) {
   .landlegend {
-    height: 14em;
-    right: 5%;
-    bottom: 18em;
-    width: 59%;
+    width: 64%;
     position: relative;
+    left: 29%;
   }
 }
 
 @media (min-width:1500px) {
   .landlegend {
-    height: 17em;
-    right: 5%;
-    bottom: 30em;
-    width: 83%;
+    width: 80%;
     position: relative;
-  }
-}
-
-@media (min-width:1500px) {
-  .legend_gvtc {
-    position: absolute;
-    bottom: 24px;
-    z-index: 1000;
   }
 }
 
 @media (max-width:1365px) {
   .legend_gvtc {
     position: absolute;
-    bottom: -5px;
+    bottom: -4px;
+    left: 12%;
     z-index: 1000;
   }
 }
 
 @media (min-width:1500px) {
-  .gvtc_legend {
-    position: relative;
-    width: 85%;
+  .legend_gvtc {
+    position: absolute;
+    bottom: -4px;
+    z-index: 1000;
   }
 }
 
 @media (max-width:1365px) {
   .gvtc_legend {
     position: relative;
-    width: 59%;
+    width: 72%;
+    left: -40%;
+  }
+}
+
+@media (min-width:1500px) {
+  .gvtc_legend {
+    position: relative;
+    width: 84%;
   }
 }
 
@@ -554,8 +439,8 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 17.3em;
-    top: 4.5em;
+    left: 17em;
+    top: 18.5em;
   }
 }
 
@@ -563,8 +448,8 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 15.5em;
-    top: 4.5em;
+    left: 16em;
+    top: 18.5em;
   }
 }
 
@@ -586,8 +471,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 17.5em;
-    top: 4.3em;
+    left: 17em;
+    top: 18.5em;
   }
 }
 
@@ -603,7 +488,7 @@ div#panelContent {
     position: relative;
     z-index: 1;
     left: 16em;
-    top: 4.5em;
+    top: 18.5em;
   }
 }
 
@@ -616,7 +501,7 @@ div#panelContent {
     width: 20px;
     position: relative;
     left: 9em;
-    top: 7.5em;
+    top: 21.5em;
   }
 }
 
@@ -624,8 +509,8 @@ div#panelContent {
   #info2 {
     width: 20px;
     position: relative;
-    left: 7.5em;
-    top: 7.5em;
+    left: 102%;
+    top: 21.5em
   }
 }
 
@@ -648,7 +533,7 @@ div#panelContent {
     position: relative;
     z-index: 1;
     left: 9em;
-    top: 7.5em
+    top: 21.5em
   }
 }
 
@@ -663,8 +548,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 7.5em;
-    top: 7.5em
+    left: 8em;
+    top: 21.5em
   }
 }
 

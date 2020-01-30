@@ -1,81 +1,14 @@
 /*Global*/
-html,
-body {
-  width: 100%;
-  height: 100%;
+html, body {
+  padding: 0;
   margin: 0;
+  height: 100%;
 }
 
 #selector {
   border-radius: 20px;
   border-width: 1px;
   border-style: solid;
-}
-
-#selector2 {
-  border-radius: 20px;
-  border-width: 1px;
-  border-style: solid;
-}
-
-@media (min-width:1200px) {
-  #map {
-    float: left;
-    height: 100%;
-    width: 30%;
-    left: 22%;
-  }
-}
-
-@media (max-width:1200px) {
-  #map {
-    float: left;
-    height: 100%;
-    width: 35%;
-    left: 22%;
-  }
-}
-
-@media (min-width:1200px) {
-  #containerr {
-    float: right;
-    width: 48%;
-    height: 100%;
-    padding-top: 7.5%;
-  }
-}
-
-@media (max-width:1200px) {
-  #containerr {
-    float: right;
-    width: 43%;
-    height: 100%;
-    padding-top: 7.5%;
-  }
-}
-
-#containerr .map {
-  width: 100%;
-  height: 50%;
-}
-
-#containerr #mapA {
-  border-bottom: black 1px solid;
-}
-
-div .time_heading {
-  font-size: 30px;
-  padding-top: 40px;
-  left: 0;
-  position: absolute;
-  z-index: 1000;
-}
-
-@media all and (max-width:30em) {
-  a.button1 {
-    display: block;
-    margin: 0.4em auto;
-  }
 }
 
 .mid {
@@ -99,6 +32,7 @@ header {
 
 header.fixed_header {
   position: fixed;
+  top: 0;
 }
 
 header .branding img {
@@ -124,38 +58,6 @@ div.section_container {
   padding: 0px 20px 0px 70px;
   width: 40%;
   float: left;
-}
-
-div.orientationpage_heading {
-  margin-top: 150px;
-}
-
-div.orientationpage_heading h3 {
-  font: 30px "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #1B6B36;
-  font-weight: bold;
-  /*padding: 0px 250px 0px 220px;*/
-}
-
-aside.sidebar p {
-  padding-top: 20px;
-  font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-aside.map_section {
-  float: right;
-  display: block;
-  text-align: center;
-  width: 60%;
-  padding: 80px 0px 0px 0px;
-}
-
-aside img.parks {
-  width: 250px;
-  height: 400px;
-  object-fit: cover;
-  transform: scale(1.3);
-  padding-top: :0px;
 }
 
 nav ul li {
@@ -207,7 +109,7 @@ li>a {
   color: #333;
 }
 
-li>a:hover, a:focus {
+li>a:hover {
   background-color: #d4dadc;
   color: #fff;
   padding-top: 10px;
@@ -230,17 +132,31 @@ li.active>a {
 
 /*Main containers*/
 div.col-xs-12 {
-  position: fixed;
-  width: 100%;
+  width: 78%;
   padding: 0px;
   margin-left: 0px;
   height: 100%;
   z-index: 0;
+  display: block;
+  float: right;
+}
+
+div#map {
+  height: 100%;
+  background-color: #b5d0d0;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+div.mapContainer {
+  height: 100%;
+  z-index: -5;
+  width: 100%;
 }
 
 /*Side panel*/
 @media (min-width:1200px) {
-  div#panel_2 {
+  div#panel {
     position: absolute;
     top: 15vh;
     height: 85vh;
@@ -255,7 +171,7 @@ div.col-xs-12 {
 }
 
 @media (max-width:1200px) {
-  div#panel_2 {
+  div#panel {
     position: absolute;
     top: 15vh;
     height: 85vh;
@@ -267,14 +183,6 @@ div.col-xs-12 {
     z-index: 10000;
     border: 1px solid black;
   }
-}
-
-div#panelContent {
-  opacity: 1;
-  height: inherit;
-  width: 100%;
-  -webkit-transition: opacity 0.6s;
-  transition: opacity 0.6s;
 }
 
 div#collapseBtn {
@@ -309,53 +217,31 @@ div .nav-link p {
   margin-top: 8px;
 }
 
-div #selector_menu {
-  position: relative;
-  top: 59px;
-  right: 5px;
-  padding-left: 17px;
-}
-
-select #selector {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
-}
-
-div #selector_menu2 {
-  position: relative;
-  top: 46px;
-  right: 5px;
-  padding-left: 17px;
-}
-
-select #selector2 {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 20px;
+@media (min-width:1500px) {
+  .refresh {
+    position: absolute;
+    left: 69.5%;
+    margin-top: 2.3em;
+    width: 9em;
+    border-radius: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(169, 169, 169);
+    top: 2em;
+  }
 }
 
 @media (max-width:1365px) {
   .refresh {
     position: absolute;
     left: 57%;
-    margin-top: 4.3em;
+    margin-top: 2.3em;
     width: 9em;
     border-radius: 20px;
     border-width: 1px;
     border-style: solid;
     border-color: rgb(169, 169, 169);
-  }
-}
-
-@media (min-width:1500px) {
-  .refresh {
-    position: absolute;
-    left: 70%;
-    margin-top: 4.3em;
-    width: 9em;
-    border-radius: 20px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: rgb(169, 169, 169);
+    top: 2em;
   }
 }
 
@@ -370,55 +256,32 @@ div #containers {
   left: -7px;
 }
 
-div #container1 {
-  top: 50px;
-  position: relative;
-  left: 0px;
-  margin-left: 21px;
-}
-
-@media (min-width:1500px) {
-  div #container22 {
-    top: 111px;
-    position: relative;
-  }
-}
-
-@media (max-width:1365px) {
-  div #container22 {
-    top: 111px;
-    position: relative;
-    left: 3%;
-  }
-}
-
-@media (max-width:1365px) {
-  .leaflet-control-layers-expanded {
-    padding: 6px 10px 6px -1px;
-    color: #333;
-    width: 91% !important;
-  }
-}
-
-@media (min-width:1500px) {
-  .leaflet-control-layers-expanded {
-    padding: 6px 10px 6px -1px;
-    color: #333;
-    width: 95% !important;
-  }
-}
-
 div #container2 {
-  top: 13vh;
+  top: 63px;
   position: relative;
+  right: 2px;
 }
 
-div #container3 {
-  position: relative;
-  top: 9vh;
-  right: 10px;
-  width: 100%;
-  padding-left: 20px;
+@media (max-width:1365px) {
+  div #container3 {
+    position: relative;
+    top: 79px;
+    right: 10px;
+    width: 100%;
+    padding-left: 12px;
+    height: 300px;
+    overflow-y: scroll;
+  }
+}
+
+@media (min-width:1500px) {
+  div #container3 {
+    position: relative;
+    top: 112px;
+    right: 10px;
+    width: 100%;
+    padding-left: 20px;
+  }
 }
 
 div #container3 h5 {
@@ -432,8 +295,68 @@ div #container3 h6 {
   padding-bottom: 5px;
 }
 
+div #slider {
+  top: 0px;
+  right: 1px;
+  margin: 10px 25px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+  margin-bottom: 10px;
+  left: 3px;
+}
+
+div #slider2 {
+  top: 0px;
+  right: 1px;
+  margin: 10px 25px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+  margin-bottom: 10px;
+  left: 3px;
+}
+
+div #slider3 {
+  top: 0px;
+  right: 1px;
+  margin: 10px 25px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+  margin-bottom: 10px;
+  left: 3px;
+}
+
+div #slider4 {
+  top: 0px;
+  right: 1px;
+  margin: 10px 25px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 90%;
+  margin-bottom: 10px;
+  left: 3px;
+}
+
+.noUi-connect {
+  background: rgb(162, 214, 135);
+}
+
+.noUi-horizontal .noUi-handle, .noUi-vertical .noUi-handle {
+  background: #1B6B36;
+}
+
+.noUi-target.noUi-horizontal .noUi-tooltip {
+  background-color: #1B6B36;
+}
+
+.noUi-handle {
+  box-shadow: none;
+}
+
 div #input_values {
-  padding-bottom: 12px;
+  padding: 12px;
   text-align: center;
 }
 
@@ -502,51 +425,76 @@ div#panelContent {
 
 @media (max-width:1365px) {
   .landlegend {
-    height: 14em;
-    right: 5%;
-    bottom: 18em;
-    width: 59%;
+    width: 64%;
     position: relative;
+    left: 29%;
   }
 }
 
 @media (min-width:1500px) {
   .landlegend {
-    height: 17em;
-    right: 5%;
-    bottom: 30em;
-    width: 83%;
+    width: 80%;
     position: relative;
-  }
-}
-
-@media (min-width:1500px) {
-  .legend_gvtc {
-    position: absolute;
-    bottom: 24px;
-    z-index: 1000;
   }
 }
 
 @media (max-width:1365px) {
   .legend_gvtc {
     position: absolute;
-    bottom: -5px;
+    bottom: -4px;
+    left: 12%;
     z-index: 1000;
   }
 }
 
 @media (min-width:1500px) {
-  .gvtc_legend {
-    position: relative;
-    width: 85%;
+  .legend_gvtc {
+    position: absolute;
+    bottom: -4px;
+    z-index: 1000;
   }
 }
 
 @media (max-width:1365px) {
   .gvtc_legend {
     position: relative;
-    width: 59%;
+    width: 72%;
+    left: -40%;
+  }
+}
+
+@media (min-width:1500px) {
+  .gvtc_legend {
+    position: relative;
+    width: 84%;
+  }
+}
+
+@media (min-width:1500px) {
+  .leaflet-control-layers-expanded {
+    padding: 6px 10px 6px -1px;
+    color: #333;
+    width: 100% !important;
+  }
+}
+
+@media (max-width:1365px) {
+  .leaflet-control-layers-expanded {
+    padding: 6px 10px 6px -1px;
+    color: #333;
+    width: 100% !important;
+  }
+}
+
+@media (min-width:1500px) {
+  .input_number {
+    max-width: 92px !important;
+  }
+}
+
+@media (max-width:1365px) {
+  .input_number {
+    max-width: 90px !important;
   }
 }
 
@@ -554,8 +502,8 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 17.3em;
-    top: 4.5em;
+    left: 16.5em;
+    top: 4.3em;
   }
 }
 
@@ -563,8 +511,8 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 15.5em;
-    top: 4.5em;
+    left: 17em;
+    top: 4.2em;
   }
 }
 
@@ -586,7 +534,7 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 17.5em;
+    left: 16.5em;
     top: 4.3em;
   }
 }
@@ -602,8 +550,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 16em;
-    top: 4.5em;
+    left: 17em;
+    top: 4em;
   }
 }
 
@@ -615,8 +563,8 @@ div#panelContent {
   #info2 {
     width: 20px;
     position: relative;
-    left: 9em;
-    top: 7.5em;
+    left: 8.5em;
+    top: 7.3em;
   }
 }
 
@@ -624,8 +572,8 @@ div#panelContent {
   #info2 {
     width: 20px;
     position: relative;
-    left: 7.5em;
-    top: 7.5em;
+    left: 8.5em;
+    top: 7.2em;
   }
 }
 
@@ -636,36 +584,18 @@ div#panelContent {
   z-index: 1000000;
 }
 
-@media (min-width:1500px) {
-  .tooltip_map2 .tooltiptext2 {
-    visibility: hidden;
-    width: 137px;
-    background-color: #2d7746;
-    color: #fff;
-    text-align: center;
-    border-radius: 11px;
-    padding: 9px 9px;
-    position: relative;
-    z-index: 1;
-    left: 9em;
-    top: 7.5em
-  }
-}
-
-@media (max-width:1365px) {
-  .tooltip_map2 .tooltiptext2 {
-    visibility: hidden;
-    width: 137px;
-    background-color: #2d7746;
-    color: #fff;
-    text-align: center;
-    border-radius: 11px;
-    padding: 9px 9px;
-    position: relative;
-    z-index: 1;
-    left: 7.5em;
-    top: 7.5em
-  }
+.tooltip_map2 .tooltiptext2 {
+  visibility: hidden;
+  width: 137px;
+  background-color: #2d7746;
+  color: #fff;
+  text-align: center;
+  border-radius: 11px;
+  padding: 9px 9px;
+  position: relative;
+  z-index: 1;
+  left: 9em;
+  top: 7.3em;
 }
 
 .tooltip_map2:hover .tooltiptext2 {

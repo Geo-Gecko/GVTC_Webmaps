@@ -7,33 +7,38 @@
   <title>GVTC Revenue Sharing Map</title>
   <!--   Style links-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.css" />
-  <link rel="stylesheet" href="css/style.css" type="text/css" />
+  <link rel="stylesheet" href="css/style_map3.css" type="text/css" />
   <link rel="stylesheet" href="leaflet/leaflet.css" type="text/css" />
   <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css">
   <link rel="stylesheet" href="lib/ol3.8.2/ol.css" type="text/css" />
 
   <!-- Javascript files-->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
   <script src="leaflet/leaflet.js" charset="utf-8"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-  <!-- Data files -->
-  <script src="data/QENP_finances.js"></script>
-  <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
-  <script src="data/Parks_Outside.geojson" charset="utf-8"></script>
-  <script src="data/poverty.geojson" charset="utf-8"></script>
-  <script src="data/Conflict.geojson" charset="utf-8"></script>
-  <script src="data/hippos.js" charset="utf-8"></script>
-  <script src="data/Gorilla_habitat.geojson" charset="utf-8"></script>
-  <script src="data/Elephant_habitat.geojson" charset="utf-8"></script>
-  <script src="data/density.geojson" charset="utf-8"></script>
-  <script src="data/waterbodies1.geojson" charset="utf-8"></script>
 
   <!-- date filter -->
   <link rel="stylesheet" href="css/yearpicker.css">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <!-- slider -->
+  <script src="lib/axios.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script src="lib/jquery.csv.js"></script>
 
+  <!-- Data files -->
+  <script src="data/GVTC_parks.geojson" charset="utf-8"></script>
+  <script src="data/Parks_Outside.geojson" charset="utf-8"></script>
+  <script src="data/poverty.geojson" charset="utf-8"></script>
+  <script src="data/Conflict.geojson" charset="utf-8"></script>
+  <script src="data/density.geojson" charset="utf-8"></script>
+  <script src="data/Finances.geojson" charset="utf-8"></script>
+  <script src="data/waterbodies1.geojson" charset="utf-8"></script>
+  <script src="data/hippos.js" charset="utf-8"></script>
+  <script src="data/Gorilla_habitat.geojson" charset="utf-8"></script>
+  <script src="data/Elephant_habitat.geojson" charset="utf-8"></script>
+
+  <!-- slider -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/8.5.1/nouislider.min.js"></script>
 </head>
 
@@ -41,212 +46,96 @@
   <!-- navigation bar and main container -->
   <!-- main container -->
   <div class="mapContainer">
-  <header>
-    <div class="container">
-      <div class= "branding">
-        <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt=""></a>
+    <header>
+      <div class="container">
+        <div class="branding">
+          <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt=""></a>
         </div>
-            <nav>
-                <ul>
-                  <li><span><img class = "Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map3.html">REVENUE SHARING</a></li>
-                  <li><span><img class = "Deforestation" src="images/defo.png"alt=""></span><a href="map2.html"> DEFORESTATION</a></li>
-                  <li><span><img class = "Key_species" src="images/animal.png"alt=""></span><a href="map1.html"></i> KEY SPECIES</a></li>
-                  <li><span><img class = "Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="GVTC/index.html">DASHBOARD</a></li>
-                  <li><span><img class = "Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a>
-                </ul>
-            </nav>
-    </div>
-  </header>
-
-
-
-<!-- side panel -->
-      <div id="panel">
-        <div id="collapseBtn">
-          <button type="button" class="panelclose_button" onclick="collapsePanel();"> << </button>
-        </div>
-        <div id="panelContent" class="container-fluid">
-          <div class="nav-link">
-            <p>Revenue Sharing</p>
-          </div>
-          <div id='selector_menu'>
-            <select id='selector'>
-              <option size="16" value='Reset'>---Select year---</option>
-              <option value='2016'>2016</option>
-              <option value='2017'>2017</option>
-            </select>
-          </div>
-          <br>
-          <div id=container2>
-          </div>
-          <!-- <div id=containers> -->
-            <div id=container3>
-            <!-- <h5><strong>Revenue Sharing</strong></h5> -->
-            <h6><strong>Amounts(UGX)</strong></h6>
-            <div id="slider"></div>
-            <div id="input_values">
-              <input type="number" min="1000000" max="36999999" id="input-number-min">
-              <input type="number" min="1000001" max="37000000" id="input-number-max">
-            </div>
-            <h6><strong>Male Beneficiaries</strong></h6>
-            <div id="slider2"></div>
-            <div id="input_values">
-              <input type="number" min="1000000" max="36999999" id="input-number-min2">
-              <input type="number" min="1000001" max="37000000" id="input-number-max2">
-            </div>
-            <h6><strong>Female Beneficiaries</strong></h6>
-            <div id="slider3"></div>
-            <div id="input_values">
-              <input type="number" min="1000000" max="36999999" id="input-number-min3">
-              <input type="number" min="1000001" max="37000000" id="input-number-max3">
-            </div>
-          </div>
-          </div>
-        </div>
-
-        <!-- map -->
-        <div class="col-xs-12" id="map">
+        <nav>
+          <ul>
+            <li class="active"><span><img class="Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map3.html"><span class="sr-only">(current)</span>REVENUE SHARING</a></li>
+            <li><span><img class="Deforestation" src="images/defo.png" alt=""></span><a href="map2.html"> DEFORESTATION</a></li>
+            <li><span><img class="Key_species" src="images/animal.png" alt=""></span><a href="map1.html"></i> KEY SPECIES</a></li>
+            <li><span><img class="Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="GVTC/index.html">DASHBOARD</a></li>
+            <li><span><img class="Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a></li>
+          </ul>
+        </nav>
       </div>
+    </header>
 
+    <!-- side panel -->
+    <div id="panel">
+      <div id="panelContent" class="container-fluid">
+        <div class="nav-link">
+          <p>Revenue Sharing</p>
+        </div>
+        <button class="refresh" type="submit" onClick="refreshPage()">Remove Layers</button>
 
-      <div class= "logo">
-          <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
+        <script>
+          function refreshPage() {
+            window.location.reload();
+          }
+        </script>
+        <br>
+        <div id=container2>
+        <div class="tooltip_map">
+          <img id="info" src="images/info.png">
+          <span class="tooltiptext">Tooltip text</span>
+        </div>
+        <div class="tooltip_map2">
+          <img id="info2" src="images/info.png">
+          <span class="tooltiptext2">Tooltip text</span>
+        </div>
+      </div>
+      <!-- <div id=containers> -->
+      <div id=container3>
+        <!-- <h5><strong>Revenue Sharing</strong></h5> -->
+        <h6><strong>Amounts (USD)</strong></h6>
+        <div id="slider"></div>
+        <div id="input_values">
+          <input class="input_number" type="number" min="0" max="103999" id="input-number-min"disabled>
+          <input class="input_number" type="number" min="0" max="104000" id="input-number-max" disabled>
+        </div>
+        <h6><strong>Amounts (Per Capita)</strong></h6>
+        <div id="slider2"></div>
+        <div id="input_values">
+          <input class="input_number" type="number" min="0" max="46" id="input-number-min2"disabled>
+          <input class="input_number" type="number" min="0" max="47" id="input-number-max2"disabled>
+        </div>
+        <h6><strong>Population</strong></h6>
+        <div id="slider3"></div>
+        <div id="input_values">
+          <input class="input_number" type="number" min="0" max="614999" id="input-number-min3"disabled>
+          <input class="input_number" type="number" min="0" max="615000" id="input-number-max3"disabled>
+        </div>
+        <h6><strong>Population Density</strong></h6>
+        <div id="slider4"></div>
+        <div id="input_values">
+          <input class="input_number" type="number" min="0" max="14999" id="input-number-min4"disabled>
+          <input class="input_number" type="number" min="0" max="15000" id="input-number-max4"disabled>
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- map -->
+  <div class="col-xs-12" id="map">
+    <div class="legend_gvtc">
+      <img class="gvtc_legend" src="images/legend.PNG" alt="">
+    </div>
+  </div>
+
+
+  <div class="logo">
+    <a href="https://www.geogecko.com/" target="_blank"><img class="gecko" src="images/Geogecko.png"></a>
+  </div>
+  </div>
 
   <script type="text/javascript" src="lib/bootstrap-3.3.6-dist/js/bootstrap.js"></script>
   <script type="text/javascript" src="lib/ol3.8.2/ol-debug.js"></script>
-  <script type="text/javascript" src="js/map3.js"></script>
-  <script type="text/javascript" src="js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-  <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/map3/map3.js"></script>  
+  <script type="text/javascript" src="js/map3/sliders.js"></script>
 
-  <script>
-    var finances = L.geoJson(QENP_finances, {
-      style: {
-        fillColor: '#1F532C',
-        weight: 1,
-        color: '#808080'
-      }
-
-    }) //.addTo(newMap);
-
-    var group = L.featureGroup([finances]).addTo(map);
-
-    //Creating a slider
-    var slidervar = document.getElementById('slider')
-    noUiSlider.create(slider, {
-      start: [1000000, 37000000],
-      connect: true,
-      range: {
-        'min': 1000000,
-        'max': 37000000
-      }
-    });
-
-    var slidervar2 = document.getElementById('slider2')
-    noUiSlider.create(slider2, {
-      start: [100, 10000],
-      connect: true,
-      range: {
-        'min': 100,
-        'max': 10000
-      }
-    });
-
-    var slidervar3 = document.getElementById('slider3')
-    noUiSlider.create(slider3, {
-      start: [100, 500000],
-      connect: true,
-      range: {
-        'min': 100,
-        'max': 10000
-      }
-    });
-
-    document.getElementById('input-number-min').setAttribute("value", "1000000")
-    document.getElementById('input-number-max').setAttribute("value", "35676000")
-    document.getElementById('input-number-min2').setAttribute("value", "100")
-    document.getElementById('input-number-max2').setAttribute("value", "1000")
-    document.getElementById('input-number-min3').setAttribute("value", "100")
-    document.getElementById('input-number-max3').setAttribute("value", "50000")
-
-    var inputNumberMin = document.getElementById("input-number-min");
-    var inputNumberMax = document.getElementById("input-number-max");
-    inputNumberMin.addEventListener("change", function() {
-      slidervar.noUiSlider.set([this.value, null]);
-    });
-    inputNumberMax.addEventListener("change", function() {
-      slidervar.noUiSlider.set(null, this.value);
-    });
-
-    var sliderData = [
-      [0, 0],
-      [0, 0],
-      [0, 0]
-    ]
-
-    //Connecting the slider to the data
-    slidervar.noUiSlider.on('update', function(values, handle) {
-      if (handle == 0) {
-        document.getElementById('input-number-min').value = values[0];
-      } else {
-        document.getElementById('input-number-max').value = values[1];
-      }
-
-      sliderData[0] = values;
-
-      updateFeatures(sliderData);
-    })
-    //Connecting the slider to the data
-    slidervar2.noUiSlider.on('update', function(values, handle) {
-      if (handle == 0) {
-        document.getElementById('input-number-min2').value = values[0];
-      } else {
-        document.getElementById('input-number-max2').value = values[1];
-      }
-
-      sliderData[1] = values;
-
-      updateFeatures(sliderData);
-      0
-    })
-    //Connecting the slider to the data
-    slidervar3.noUiSlider.on('update', function(values, handle) {
-      if (handle == 0) {
-        document.getElementById('input-number-min3').value = values[0];
-      } else {
-        document.getElementById('input-number-max3').value = values[1];
-      }
-
-      sliderData[2] = values;
-
-      updateFeatures(sliderData);
-    })
-
-    function updateFeatures(sliderData) {
-
-      for (key in finances['_layers']) {
-        var l = finances['_layers'][key];
-        if (l.feature.properties.AMOUNT > parseInt(sliderData[0][0]) && l.feature.properties.AMOUNT < parseInt(sliderData[0][1]) && l.feature.properties.fpopn > parseInt(sliderData[2][0]) && l.feature.properties.fpopn < parseInt(sliderData[2][1]) &&
-          l.feature.properties.mpopn > parseInt(sliderData[1][0]) && l.feature.properties.mpopn < parseInt(sliderData[1][1]))
-          l.setStyle({
-            opacity: 1,
-            fillOpacity: 1
-          })
-        else {
-          l.setStyle({
-            opacity: 0,
-            fillOpacity: 0
-          })
-        }
-      }
-
-    }
-
-    $('.leaflet-top.leaflet-right').removeClass('leaflet-top').removeClass('leaflet-right');
-    $('.leaflet-bottom.leaflet-left').removeClass('leaflet-bottom').removeClass('leaflet-left');
-  </script>
 
 </body>
 
