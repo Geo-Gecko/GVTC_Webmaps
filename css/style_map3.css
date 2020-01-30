@@ -502,8 +502,8 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 13em;
-    top: 1em;
+    left: 16.5em;
+    top: 4.3em;
   }
 }
 
@@ -511,8 +511,8 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 13.5em;
-    top: 1.2em;
+    left: 17em;
+    top: 4.2em;
   }
 }
 
@@ -534,8 +534,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 13em;
-    top: 1em;
+    left: 16.5em;
+    top: 4.3em;
   }
 }
 
@@ -550,8 +550,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 14em;
-    top: 1em;
+    left: 17em;
+    top: 4em;
   }
 }
 

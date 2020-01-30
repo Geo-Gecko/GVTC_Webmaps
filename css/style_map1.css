@@ -439,8 +439,8 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 13.5em;
-    top: 15.3em;
+    left: 17em;
+    top: 18.5em;
   }
 }
 
@@ -448,8 +448,8 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 162%;
-    top: 15.5em;
+    left: 16em;
+    top: 18.5em;
   }
 }
 
@@ -471,8 +471,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 14em;
-    top: 15.5em;
+    left: 17em;
+    top: 18.5em;
   }
 }
 
@@ -487,8 +487,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 13em;
-    top: 15.5em;
+    left: 16em;
+    top: 18.5em;
   }
 }
 
@@ -532,7 +532,7 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 11em;
+    left: 9em;
     top: 21.5em
   }
 }

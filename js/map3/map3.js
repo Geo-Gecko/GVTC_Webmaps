@@ -43,7 +43,7 @@ povlegend.onAdd = function (map) {
 
   var div = L.DomUtil.create('div', 'info legend'),
     povGrades = [0.11, 0.15, 0.18, 0.22, 0.8],
-    povLabels = [],
+    povLabels = ['<strong>1 = Highest Level of Poverty </strong> <br>'],
     from, to;
 
   for (var i = 0; i < povGrades.length; i++) {
@@ -66,7 +66,7 @@ var denlegend = L.control({
 denlegend.onAdd = function (map) {
   var div = L.DomUtil.create('div', 'info legend'),
     grades = [100, 200, 400, 9700],
-    labels = [],
+    labels = ['<strong> People/Sqkm </strong><br>'],
     from, to;
 
   for (var i = 0; i < grades.length; i++) {

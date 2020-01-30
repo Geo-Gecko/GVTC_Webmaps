@@ -57,7 +57,7 @@ axios.get(url_, { mode: 'no-cors' })
             var tr3_ = document.createElement('TH');
 
             let di_ = document.createElement("div")
-            di_.innerHTML += `<tr><th><span><div><h4>${arrests[4][`Arrested(${year})`]}</h4></div></span></th></tr>`
+            di_.innerHTML += `<tr><th><span><div><h4>${year}</h4></div></span></th></tr>`
             tr_.appendChild(di_);
             let di1_ = document.createElement("div")
             // console.log(arrests[4][`Arrested(2017)`])

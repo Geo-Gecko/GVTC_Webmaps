@@ -31,7 +31,7 @@ povlegend.onAdd = function(map) {
 
   var div = L.DomUtil.create('div', 'info legend'),
     povGrades = [0.11, 0.15, 0.18, 0.22, 0.8],
-    povLabels = ['<strong>1 MIX / 0 MIN </strong>'],
+    povLabels = ['<strong>1 = Max Level of Poverty </strong> <br>'],
     from, to;
 
   for (var i = 0; i < povGrades.length; i++) {
@@ -61,7 +61,7 @@ var landlegend = L.control({
 denlegend.onAdd = function(map) {
   var div = L.DomUtil.create('div', 'info legend'),
     grades = [100, 200, 400, 9700],
-    labels = ['<strong> PEOPLE/SQKM </strong>'],
+    labels = ['<strong> People/Sqkm </strong><br>'],
     from, to;
 
   for (var i = 0; i < grades.length; i++) {
@@ -84,7 +84,7 @@ landlegend.onAdd = function(map) {
   return div;
 };
 
-//Removing legend from the layer and adding the right one after the click event      
+//Removing legend from the layer and adding the right one after the click event
 
 map.on('baselayerchange', function(eventLayer) {
 
@@ -100,7 +100,7 @@ map.on('baselayerchange', function(eventLayer) {
 
   if (eventLayer.name === 'Household Poverty Rates') {
     povlegend.addTo(map);
-    
+
   } else if (eventLayer.name === 'Population Density') {
     denlegend.addTo(map);
   }
@@ -108,14 +108,6 @@ map.on('baselayerchange', function(eventLayer) {
     landlegend.addTo(map);
   }
 })
-
-
-// map.on('baselayerchange', function(eventLayer) {
-//   if (eventLayer.name === 'LandCover Classification') {
-//     map.removeControl(denlegend || povlegend);
-//     landlegend.addTo(map);
-//   }
-// })
 
 //leaflet legend containers
 var legendFrom = $('.leaflet-top.leaflet-right');
