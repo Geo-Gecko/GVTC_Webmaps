@@ -34,6 +34,16 @@ axios.all(axioses)
         var den = L.geoJson(density, {
             style: styledensity
         })
+        den.eachLayer(function (layer) {
+            layer.bindPopup('<strong>Parish</strong><br> ' + layer.feature.properties.pname);
+            layer.on('mouseover', function (e) {
+                       this.openPopup();
+                   });
+                   layer.on('mouseout', function (e) {
+                       this.closePopup();
+                   });
+        });
+
         //creating layer for density
         baseMaps["Population Density"] = den
 
@@ -47,6 +57,15 @@ axios.all(axioses)
         //calling geosjon and style for poverty
         var pov = L.geoJson(poverty, {
             style: stylepoverty
+        })
+        pov.eachLayer(function (layer) {
+            layer.bindPopup('<strong>Subcounty</strong><br> ' + layer.feature.properties.SNAME2014);
+            layer.on('mouseover', function (e) {
+                       this.openPopup();
+                   });
+                   layer.on('mouseout', function (e) {
+                       this.closePopup();
+                   });
         });
 
         //creating layer for poverty, landcover and conflicts
@@ -147,7 +166,8 @@ function ready(geoJson_) {
     let current_map = window.location.href
     current_map = current_map.split("/")
     current_map = current_map[current_map.length - 1]
-    if (current_map.split(".")[0] != "map2" || current_map.split(".")[0] != "map3") {
+    current_map = current_map.split(".")[0]
+    if (current_map != "map2" && current_map != "map3") {
         L.control.layers("", overlayMaps, {
             collapsed: false,
         }).addTo(map);

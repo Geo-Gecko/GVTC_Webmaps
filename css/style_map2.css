@@ -6,6 +6,18 @@ body {
   margin: 0;
 }
 
+#selector {
+  border-radius: 20px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+#selector2 {
+  border-radius: 20px;
+  border-width: 1px;
+  border-style: solid;
+}
+
 @media (min-width:1200px) {
   #map {
     float: left;
@@ -536,4 +548,126 @@ div#panelContent {
     position: relative;
     width: 59%;
   }
+}
+
+@media (min-width:1500px) {
+  #info {
+    width: 20px;
+    position: relative;
+    left: 14em;
+    top: 1.5em;
+  }
+}
+
+@media (max-width:1365px) {
+  #info {
+    width: 20px;
+    position: relative;
+    left: 12em;
+    top: 1.5em;
+  }
+}
+
+.tooltip_map {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted white;
+  z-index: 1000000;
+}
+
+@media (min-width:1500px) {
+.tooltip_map .tooltiptext {
+  visibility: hidden;
+  width: 137px;
+  background-color: #2d7746;
+  color: #fff;
+  text-align: center;
+  border-radius: 11px;
+  padding: 9px 9px;
+  position: relative;
+  z-index: 1;
+  left: 14em;
+  top: 15.5em;
+}
+}
+
+@media (max-width:1365px) {
+.tooltip_map .tooltiptext {
+  visibility: hidden;
+  width: 137px;
+  background-color: #2d7746;
+  color: #fff;
+  text-align: center;
+  border-radius: 11px;
+  padding: 9px 9px;
+  position: relative;
+  z-index: 1;
+  left: 12em;
+  top: 1.5em;
+}
+}
+
+.tooltip_map:hover .tooltiptext {
+  visibility: visible;
+}
+
+@media (min-width:1500px) {
+  #info2 {
+    width: 20px;
+    position: relative;
+    left: 9em;
+    top: 7.5em;
+  }
+}
+
+@media (max-width:1365px) {
+  #info2 {
+    width: 20px;
+    position: relative;
+    left: 7.5em;
+    top: 7.5em;
+  }
+}
+
+.tooltip_map2 {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted white;
+  z-index: 1000000;
+}
+
+@media (min-width:1500px) {
+.tooltip_map2 .tooltiptext2 {
+  visibility: hidden;
+  width: 137px;
+  background-color: #2d7746;
+  color: #fff;
+  text-align: center;
+  border-radius: 11px;
+  padding: 9px 9px;
+  position: relative;
+  z-index: 1;
+  left: 9em;
+  top: 7.5em
+}
+}
+
+@media (max-width:1365px) {
+.tooltip_map2 .tooltiptext2 {
+  visibility: hidden;
+  width: 137px;
+  background-color: #2d7746;
+  color: #fff;
+  text-align: center;
+  border-radius: 11px;
+  padding: 9px 9px;
+  position: relative;
+  z-index: 1;
+  left: 7.5em;
+  top: 7.5em
+}
+}
+
+.tooltip_map2:hover .tooltiptext2 {
+  visibility: visible;
 }
