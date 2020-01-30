@@ -101,78 +101,52 @@ axios.get(url, {
   mode: 'no-cors'
 })
   .then(r => {
-    patrols_v = $.csv.toObjects(r.data)
+    patrols_data = $.csv.toObjects(r.data)
     let x_values = []
     let y_values = []
 
-    patrols_v.forEach(patrols_v => {
-      y_values.push(patrols_v["2016 Percentage_Virunga"])
-      x_values.push(patrols_v["Patrols_Virunga"])
+    let no_of_years = Object.keys(patrols_data[0])
+    no_of_years = no_of_years.filter(patrol => {
+      if (patrol.split(" ").length > 1 && parseInt(patrol.split(" ")[0])) {
+        return true
+      } else {
+        return false
+      }
     })
 
-    plotFour(x_values, y_values, "Chart1");
+    let years_ = []
+    let past_yr = parseInt(no_of_years[0].split(" ")[0])
+    let recent_yr = parseInt(no_of_years[no_of_years.length - 1].split(" ")[0])
+    while (past_yr <= recent_yr) {
+      years_.push(past_yr)
+      past_yr += 1
+    }
+    console.log(patrols_data)
+
+    let virunga_data = {}, mgnp_data = {}, bwindi_data = {}, volcano_data = {}
+    years_.forEach((year, i) => {
+      virunga_data[year] = []
+      mgnp_data[year] = []
+      bwindi_data[year] = []
+      volcano_data[year] = []
+      patrols_data.forEach(datapoint => {
+        virunga_data[year].push(datapoint[`${year} Percentage_Virunga`])
+        mgnp_data[year].push(datapoint[`${year} Percentage_Mgnp`])
+        bwindi_data[year].push(datapoint[`${year} Percentage_Bwindi`])
+        volcano_data[year].push(datapoint[`${year} Percentage_Volcanoes`])
+      })
+      // addBarChart(year, i, virunga_data[year], plotOne, "chart1_");
+      // addBarChart(year, i, mgnp_data[year], plotTwo, "chart2_")
+    })
+
+
+    plotFour(virunga_data[2017], "Chart1");
+    plotFour(virunga_data[2017], "Chart2");
+    // bwindi has no 2017 data
+    plotFour(bwindi_data[2016], "Chart3");
+    plotFour(volcano_data[2017], "Chart4");
   })
   .catch(e => console.log(e))
 
-//patrols for mgahinga
-let patrol_m_sheet = "1455012350"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${patrol_m_sheet}`
-
-axios.get(url, {
-  mode: 'no-cors'
-})
-  .then(r => {
-    patrols_m = $.csv.toObjects(r.data)
-    let x_values = []
-    let y_values = []
-
-    patrols_m.forEach(patrols_m => {
-      y_values.push(patrols_m["2016 Percentage_Mgnp"])
-      x_values.push(patrols_m["Patrols_Mgnp"])
-    })
-
-    plotFour(x_values, y_values, "Chart2");
-  })
-  .catch(e => console.log(e))
-
-//patrols for bwindi
-let patrol_b_sheet = "1455012350"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${patrol_b_sheet}`
-
-axios.get(url, {
-  mode: 'no-cors'
-})
-  .then(r => {
-    patrols_b = $.csv.toObjects(r.data)
-    let x_values = []
-    let y_values = []
-
-    patrols_b.forEach(patrols_b => {
-      y_values.push(patrols_b["2016 Percentage_Bwindi"])
-      x_values.push(patrols_b["Patrols_Bwindi"])
-    })
-
-    plotFour(x_values, y_values, "Chart3");
-  })
-  .catch(e => console.log(e))
-
-//patrols for volcanoes
-let patrol_vol_sheet = "1455012350"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${patrol_vol_sheet}`
-
-axios.get(url, {
-  mode: 'no-cors'
-})
-  .then(r => {
-    patrols_vol = $.csv.toObjects(r.data)
-    let x_values = []
-    let y_values = []
-
-    patrols_vol.forEach(patrols_vol => {
-      y_values.push(patrols_vol["2016 Percentage_Volcanoes"])
-      x_values.push(patrols_vol["Patrols_Volcanoes"])
-    })
-
-    plotFour(x_values, y_values, "Chart4");
-  })
-  .catch(e => console.log(e))
+// TODO : explanation for those patrols
+  // x_values.push(patrols_vol["Patrols_Volcanoes"])

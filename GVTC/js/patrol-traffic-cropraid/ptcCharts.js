@@ -129,7 +129,7 @@ function plotThree(xValues, yValues, barClassName) {
 }
 
 
-function plotFour(xValues, yValues, chartClassName) {
+function plotFour(yValues, chartClassName) {
     var ctxx = document.getElementsByClassName(chartClassName);
     myEnrolChart = new Chart(ctxx, {
         type: 'doughnut',
