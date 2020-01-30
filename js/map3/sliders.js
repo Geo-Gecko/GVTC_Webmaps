@@ -153,13 +153,12 @@ axios.get(
                 var l = finances_data['_layers'][key];
                 let google_sheet_equivalent;
                 google_sheets_finances.forEach(row => {
-                    if (row["pname"] === l.feature.properties.NAME) {
+                    if (row["pname"] === l.feature.properties.pname) {
                         google_sheet_equivalent = row
                     }
                 })
 
                 // some names in the geojson are missing from the google sheet
-                // console.log(google_sheet_equivalent)
                 if (google_sheet_equivalent) {
                     if (google_sheet_equivalent.Amount >= parseInt(sliderData[0][0]) && google_sheet_equivalent.Amount <= parseInt(sliderData[0][1]) && parseFloat(google_sheet_equivalent.USD_capita) >= parseFloat(sliderData[1][0]) && parseFloat(google_sheet_equivalent
                         .USD_capita) <= parseFloat(sliderData[1][1]) &&

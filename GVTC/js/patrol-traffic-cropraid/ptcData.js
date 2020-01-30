@@ -19,13 +19,13 @@ axios.get(url, {
   mode: 'no-cors'
 })
   .then(r => {
-    let traffic_raw = $.csv.toObjects(r.data)
+    let traffic_data = $.csv.toObjects(r.data)
 
 
     let years_ = []
-    let no_of_charts = Object.keys(traffic_raw[0])
+    let no_of_charts = Object.keys(traffic_data[0])
     let past_yr = parseInt(no_of_charts[1].split("(")[1].split(")")[0])
-    let recent_yr = parseInt(no_of_charts[Object.keys(traffic_raw[0]).length - 1].split("(")[1].split(")")[0])
+    let recent_yr = parseInt(no_of_charts[Object.keys(traffic_data[0]).length - 1].split("(")[1].split(")")[0])
 
 
     while (past_yr <= recent_yr) {
@@ -33,41 +33,19 @@ axios.get(url, {
       past_yr += 1
     }
 
-    let grouped_data = {}
+    let raw_grouped_data = {};
+    let worked_grouped_data = {};
     years_.forEach((year, i) => {
-      grouped_data[year] = []
-      traffic_raw.forEach(datapoint => {
-        grouped_data[year].push(datapoint[`Raw Ivory(${year})`])
+      raw_grouped_data[year] = []
+      worked_grouped_data[year] = []
+      traffic_data.forEach(datapoint => {
+        raw_grouped_data[year].push(datapoint[`Raw Ivory(${year})`])
+        worked_grouped_data[year].push(datapoint[`Worked Ivory(${year})`])
       })
 
-      addChart(year, i, grouped_data[year])
+      addBarChart(year, i, raw_grouped_data[year], plotOne, "chart1_");
+      addBarChart(year, i, worked_grouped_data[year], plotTwo, "chart2_")
     })
-
-
-  })
-  .catch(e => console.log(e))
-
-
-
-//trafficking data 2017
-
-let traffic_2016_worked_sheet = "1892401990"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${traffic_2016_worked_sheet}`
-
-axios.get(url, {
-  mode: 'no-cors'
-})
-  .then(r => {
-    traffic_2016_worked = $.csv.toObjects(r.data)
-    let x_values = []
-    let y_values = []
-
-    traffic_2016_worked.forEach(traffic_2016_worked => {
-      y_values.push(traffic_2016_worked["Worked Ivory"])
-      x_values.push(traffic_2016_worked["Date"])
-    })
-
-    plotTwo(x_values, y_values);
   })
   .catch(e => console.log(e))
 
