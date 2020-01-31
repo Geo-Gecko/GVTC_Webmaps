@@ -1,60 +1,59 @@
 
 
 
-//slider for the Patrol Coverage
-$('.traffick').click(function () {
-    var currentSlide = $('.active-slide'),
-        nextSlide = currentSlide.next(),
-        currentDot = $('.active-dot'),
-        nextDot = currentDot.next();
+//slider for the Traffic
+let previous_slide = element => {
+    var currentSlide = $(
+        element
+    ).parent().prev().children().children(".active-slide"),
+        nextSlide = currentSlide.next();
 
     if (nextSlide.length === 0) {
-        nextSlide = $('.slide').first();
-        nextDot = $('.dot').first();
+        nextSlide = currentSlide.prev();
     }
 
     currentSlide.removeClass('active-slide');
     nextSlide.addClass('active-slide');
 
-    currentDot.removeClass('active-dot');
-    nextDot.addClass('active-dot');
-});
+};
 
-$('.traffick2').click(function () {
-    var currentSlide = $('.active-slide'),
-        prevSlide = currentSlide.prev(),
-        currentDot = $('.active-dot'),
-        prevDot = currentDot.prev();
+let next_slide = element => {
+    var currentSlide = $(
+        element
+    ).parent().prev().children().children(".active-slide"),
+        prevSlide = currentSlide.prev();
 
 
     if (prevSlide.length === 0) {
-        prevSlide = $('.slide').last();
-        prevDot = $('.dot').last();
+        prevSlide = currentSlide.next();
     }
 
     currentSlide.removeClass('active-slide');
     prevSlide.addClass('active-slide');
+};
 
-    currentDot.removeClass('active-dot');
-    prevDot.addClass('active-dot');
-});
+//sliders for the Patrol coverage
+let previous_patrol_slides = element => {
+    var currentSlides = $(
+        element
+    ).parent().prev().children(".active-slide"),
+        nextSlides = $(
+            element
+        ).parent().prev().children().not(".active-slide");
 
-// this bit will resize the sliders height to make it responsive
-// $(window).on('load resize', function() {
-//   var x = $('.active-slide img').height() + "px";
+    currentSlides.removeClass('active-slide');
+    nextSlides.addClass('active-slide');
 
-//   $('.slider').css('min-height', x);
-//   $('p').text(x);
-//   });
+};
 
+let next_patrol_slides = element => {
+    var currentSlides = $(
+        element
+    ).parent().prev().children(".active-slide"),
+        prevSlide = $(
+            element
+        ).parent().prev().children().not(".active-slide");
 
-//this part will add a dot for each slider item, then assign a class name to the first child to get the active state
-$('section').each(function () {
-    var a = $('.slide').length;
-    for (i = 0; i < a; i++) {
-        $('.slider-dots').append('<li class="dot">&bull;</li>');
-    }
-});
-
-$('.slider div:first').addClass('active-slide');
-$('.slider-dots li:first').addClass('active-dot');
+    currentSlides.removeClass('active-slide');
+    prevSlide.addClass('active-slide');
+};
