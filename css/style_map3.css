@@ -217,7 +217,7 @@ div .nav-link p {
   margin-top: 8px;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .refresh {
     position: absolute;
     left: 69.5%;
@@ -257,7 +257,7 @@ div #containers {
 }
 
 div #container2 {
-  top: 63px;
+  top: -13px;
   position: relative;
   right: 2px;
 }
@@ -274,10 +274,10 @@ div #container2 {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   div #container3 {
     position: relative;
-    top: 112px;
+    top: 28px;
     right: 10px;
     width: 100%;
     padding-left: 20px;
@@ -431,7 +431,7 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .landlegend {
     width: 80%;
     position: relative;
@@ -447,7 +447,7 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .legend_gvtc {
     position: absolute;
     bottom: -4px;
@@ -463,14 +463,14 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .gvtc_legend {
     position: relative;
     width: 84%;
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .leaflet-control-layers-expanded {
     padding: 6px 10px 6px -1px;
     color: #333;
@@ -486,9 +486,9 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .input_number {
-    max-width: 92px !important;
+    min-width: 92px !important;
   }
 }
 
@@ -498,12 +498,12 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   #info {
     width: 20px;
     position: relative;
     left: 16.5em;
-    top: 1.3em;
+    top: 8.5em;
   }
 }
 
@@ -517,16 +517,16 @@ div#panelContent {
 }
 
 .tooltip_map {
-  position: relative;
+  position: absolute;
   display: inline-block;
   border-bottom: 1px dotted white;
   z-index: 1000000;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .tooltip_map .tooltiptext {
     visibility: hidden;
-    width: 137px;
+    width: 24em;
     background-color: #2d7746;
     color: #fff;
     text-align: center;
@@ -534,8 +534,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 16.5em;
-    top: 4.3em;
+    left: 18.5em;
+    top: 7.3em;
   }
 }
 
@@ -559,12 +559,12 @@ div#panelContent {
   visibility: visible;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   #info2 {
     width: 20px;
     position: relative;
-    left: 8.5em;
-    top: 4.3em;
+    left: 16.5em;
+    top: 11.5em;
   }
 }
 
@@ -586,16 +586,16 @@ div#panelContent {
 
 .tooltip_map2 .tooltiptext2 {
   visibility: hidden;
-  width: 137px;
+  width: 24em;
   background-color: #2d7746;
   color: #fff;
   text-align: center;
   border-radius: 11px;
-  padding: 9px 9px;
+  /* padding: 3em 10em; */
   position: relative;
   z-index: 1;
-  left: 9em;
-  top: 7.3em;
+  left: 19em;
+  top: 11.3em;
 }
 
 .tooltip_map2:hover .tooltiptext2 {

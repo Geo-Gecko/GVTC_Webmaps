@@ -264,7 +264,7 @@ div .nav-link p {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .refresh {
     position: relative;
     left: 69.5%;
@@ -396,7 +396,7 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1365px) {
   .landlegend {
     width: 80%;
     position: relative;
@@ -412,7 +412,7 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1365px) {
   .legend_gvtc {
     position: absolute;
     bottom: -4px;
@@ -428,14 +428,14 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1365px) {
   .gvtc_legend {
     position: relative;
     width: 84%;
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1365px) {
   #info {
     width: 20px;
     position: relative;
@@ -460,10 +460,10 @@ div#panelContent {
   z-index: 1000000;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1365px) {
   .tooltip_map .tooltiptext {
     visibility: hidden;
-    width: 137px;
+    width: 24em;
     background-color: #2d7746;
     color: #fff;
     text-align: center;
@@ -471,8 +471,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 17em;
-    top: 18.5em;
+    left: 19em;
+    top: 13.5em;
   }
 }
 
@@ -496,12 +496,12 @@ div#panelContent {
   visibility: visible;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1365px) {
   #info2 {
     width: 20px;
     position: relative;
-    left: 9em;
-    top: 18.5em;
+    left: -7.5em;
+    top: 10.5em;
   }
 }
 
@@ -521,19 +521,19 @@ div#panelContent {
   z-index: 1000000;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1365px) {
   .tooltip_map2 .tooltiptext2 {
     visibility: hidden;
-    width: 137px;
+    width: 24em;
     background-color: #2d7746;
     color: #fff;
     text-align: center;
     border-radius: 11px;
-    padding: 9px 9px;
-    position: relative;
+    padding: 8px 9px;
+    position: absolute;
     z-index: 1;
-    left: 9em;
-    top: 21.5em
+    left: -5.5em;
+    top: 11.5em;
   }
 }
 
