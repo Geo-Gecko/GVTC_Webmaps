@@ -83,13 +83,29 @@ denlegend.onAdd = function (map) {
 };
 
 map.on('baselayerchange', function (eventLayer) {
-  if (eventLayer.name === 'Household Poverty Rates') {
-    map.removeControl(denlegend);
+  if (eventLayer.name === 'Household Poverty Rates') { 
+    if(landLegend._map) {
+      map.removeControl(landLegend);
+    } else if(denlegend._map) {
+      map.removeControl(denlegend);
+    }
     povlegend.addTo(map);
   }
-  else if (eventLayer.name === 'Population Density') {
-    map.removeControl(povlegend);
+  else if (eventLayer.name === 'Population Density') { 
+    if(landLegend._map) {
+      map.removeControl(landLegend);
+    } else if(povlegend._map) {
+      map.removeControl(povlegend);
+    }
     denlegend.addTo(map);
+  }
+  if (eventLayer.name === 'LandCover Classification') { 
+    if(denlegend._map) {
+      map.removeControl(denlegend);
+    } else if(povlegend._map) {
+      map.removeControl(povlegend);
+    }
+    landLegend.addTo(map);
   }
 })
 
@@ -102,12 +118,6 @@ landLegend.onAdd = function (map) {
   return div;
 };
 
-map.on('baselayerchange', function (eventLayer) {
-  if (eventLayer.name === 'LandCover Classification') {
-    map.removeControl(denlegend || povlegend);
-    landLegend.addTo(map);
-  }
-})
 
 function layer() {
   var layer = this;
