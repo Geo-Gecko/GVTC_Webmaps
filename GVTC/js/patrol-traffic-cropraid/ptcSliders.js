@@ -1,7 +1,7 @@
 
 
 
-//slider for the Patrol Coverage
+//slider for the Traffic
 let previous_slide = element => {
     var currentSlide = $(
         element
@@ -29,5 +29,31 @@ let next_slide = element => {
     }
 
     currentSlide.removeClass('active-slide');
+    prevSlide.addClass('active-slide');
+};
+
+//sliders for the Patrol coverage
+let previous_patrol_slides = element => {
+    var currentSlides = $(
+        element
+    ).parent().prev().children(".active-slide"),
+        nextSlides = $(
+            element
+        ).parent().prev().children().not(".active-slide");
+
+    currentSlides.removeClass('active-slide');
+    nextSlides.addClass('active-slide');
+
+};
+
+let next_patrol_slides = element => {
+    var currentSlides = $(
+        element
+    ).parent().prev().children(".active-slide"),
+        prevSlide = $(
+            element
+        ).parent().prev().children().not(".active-slide");
+
+    currentSlides.removeClass('active-slide');
     prevSlide.addClass('active-slide');
 };

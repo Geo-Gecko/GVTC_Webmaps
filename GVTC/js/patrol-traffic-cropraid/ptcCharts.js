@@ -20,12 +20,35 @@ function addBarChart(year, i, y_values, plotFunc, chartElement) {
 
 }
 
+function addPieCharts(year, i, y_values, chartElement, parks) {
+    let slides = document.getElementsByClassName(chartElement)[0];
+    parks.forEach((park, j) => {
+        let pie1 = document.createElement("div")
+        if (i === 0) {
+            pie1.setAttribute("class", "col-md-8 slide active-slide")
+        } else {
+            pie1.setAttribute("class", "col-md-8 slide")
+        }
+        pie1.setAttribute("style", "position: relative;")
+
+        let title_ = document.createElement("strong")
+        title_.textContent = park
+        pie1.appendChild(title_)
+        let canvas_ = document.createElement('CANVAS')
+        canvas_.setAttribute("class", `${park}-${chartElement}-${year}`)
+        pie1.appendChild(canvas_)
+        slides.appendChild(pie1)
+
+        plotFour(year, y_values[j], `${park}-${chartElement}-${year}`);
+    })
+}
+
 function plotOne(year, yValues, chartId) {
     var ctxx = document.getElementsByClassName(chartId);
     myEnrolChart = new Chart(ctxx, {
         type: 'bar',
         data: {
-            labels: ["Jan-16", "Mar-16", "Apr-16", "May-16", "Jun-16", "Aug-16", "Sep-16", "Oct-16", "Nov-16", "Dec-16", "Dec-16"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [
                 {
                     label: `Raw Ivory Trafficking ${year}`,
@@ -61,7 +84,7 @@ function plotTwo(year, yValues, chartId) {
     myEnrolChart = new Chart(ctxx, {
         type: 'bar',
         data: {
-            labels: ["Jan-17", "Feb-17", "Mar-17", "Apr-16", "May-16", "Jun-16", "Jul-17", "Jul-17", "Aug-17", "Aug-16", "Sep-17", "Sep-16", "Oct-16", "Oct-17", "Nov-17", "Nov-17", "Dec-17", "Dec-17"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [
                 {
                     label: `Worked Ivory Trafficking ${year}`,
@@ -129,12 +152,12 @@ function plotThree(xValues, yValues, barClassName) {
 }
 
 
-function plotFour(yValues, chartClassName) {
-    var ctxx = document.getElementsByClassName(chartClassName);
+function plotFour(year, yValues, chartClassName) {
+    var ctxx = document.getElementsByClassName(chartClassName)[0];
     myEnrolChart = new Chart(ctxx, {
         type: 'doughnut',
         data: {
-            labels: ["Patrolled", "Not Patrolled"],
+            labels: [`Patrolled ${year}`, `Not Patrolled ${year}`],
             datasets: [
                 {
                     label: "Percentage Patrolled",
