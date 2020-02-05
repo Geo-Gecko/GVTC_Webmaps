@@ -459,3 +459,25 @@ div#panelContent {
     position: absolute;
   }
 }
+
+.wrapper{
+  width:60%;
+  display:block;
+  overflow:hidden;
+  margin:0 auto;
+  padding: 60px 50px;
+  background:#fff;
+  border-radius:4px;
+  height:400px;
+}
+
+.stacked {
+  height:400px;
+  width:60%;
+  display:block;
+}
+
+/* canvas{
+  background:#fff;
+  height:400px;
+} */
