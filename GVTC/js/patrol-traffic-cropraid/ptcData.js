@@ -78,7 +78,8 @@ axios.get(url, {
       past_yr += 1
     }
 
-    let virunga_data = {}, mgnp_data = {}, bwindi_data = {}, volcano_data = {}
+    let virunga_data = {}, mgnp_data = {}, bwindi_data = {},
+      volcano_data = {}, parks_data = {}, parks = ["Virunga", "Mgahinga", "Bwindi", "Volcanoes"];
     years_.forEach((year, i) => {
       virunga_data[year] = []
       mgnp_data[year] = []
@@ -90,8 +91,10 @@ axios.get(url, {
         bwindi_data[year].push(datapoint[`${year} Percentage_Bwindi`])
         volcano_data[year].push(datapoint[`${year} Percentage_Volcanoes`])
       });
-      addPieCharts(year, i, [virunga_data[year], mgnp_data[year]], "pies1", ["Virunga", "Mgahinga"])
-      addPieCharts(year, i, [bwindi_data[year], volcano_data[year]], "pies2", ["Bwindi", "Volcanoes"])
+      [virunga_data[year] ,mgnp_data[year], bwindi_data[year], volcano_data[year]].forEach((point, i) => {
+        parks_data[parks[i]] = point
+      })
+      addBarChart(year, i, parks_data, plotFour, "pies")
     })
 
   })
