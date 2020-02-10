@@ -56,9 +56,14 @@ var parks_outside = new L.GeoJSON(Parks_Outside, {
         });
     }
 }).addTo(map);
-
 parks_outside.eachLayer(function (layer) {
     layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG + '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
+    layer.on('mouseover', function (e) {
+               this.openPopup();
+           });
+           layer.on('mouseout', function (e) {
+               this.closePopup();
+           });
 });
 
 //calling the styles that power the geojsons
@@ -94,4 +99,3 @@ function styleconflict(feature) {
         fillOpacity: 1
     };
 }
-

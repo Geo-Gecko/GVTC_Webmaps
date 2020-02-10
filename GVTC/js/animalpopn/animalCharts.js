@@ -6,7 +6,6 @@ function plotHippoBwindi(xValues, yValues) {
         data: {
             labels: ["1960", "1982-1983", "1995-1996", "1999-2003", "2004-2006", "2007-2010", "2011-2014", "2015-2017"],
             datasets: [
-
                 {
                     label: "Hippos",
                     backgroundColor: "pink",
@@ -19,7 +18,7 @@ function plotHippoBwindi(xValues, yValues) {
         options: {
             responsive: true,
             legend: {
-                position: "top"
+                position: "bottom"
             },
             title: {
                 display: true
@@ -27,8 +26,13 @@ function plotHippoBwindi(xValues, yValues) {
             scales: {
                 yAxes: [{
                     ticks: {
-
-                        beginAtZero: true
+                        beginAtZero: true,
+                        userCallback: function(value, index, values) {
+                          value = value.toString();
+                          value = value.split(/(?=(?:...)*$)/);
+                          value = value.join(',');
+                          return value;
+                        }
                     }
                 }]
             }
@@ -44,7 +48,6 @@ function plotGorillaBwindi(xValues, yValues) {
         data: {
             labels: ["1960", "1982-1983", "1995-1996", "1999-2003", "2004-2006", "2007-2010", "2011-2014", "2015-2017"],
             datasets: [
-
                 {
                     label: "Gorillas",
                     backgroundColor: "pink",
@@ -57,7 +60,7 @@ function plotGorillaBwindi(xValues, yValues) {
         options: {
             responsive: true,
             legend: {
-                position: "top"
+                position: "bottom"
             },
             title: {
                 display: true
@@ -65,8 +68,13 @@ function plotGorillaBwindi(xValues, yValues) {
             scales: {
                 yAxes: [{
                     ticks: {
-
-                        beginAtZero: true
+                        beginAtZero: true,
+                        userCallback: function(value, index, values) {
+                          value = value.toString();
+                          value = value.split(/(?=(?:...)*$)/);
+                          value = value.join(',');
+                          return value;
+                        }
                     }
                 }]
             }
@@ -82,7 +90,6 @@ function plotElephantBwindi(xValues, yValues) {
         data: {
             labels: ["1960", "1982-1983", "1995-1996", "1999-2003", "2004-2006", "2007-2010", "2011-2014", "2015-2017"],
             datasets: [
-
                 {
                     label: "Elephants",
                     backgroundColor: "pink",
@@ -95,7 +102,7 @@ function plotElephantBwindi(xValues, yValues) {
         options: {
             responsive: true,
             legend: {
-                position: "top"
+                position: "bottom"
             },
             title: {
                 display: true
@@ -103,8 +110,13 @@ function plotElephantBwindi(xValues, yValues) {
             scales: {
                 yAxes: [{
                     ticks: {
-
-                        beginAtZero: true
+                        beginAtZero: true,
+                        userCallback: function(value, index, values) {
+                          value = value.toString();
+                          value = value.split(/(?=(?:...)*$)/);
+                          value = value.join(',');
+                          return value;
+                        }
                     }
                 }]
             }
@@ -120,7 +132,6 @@ function plotGorillaVirunga(xValues, yValues) {
         data: {
             labels: ["1960", "1982-1983", "1995-1996", "1999-2003", "2004-2006", "2007-2010", "2011-2014", "2015-2017"],
             datasets: [
-
                 {
                     label: "Gorillas",
                     backgroundColor: 'rgba(255, 165, 0, 0.6)',
@@ -133,7 +144,7 @@ function plotGorillaVirunga(xValues, yValues) {
         options: {
             responsive: true,
             legend: {
-                position: "top"
+                position: "bottom"
             },
             title: {
                 display: true
@@ -141,8 +152,13 @@ function plotGorillaVirunga(xValues, yValues) {
             scales: {
                 yAxes: [{
                     ticks: {
-
-                        beginAtZero: true
+                        beginAtZero: true,
+                        userCallback: function(value, index, values) {
+                          value = value.toString();
+                          value = value.split(/(?=(?:...)*$)/);
+                          value = value.join(',');
+                          return value;
+                        }
                     }
                 }]
             }
@@ -158,7 +174,6 @@ function plotHippoVirunga(xValues, yValues) {
         data: {
             labels: ["1994", "2003", "2005", "2009", "2013", "2015", "2017"],
             datasets: [
-
                 {
                     label: "Hippos",
                     backgroundColor: 'rgba(255, 165, 0, 0.6)',
@@ -171,7 +186,7 @@ function plotHippoVirunga(xValues, yValues) {
         options: {
             responsive: true,
             legend: {
-                position: "top"
+                position: "bottom"
             },
             title: {
                 display: true
@@ -179,8 +194,13 @@ function plotHippoVirunga(xValues, yValues) {
             scales: {
                 yAxes: [{
                     ticks: {
-
-                        beginAtZero: true
+                        beginAtZero: true,
+                        userCallback: function(value, index, values) {
+                          value = value.toString();
+                          value = value.split(/(?=(?:...)*$)/);
+                          value = value.join(',');
+                          return value;
+                        }
                     }
                 }]
             }

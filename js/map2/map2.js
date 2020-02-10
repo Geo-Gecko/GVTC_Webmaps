@@ -13,36 +13,37 @@ var stamenOptions = {
 var toner = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
   attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012',
   subdomains: 'abcd',
-  minZoom: 8
+  minZoom: 8,
+  maxZoom: 8
 });
 var tonerLite = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
   subdomains: 'abcd',
-  minZoom: 8
+  minZoom: 9,
 });
 var watercolor = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
   attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://carto.com/attributions">CARTO</a>',
   subdomains: 'abcd',
-  minZoom: 8
+  minZoom: 9,
 });
 
 var map = L.map('map', {
   layers: [toner],
   center: center,
-  zoom: 1
+  // zoom: 0
 });
 
 var mapA = L.map('mapA', {
   layers: [watercolor],
   center: center,
-  zoom: 1,
-  zoomControl: false
+  zoom: 5
+  // zoomControl: false
 });
 var mapB = L.map('mapB', {
   layers: [tonerLite],
   center: center,
-  zoom: 1,
-  zoomControl: false
+  zoom: 5
+  // zoomControl: false
 });
 
 // If you want interaction with mapA|B to be synchronized on map,

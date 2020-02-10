@@ -229,11 +229,19 @@ caption {
 th {
   text-align: inherit;
   width: 10em;
-  padding: 1em;
+  /* padding: 1em; */
 }
 
+@media (min-width:1366px) {
 td {
   padding: 1%
+}
+}
+
+@media (max-width:1365px) {
+td {
+  padding: 0%
+}
 }
 
 label {
@@ -2163,9 +2171,9 @@ pre code {
 
 .table-responsive {
   display: block;
-  width: 100%;
-  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  position: relative;
+  top: -2em;
 }
 
 .table-responsive>.table-bordered {

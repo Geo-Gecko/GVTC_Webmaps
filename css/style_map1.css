@@ -254,7 +254,7 @@ div .nav-link p {
 @media (max-width:1365px) {
   .refresh {
     position: relative;
-    left: 57%;
+    left: 1%;
     margin-top: 4.3em;
     width: 9em;
     border-radius: 20px;
@@ -267,7 +267,7 @@ div .nav-link p {
 @media (min-width:1366px) {
   .refresh {
     position: relative;
-    left: 69.5%;
+    left: 1.5%;
     margin-top: 4.3em;
     width: 9em;
     border-radius: 20px;
@@ -458,6 +458,7 @@ div#panelContent {
   display: inline-block;
   border-bottom: 1px dotted white;
   z-index: 1000000;
+  width: 1px;
 }
 
 @media (min-width:1365px) {
@@ -479,7 +480,7 @@ div#panelContent {
 @media (max-width:1365px) {
   .tooltip_map .tooltiptext {
     visibility: hidden;
-    width: 137px;
+    width: 24em;
     background-color: #2d7746;
     color: #fff;
     text-align: center;
@@ -487,8 +488,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 16em;
-    top: 18.5em;
+    left: 18em;
+    top: 12.5em;
   }
 }
 
@@ -500,7 +501,7 @@ div#panelContent {
   #info2 {
     width: 20px;
     position: relative;
-    left: -7.5em;
+    left: 16.5em;
     top: 10.5em;
   }
 }
@@ -509,8 +510,8 @@ div#panelContent {
   #info2 {
     width: 20px;
     position: relative;
-    left: 102%;
-    top: 18.5em
+    left: 16em;
+    top: 18.5em;
   }
 }
 
@@ -519,6 +520,7 @@ div#panelContent {
   display: inline-block;
   border-bottom: 1px dotted white;
   z-index: 1000000;
+  width: 1px;
 }
 
 @media (min-width:1365px) {
@@ -532,7 +534,7 @@ div#panelContent {
     padding: 8px 9px;
     position: absolute;
     z-index: 1;
-    left: -5.5em;
+    left: 18.5em;
     top: 11.5em;
   }
 }
@@ -540,7 +542,7 @@ div#panelContent {
 @media (max-width:1365px) {
   .tooltip_map2 .tooltiptext2 {
     visibility: hidden;
-    width: 137px;
+    width: 24em;
     background-color: #2d7746;
     color: #fff;
     text-align: center;
@@ -548,8 +550,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 8em;
-    top: 21.5em
+    left: 18em;
+    top: 16.5em;
   }
 }
 

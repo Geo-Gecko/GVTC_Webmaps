@@ -47,7 +47,7 @@ axios.get(url_, { mode: 'no-cors' })
             table.appendChild(tableHead);
 
             var tableBody = document.createElement('TBODY');
-            tableBody.padding = '10em';
+            tableBody.padding = '1em';
             table.appendChild(tableBody);
 
             // data to be put in the rows for the table head

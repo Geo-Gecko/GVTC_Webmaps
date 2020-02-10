@@ -16,8 +16,8 @@ var parks = new L.GeoJSON(GVTC_parks, {
             this.setStyle({
                 weight: 2,
                 opacity: 1,
-                color: '#a2d687',
-                fillOpacity: 0.0,
+                color: '#808080',
+                fillOpacity: 10,
                 fillColor: '#a2d687'
             });
         });
@@ -34,6 +34,12 @@ var parks = new L.GeoJSON(GVTC_parks, {
 }).addTo(map);
 parks.eachLayer(function (layer) {
     layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG + '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
+    layer.on('mouseover', function (e) {
+               this.openPopup();
+           });
+           layer.on('mouseout', function (e) {
+               this.closePopup();
+           });
 });
 
 // waterbodies
