@@ -3,7 +3,6 @@ var map = L.map('map', {
   minZoom: 8
 }).setView([-0.2, 29.24], 8);
 
-console.log(window.innerWidth, window.innerHeight)
 
 function setParent(el, newParent) {
   newParent.appendChild(el);
@@ -112,10 +111,6 @@ map.on('baselayerchange', function(eventLayer) {
 //leaflet legend containers
 var legendFrom = $('.leaflet-top.leaflet-right');
 var legendTo = $('#container1');
-setParent(legendFrom[0], legendTo[0]);
-
-var legendFrom = $('.leaflet-bottom.leaflet-left');
-var legendTo = $('#container2');
 setParent(legendFrom[0], legendTo[0]);
 
 function layer() {

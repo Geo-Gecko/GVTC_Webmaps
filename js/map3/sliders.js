@@ -6,7 +6,6 @@ axios.get(
 )
     .then(response => {
         let google_sheets_finances = $.csv.toObjects(response.data)
-        console.log(google_sheets_finances)
         var myStyle = {
             weight: 1,
             opacity: 1,

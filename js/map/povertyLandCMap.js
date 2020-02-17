@@ -1,16 +1,13 @@
 
 
 //adding the geojsons
-var density;
-var baseMaps = {}
-var geoJson_;
-let popngeoJson_ = {};
-let povgeoJson = {};
-let congeoJson = {};
-let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw";
+var density, baseMaps = {}, geoJson_, popngeoJson_ = {},
+    povgeoJson = {}, congeoJson = {}, popDensityFn, years = [],
+    long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw";
+var pop_density_2017;
 
 //calling density data from google sheets
-let density_sheet = "251717838"
+let density_sheet = "183331754"
 let url1 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${density_sheet}`
 
 //calling poverty data from google sheets
@@ -25,24 +22,34 @@ let axioses = [axios.get(url1, { mode: 'no-cors' }), axios.get(url2, { mode: 'no
 
 axios.all(axioses)
     .then(responseArrs => {
-        density_data = $.csv.toObjects(responseArrs[0].data),
-            density_data.forEach(point => {
-                popngeoJson_[point["NAME"]] = parseInt(point["pop_density"])
-            })
+        density_data = $.csv.toObjects(responseArrs[0].data);
+        let year_data = Object.keys(density_data[0]).slice(start = 1);
+        year_data.forEach(year => {
+            year = year.split("_")
+            year = year[year.length - 1]
+            years.push(year);
+        })
+        density_data.forEach(point => {
+            popngeoJson_[point["NAME"]] = parseInt(point[`pop_density_${years[0]}`])
+        });
 
         //calling geosjon and style for density
-        var den = L.geoJson(density, {
-            style: styledensity
-        })
-        den.eachLayer(function (layer) {
-            layer.bindPopup('<strong>Parish</strong><br> ' + layer.feature.properties.pname);
-            layer.on('mouseover', function (e) {
-                       this.openPopup();
-                   });
-                   layer.on('mouseout', function (e) {
-                       this.closePopup();
-                   });
-        });
+        var den_caller = () => {
+            let den = L.geoJson(density, {
+                style: styledensity
+            })
+            den.eachLayer(function (layer) {
+                layer.bindPopup('<strong>Parish</strong><br> ' + layer.feature.properties.pname);
+                layer.on('mouseover', function (e) {
+                    this.openPopup();
+                });
+                layer.on('mouseout', function (e) {
+                    this.closePopup();
+                });
+            });
+            return den
+        }
+        var den = den_caller()
 
         //creating layer for density
         baseMaps["Population Density"] = den
@@ -61,11 +68,11 @@ axios.all(axioses)
         pov.eachLayer(function (layer) {
             layer.bindPopup('<strong>Subcounty</strong><br> ' + layer.feature.properties.SNAME2014);
             layer.on('mouseover', function (e) {
-                       this.openPopup();
-                   });
-                   layer.on('mouseout', function (e) {
-                       this.closePopup();
-                   });
+                this.openPopup();
+            });
+            layer.on('mouseout', function (e) {
+                this.closePopup();
+            });
         });
 
         //creating layer for poverty, landcover and conflicts
@@ -94,9 +101,64 @@ axios.all(axioses)
         };
         ready(geoJson_)
 
-        L.control.layers(baseMaps, "", {
+        let layerControls = L.control.layers(baseMaps, "", {
             collapsed: false,
+            sortLayers: true
         }).addTo(map);
+
+        // add drop down to Population Density
+        var yearSelector = document.createElement("select");
+        yearSelector.setAttribute(
+            "style", "border-radius: 20px; border-width: 1px; margin-left: 2%"
+        )
+        let popn_dropdown = year_selected => {
+            let popn_density = $("span:contains('Population Density')")[0]
+            var year_ = document.createElement("option")
+            while (yearSelector.firstChild) {
+                yearSelector.removeChild(yearSelector.firstChild);
+            }
+            year_.textContent = "Year"
+            if (!year_selected) {
+                year_.setAttribute("selected", "selected")
+            }
+            year_.setAttribute("disabled", true)
+            yearSelector.appendChild(year_)
+            years.forEach(year => {
+                var options = document.createElement("option")
+                options.textContent = year
+                if (year_selected && year_selected === year) {
+                    options.setAttribute("selected", "selected")
+                }
+                yearSelector.appendChild(options)
+            })
+            popn_density.appendChild(yearSelector)
+        }
+        popn_dropdown(0)
+
+        // update map on selecting different years
+        function updatePopnDensity() {
+            // remove previous control and its layer if its on map
+            layerControls.removeLayer(baseMaps["Population Density"])
+            map.removeLayer(baseMaps["Population Density"])
+
+            //calling geosjon and style for density
+            popngeoJson_ = {}
+            density_data.forEach(point => {
+                popngeoJson_[point["NAME"]] = parseInt(
+                    point[`pop_density_${yearSelector.value}`]
+                )
+            });
+            var den = den_caller()
+            baseMaps["Population Density"] = den
+            layerControls.addBaseLayer(
+                baseMaps["Population Density"], "Population Density"
+            )
+            // add drop down back
+            popn_dropdown(yearSelector.value)
+            $(yearSelector.parentElement.previousSibling).click()
+        };
+        yearSelector.addEventListener('change', updatePopnDensity, false);
+
     })
     .catch(e => console.log(e))
 
