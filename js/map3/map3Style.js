@@ -47,7 +47,7 @@ function getColordensity(d) {
 
 function styledensity(feature) {
     return {
-        fillColor: getColordensity(feature.properties.pop_density),
+        fillColor: getColordensity(popngeoJson_[feature.properties.NAME]),
         weight: 1,
         opacity: 1,
         color: 'black',

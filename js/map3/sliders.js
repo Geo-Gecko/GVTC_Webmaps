@@ -6,7 +6,6 @@ axios.get(
   )
   .then(response => {
     let google_sheets_finances = $.csv.toObjects(response.data)
-    console.log(google_sheets_finances)
     var myStyle = {
       weight: 1,
       opacity: 1,
@@ -182,15 +181,7 @@ axios.get(
       }
     }
 
-    // finances_data.eachLayer(function(layer) {
-    //   layer.bindPopup('<strong>Parish</strong><br> ' + layer.feature.properties.pname + );
-    //   layer.on('mouseover', function(e) {
-    //     this.openPopup();
-    //   });
-    //   layer.on('mouseout', function(e) {
-    //     this.closePopup();
-    //   });
-    // });
+
 
     $('.leaflet-top.leaflet-right').removeClass('leaflet-top').removeClass('leaflet-right');
     $('.leaflet-bottom.leaflet-left').removeClass('leaflet-bottom').removeClass('leaflet-left');

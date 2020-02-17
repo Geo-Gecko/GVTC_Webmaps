@@ -28,7 +28,7 @@ axios.get(url_, { mode: 'no-cors' })
             let slide_ = document.createElement("div")
             slide_.setAttribute("class", "slide")
             if (i === 0) {
-                slide_.setAttribute("class", "active-slide")
+                slide_.setAttribute("class", "slide active-slide")
             }
             let t1 = document.createElement("div")
             t1.setAttribute("class", "table-responsive")
@@ -106,15 +106,15 @@ axios.get(url_, { mode: 'no-cors' })
                 td_.appendChild(de_);
                 let de1_ = document.createElement("div")
                 de1_.innerHTML +=
-                `${a[`Arrested(${year})`] > 50 ? a[`Arrested(${year})`] + '<br><br><img src="images/person1.png" width="11px" height="30px"> = 10' : a[`Arrested(${year})`]}<br/><br/>${images_(parseInt(a[`Arrested(${year})`])).join("")}`
+                    `${a[`Arrested(${year})`] > 50 ? a[`Arrested(${year})`] + '<br><br><img src="images/person1.png" width="11px" height="30px"> = 10' : a[`Arrested(${year})`]}<br/><br/>${images_(parseInt(a[`Arrested(${year})`])).join("")}`
                 td1_.appendChild(de1_);
                 let de2_ = document.createElement("div")
                 de2_.innerHTML +=
-                `${a[`Prosecuted(${year})`] > 50 ? a[`Prosecuted(${year})`] + '<br><br><img src="images/person1.png" width="11px" height="30px"> = 10' : a[`Prosecuted(${year})`]}<br/><br/>${images_(parseInt(a[`Prosecuted(${year})`])).join("")}`
+                    `${a[`Prosecuted(${year})`] > 50 ? a[`Prosecuted(${year})`] + '<br><br><img src="images/person1.png" width="11px" height="30px"> = 10' : a[`Prosecuted(${year})`]}<br/><br/>${images_(parseInt(a[`Prosecuted(${year})`])).join("")}`
                 td2_.appendChild(de2_);
                 let de3_ = document.createElement("div")
                 de3_.innerHTML +=
-                `${a[`Sentenced(${year})`] > 50 ? a[`Sentenced(${year})`] + '<br><br><img src="images/person1.png" width="11px" height="30px"> = 10' : a[`Sentenced(${year})`]}<br/><br/>${images_(parseInt(a[`Sentenced(${year})`])).join("")}`
+                    `${a[`Sentenced(${year})`] > 50 ? a[`Sentenced(${year})`] + '<br><br><img src="images/person1.png" width="11px" height="30px"> = 10' : a[`Sentenced(${year})`]}<br/><br/>${images_(parseInt(a[`Sentenced(${year})`])).join("")}`
                 td3_.appendChild(de3_);
 
                 row_.appendChild(td_);
