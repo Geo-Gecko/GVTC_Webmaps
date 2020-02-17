@@ -62,7 +62,7 @@ function plotOne(year, yValues, chartId) {
         options: {
             responsive: true,
             legend: {
-                position: "top"
+                position: "bottom"
             },
             title: {
                 display: true
@@ -70,8 +70,13 @@ function plotOne(year, yValues, chartId) {
             scales: {
                 yAxes: [{
                     ticks: {
-
-                        beginAtZero: true
+                        beginAtZero: true,
+                        userCallback: function(value, index, values) {
+                          value = value.toString();
+                          value = value.split(/(?=(?:...)*$)/);
+                          value = value.join(',');
+                          return value;
+                        }
                     }
                 }]
             }
@@ -98,7 +103,7 @@ function plotTwo(year, yValues, chartId) {
         options: {
             responsive: true,
             legend: {
-                position: "top"
+                position: "bottom"
             },
             title: {
                 display: true
@@ -106,8 +111,13 @@ function plotTwo(year, yValues, chartId) {
             scales: {
                 yAxes: [{
                     ticks: {
-
-                        beginAtZero: true
+                        beginAtZero: true,
+                        userCallback: function(value, index, values) {
+                          value = value.toString();
+                          value = value.split(/(?=(?:...)*$)/);
+                          value = value.join(',');
+                          return value;
+                        }
                     }
                 }]
             }
@@ -120,7 +130,7 @@ function plotThree(xValues, yValues, barClassName) {
     myEnrolChart = new Chart(ctxx, {
         type: 'bar',
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
             datasets: [
                 {
                     label: "Incidences Reported",
@@ -134,7 +144,7 @@ function plotThree(xValues, yValues, barClassName) {
         options: {
             responsive: true,
             legend: {
-                position: "top"
+                position: "bottom"
             },
             title: {
                 display: true
@@ -142,8 +152,13 @@ function plotThree(xValues, yValues, barClassName) {
             scales: {
                 yAxes: [{
                     ticks: {
-
-                        beginAtZero: true
+                        beginAtZero: true,
+                        userCallback: function(value, index, values) {
+                          value = value.toString();
+                          value = value.split(/(?=(?:...)*$)/);
+                          value = value.join(',');
+                          return value;
+                        }
                     }
                 }]
             }

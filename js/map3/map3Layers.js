@@ -15,11 +15,11 @@ var parks = new L.GeoJSON(GVTC_parks, {
     onEachFeature: function (feature, layer) {
         layer.on('mouseover', function () {
             this.setStyle({
-                weight: 2,
-                opacity: 1,
-                color: '#a2d687',
-                fillOpacity: 0.0,
-                fillColor: '#a2d687'
+              weight: 2,
+              opacity: 1,
+              color: '#000000',
+              fillOpacity: 10,
+              fillColor: '#a2d687'
             });
         });
         layer.on('mouseout', function () {
@@ -35,6 +35,12 @@ var parks = new L.GeoJSON(GVTC_parks, {
 }).addTo(map);
 parks.eachLayer(function (layer) {
     layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG + '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
+    layer.on('mouseover', function (e) {
+               this.openPopup();
+           });
+           layer.on('mouseout', function (e) {
+               this.closePopup();
+           });
 });
 
 // waterbodies
@@ -92,7 +98,12 @@ var parks_outside = new L.GeoJSON(Parks_Outside, {
         });
     }
 }).addTo(map);
-
 parks_outside.eachLayer(function (layer) {
     layer.bindPopup('<strong>Name:</strong> ' + layer.feature.properties.NAME + ' ' + layer.feature.properties.DESIG + '<br>' + '<strong>Area(ha):</strong> ' + layer.feature.properties.Area_ha + '<br>' + '<strong>Start Year:</strong> ' + layer.feature.properties.STATUS_YR);
+    layer.on('mouseover', function (e) {
+               this.openPopup();
+           });
+           layer.on('mouseout', function (e) {
+               this.closePopup();
+           });
 });

@@ -9,6 +9,8 @@ html, body {
   border-radius: 20px;
   border-width: 1px;
   border-style: solid;
+  position: absolute;
+  left: 3em;
 }
 
 .mid {
@@ -217,10 +219,10 @@ div .nav-link p {
   margin-top: 8px;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .refresh {
     position: absolute;
-    left: 69.5%;
+    left: 2.5%;
     margin-top: 2.3em;
     width: 9em;
     border-radius: 20px;
@@ -234,7 +236,7 @@ div .nav-link p {
 @media (max-width:1365px) {
   .refresh {
     position: absolute;
-    left: 57%;
+    left: 5%;
     margin-top: 2.3em;
     width: 9em;
     border-radius: 20px;
@@ -257,7 +259,7 @@ div #containers {
 }
 
 div #container2 {
-  top: 63px;
+  top: -13px;
   position: relative;
   right: 2px;
 }
@@ -265,19 +267,19 @@ div #container2 {
 @media (max-width:1365px) {
   div #container3 {
     position: relative;
-    top: 79px;
+    top: -3px;
     right: 10px;
     width: 100%;
     padding-left: 12px;
     height: 300px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   div #container3 {
     position: relative;
-    top: 112px;
+    top: 28px;
     right: 10px;
     width: 100%;
     padding-left: 20px;
@@ -298,44 +300,44 @@ div #container3 h6 {
 div #slider {
   top: 0px;
   right: 1px;
-  margin: 10px 25px;
+  margin: 34px 25px;
   margin-right: auto;
   margin-left: auto;
   width: 90%;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
   left: 3px;
 }
 
 div #slider2 {
   top: 0px;
   right: 1px;
-  margin: 10px 25px;
+  margin: 34px 25px;
   margin-right: auto;
   margin-left: auto;
   width: 90%;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
   left: 3px;
 }
 
 div #slider3 {
   top: 0px;
   right: 1px;
-  margin: 10px 25px;
+  margin: 34px 25px;
   margin-right: auto;
   margin-left: auto;
   width: 90%;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
   left: 3px;
 }
 
 div #slider4 {
   top: 0px;
   right: 1px;
-  margin: 10px 25px;
+  margin: 34px 25px;
   margin-right: auto;
   margin-left: auto;
   width: 90%;
-  margin-bottom: 10px;
+  margin-bottom: 11px;
   left: 3px;
 }
 
@@ -348,7 +350,11 @@ div #slider4 {
 }
 
 .noUi-target.noUi-horizontal .noUi-tooltip {
-  background-color: #1B6B36;
+  top: -32px;
+  bottom: initial;
+  border-style: solid;
+  border-color: rgb(169, 169, 169);
+  background-color: #f1f1f1;
 }
 
 .noUi-handle {
@@ -358,6 +364,7 @@ div #slider4 {
 div #input_values {
   padding: 12px;
   text-align: center;
+  display: none;
 }
 
 div .logo a {
@@ -431,7 +438,7 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .landlegend {
     width: 80%;
     position: relative;
@@ -447,7 +454,7 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .legend_gvtc {
     position: absolute;
     bottom: -4px;
@@ -463,14 +470,14 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .gvtc_legend {
     position: relative;
     width: 84%;
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .leaflet-control-layers-expanded {
     padding: 6px 10px 6px -1px;
     color: #333;
@@ -486,9 +493,9 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .input_number {
-    max-width: 92px !important;
+    min-width: 92px !important;
   }
 }
 
@@ -498,12 +505,12 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   #info {
     width: 20px;
     position: relative;
     left: 16.5em;
-    top: 1.3em;
+    top: 8.5em;
   }
 }
 
@@ -511,22 +518,23 @@ div#panelContent {
   #info {
     width: 20px;
     position: relative;
-    left: 17em;
-    top: 1.2em;
+    left: 16.5em;
+    top: 8.3em;
   }
 }
 
 .tooltip_map {
-  position: relative;
+  position: absolute;
   display: inline-block;
   border-bottom: 1px dotted white;
   z-index: 1000000;
+  width: 1px;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .tooltip_map .tooltiptext {
     visibility: hidden;
-    width: 137px;
+    width: 24em;
     background-color: #2d7746;
     color: #fff;
     text-align: center;
@@ -534,15 +542,15 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 16.5em;
-    top: 4.3em;
+    left: 18.5em;
+    top: 7.3em;
   }
 }
 
 @media (max-width:1365px) {
   .tooltip_map .tooltiptext {
     visibility: hidden;
-    width: 137px;
+    width: 24em;
     background-color: #2d7746;
     color: #fff;
     text-align: center;
@@ -550,8 +558,8 @@ div#panelContent {
     padding: 9px 9px;
     position: relative;
     z-index: 1;
-    left: 17em;
-    top: 4em;
+    left: 18.5em;
+    top: 8em;
   }
 }
 
@@ -559,12 +567,12 @@ div#panelContent {
   visibility: visible;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   #info2 {
     width: 20px;
     position: relative;
-    left: 8.5em;
-    top: 4.3em;
+    left: 16.5em;
+    top: 11.5em;
   }
 }
 
@@ -572,8 +580,8 @@ div#panelContent {
   #info2 {
     width: 20px;
     position: relative;
-    left: 8.5em;
-    top: 4.2em;
+    left: 16.5em;
+    top: 11.5em;
   }
 }
 
@@ -582,22 +590,35 @@ div#panelContent {
   display: inline-block;
   border-bottom: 1px dotted white;
   z-index: 1000000;
+  width: 1px;
 }
 
 .tooltip_map2 .tooltiptext2 {
   visibility: hidden;
-  width: 137px;
+  width: 24em;
   background-color: #2d7746;
   color: #fff;
   text-align: center;
   border-radius: 11px;
-  padding: 9px 9px;
+  /* padding: 3em 10em; */
   position: relative;
   z-index: 1;
-  left: 9em;
-  top: 7.3em;
+  left: 19em;
+  top: 11.3em;
 }
 
 .tooltip_map2:hover .tooltiptext2 {
   visibility: visible;
+}
+
+.noUi-horizontal .noUi-handle-upper .noUi-tooltip {
+  bottom: -32px
+}
+
+.noUi-horizontal .noUi-handle-upper .noUi-tooltip {
+  top: -32px;
+  bottom: initial;
+  border-style: solid;
+  border-color: rgb(169, 169, 169);
+  background-color: #f1f1f1;
 }

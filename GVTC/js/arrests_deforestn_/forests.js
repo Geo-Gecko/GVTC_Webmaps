@@ -1,4 +1,3 @@
-
 axios.get(url, {
     mode: 'no-cors'
   })
@@ -22,20 +21,18 @@ function plotOne(xValues, yValues) {
     type: 'bar',
     data: {
       labels: ["2015", "2016", "2017"],
-      datasets: [
-        {
-          label: "Forest Loss In Park (Sq Km)",
-          backgroundColor: 'rgba(50,205,50,1)',
-          borderColor: 'rgba(0,100,0, 1)',
-          borderWidth: 1,
-          data: yValues
-        }
-      ]
+      datasets: [{
+        label: "Forest Loss In Park (Sq Km)",
+        backgroundColor: 'rgba(40, 167, 69, 0.37)',
+        borderColor: '#228b22',
+        borderWidth: 1,
+        data: yValues
+      }]
     },
     options: {
       responsive: true,
       legend: {
-        position: "top"
+        position: "bottom",
       },
       title: {
         display: true
@@ -45,7 +42,13 @@ function plotOne(xValues, yValues) {
           ticks: {
             beginAtZero: true,
             stepSize: 10,
-            min: 11620
+            min: 11620,
+            userCallback: function(value, index, values) {
+              value = value.toString();
+              value = value.split(/(?=(?:...)*$)/);
+              value = value.join(',');
+              return value;
+            }
           }
         }]
       }
@@ -80,20 +83,18 @@ function plotTwo(xValues, yValues) {
     type: 'bar',
     data: {
       labels: ["2015", "2016", "2017"],
-      datasets: [
-        {
-          label: "Forest Loss In 5Km Buffer(Sq Km)",
-          backgroundColor: 'rgba(50,205,50,1)',
-          borderColor: 'rgba(0,100,0, 1)',
-          borderWidth: 1,
-          data: yValues
-        }
-      ]
+      datasets: [{
+        label: "Forest Loss In 5Km Buffer(Sq Km)",
+        backgroundColor: 'rgba(40, 167, 69, 0.37)',
+        borderColor: '#228b22',
+        borderWidth: 1,
+        data: yValues
+      }]
     },
     options: {
       responsive: true,
       legend: {
-        position: "top"
+        position: "bottom"
       },
       title: {
         display: true
@@ -103,7 +104,13 @@ function plotTwo(xValues, yValues) {
           ticks: {
             beginAtZero: true,
             stepSize: 50,
-            min: 7500
+            min: 7500,
+            userCallback: function(value, index, values) {
+              value = value.toString();
+              value = value.split(/(?=(?:...)*$)/);
+              value = value.join(',');
+              return value;
+            }
           }
         }]
       }
@@ -138,20 +145,18 @@ function plotThree(xValues, yValues) {
     type: 'bar',
     data: {
       labels: ["2015", "2016", "2017"],
-      datasets: [
-        {
-          label: "Forest Loss In Beni(Sq Km)",
-          backgroundColor: 'rgba(50,205,50,1)',
-          borderColor: 'rgba(0,100,0, 1)',
-          borderWidth: 1,
-          data: yValues
-        }
-      ]
+      datasets: [{
+        label: "Forest Loss In Beni(Sq Km)",
+        backgroundColor: 'rgba(40, 167, 69, 0.37)',
+        borderColor: '#228b22',
+        borderWidth: 1,
+        data: yValues
+      }]
     },
     options: {
       responsive: true,
       legend: {
-        position: "top"
+        position: "bottom"
       },
       title: {
         display: true
