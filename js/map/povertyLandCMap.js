@@ -5,6 +5,12 @@ var density, baseMaps = {}, geoJson_, popngeoJson_ = {},
     povgeoJson = {}, congeoJson = {}, popDensityFn, years = [],
     long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw";
 var pop_density_2017;
+// check map being called
+let current_map = window.location.href
+current_map = current_map.split("/")
+current_map = current_map[current_map.length - 1]
+current_map = current_map.split(".")[0]
+
 
 //calling density data from google sheets
 let density_sheet = "183331754"
@@ -159,6 +165,11 @@ axios.all(axioses)
         };
         yearSelector.addEventListener('change', updatePopnDensity, false);
 
+        if (current_map != "map1" && current_map != "map3") {
+            t1t2_datepickers("selector", mapA, years, baseMaps, den_caller)
+            t1t2_datepickers("selector2", mapB, years, baseMaps, den_caller)
+        }
+
     })
     .catch(e => console.log(e))
 
@@ -225,10 +236,7 @@ function ready(geoJson_) {
         "Elephant Habitat": Elephant
     };
 
-    let current_map = window.location.href
-    current_map = current_map.split("/")
-    current_map = current_map[current_map.length - 1]
-    current_map = current_map.split(".")[0]
+
     if (current_map != "map2" && current_map != "map3") {
         L.control.layers("", overlayMaps, {
             collapsed: false,

@@ -387,7 +387,6 @@ select #selector2 {
 }
 
 div #containers {
-  top: 60px;
   position: absolute;
   right: 0px;
   left: -7px;
