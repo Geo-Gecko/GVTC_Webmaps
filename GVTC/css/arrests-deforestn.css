@@ -14,11 +14,6 @@
   line-height: 110px;
   z-index: 2;
 
-  &:after {
-    content: '%';
-    margin-left: 0.1em;
-    font-size: .8em;
-  }
 }
 
 .container.box canvas {

@@ -28,7 +28,7 @@ axios.get(url_, { mode: 'no-cors' })
             let slide_ = document.createElement("div")
             slide_.setAttribute("class", "slide")
             if (i === 0) {
-                slide_.setAttribute("class", "active-slide")
+                slide_.setAttribute("class", "slide active-slide")
             }
             let t1 = document.createElement("div")
             t1.setAttribute("class", "table-responsive")

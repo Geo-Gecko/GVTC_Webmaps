@@ -13,38 +13,28 @@ document.body.appendChild(hmap)
 //slider for tables
 $('.arrow-next').click(function () {
     var currentSlide = $('.active-slide'),
-        nextSlide = currentSlide.next(),
-        currentDot = $('.active-dot'),
-        nextDot = currentDot.next();
+        nextSlide = currentSlide.next();
 
     if (nextSlide.length === 0) {
         nextSlide = $('.slide').first();
-        nextDot = $('.dot').first();
     }
 
     currentSlide.fadeOut(600).removeClass('active-slide');
     nextSlide.fadeIn(600).addClass('active-slide');
 
-    currentDot.removeClass('active-dot');
-    nextDot.addClass('active-dot');
 });
 
 $('.arrow-prev').click(function () {
     var currentSlide = $('.active-slide'),
-        prevSlide = currentSlide.prev(),
-        currentDot = $('.active-dot'),
-        prevDot = currentDot.prev();
+        prevSlide = currentSlide.prev();
 
     if (prevSlide.length === 0) {
-        prevSlide = $('.slide').last();
-        prevDot = $('.dot').last();
+        prevSlide = $('.slide').last();;
     }
 
     currentSlide.fadeOut(600).removeClass('active-slide');
     prevSlide.fadeIn(600).addClass('active-slide');
 
-    currentDot.removeClass('active-dot');
-    prevDot.addClass('active-dot');
 });
 
 // this bit will resize the sliders height to make it responsive
@@ -55,18 +45,7 @@ $(window).on('load resize', function () {
     $('p').text(x);
 });
 
-//this part will add a dot for each slider item, then assign a class name to the first child to get the active state
-$('section').each(function () {
-    var a = $('.slide').length;
-    for (i = 0; i < a; i++) {
-        $('.slider-dots').append('<li class="dot">&bull;</li>');
-    }
-});
 
-$('.slider div:first').addClass('active-slide');
-$('.slider-dots li:first').addClass('active-dot');
-
-// here
 hmap = document.createElement("script");
 hmap.setAttribute("type", "text/javascript");
 hmap.setAttribute("src", `js/arrests_deforestn_/arrests.js`);

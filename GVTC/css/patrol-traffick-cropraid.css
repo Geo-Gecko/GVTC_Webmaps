@@ -424,16 +424,17 @@ div#panelContent {
 @media (min-width:1500px){
 #pies{
   display: flex;
-  width: 31em;
+  width: 75%;
+  left: 17%;
 }
 }
 
 @media (max-width:1500px){
 #pies{
   display: flex;
-  width: 25em;
-  left: -7%;
-    position: inherit;
+  width: 80%;
+  left: 15%;
+  position: inherit;
 }
 }
 
