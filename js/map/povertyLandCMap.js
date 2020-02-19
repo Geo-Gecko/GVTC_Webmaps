@@ -166,8 +166,8 @@ axios.all(axioses)
         yearSelector.addEventListener('change', updatePopnDensity, false);
 
         if (current_map != "map1" && current_map != "map3") {
-            t1t2_datepickers("selector", mapA, years, baseMaps, den_caller)
-            t1t2_datepickers("selector2", mapB, years, baseMaps, den_caller)
+            t1t2_datepickers("selector", mapA, current_map_A_forest_tileObj, map_A_forest_tile)
+            t1t2_datepickers("selector2", mapB, current_map_B_forest_tileObj, map_B_forest_tile)
         }
 
     })

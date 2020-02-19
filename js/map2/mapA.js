@@ -44,11 +44,13 @@ function zoomToFeature(e) {
 
 mapA.createPane('deforestation');
 mapA.getPane('deforestation').style.ZIndex = 650;
-var def = L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
+var map_A_forest_tile = (year="2016") => L.tileLayer.wms('https://geogecko.gis-cdn.net/geoserver/ows?', {
     layers: 'olamMosaics:gvtc_data',
     styles: 'forestLoss',
-    dim_location: 'forestloss 2015 buffered.tif',
+    dim_location: `forestloss ${year} buffered.tif`,
     transparent: true,
     format: 'image/png',
     pane: 'deforestation'
-}).addTo(mapA);
+});
+
+let current_map_A_forest_tileObj = {"tile": map_A_forest_tile().addTo(mapA)};
