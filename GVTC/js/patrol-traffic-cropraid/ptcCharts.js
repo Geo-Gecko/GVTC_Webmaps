@@ -149,14 +149,14 @@ function plotFour(year, yValues, chartClassName) {
         data: {
             labels: ["Virunga", "Mgahinga", "Bwindi", "Volcanoes"],
             datasets: [{
-                label: `Patrolled ${year}`,
+                label: `Percentage patrolled for ${year}`,
                 backgroundColor: '#228B22',
                 data: [
                     yValues["Virunga"][0], yValues["Mgahinga"][0],
                     yValues["Bwindi"][0], yValues["Volcanoes"][0]
                 ],
             }, {
-                label: `Not Patrolled ${year}`,
+                label: `Percentage not patrolled for ${year}`,
                 backgroundColor: '#e5e5e5',
                 data: [
                     yValues["Virunga"][1], yValues["Mgahinga"][1],

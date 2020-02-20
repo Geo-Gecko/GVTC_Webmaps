@@ -56,7 +56,10 @@ mapB.sync(mapA, {
 
 
 // add files from map2 folder to map2.html
-["styleMap2", "map2Panes", "mapA", "mapB", "mapLayerControl"].forEach(folder => {
+[
+  "styleMap2", "map2Panes", "mapA",
+  "mapB", "mapLayerControl", "t1t2Datepickers"
+].forEach(folder => {
   let hmap = document.createElement("script");
   hmap.setAttribute("type", "text/javascript");
   hmap.setAttribute("src", `js/map2/${folder}.js`);
