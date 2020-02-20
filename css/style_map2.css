@@ -357,17 +357,18 @@ select #selector2 {
 @media (max-width:1365px) {
   .refresh {
     position: absolute;
-    left: 6%;
+    left: 10%;
     margin-top: 4.3em;
     width: 9em;
     border-radius: 20px;
     border-width: 1px;
     border-style: solid;
     border-color: rgb(169, 169, 169);
+    z-index: 100000000;
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .refresh {
     position: absolute;
     left: 7%;
@@ -377,6 +378,7 @@ select #selector2 {
     border-width: 1px;
     border-style: solid;
     border-color: rgb(169, 169, 169);
+    z-index: 1000000000;
   }
 }
 
@@ -398,7 +400,7 @@ div #container1 {
   margin-left: 21px;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   div #container22 {
     top: 111px;
     position: relative;
@@ -421,7 +423,7 @@ div #container1 {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .leaflet-control-layers-expanded {
     padding: 6px 10px 6px -1px;
     color: #333;
@@ -531,7 +533,7 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .landlegend {
     height: 17em;
     right: 5%;
@@ -541,10 +543,10 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .legend_gvtc {
     position: absolute;
-    bottom: 24px;
+    bottom: 4px;
     z-index: 1000;
   }
 }
@@ -552,12 +554,12 @@ div#panelContent {
 @media (max-width:1365px) {
   .legend_gvtc {
     position: absolute;
-    bottom: -5px;
+    bottom: 14px;
     z-index: 1000;
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .gvtc_legend {
     position: relative;
     width: 85%;
@@ -571,7 +573,37 @@ div#panelContent {
   }
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
+  .legend_gvtc2 {
+    position: absolute;
+    bottom: 24px;
+    z-index: 1000;
+  }
+}
+
+@media (max-width:1365px) {
+  .legend_gvtc2 {
+    position: absolute;
+    bottom: -5px;
+    z-index: 1000;
+  }
+}
+
+@media (min-width:1366px) {
+  .gvtc_legend2 {
+    position: relative;
+    width: 85%;
+  }
+}
+
+@media (max-width:1365px) {
+  .gvtc_legend2 {
+    position: relative;
+    width: 59%;
+  }
+}
+
+@media (min-width:1366px) {
   #info {
     width: 20px;
     position: relative;
@@ -597,7 +629,7 @@ div#panelContent {
   width: 1px;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .tooltip_map .tooltiptext {
     visibility: hidden;
     width: 24em;
@@ -633,13 +665,13 @@ div#panelContent {
   visibility: visible;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   #info2 {
     width: 20px;
     position: relative;
-    left: 17em;
-    top: 4.5em;
-  }
+    left: 16.5em;
+        top: 3.3em;
+        }
 }
 
 @media (max-width:1365px) {
@@ -647,7 +679,7 @@ div#panelContent {
     width: 20px;
     position: relative;
     left: 15em;
-    top: 4.5em;
+    top: 3em;
   }
 }
 
@@ -659,7 +691,7 @@ div#panelContent {
   width: 1px;
 }
 
-@media (min-width:1500px) {
+@media (min-width:1366px) {
   .tooltip_map2 .tooltiptext2 {
     visibility: hidden;
     width: 24em;
