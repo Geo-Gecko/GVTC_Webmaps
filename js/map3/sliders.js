@@ -18,15 +18,6 @@ axios.get(
       style: myStyle
     }).addTo(map);
 
-    // finances_data.eachLayer(function(layer) {
-    //   layer.bindPopup('<strong>Parish</strong><br> ' + layer.feature.properties.pname);
-    //   layer.on('mouseover', function(e) {
-    //     this.openPopup();
-    //   });
-    //   layer.on('mouseout', function(e) {
-    //     this.closePopup();
-    //   });
-    // });
 
     // Creating a slider
     var slidervar = document.getElementById('slider')
@@ -189,20 +180,6 @@ axios.get(
       };
     }
 
-<<<<<<< HEAD
-
-||||||| merged common ancestors
-    // finances_data.eachLayer(function(layer) {
-    //   layer.bindPopup('<strong>Parish</strong><br> ' + layer.feature.properties.pname + );
-    //   layer.on('mouseover', function(e) {
-    //     this.openPopup();
-    //   });
-    //   layer.on('mouseout', function(e) {
-    //     this.closePopup();
-    //   });
-    // });
-=======
->>>>>>> hover on map3 been updated to pull from google sheets, map 2 zoom fixed, refresh buttons fixed for all maps
 
     $('.leaflet-top.leaflet-right').removeClass('leaflet-top').removeClass('leaflet-right');
     $('.leaflet-bottom.leaflet-left').removeClass('leaflet-bottom').removeClass('leaflet-left');

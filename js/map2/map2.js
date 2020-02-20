@@ -37,34 +37,23 @@ var mapA = L.map('mapA', {
   layers: [watercolor],
   center: center,
   zoom: 5
-  // zoomControl: false
 });
 var mapB = L.map('mapB', {
   layers: [tonerLite],
   center: center,
   zoom: 5
-  // zoomControl: false
 });
 
 // If you want interaction with mapA|B to be synchronized on map,
 // add other links as well.
 
-// mapA.sync(map, {
-// });
 mapA.sync(mapB, {
 });
 
-// mapB.sync(map, {
-// });
+
 mapB.sync(mapA, {
 });
 
-// map.sync(mapA, {
-// });
-// map.sync(mapB, {
-// });
-
-// map
 
 // add files from map2 folder to map2.html
 ["styleMap2", "map2Panes", "mapA", "mapB", "mapLayerControl"].forEach(folder => {
