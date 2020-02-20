@@ -30,41 +30,30 @@ var watercolor = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x
 var map = L.map('map', {
   layers: [toner],
   center: center,
-  // zoom: 0
+  zoom: 0
 });
 
 var mapA = L.map('mapA', {
   layers: [watercolor],
   center: center,
   zoom: 5
-  // zoomControl: false
 });
 var mapB = L.map('mapB', {
   layers: [tonerLite],
   center: center,
   zoom: 5
-  // zoomControl: false
 });
 
 // If you want interaction with mapA|B to be synchronized on map,
 // add other links as well.
 
-mapA.sync(map, {
-});
 mapA.sync(mapB, {
 });
 
-mapB.sync(map, {
-});
+
 mapB.sync(mapA, {
 });
 
-map.sync(mapA, {
-});
-map.sync(mapB, {
-});
-
-// map
 
 // add files from map2 folder to map2.html
 ["styleMap2", "map2Panes", "mapA", "mapB", "mapLayerControl"].forEach(folder => {
@@ -86,7 +75,7 @@ var legendTo = $('#container22');
 legendTo[0].appendChild(legendFrom[0]);
 
 //cursor control
-cursor1 = L.circleMarker([0, 0], { riseOnHover: true, radius: 25, fillOpacity: 0.1, color: '#e31a1c', fillColor: '#FFFFFF' });
+cursor1 = L.circleMarker([0, 0], { riseOnHover: true, radius: 25, fillOpacity: 0.1, color: '#1B6B36', fillColor: '#FFFFFF' });
 cursor1.addTo(map);
 mapA.createPane("cursorpane1");
 mapA.getPane("cursorpane1").style.zIndex = 999;
