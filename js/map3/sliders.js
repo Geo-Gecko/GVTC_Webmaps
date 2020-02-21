@@ -1,11 +1,28 @@
 let long_id_ = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
 axios.get(
-    `https://docs.google.com/spreadsheets/d/${long_id_}/export?format=csv&id=${long_id_}&gid=828811152`, {
-      mode: 'no-cors'
-    }
-  )
+  `https://docs.google.com/spreadsheets/d/${long_id_}/export?format=csv&id=${long_id_}&gid=828811152`, {
+  mode: 'no-cors'
+}
+)
   .then(response => {
     let google_sheets_finances = $.csv.toObjects(response.data)
+
+    // TODO change slice to less than 10 after removing the other column names without years
+    let selected_year = "2017"
+    let year_data = Object.keys(google_sheets_finances[0]).slice(start = 10);
+    let first_year = year_data[0].split("_")
+    first_year = parseInt(first_year[first_year.length - 1])
+    let revenue_years = [first_year]
+    let latest_year = year_data[year_data.length - 1].split("_")
+    latest_year = parseInt(latest_year[latest_year.length - 1])
+    if (parseInt(first_year) != parseInt(latest_year)) {
+      while (first_year < latest_year) {
+        first_year += 1
+        revenue_years.push(first_year)
+      }
+    }
+
+
     var myStyle = {
       weight: 1,
       opacity: 1,
@@ -78,10 +95,10 @@ axios.get(
 
     var inputNumberMin = document.getElementById("input-number-min");
     var inputNumberMax = document.getElementById("input-number-max");
-    inputNumberMin.addEventListener("change", function() {
+    inputNumberMin.addEventListener("change", function () {
       slidervar.noUiSlider.set([this.value, null]);
     });
-    inputNumberMax.addEventListener("change", function() {
+    inputNumberMax.addEventListener("change", function () {
       slidervar.noUiSlider.set(null, this.value);
     });
 
@@ -92,54 +109,57 @@ axios.get(
       [0, 0]
     ]
 
-    //Connecting the slider to the data
-    slidervar.noUiSlider.on('update', function(values, handle) {
-      if (handle == 0) {
-        document.getElementById('input-number-min').value = values[0];
-      } else {
-        document.getElementById('input-number-max').value = values[1];
-      }
+    function updatePopup() {
+      //Connecting the slider to the data
+      slidervar.noUiSlider.on('update', function (values, handle) {
+        if (handle == 0) {
+          document.getElementById('input-number-min').value = values[0];
+        } else {
+          document.getElementById('input-number-max').value = values[1];
+        }
 
-      sliderData[0] = values;
+        sliderData[0] = values;
 
-      updateFeatures(sliderData);
-    })
-    //Connecting the slider to the data
-    slidervar2.noUiSlider.on('update', function(values, handle) {
-      if (handle == 0) {
-        document.getElementById('input-number-min2').value = values[0];
-      } else {
-        document.getElementById('input-number-max2').value = values[1];
-      }
+        updateFeatures(sliderData);
+      })
+      //Connecting the slider to the data
+      slidervar2.noUiSlider.on('update', function (values, handle) {
+        if (handle == 0) {
+          document.getElementById('input-number-min2').value = values[0];
+        } else {
+          document.getElementById('input-number-max2').value = values[1];
+        }
 
-      sliderData[1] = values;
+        sliderData[1] = values;
 
-      updateFeatures(sliderData);
-    })
-    //Connecting the slider to the data
-    slidervar3.noUiSlider.on('update', function(values, handle) {
-      if (handle == 0) {
-        document.getElementById('input-number-min3').value = values[0];
-      } else {
-        document.getElementById('input-number-max3').value = values[1];
-      }
+        updateFeatures(sliderData);
+      })
+      //Connecting the slider to the data
+      slidervar3.noUiSlider.on('update', function (values, handle) {
+        if (handle == 0) {
+          document.getElementById('input-number-min3').value = values[0];
+        } else {
+          document.getElementById('input-number-max3').value = values[1];
+        }
 
-      sliderData[2] = values;
+        sliderData[2] = values;
 
-      updateFeatures(sliderData);
-    })
+        updateFeatures(sliderData);
+      })
 
-    slidervar4.noUiSlider.on('update', function(values, handle) {
-      if (handle == 0) {
-        document.getElementById('input-number-min4').value = values[0];
-      } else {
-        document.getElementById('input-number-max4').value = values[1];
-      }
+      slidervar4.noUiSlider.on('update', function (values, handle) {
+        if (handle == 0) {
+          document.getElementById('input-number-min4').value = values[0];
+        } else {
+          document.getElementById('input-number-max4').value = values[1];
+        }
 
-      sliderData[3] = values;
+        sliderData[3] = values;
 
-      updateFeatures(sliderData);
-    })
+        updateFeatures(sliderData);
+      })
+    }
+    updatePopup()
 
     function updateFeatures(sliderData) {
 
@@ -155,19 +175,19 @@ axios.get(
 
         // some names in the geojson are missing from the google sheet
         if (google_sheet_equivalent) {
-          if (google_sheet_equivalent.Amount >= parseInt(sliderData[0][0]) && google_sheet_equivalent.Amount <= parseInt(sliderData[0][1]) && parseFloat(google_sheet_equivalent.USD_capita) >= parseFloat(sliderData[1][0]) && parseFloat(google_sheet_equivalent
-              .USD_capita) <= parseFloat(sliderData[1][1]) &&
-            google_sheet_equivalent.Population >= parseInt(sliderData[2][0]) && google_sheet_equivalent.Population <= parseInt(sliderData[2][1]) && google_sheet_equivalent.Pop_densit >= parseInt(sliderData[3][0]) && google_sheet_equivalent.Pop_densit <= parseInt(
+          if (google_sheet_equivalent[`Amount_${selected_year}`] >= parseInt(sliderData[0][0]) && google_sheet_equivalent[`Amount_${selected_year}`] <= parseInt(sliderData[0][1]) && parseFloat(google_sheet_equivalent[`USD_capita_${selected_year}`]) >= parseFloat(sliderData[1][0]) && parseFloat(google_sheet_equivalent
+          [`USD_capita_${selected_year}`]) <= parseFloat(sliderData[1][1]) &&
+            google_sheet_equivalent[`Population_${selected_year}`] >= parseInt(sliderData[2][0]) && google_sheet_equivalent[`Population_${selected_year}`] <= parseInt(sliderData[2][1]) && google_sheet_equivalent[`Popn_density_${selected_year}`] >= parseInt(sliderData[3][0]) && google_sheet_equivalent[`Popn_density_${selected_year}`] <= parseInt(
               sliderData[3][1])) {
             l.setStyle({
               opacity: 1,
               fillOpacity: 1
             })
-            l.bindPopup('<strong>Parish:</strong>' + l.feature.properties.pname + '<br><strong>Amount:</strong> ' + google_sheet_equivalent.Amount+ '<br><strong>Amount per capita:</strong> ' + google_sheet_equivalent.USD_capita+ '<br><strong>Population:</strong> ' + google_sheet_equivalent.Population+ '<br><strong>Population Density:</strong> ' + google_sheet_equivalent.Pop_densit);
-            l.on('mouseover', function(e) {
+            l.bindPopup('<strong>Parish:</strong>' + l.feature.properties.pname + '<br><strong>Amount:</strong> ' + google_sheet_equivalent[`Amount_${selected_year}`] + '<br><strong>Amount per capita:</strong> ' + google_sheet_equivalent[`USD_capita_${selected_year}`] + '<br><strong>Population:</strong> ' + google_sheet_equivalent[`Population_${selected_year}`] + '<br><strong>Population Density:</strong> ' + google_sheet_equivalent[`Popn_density_${selected_year}`]);
+            l.on('mouseover', function (e) {
               this.openPopup();
             });
-            l.on('mouseout', function(e) {
+            l.on('mouseout', function (e) {
               this.closePopup();
             });
           } else {
@@ -179,8 +199,25 @@ axios.get(
         }
       };
     }
-
-
     $('.leaflet-top.leaflet-right').removeClass('leaflet-top').removeClass('leaflet-right');
     $('.leaflet-bottom.leaflet-left').removeClass('leaflet-bottom').removeClass('leaflet-left');
+
+    let amounts_text = $("strong:contains('Amounts (USD)')")[0]
+    let revenueYearSelector = document.createElement("select");
+    revenueYearSelector.setAttribute(
+      "style", "border-radius: 20px; border-width: 1px; margin-left: 15%"
+    )
+    revenue_years.forEach(year => {
+      var options = document.createElement("option")
+      options.textContent = year
+      revenueYearSelector.appendChild(options)
+    })
+    amounts_text.appendChild(revenueYearSelector)
+
+    // update mapGoogleSheetData on selecting different years
+    function mapData() {
+      selected_year = revenueYearSelector.value
+      updatePopup()
+    };
+    revenueYearSelector.addEventListener('change', mapData, false);
   })
