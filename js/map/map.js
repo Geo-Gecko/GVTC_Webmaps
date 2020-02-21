@@ -15,7 +15,7 @@ var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/
 
 
 // add files from map folder to map1.html
-["povertyLandCMap", "mapPanes", "styleMap"].forEach(folder => {
+["toolTips", "povertyLandCMap", "mapPanes", "styleMap"].forEach(folder => {
   let hmap = document.createElement("script");
   hmap.setAttribute("type", "text/javascript");
   hmap.setAttribute("src", `js/map/${folder}.js`);
