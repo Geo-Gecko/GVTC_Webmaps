@@ -146,7 +146,7 @@ axios.all(axioses)
                 
         let LClassification = $("span:contains(' LandCover Classification')")[0]
         LClassification.appendChild(parentDiv2)
-        // hPovertyRates.appendChild(tooltiptext)
+
         // update map on selecting different years
         function updatePopnDensity() {
             // remove previous control and its layer if its on map
@@ -180,6 +180,10 @@ axios.all(axioses)
                 "selector2", mapB, current_map_B_forest_tileObj
                 , map_B_forest_tile, "time_heading2"
             )
+            let fLoss = document.createElement("strong")
+            fLoss.textContent = "Forest loss"
+            $("#selector_menu").prepend(fLoss)
+            $(fLoss).after("<br>")
         }
 
     })
