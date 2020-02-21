@@ -140,7 +140,13 @@ axios.all(axioses)
             popn_density.appendChild(yearSelector)
         }
         popn_dropdown(0)
-
+        
+        let hPovertyRates = $("span:contains(' Household Poverty Rates')")[0]
+        hPovertyRates.appendChild(parentDiv)
+                
+        let LClassification = $("span:contains(' LandCover Classification')")[0]
+        LClassification.appendChild(parentDiv2)
+        // hPovertyRates.appendChild(tooltiptext)
         // update map on selecting different years
         function updatePopnDensity() {
             // remove previous control and its layer if its on map

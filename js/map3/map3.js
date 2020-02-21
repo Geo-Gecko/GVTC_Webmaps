@@ -26,6 +26,13 @@ $('.ol-attribution').addClass('hidden-xs')
 
 
 // add file from map folder to map2.html
+let toolTips = document.createElement("script");
+toolTips.setAttribute("type", "text/javascript");
+toolTips.setAttribute("src", "js/map/toolTips.js");
+document.body.appendChild(toolTips)
+
+
+// add file from map folder to map2.html
 let povertyLandCMap = document.createElement("script");
 povertyLandCMap.setAttribute("type", "text/javascript");
 povertyLandCMap.setAttribute("src", "js/map/povertyLandCMap.js");
