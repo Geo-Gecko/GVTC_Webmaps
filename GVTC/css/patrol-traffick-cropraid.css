@@ -4,8 +4,6 @@
 nav .navigation_dashboard {
   color: black;
   border-bottom: black 4px solid;
-  position: fixed;
-  z-index: 500000;
   background-color: yellow;
   min-height: 15vh;
   width: 100%;
@@ -16,13 +14,9 @@ nav .navigation_dashboard {
 
 .header_dashboard{
   padding: 0px 20px 0px 5px;
-  position: fixed;
-  background-color: #ffffff;
-  /* height: 160px; */
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
   border-bottom: #dfe8e4 4px solid;
   min-height: 15vh;
 }
@@ -169,7 +163,6 @@ div.col-xs-12{
   padding: 0px;
   margin-left: 0px;
   height: 100%;
-  z-index: 0;
 }
 
 /*Side panel*/
@@ -178,13 +171,12 @@ div#panel_d {
   position: fixed;
   top: 15vh;
   height: 85vh;
-  width: 31%;
   background-color: #fafafa;
   opacity: 0.92;
   -webkit-transition: width 0.6s;
   transition: width 0.6s;
-  z-index: 10000;
   border: 1px solid black;
+  max-width: inherit;
 }
 }
 
@@ -198,7 +190,6 @@ div#panel_d {
     opacity: 0.92;
     -webkit-transition: width 0.6s;
     transition: width 0.6s;
-    z-index: 10000;
     border: 1px solid black;
   }
 }
@@ -261,11 +252,27 @@ img.gecko{
 div#panelContent {
   opacity: 1;
   height: inherit;
-  width: 100%;
   -webkit-transition: opacity 0.6s;
   transition: opacity 0.6s;
-  padding-left: 0px;
-  padding-right: 0px;
+}
+
+/* charts */
+@media (min-width: 1024px) {
+#chart_container {
+    max-width: 100%;
+    padding-top: 2%;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #chart_container {
+    max-width: 95%;
+    padding-top: 2%;
+    margin-right: 0px;
+    margin-left: 5%;
+  }
 }
 
 /*Responsivity*/
@@ -306,14 +313,6 @@ div#panelContent {
     left: 0;
 }
 
-.container {
-  max-width: 1020px;
-  position: relative;
-  margin: 0 auto;
-  padding: 0 0;
-  zoom: 1;
-  /* For IE 6/7 (trigger hasLayout) */
-}
 
 .container:before,
 .container:after {
@@ -400,8 +399,6 @@ div#panelContent {
   font-size: 1.5rem;
 }
 
-.arrow-next {}
-
 .slider-dots {
   list-style: none;
   display: inline-block;
@@ -436,27 +433,4 @@ div#panelContent {
   left: 15%;
   position: inherit;
 }
-}
-
-@media (max-width:1365px) {
-  .container-fluid {
-    top: -4%;
-    width: 75%;
-    height: 85vh;
-    margin-top: 8.5em;
-    margin-left: 20.5em;
-    position: absolute;
-  }
-}
-
-@media (min-width:1500px) {
-  .container-fluid {
-    top: 0%;
-    left: 5%;
-    width: 77%;
-    height: 85vh;
-    margin-top: 9.5em;
-    margin-left: 20.5em;
-    position: absolute;
-  }
 }
