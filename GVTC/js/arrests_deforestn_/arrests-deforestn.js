@@ -19,8 +19,8 @@ $('.arrow-next').click(function () {
         nextSlide = $('.slide').first();
     }
 
-    currentSlide.fadeOut(600).removeClass('active-slide');
-    nextSlide.fadeIn(600).addClass('active-slide');
+    currentSlide.removeClass('active-slide');
+    nextSlide.addClass('active-slide');
 
 });
 
@@ -32,8 +32,8 @@ $('.arrow-prev').click(function () {
         prevSlide = $('.slide').last();;
     }
 
-    currentSlide.fadeOut(600).removeClass('active-slide');
-    prevSlide.fadeIn(600).addClass('active-slide');
+    currentSlide.removeClass('active-slide');
+    prevSlide.addClass('active-slide');
 
 });
 

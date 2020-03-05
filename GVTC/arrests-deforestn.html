@@ -30,7 +30,7 @@
 
 <body id="page-top">
   <div class="header_dashboard">
-    <nav class="navigation_dashboard">
+    <nav class="navbar fixed-top navigation_dashboard" style="background-color: white;">
       <ul>
         <li><span><img class="Revenue_sharing" src="images/revenue.png" alt=""></span><a href="../map3.html">REVENUE SHARING</a></li>
         <li><span><img class="Deforestation" src="images/defo.png" alt=""></span><a href="../map2.html"> DEFORESTATION</a></li>
@@ -44,102 +44,106 @@
 
     </nav>
   </div>
-  <div id="wrapper">
 
+  <div class="row" style="margin-right: 0px;">
+    <div class="col-sm-3">
     <!-- Sidebar -->
-    <div id="panel_d">
-      <div id="panelContent" class="container-fluid_d">
-        <div class="nav-link_d">
-          <h3 style="color: white; font-size: 167%; padding-top: 5%;">Dashboard</h3>
-        </div>
-        <!-- Dashboard -->
-        <br>
-        <ul class="sidebar navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">
-              <i class="fas fa-fw fa-chart-area"></i>
-              <span>Animal Population</span>
-            </a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="patrol-traffick-cropraid.html">
-              <i class="fas fa-fw fa-chart-pie"></i>
-              <span>Patrol, Trafficking and Crop Raids</span></a>
-          </li>
-
-          <li class="nav-item active">
-            <a class="nav-link" href="arrests-deforestn.html">
-              <i class="fas fa-fw fa-table"></i>
-              <span>Arrests and Deforestation</span></a>
-          </li>
-          <div>
-            <a style="position: fixed; margin-left: 10px; bottom: 0; " href="https://www.geogecko.com/" target="_blank"><img style="width: 100px;" src="images/GeoGecko.png"></a>
+      <div id="panel_d">
+        <div id="panelContent" class="container">
+          <div class="nav-link_d">
+            <h3 style="color: white; font-size: 167%; padding-top: 5%;">Dashboard</h3>
           </div>
-        </ul>
+          <!-- Dashboard -->
+          <br>
+          <ul class="sidebar navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Animal Population</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="patrol-traffick-cropraid.html">
+                <i class="fas fa-fw fa-chart-pie"></i>
+                <span>Patrol, Trafficking and Crop Raids</span></a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="arrests-deforestn.html">
+                <i class="fas fa-fw fa-table"></i>
+                <span>Arrests and Deforestation</span></a>
+            </li>
+            <div>
+              <a style="position: fixed; margin-left: 10px; bottom: 0; " href="https://www.geogecko.com/" target="_blank"><img style="width: 100px;" src="images/GeoGecko.png"></a>
+            </div>
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div id="content-wrapper">
+    <div class="col-sm-9">
+      <div id="content-wrapper">
 
-      <div class="container-fluid">
+        <div class="container" style="padding-top: 2%; margin-right: 0px;">
 
-        <!-- DataTables Example -->
-        <div id="arrests" class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            Arrests
+          <!-- DataTables Example -->
+          <div id="arrests" class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Arrests
+            </div>
+            <div class="card-body" >
+                <div class="slider" id="tables_"></div>
+                <div class="slider-nav">
+                  <span class="arrow-prev">
+                    <i class="fa fa-chevron-left"></i></span>
+                  <span class="arrow-next">
+                    <i class="fa fa-chevron-right"></i></span>
+                </div>
+            </div>
+            <div class="card-footer small text-muted"></div>
           </div>
-          <div class="card-body" >
-              <div class="slider" id="tables_"></div>
-              <div class="slider-nav">
-                <span class="arrow-prev">
-                  <i class="fa fa-chevron-left"></i></span>
-                <span class="arrow-next">
-                  <i class="fa fa-chevron-right"></i></span>
+
+          <div class="row">
+            <div class="col">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <i class="fas fa-chart-bar"></i>
+                  Deforestation: Park</div>
+                <div class="card-body">
+                  <canvas class="bar-chart1" width="100%" height="80"></canvas>
+                </div>
               </div>
+            </div>
+            <div class="col">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <i class="fas fa-chart-bar"></i>
+                  Deforestation: 5km Buffer</div>
+                <div class="card-body">
+                  <canvas class="bar-chart2" width="100%" height="80"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <i class="fas fa-chart-bar"></i>
+                  Deforestation: Beni</div>
+                <div class="card-body">
+                  <canvas class="bar-chart3" width="100%" height="80"></canvas>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="card-footer small text-muted"></div>
+
         </div>
-
-        <div class="row">
-          <div class="col">
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fas fa-chart-bar"></i>
-                Deforestation: Park</div>
-              <div class="card-body">
-                <canvas class="bar-chart1" width="100%" height="80"></canvas>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fas fa-chart-bar"></i>
-                Deforestation: 5km Buffer</div>
-              <div class="card-body">
-                <canvas class="bar-chart2" width="100%" height="80"></canvas>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card mb-3">
-              <div class="card-header">
-                <i class="fas fa-chart-bar"></i>
-                Deforestation: Beni</div>
-              <div class="card-body">
-                <canvas class="bar-chart3" width="100%" height="80"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <!-- /.container-fluid -->
       </div>
-      <!-- /.container-fluid -->
     </div>
-    <!-- /.content-wrapper -->
   </div>
+    <!-- /.content-wrapper -->
   <!-- /#wrapper -->
 
   <!-- Scroll to Top Button-->

@@ -16,34 +16,12 @@
 
 }
 
-.container.box canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.container {
-  max-width: 1020px;
-  position: relative;
-  margin: 0 auto;
-  padding: 0 0;
-  zoom: 1;
-  /* For IE 6/7 (trigger hasLayout) */
-}
-
-.container:before,
-.container:after {
-  content: "";
-  display: table;
-}
-
 .container:after {
   clear: both;
 }
 
 .row {
   zoom: 1;
-  /* For IE 6/7 (trigger hasLayout) */
 }
 
 .row:before,
@@ -56,13 +34,6 @@
   clear: both;
 }
 
-.columns {
-  float: left;
-  display: block;
-  margin-bottom: 0px;
-  padding: 0 0px;
-  background: red;
-}
 
 .columns.three {
   width: 25%;
@@ -70,9 +41,7 @@
 
 /* Slider */
 .slider {
-  position: relative;
   width: 100%;
-  min-height: 588px;
 }
 
 .slide {
@@ -91,8 +60,6 @@
 /* Controls */
 .slider-nav {
   text-align: center;
-  position: relative;
-  bottom: -44px;
   width: 100%;
 }
 
@@ -102,9 +69,7 @@
   margin: 0 10%;
   display: inline-block;
   vertical-align: top;
-  margin-top: 9px;
   font-size: 1.5rem;
-  top: -3em;
   position: relative;
 }
 }
@@ -115,9 +80,7 @@
   margin: 0 10%;
   display: inline-block;
   vertical-align: top;
-  margin-top: 9px;
   font-size: 1.5rem;
-  top: -8em;
   position: relative;
 }
 }
@@ -139,41 +102,4 @@
 
 .slider-dots li.active-dot {
   color: #363636;
-}
-
-@media (max-width:1365px) {
-  .container-fluid {
-    top: -4%;
-    width: 75%;
-    height: 85vh;
-    margin-top: 8.5em;
-    margin-left: 20.5em;
-    position: absolute;
-  }
-}
-
-@media (min-width:1500px) {
-  .container-fluid {
-    top: 0%;
-    left: 5%;
-    width: 77%;
-    height: 85vh;
-    margin-top: 9.5em;
-    margin-left: 20.5em;
-    position: absolute;
-  }
-}
-
-@media (max-width:1365px) {
-  #arrests {
-    width: 64em;
-    height: 35em;
-  }
-}
-
-@media (min-width:1366px) {
-  #arrests {
-    width: 100%;
-    height: 71vh;
-  }
 }
