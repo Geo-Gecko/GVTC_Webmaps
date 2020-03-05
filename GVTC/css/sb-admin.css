@@ -10915,13 +10915,13 @@ body {
 @media (max-width:1500px) {
   .sidebar .nav-item .nav-link {
     display: block;
-    width: inherit;
+    width: 100%;
     text-align: left;
     padding: 1rem;
+    width: 291px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: bold;
-    padding-right: 1%;
   }
 }
 
