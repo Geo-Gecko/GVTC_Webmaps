@@ -187,12 +187,12 @@ div.orientationpage_heading h3 {
 nav ul li {
   float: right;
   display: inline;
-  padding: 0 10px 0 10px;
+  padding: 10px 5px 0 10px;
 }
 
 nav li img.Dashboard {
   width: 28px;
-  padding: 5px 9px 5px 0px;
+  padding: 5px 4px 5px 0px;
 }
 
 nav li img.Key_species {
@@ -202,17 +202,16 @@ nav li img.Key_species {
 
 nav li img.Deforestation {
   width: 30px;
-  padding: 0px -25px 0px 0px;
 }
 
 nav li img.Revenue_sharing {
   width: 39px;
-  padding: 3px 10px 6px 8px;
+  padding: 3px 5px 6px 8px;
 }
 
 nav li img.Orientation_page {
   width: 39px;
-  padding: 3px 10px 6px 8px;
+  padding: 3px 5px 6px 8px;
 }
 
 nav li.label_dashboard {
@@ -231,26 +230,24 @@ header nav {
 li>a {
   text-transform: capitalize;
   color: #333;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 li>a:hover {
   background-color: #d4dadc;
   color: #fff;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: inherit;
-  padding-right: inherit;
   text-decoration: none;
+  padding-left: 3px;
+  padding-right: 3px;
   border-radius: 25px;
 }
 
 li.active>a {
   background-color: #a2d687;
   color: #000000;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: inherit;
-  padding-right: inherit;
+  padding-left: 1px;
+  padding-right: 1px;
   border-radius: 25px;
 }
 
@@ -265,13 +262,7 @@ div.col-xs-12 {
   float: right;
 }
 
-/* div#map {
-  height: 100%;
-  background-color: #b5d0d0;
-  padding-right: 0px;
-  padding-left: 0px;
 
-} */
 div.mapContainer {
   height: 100%;
   z-index: -5;
