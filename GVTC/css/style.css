@@ -130,28 +130,28 @@ aside img.parks{
   padding-top: 0px;
 }
 
-/* anchors */
-li > a {
-	text-transform: capitalize;
-	color: #333;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.nav_images {
+  width: 25px;
 }
 
-li > a:hover{
-		background-color: #d4dadc;
-		color: #fff;
-    text-decoration: none;
-    padding-left: 3px;
-    padding-right: 3px;
-    border-radius: 25px;
+.nav_items {
+  padding: 0.4% 0.5% 0.4% 0.5%;
+  white-space: nowrap;
 }
 
-li.active > a {
+.nav_items:hover {
+  background-color: #a2d687;
+  color: black;
+  text-decoration: none;
+  border-radius: 25px;
+}
+
+.active {
 	background-color: #a2d687;
 	color: #000000;
   border-radius: 25px;
 }
+
 
 /*Main containers*/
 div.col-xs-12{
@@ -336,7 +336,7 @@ div#panelContent {
 @media (min-width: 1024px) {
   #chart_container {
       max-width: 77%;
-      padding-top: 2%;
+      padding-top: 9%;
       margin-right: 0px;
       margin-left: 23%;
     }
@@ -345,7 +345,7 @@ div#panelContent {
   @media (max-width: 1024px) {
     #chart_container {
       max-width: 65%;
-      padding-top: 2%;
+      padding-top: 12%;
       margin-right: 0px;
       margin-left: 32%;
     }

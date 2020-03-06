@@ -49,33 +49,28 @@ nav ul li{
   padding: 10px 5px 0 10px;
 }
 
-nav li img.Dashboard{
-  width: 28px;
-  padding: 5px 4px 5px 0px;
+.nav_images {
+  width: 25px;
 }
 
-nav li img.Key_species{
-  width: 30px;
-  padding: 0px 0px 0px 0px;
+.nav_items {
+  padding: 0.4% 0.5% 0.4% 0.5%;
+  white-space: nowrap;
 }
 
-nav li img.Deforestation{
-  width: 30px;
+.nav_items:hover {
+  background-color: #a2d687;
+  color: black;
+  text-decoration: none;
+  border-radius: 25px;
 }
 
-nav li img.Revenue_sharing{
-  width: 39px;
-  padding: 3px 5px 6px 8px;
+.active {
+	background-color: #a2d687;
+	color: #000000;
+  border-radius: 25px;
 }
 
-nav li img.Orientation_page{
-  width: 39px;
-  padding: 3px 5px 6px 8px;
-}
-
-nav li.label_dashboard{
-top: 5px;
-}
 
 nav ul{
   margin-top: 0vh;
@@ -257,7 +252,7 @@ div#panelContent {
 @media (min-width: 1024px) {
 #chart_container {
     max-width: 100%;
-    padding-top: 2%;
+    padding-top: 12%;
     margin-right: 0px;
     margin-left: 0px;
   }
@@ -267,6 +262,7 @@ div#panelContent {
   #chart_container {
     max-width: 95%;
     padding-top: 2%;
+    padding-top: 12%;
     margin-right: 0px;
     margin-left: 5%;
   }

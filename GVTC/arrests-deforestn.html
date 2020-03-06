@@ -29,21 +29,20 @@
 </head>
 
 <body id="page-top">
-  <div class="header_dashboard">
-    <nav class="navbar fixed-top navigation_dashboard" style="background-color: white;">
-      <ul>
-        <li><span><img class="Revenue_sharing" src="images/revenue.png" alt=""></span><a href="../map3.html">REVENUE SHARING</a></li>
-        <li><span><img class="Deforestation" src="images/defo.png" alt=""></span><a href="../map2.html"> DEFORESTATION</a></li>
-        <li><span><img class="Key_species" src="images/animal.png" alt=""></span><a href="../map1.html"></i> KEY SPECIES</a></li>
-        <li class="active"><span><img class="Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="../GVTC/index.html"><span class="sr-only">(current)</span>DASHBOARD</a></li>
-        <li><span><img class="Orientation_page" src="images/home.png" alt=""></span><a href="../orientationpage.html">ORIENTATION PAGE</a>
-      </ul>
-
-      <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt="LOGO" height="100px" width="100px">
+  <nav class="navbar fixed-top row navigation_dashboard" style="background-color: white;">
+    <div class="col-sm-2">
+      <a href="http://www.greatervirunga.org/" target="_blank">
+        <img src="images/GVTC-Logo.png" alt="LOGO" height="100px" width="100px">
       </a>
-
-    </nav>
-  </div>
+    </div>
+    <div class="col-sm-9 d-flex justify-content-sm-center align-items-center">
+      <img class="nav_images" src="images/home.png" alt=""><a href="../orientationpage.html" class="mr-4 nav_items">ORIENTATION PAGE</a>
+      <img class="nav_images" src="images/chart.png" alt=""><a href="../GVTC/index.html" class="mr-4 active nav_items">DASHBOARD</a>
+      <img class="nav_images" src="images/animal.png" alt=""><a href="../map1.html" class="mr-4 nav_items"></i> KEY SPECIES</a>
+      <img class="nav_images" src="images/defo.png" alt=""><a href="../map2.html" class="mr-4 nav_items"> DEFORESTATION</a>
+      <img class="nav_images" src="images/revenue.png" alt=""><a href="../map3.html" class="mr-4 nav_items">REVENUE SHARING</a>
+    </div>
+  </nav>
 
   <div class="row" style="margin-right: 0px;">
     <div class="col-sm-3">
@@ -85,7 +84,7 @@
     <div class="col-sm-9">
       <div id="content-wrapper">
 
-        <div class="container" style="padding-top: 2%; margin-right: 0px;">
+        <div class="container" style="padding-top: 12%; margin-right: 0px;">
 
           <!-- DataTables Example -->
           <div id="arrests" class="card mb-3">
