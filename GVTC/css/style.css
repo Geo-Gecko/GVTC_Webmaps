@@ -88,12 +88,6 @@ nav li{
   margin-top: 5.5vh;
 }
 
-div.container{
-  padding: 0px 20px 0px 5px;
-  margin:auto;
-  width: 100%;
-}
-
 div.section_container{
   padding: 0px 20px 0px 70px;
   width: 40%;
@@ -167,8 +161,8 @@ div.col-xs-12{
 @media (min-width:1200px){
 div#panel_d {
   position: fixed;
-  top: 15vh;
-  height: 85vh;
+  top: 12.5%;
+  height: 100%;
   width: 22%;
   background-color: #fafafa;
   opacity: 0.92;
@@ -181,8 +175,8 @@ div#panel_d {
 @media (max-width:1200px){
 div#panel_d {
   position: fixed;
-  top: 15vh;
-  height: 85vh;
+  top: 12.5%;
+  height: 100%;
   width: 25%;
   background-color: #fafafa;
   opacity: 0.92;
@@ -334,7 +328,7 @@ div#panelContent {
 }
 
 /* charts */
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   #chart_container {
       max-width: 77%;
       padding-top: 9%;
@@ -343,11 +337,24 @@ div#panelContent {
     }
   }
   
-  @media (max-width: 1024px) {
-    #chart_container {
-      max-width: 65%;
-      padding-top: 12%;
-      margin-right: 0px;
-      margin-left: 32%;
+@media (max-width: 1200px) {
+  #chart_container {
+    max-width: 73%;
+    padding-top: 11%;
+    margin-right: 0px;
+    margin-left: 26%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #arrests_chart_container {
+    padding-top: 12%;
+    margin-left: -1%;
     }
   }
+  
+@media (max-width: 1200px) {
+  #arrests_chart_container {
+    padding-top: 15%;
+  }
+}
