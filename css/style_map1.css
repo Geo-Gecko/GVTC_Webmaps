@@ -144,7 +144,6 @@ div #containerr .map {
 @media (min-width:1200px) {
   div#panel {
     position: fixed;
-    height: 100%;
     width: 22%;
     background-color: #fafafa;
     opacity: 0.92;
@@ -178,14 +177,13 @@ div#panelContent {
 
 div .nav-link {
   width: 100%;
-  margin-top: 33%;
   background-color: #1B6B36;
   right: 0px;
 }
 
 div .nav-link p {
   color: #FFFFFF;
-  font-size: 24px;
+  font-size: 29px;
   padding-left: 10px;
   width: 100%;
   margin-top: 8px;
