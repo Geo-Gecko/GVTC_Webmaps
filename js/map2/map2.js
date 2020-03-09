@@ -82,8 +82,25 @@ document.body.appendChild(povertyLandCMap)
 
 //leaflet legend containers
 var legendFrom = $('.leaflet-top.leaflet-right');
+legendFrom.addClass("container");
+legendFrom.css("left", "0%")
+legendFrom.css("width", "120%")
 var legendTo = $('#container22');
 legendTo[0].appendChild(legendFrom[0]);
+
+$(".legend_gvtc").addClass("d-flex flex-row-reverse")
+$(".leaflet-right").css("right", "0px")
+
+$(".leaflet-bottom.leaflet-right").css("width", "100%")
+
+
+let nav_height = $(
+  ".navbar.fixed-top.row.navigation_dashboard"
+).height()
+let window_height = $(window).height()
+$("#panel_2").css("top", `${((nav_height / window_height) * 100) - 1}%`)
+$("#panel_2").css("height", `${(101 - (nav_height / window_height) * 100)}%`)
+
 
 //cursor control
 cursor1 = L.circleMarker([0, 0], { riseOnHover: true, radius: 25, fillOpacity: 0.1, color: '#1B6B36', fillColor: '#FFFFFF' });

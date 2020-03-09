@@ -150,7 +150,7 @@ div #containerr .map {
     opacity: 0.92;
     -webkit-transition: width 0.6s;
     transition: width 0.6s;
-    z-index: -1;
+    z-index: 1029;
     border: 1px solid black;
   }
 }
@@ -279,6 +279,11 @@ div#panelContent {
   transition: opacity 0.6s;
   padding-left: 0px;
   padding-right: 0px;
+}
+
+div.leaflet-top.leaflet-right {
+  width: 107%;
+  right: -5%;
 }
 
 /*Responsivity*/
