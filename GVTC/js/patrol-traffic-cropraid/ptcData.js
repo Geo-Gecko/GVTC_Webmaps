@@ -142,3 +142,10 @@ axios.get(url, {
     plotThree(x_values, y_values, "bar-chart4");
   })
   .catch(e => console.log(e))
+
+let nav_height = $(
+  ".navbar.fixed-top.row.navigation_dashboard"
+).height()
+let window_height = $(window).height()
+$("#panel_d").css("top", `${((nav_height / window_height) * 100) - 1}%`)
+$("#panel_d").css("height", `${(101 - (nav_height / window_height) * 100)}%`)

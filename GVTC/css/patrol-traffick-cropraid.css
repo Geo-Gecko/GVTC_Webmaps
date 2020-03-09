@@ -162,8 +162,6 @@ div.col-xs-12{
 @media (max-width:1200px){
 div#panel_d {
   position: fixed;
-  top: 12.5%;
-  height: 100%;
   background-color: #fafafa;
   opacity: 0.92;
   -webkit-transition: width 0.6s;
@@ -176,8 +174,6 @@ div#panel_d {
 @media (min-width:1200px){
   div#panel_d {
     position: fixed;
-    top: 12.5%;
-    height: 100%;
     width: 22%;
     background-color: #fafafa;
     opacity: 0.92;
@@ -253,7 +249,7 @@ div#panelContent {
 @media (min-width: 1200px) {
 #chart_container {
     max-width: 100%;
-    padding-top: 12%;
+    padding-top: 105px;
     margin-right: 0px;
     margin-left: 0px;
   }
@@ -262,7 +258,7 @@ div#panelContent {
 @media (max-width: 1200px) {
   #chart_container {
     max-width: 98%;
-    padding-top: 15%;
+    padding-top: 105px;
     margin-right: 0px;
     margin-left: 3%;
   }

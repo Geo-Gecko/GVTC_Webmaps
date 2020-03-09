@@ -50,3 +50,11 @@ hmap = document.createElement("script");
 hmap.setAttribute("type", "text/javascript");
 hmap.setAttribute("src", `js/arrests_deforestn_/arrests.js`);
 document.body.appendChild(hmap)
+
+
+let nav_height = $(
+    ".navbar.fixed-top.row.navigation_dashboard"
+).height()
+let window_height = $(window).height()
+$("#panel_d").css("top", `${((nav_height / window_height) * 100) - 1}%`)
+$("#panel_d").css("height", `${(101 - (nav_height / window_height) * 100)}%`)
