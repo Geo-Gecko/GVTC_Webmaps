@@ -142,3 +142,10 @@ function layer() {
     (checkbox.checked) ? layer.addTo(map) : map.removeLayer(layer);
   }
 }
+
+let nav_height = $(
+  ".navbar.fixed-top.row.navigation_dashboard"
+).height()
+let window_height = $(window).height()
+$("#panel").css("top", `${(nav_height / window_height) * 100}%`)
+$("#panel").css("height", `${(100 - (nav_height / window_height) * 100)}%`)

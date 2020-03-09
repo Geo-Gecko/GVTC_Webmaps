@@ -43,12 +43,6 @@ nav a{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-nav ul li{
-  float: right;
-  display: inline;
-  padding: 10px 5px 0 10px;
-}
-
 .nav_images {
   width: 25px;
 }
@@ -139,6 +133,7 @@ li > a:hover{
     padding-left: 3px;
     padding-right: 3px;
     border-radius: 25px;
+    width: 100%;
 }
 
 li.active > a {
