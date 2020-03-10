@@ -1,6 +1,10 @@
 
-/*Header*/
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
+
+/*Header*/
 nav .navigation_dashbord {
   color: black;
   border-bottom: black 4px solid;
