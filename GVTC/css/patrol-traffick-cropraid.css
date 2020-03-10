@@ -180,15 +180,6 @@ div .nav-link_d{
   right: 0px;
 }
 
-div .nav-link_d p {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #FFFFFF;
-  font-size:24px;
-  padding-left: 10px;
-  width: 100%;
-  margin-top: 8px;
-}
-
 div #selector_menu{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;

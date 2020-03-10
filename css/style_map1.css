@@ -182,14 +182,6 @@ div .nav-link {
   right: 0px;
 }
 
-div .nav-link p {
-  color: #FFFFFF;
-  font-size: 29px;
-  padding-left: 10px;
-  width: 100%;
-  margin-top: 8px;
-}
-
 @media (max-width:1365px) {
   .refresh {
     position: relative;
