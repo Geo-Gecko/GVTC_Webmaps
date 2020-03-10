@@ -45,47 +45,21 @@ nav a{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-nav ul li{
-  float: right;
-  display: inline;
-  padding: 10px 5px 0 10px;
+li > a:hover{
+  background-color: #d4dadc;
+  color: #fff;
+  text-decoration: none;
+  padding-left: 3px;
+  padding-right: 3px;
+  border-radius: 25px;
 }
 
-nav li img.Dashboard{
-  width: 28px;
-  padding: 5px 4px 5px 0px;
-}
-
-nav li img.Key_species{
-  width: 30px;
-  padding: 0px 0px 0px 0px;
-}
-
-nav li img.Deforestation{
-  width: 30px;
-}
-
-nav li img.Revenue_sharing{
-  width: 39px;
-  padding: 3px 5px 6px 8px;
-}
-
-nav li img.Orientation_page{
-  width: 39px;
-  padding: 3px 5px 6px 8px;
-}
-
-nav li.label_dashboard{
-top: 5px;
-}
-
-nav ul{
-  margin-top: 0vh;
-  margin-bottom: 0px;
-}
-
-nav li{
-  margin-top: 5.5vh;
+li.active > a {
+background-color: #a2d687;
+color: #000000;
+padding-left: 1px;
+padding-right: 1px;
+border-radius: 25px;
 }
 
 div.section_container{
@@ -327,7 +301,6 @@ div#panelContent {
 @media (min-width: 1200px) {
   #arrests_chart_container {
     padding-top: 105px;
-    margin-left: -1%;
     }
   }
   
