@@ -322,14 +322,17 @@ div.leaflet-top.leaflet-right {
   .landlegend {
     width: 64%;
     position: relative;
-    left: 29%;
+    float: right;
+    right: 8%;
   }
 }
 
 @media (min-width:1365px) {
   .landlegend {
-    width: 80%;
+    width: 60%;
     position: relative;
+    float: right;
+    right: 8%;
   }
 }
 

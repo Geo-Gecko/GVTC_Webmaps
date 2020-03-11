@@ -224,6 +224,7 @@ div.col-xs-12 {
     -webkit-transition: width 0.6s;
     transition: width 0.6s;
     border: 1px solid black;
+    z-index: 1029;
   }
 }
 
@@ -343,6 +344,10 @@ div #container1 {
   div #container22 {
     position: relative;
   }
+}
+
+.leaflet-top.leaflet-right.container {
+  width: 116% !important;
 }
 
 @media (max-width:1365px) {
@@ -500,7 +505,7 @@ div#panelContent {
 @media (min-width:1366px) {
   .gvtc_legend2 {
     position: relative;
-    width: 85%;
+    width: 60%;
   }
 }
 

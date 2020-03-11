@@ -10989,7 +10989,6 @@ body {
 .sidebar.toggled .nav-item.dropdown .dropdown-toggle::after {
   display: none;
 }
-}
 
 .card-body-icon {
   position: absolute;

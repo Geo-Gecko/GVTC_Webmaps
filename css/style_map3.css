@@ -155,6 +155,7 @@ div.mapContainer {
     -webkit-transition: width 0.6s;
     transition: width 0.6s;
     border: 1px solid black;
+    z-index: 1;
   }
 }
 
@@ -163,7 +164,6 @@ div.mapContainer {
     position: absolute;
     width: 31%;
     background-color: #fafafa;
-    opacity: 0.92;
     -webkit-transition: width 0.6s;
     transition: width 0.6s;
     z-index: 10000;
@@ -404,14 +404,17 @@ div#panelContent {
   .landlegend {
     width: 64%;
     position: relative;
-    left: 29%;
+    float: right;
+    right: 8%;
   }
 }
 
 @media (min-width:1366px) {
   .landlegend {
-    width: 80%;
+    width: 66%;
     position: relative;
+    float: right;
+    right: 8%;
   }
 }
 
@@ -419,7 +422,7 @@ div#panelContent {
   .legend_gvtc {
     position: absolute;
     bottom: -4px;
-    left: 12%;
+    left: 30%;
     z-index: 1000;
   }
 }
@@ -448,7 +451,8 @@ div#panelContent {
 }
 
 .leaflet-control-layers {
-  margin: 0px !important;   
+  margin: 0px !important;
+  width: 100% !important;
 }
 
 @media (min-width:1366px) {
