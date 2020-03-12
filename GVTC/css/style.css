@@ -256,7 +256,7 @@ div#panelContent {
 .row:before,
 .row:after {
   content: "";
-  display: table;
+  display: none !important;
 }
 
 .row:after {
