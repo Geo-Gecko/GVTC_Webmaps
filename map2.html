@@ -5,10 +5,11 @@
   <meta charset="utf-8">
   <title>GVTC Deforestation Map</title>
 
-  <link rel="stylesheet" href="css/style_map2.css?v=2" type="text/css" />
   <link rel="stylesheet" href="leaflet/leaflet.css" type="text/css" />
   <link rel="stylesheet" href="lib/bootstrap-3.3.6-dist/css/bootstrap.css"><!-- debug css version-->
+  <link href="GVTC/css/sb-admin.css" rel="stylesheet">
   <link rel="stylesheet" href="lib/ol3.8.2/ol.css" type="text/css" />
+  <link rel="stylesheet" href="css/style_map2.css?v=2" type="text/css" />
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="leaflet/leaflet.js" charset="utf-8"></script>
@@ -36,22 +37,20 @@
 
 <body>
   <!-- navigation bar -->
-  <header>
-    <div class="container">
-      <div class="branding">
-        <a href="http://www.greatervirunga.org/" target="_blank"><img src="images/GVTC-Logo.png" alt=""></a>
-      </div>
-      <nav>
-        <ul>
-          <li><span><img class="Revenue_sharing" src="images/revenue.png" alt=""></span><a href="map3.html">REVENUE SHARING</a></li>
-          <li class="active"><span><img class="Deforestation" src="images/defo.png" alt=""></span><a href="map2.html"><span class="sr-only">(current)</span>DEFORESTATION</a></li>
-          <li><span><img class="Key_species" src="images/animal.png" alt=""></span><a href="map1.html">KEY SPECIES</a></li>
-          <li><span><img class="Dashboard" src="images/chart.png" alt=""></span><a class="label_dashboard" href="GVTC/index.html">DASHBOARD</a></li>
-          <li><span><img class="Orientation_page" src="images/home.png" alt=""></span><a href="orientationpage.html">ORIENTATION PAGE</a></li>
-        </ul>
-      </nav>
+  <nav class="navbar fixed-top row navigation_dashboard" style="background-color: white; border-bottom: #dfe8e4 4px solid;">
+    <div class="col-sm-2">
+      <a href="http://www.greatervirunga.org/" target="_blank">
+        <img src="images/GVTC-Logo.png" alt="LOGO" height="100px" width="100px">
+      </a>
     </div>
-  </header>
+    <div class="col-sm-10 d-flex justify-content-sm-end align-items-center">
+      <img class="nav_images" src="images/home.png" alt=""><a href="orientationpage.html" class="mr-4 nav_items">ORIENTATION PAGE</a>
+      <img class="nav_images" src="images/chart.png" alt=""><a href="GVTC/index.html" class="mr-4 nav_items">DASHBOARD</a>
+      <img class="nav_images" src="images/animal.png" alt=""><a href="map1.html" class="mr-4 nav_items"></i> KEY SPECIES</a>
+      <img class="nav_images" src="images/defo.png" alt=""><a href="#" class="mr-4 active nav_items"> DEFORESTATION</a>
+      <img class="nav_images" src="images/revenue.png" alt=""><a href="map3.html" class="mr-4 nav_items">REVENUE SHARING</a>
+    </div>
+  </nav>
 
   <!--   Main container and side panel-->
   <div class="mapContainer">
@@ -61,25 +60,24 @@
     <div id="panel_2">
       <div id="collapseBtn">
       </div>
-      <div id="panelContent" class="container-fluid">
+      <div id="panelContent">
         <div class="nav-link">
-          <p>Deforestation</p>
+          <h3 style="color: white; font-size: 26px; padding-top: 5%; padding-bottom: 2%; padding-left: 3%;">Deforestation</h3>
         </div>
-        <button class="refresh" type="submit" onClick="refreshPage()">Remove Layers</button>
+        <div class="container"><button class="refresh" type="submit" onClick="refreshPage()">Remove Layers</button></div>
         <div id="containers">
-          <div id='selector_menu'>
+          <div id='selector_menu' class="container">
             <select id='selector'>
               <option size="16" value='Reset'>---Select year---</option>
             </select>
           </div>
           <br>
-          <div id='selector_menu2'>
-            <p></p>
+          <div id='selector_menu2' class="container">
             <select id='selector2'  style="margin-left: 8%;">
               <option size="16" value='Reset'>---Select year---</option>
             </select>
           </div>
-          <div id="container22">
+          <div id="container22"x>
           </div>
         </div>
       </div>

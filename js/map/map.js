@@ -113,6 +113,15 @@ var legendFrom = $('.leaflet-top.leaflet-right');
 var legendTo = $('#container1');
 setParent(legendFrom[0], legendTo[0]);
 
+
+let nav_height = $(
+  ".navbar.fixed-top.row.navigation_dashboard"
+).height()
+let window_height = $(window).height()
+$("#panel").css("top", `${((nav_height / window_height) * 100) - 1}%`)
+$("#panel").css("height", `${(101 - (nav_height / window_height) * 100)}%`)
+
+
 function layer() {
   var layer = this;
   var name = layer.getGeoJSON().name;
