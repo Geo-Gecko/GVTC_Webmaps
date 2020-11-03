@@ -85,8 +85,8 @@
     <script type="text/javascript" src="lib/ol3.8.2/ol-debug.js"></script>
     <script>
       function create_response_array_object(response) {
-      let row_names = response.data.values[0], response_array_object = []
-        response.data.values.splice(start=1).forEach(row_ => {
+      let row_names = response.values[0], response_array_object = []
+        response.values.splice(start=1).forEach(row_ => {
           let row_object = {}
           row_.forEach((cell, index_) => {
             row_object[row_names[index_]] = cell
