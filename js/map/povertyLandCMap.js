@@ -13,22 +13,23 @@ current_map = current_map.split(".")[0]
 
 
 //calling density data from google sheets
-let density_sheet = "183331754"
-let url1 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${density_sheet}`
+let density_sheet = "Hippos_Bwindi_Infographics"
+let url1 = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${density_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 //calling poverty data from google sheets
-let poverty_sheet = "2065427744"
-let url2 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${poverty_sheet}`
+let poverty_sheet = "Polygons_poverty_2017"
+
+let url2 = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${poverty_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 //calling hippos from google sheets
-let hip_sheet = "1478917428"
-let url3 = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${hip_sheet}`
+let hip_sheet = "Points_Hippos_2017"
+let url3 = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${hip_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
-let axioses = [axios.get(url1, { mode: 'no-cors' }), axios.get(url2, { mode: 'no-cors' }), axios.get(url3, { mode: 'no-cors' })]
+let axioses = [axios.get(url1), axios.get(url2), axios.get(url3)]
 
 axios.all(axioses)
     .then(responseArrs => {
-        density_data = $.csv.toObjects(responseArrs[0].data);
+        density_data = create_response_array_object(responseArrs[0].data);
         let year_data = Object.keys(density_data[0]).slice(start = 1);
         year_data.forEach(year => {
             year = year.split("_")
@@ -62,7 +63,7 @@ axios.all(axioses)
 
 
         // second URL
-        poverty_data = $.csv.toObjects(responseArrs[1].data),
+        poverty_data = create_response_array_object(responseArrs[1].data),
             poverty_data.forEach(point => {
                 povgeoJson[point["SNAME2014"]] = parseFloat(point["Poverty_5"])
             })
@@ -86,7 +87,7 @@ axios.all(axioses)
         baseMaps["LandCover Classification"] = landcover
 
         // third URL
-        hippos4 = $.csv.toObjects(responseArrs[2].data)
+        hippos4 = create_response_array_object(responseArrs[2].data)
         var jsonFeatures = [];
         hippos4.forEach(hippo => {
             var feature = {
