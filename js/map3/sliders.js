@@ -1,11 +1,11 @@
 let long_id_ = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
 axios.get(
-  `https://docs.google.com/spreadsheets/d/${long_id_}/export?format=csv&id=${long_id_}&gid=828811152`, {
+  `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/Revenue_Sharing?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`, {
   mode: 'no-cors'
 }
 )
   .then(response => {
-    let google_sheets_finances = $.csv.toObjects(response.data)
+    let google_sheets_finances = create_response_array_object(response.data)
 
     // TODO change slice to less than 10 after removing the other column names without years
     let selected_year = "2017"
