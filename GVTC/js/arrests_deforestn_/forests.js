@@ -2,7 +2,7 @@ axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    forest_loss = $.csv.toObjects(r.data)
+    forest_loss = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 
@@ -57,14 +57,15 @@ function plotOne(xValues, yValues) {
 }
 
 //forest loss for 5km buffer
-let forest_loss_sheet2 = "51326859"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${forest_loss_sheet2}`
+let forest_loss_sheet2 = "Forest_loss"
+// NOTE FOR ANYONE: should this be the same as in arrests-deforestn.js
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${forest_loss_sheet2}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    forest_loss = $.csv.toObjects(r.data)
+    forest_loss = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 
@@ -119,14 +120,14 @@ function plotTwo(xValues, yValues) {
 }
 
 //forest loss for beni
-let forest_loss_sheet3 = "51326859"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${forest_loss_sheet3}`
+let forest_loss_sheet3 = "Forest_loss"
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${forest_loss_sheet3}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    forest_loss = $.csv.toObjects(r.data)
+    forest_loss = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 

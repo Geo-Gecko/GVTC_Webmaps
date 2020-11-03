@@ -1,7 +1,7 @@
 //forest loss in the parks
-let forest_loss_sheet = "51326859"
+let forest_loss_sheet = "Forest_loss"
 let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
-let url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${forest_loss_sheet}`
+let url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${forest_loss_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 // add files from arrests_deforestn_ folder to arrests-deforestn.html
 let hmap = document.createElement("script");
