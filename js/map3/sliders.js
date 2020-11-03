@@ -1,6 +1,6 @@
 let long_id_ = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
 axios.get(
-  `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/Revenue_Sharing?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`, {
+  `https://sheets.googleapis.com/v4/spreadsheets/${long_id_}/values/Revenue_Sharing?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`, {
   mode: 'no-cors'
 }
 )
