@@ -13,13 +13,13 @@ document.body.appendChild(hmap)
 
 //trafficking data 2016
 let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
-let traffic_2016_raw_sheet = "1892401990"
-let url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${traffic_2016_raw_sheet}`
+let traffic_2016_raw_sheet = "Trafficking_Infographics"
+let url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${traffic_2016_raw_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 axios.get(url, {
   mode: 'no-cors'
 })
   .then(r => {
-    let traffic_data = $.csv.toObjects(r.data)
+    let traffic_data = create_response_array_object(r.data)
 
 
     let years_ = []
@@ -52,14 +52,14 @@ axios.get(url, {
 
 
 //patrols for virunga, mgahinga, bwindi and volcanoes
-let patrol_v_sheet = "1455012350"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${patrol_v_sheet}`
+let patrol_v_sheet = "Patrol_coverage"
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${patrol_v_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 axios.get(url, {
   mode: 'no-cors'
 })
   .then(r => {
-    patrols_data = $.csv.toObjects(r.data)
+    patrols_data = create_response_array_object(r.data)
 
     let no_of_years = Object.keys(patrols_data[0])
     no_of_years = no_of_years.filter(patrol => {
@@ -101,14 +101,14 @@ axios.get(url, {
   .catch(e => console.log(e))
 
 //crop raids mgahinga
-let raids_mgahinga_sheet = "1192678611"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${raids_mgahinga_sheet}`
+let raids_mgahinga_sheet = "Crop_raids_MGNP"
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${raids_mgahinga_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 axios.get(url, {
   mode: 'no-cors'
 })
   .then(r => {
-    raids_mgahinga = $.csv.toObjects(r.data)
+    raids_mgahinga = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 
@@ -123,14 +123,14 @@ axios.get(url, {
 
 
 //crop raids bwindi
-let raids_bwindi_sheet = "168254427"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${raids_bwindi_sheet}`
+let raids_bwindi_sheet = "Crop_raids_Bwindi"
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${raids_bwindi_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 axios.get(url, {
   mode: 'no-cors'
 })
   .then(r => {
-    raids_bwindi = $.csv.toObjects(r.data)
+    raids_bwindi = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 

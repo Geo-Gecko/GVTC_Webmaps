@@ -1,8 +1,8 @@
 
 //hippo data for bwindi
-let hip_sheet = "1116318864"
+let hip_sheet = "Hippos_Bwindi_Infographics"
 let long_id = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
-let url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${hip_sheet}`
+let url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${hip_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 
 // add files from animalpopn folder to index.html
@@ -16,7 +16,7 @@ axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    hippos4 = $.csv.toObjects(r.data)
+    hippos4 = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 
@@ -32,13 +32,13 @@ axios.get(url, {
 
 
 //gorilla data for bwindi
-let gorilla_sheet = "1422622650"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${gorilla_sheet}`
+let gorilla_sheet = "Gorillas_Bwindi_Infographics"
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${gorilla_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    gorillas = $.csv.toObjects(r.data)
+    gorillas = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 
@@ -54,13 +54,13 @@ axios.get(url, {
 
 
 // elephant data for bwindi
-let elephant_sheet = "1933452056"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${elephant_sheet}`
+let elephant_sheet = "Elephants_Bwindi_Infographics"
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${elephant_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    elephants = $.csv.toObjects(r.data)
+    elephants = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 
@@ -77,13 +77,13 @@ axios.get(url, {
 
 
 // gorilla data for virunga
-let gorilla2_sheet = "858359305"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${gorilla2_sheet}`
+let gorilla2_sheet = "Gorillas_Virunga_Infographics"
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${gorilla2_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    gorilla2 = $.csv.toObjects(r.data)
+    gorilla2 = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 
@@ -99,13 +99,13 @@ axios.get(url, {
 
 
 // hippos data for virunga
-let hippos2_sheet = "944111397"
-url = `https://docs.google.com/spreadsheets/d/${long_id}/export?format=csv&id=${long_id}&gid=${hippos2_sheet}`
+let hippos2_sheet = "Hippos_Virunga_Infographics"
+url = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${hippos2_sheet}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 axios.get(url, {
     mode: 'no-cors'
   })
   .then(r => {
-    hippos2 = $.csv.toObjects(r.data)
+    hippos2 = create_response_array_object(r.data)
     let x_values = []
     let y_values = []
 

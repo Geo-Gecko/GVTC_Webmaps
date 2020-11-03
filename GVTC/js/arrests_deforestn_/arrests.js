@@ -1,12 +1,12 @@
 
 // calling data from the sheet
-let arrests_sheet_ = "1581973011"
+let arrests_sheet_ = "Arrests"
 let long_id_ = "1-0V2d8gYHoCb7OZidsSBuVHfs30zaBW-sM6meBF02mw"
-let url_ = `https://docs.google.com/spreadsheets/d/${long_id_}/export?format=csv&id=${long_id_}&gid=${arrests_sheet_}`
+let url_ = `https://sheets.googleapis.com/v4/spreadsheets/${long_id}/values/${arrests_sheet_}?key=AIzaSyC_iis9BnBJl7qxK_fRV6Hd5GpNFzFkxNY`
 
 axios.get(url_, { mode: 'no-cors' })
     .then(r => {
-        let arrests = $.csv.toObjects(r.data)
+        let arrests = create_response_array_object(r.data)
 
         let years_ = []
         let no_of_tables = Object.keys(arrests[0])
